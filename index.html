@@ -1,15 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/fonts/fonts.css">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./assets/img/favicon.png" type="image/png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="./assets/img/favicon.png" type="image/png" />
     <title>Join</title>
+    <link rel="favicon" href="assets/img/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
     <script src="./js/login.js"></script>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <div class="contentAll">
+    <div class="logo-container">
+        <div class="left-image">
+        <img class="Join_Logo" src="assets/img/join-logo.svg" alt="join-logo" />
+        </div>
+        <div class="rightContent">
+            <a href="#">Not a Join user?</a>
+            <button class="signUpBtn buttonLogin">Sign Up</button>
+        </div>
+      </div>
+      
+    <div class="login-content">
+        <form onsubmit="login();return false;" class="login-container" action="">
+         <div class="login-header">
+        <h1>Log in</h1>
+        <img src="assets/img/blueBar.svg" alt="">
+        </div>
+        <div class="login-input">
+            <input required id="email" placeholder="Email" type="email">
+        </div>
+        <div class="login-input">
+        <input required id="password"  placeholder="Password" type="password">
+    </div>
+    <div class="checkbox_forgotPasswort">
+        <div class="checkbox-content">
+        <input class="checkbox" type="checkbox" name="" id="">
+        <span>Remeber me</span>
+    </div>
+    <div class="forgot-passwort">
+        <a href="#">I forgot my password</a>
+    </div>
+    </div>
+    <div class="logInBtn">
+        <button class="log_in_btn buttonLogin">Log in</button>
+        <button class="guest_login_btn buttonLogin">Guest Log in</button>
+    </div>
+    </div>
+    </form>
+    <footer>
+        <a class="aHover" href="#">Privacy Policy</a>
+        <a class="aHover" href="#">Legal notice</a>
+    </footer>
+</div>
+  </body>
 </html>
