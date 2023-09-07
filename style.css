@@ -243,7 +243,7 @@ footer a {
 
 @media (max-width: 1000px) {
   .login-container {
-    width: 75vw;
+    width: 90vw;
     height: 65%;
   }
 }
