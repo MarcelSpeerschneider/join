@@ -232,7 +232,7 @@ input.checkbox {
 footer {
   display: flex;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 65px;
   gap: 80px;
 }
 
@@ -242,17 +242,32 @@ footer a {
 }
 
 @media (max-width: 1000px) {
-  .login-container {
-    width: 90vw;
-    height: 65%;
+  
+
+  .login-input{
+    width: fit-content;
+  }
+
+  #email{
+    background-position: auto;
   }
 }
 
 
 @media (max-width: 750px) {
-    .login-input{
-        width: 80%;
-        
+.Join_Logo{
+  margin-top: -45px;
+}
+.login-content{
+  position: relative;
+  z-index: 0;
+}
+    .login-container{
+      width: 85%;
+    }
+
+    .logo-container{
+      height: 143px;
     }
   #email {
     background-position: 100% 10px;
@@ -262,11 +277,29 @@ footer a {
     background-position: 100% 10px;
   }
 
+  .checkbox_forgotPasswort{
+    margin-top: -20px;
+  }
+
   .logInBtn{
     display: flex;
     flex-direction: column;
-    gap: 25px;
-    width: 100%;
+    gap: 12px;
+    margin-top: -10px;
+  }
+
+  .log_in_btn{
+    padding: 10px;
+    font-size: 20px;
+    height: fit-content;
+    width: 105px;
+  }
+
+  .guest_login_btn{
+    padding: 10px;
+    font-size: 20px;
+    height: fit-content;
+    width: 150px;
   }
 
   .checkbox_forgotPasswort{
@@ -275,16 +308,52 @@ footer a {
     align-items: flex-start;
     gap: 5px;
   }
+
+  .rightContent {
+    display:flex;
+    margin-top: 1400px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 1; 
+  }
+
+  footer {
+    position: relative; 
+    z-index: 0; 
+    margin-top: 80px;
+  }
+
 }
 
-@media (max-width: 400px) {
+@media (max-width: 570px) {
     #email {
-        background-image: none;
+        background-position: 100%;
         width: 100%;
       }
     
       #password{
-        background-image: none;
+        background-position: 100%;
        width: 100%;
       }
+}
+
+@media(max-width:350px){
+  .rightContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+    margin-top: 1400px;
+  }
+
+  footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 105px;
+  }
 }
