@@ -11,14 +11,11 @@ body {
 
 .buttonLogin:hover {
   background-color: rgb(40, 171, 226);
+  box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
 }
 
-.rightContent a:hover {
+.aHover:hover {
   transform: scale(1.1);
-}
-
-.guest_login_btn:hover {
-  color: white;
 }
 
 .contentAll {
@@ -46,61 +43,72 @@ body {
   text-decoration: none;
   color: black;
   font-size: 20px;
+  cursor: default;
 }
 
 .signUpBtn {
   background-color: rgb(42, 54, 72);
   color: white;
   width: 91px;
-  padding: 15px;
-  border-radius: 10px;
+  height: 49px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
   font-size: 18px;
   white-space: nowrap;
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 
 .signUpBtn:hover {
   background-color: rgb(40, 171, 226);
+  box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
 }
 
-.left-image {
+.Join_Logo {  
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: moveImage 3s ease forwards;
   z-index: 9999;
+  animation: moveImage 3s ease forwards;
 }
 
 @keyframes moveImage {
   0% {
+    width: 300px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
   100% {
-    top: 55px;
-    left: 150px;
+    top: 80px;
+    left: 100px;
     transform: none;
+    width: 100px;
   }
 }
 
 .login-content {
   display: flex;
   justify-content: center;
+  animation: loginOpacity 3s ease-in-out forwards;
 }
+
+@keyframes loginOpacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-items: center;
-  padding: 35px 0px;
-  gap: 35px;
+  justify-content: center;
+  gap: 32px;
   width: 652px;
-  height: 513px;
+  height: 502px;
   background: #ffffff;
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
   border-radius: 30px;
@@ -111,7 +119,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 h1 {
@@ -123,26 +131,24 @@ h1 {
 
 #email {
   border: none;
-  width: 400px;
-  height: 50px;
+  width: 380px;
   font-size: 21px;
   font-weight: 400;
   background-image: url(assets/img/mail.png);
   background-size: 25px;
   background-repeat: no-repeat;
-  background-position: 350px 15px;
+  background-position: 358px 2px;
 }
 
 #password {
   border: none;
-  width: 400px;
-  height: 50px;
+  width: 380px;
   font-size: 21px;
   font-weight: 400;
   background-image: url(assets/img/lock.png);
   background-size: 30px;
   background-repeat: no-repeat;
-  background-position: 350px 10px;
+  background-position: 358px -2px;
 }
 
 input:focus {
@@ -157,6 +163,7 @@ input:focus {
   padding: 5px 15px;
   border-radius: 10px;
   width: 422px;
+  height: 50px;
 }
 
 .checkbox_forgotPasswort {
@@ -176,6 +183,10 @@ input:focus {
   text-decoration: underline;
 }
 
+.checkbox-content span {
+  font-size: 18px;
+}
+
 .checkbox-content {
   display: flex;
   justify-content: center;
@@ -183,50 +194,56 @@ input:focus {
   gap: 10px;
 }
 
-.checkbox-content span {
-  font-size: 15px;
+input.checkbox {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 }
 
-input.checkbox {
-  width: 20px;
-  height: 20px;
-  outline: none;
-  cursor: pointer;
+input.checkbox:hover {
+  transform: scale(1.1);
 }
 
 .logInBtn {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 35px;
 }
 
 .log_in_btn {
   background-color: rgb(42, 54, 72);
   color: white;
-  width: 120px;
-  padding: 15px;
+  width: 110px;
+  height: 48px;
   border-radius: 10px;
   border: none;
   cursor: pointer;
   font-size: 21px;
   white-space: nowrap;
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 
 .guest_login_btn {
   background-color: transparent;
   border: 1px solid black;
-  padding: 15px;
+  padding: 15px, 24px, 15px, 24px;
+  height: 48px;
   border-radius: 10px;
-  width: 170px;
+  width: 177px;
   font-size: 21px;
   font-weight: bolder;
   white-space: nowrap;
-  display: flex;
-  justify-content: center;
+  text-align: center;
   cursor: pointer;
+}
+
+.guest_login_btn:hover {
+  border-color: #29aae1;
+  color: rgb(148, 213, 240) !important;
+  transform: scale(1.01);
+  transition: transform 225ms ease-in-out;
+  box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
 }
 
 footer {
@@ -242,122 +259,117 @@ footer a {
 }
 
 @media (max-width: 1000px) {
-  
-
-  .login-input{
+  .login-input {
     width: fit-content;
   }
 
-  #email{
+  #email {
     background-position: auto;
   }
 }
 
-
 @media (max-width: 750px) {
-.left-image{
-  margin-top: -45px;
-  margin-left: -100px;
-}
-.login-content{
-  position: relative;
-  z-index: 0;
-}
-    .login-container{
-      width: 85%;
-    }
+  .Join_Logo {
+    margin-top: -65px;
+    margin-left: -50px;
+  }
+  .login-content {
+    position: relative;
+    z-index: 0;
+  }
+  .login-container {
+    width: 85%;
+  }
 
-    .logo-container{
-      height: 143px;
-    }
+  .logo-container {
+    height: 143px;
+  }
   #email {
-    background-position: 100% 10px;
+    background-position: 100% 5px;
   }
 
-  #password{
-    background-position: 100% 10px;
+  #password {
+    background-position: 100% -2px;
   }
 
-  .checkbox_forgotPasswort{
-    
-  }
-
-  .logInBtn{
+  .logInBtn {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-top: -10px;
+    margin-top: -21px;
   }
 
-  .log_in_btn{
+  .log_in_btn {
     padding: 10px;
     font-size: 20px;
     height: fit-content;
     width: 105px;
   }
 
-  .guest_login_btn{
+  .guest_login_btn {
     padding: 10px;
     font-size: 20px;
     height: fit-content;
     width: 150px;
   }
 
-  .checkbox_forgotPasswort{
+  .checkbox_forgotPasswort {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 5px;
     margin-top: -20px;
-    margin-left: -55px;
+  
   }
 
   .rightContent {
-    display:flex;
-    margin-top: 1400px;
+    display: flex;
+    margin-top: 1250px;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
-    z-index: 1; 
+    z-index: 1;
   }
 
   footer {
-    position: relative; 
-    z-index: 0; 
-    margin-top: 90px;
+    position: relative;
+    z-index: 0;
+    margin-top: 95px;
     gap: 35px;
   }
 
+  input.checkbox {
+    width: 15px;
+    height: 15px;
+  }
+
+  .checkbox_forgotPasswort a {
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 570px) {
-    #email {
-        background-position: 100%;
-        width: 100%;
-      }
-    
-      #password{
-        background-position: 100%;
-       width: 100%;
-      }
+  #email {
+    background-position: 100%;
+    width: auto;
+  }
+  #password {
+    background-position: 100%;
+    width: auto;
+  }
 }
 
-@media(max-width:350px){
-  .rightContent{
+@media (max-width: 350px) {
+  .rightContent {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5px;
     justify-content: center;
-    margin-top: 1400px;
+    margin-top: 1300px;
   }
 
-  footer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-top: 105px;
+  footer {
+    display: none;
   }
 }
