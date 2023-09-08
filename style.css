@@ -255,8 +255,9 @@ footer a {
 
 
 @media (max-width: 750px) {
-.Join_Logo{
+.left-image{
   margin-top: -45px;
+  margin-left: -100px;
 }
 .login-content{
   position: relative;
@@ -278,7 +279,7 @@ footer a {
   }
 
   .checkbox_forgotPasswort{
-    margin-top: -20px;
+    
   }
 
   .logInBtn{
@@ -307,6 +308,8 @@ footer a {
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
+    margin-top: -20px;
+    margin-left: -55px;
   }
 
   .rightContent {
@@ -322,7 +325,8 @@ footer a {
   footer {
     position: relative; 
     z-index: 0; 
-    margin-top: 80px;
+    margin-top: 90px;
+    gap: 35px;
   }
 
 }
