@@ -3,14 +3,25 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function changeBackgroundColor() {
-        var svgElement = document.getElementById('user-profile-icon');
+        var svgElement = document.querySelector('.user-profile-icon');
         var rectElement = svgElement.querySelector('rect');
         rectElement.setAttribute("fill", "#E1E5EC");
 }
 
 function changeBackgroundColorBack() {
-        var svgElement = document.getElementById('user-profile-icon');
+        var svgElement = document.querySelector('.user-profile-icon');
         var rectElement = svgElement.querySelector('rect');
         rectElement.setAttribute("fill", "white");
 }
 
+function changeBackgroundColorMobile() {
+        var svgElement = document.querySelector('.user-profile-icon-mobile');
+        rectElement = svgElement.querySelector('circle');
+        rectElement.setAttribute("fill", "#E1E5EC");
+}
+
+function changeBackgroundColorBackMobile() {
+        var svgElement = document.querySelector('.user-profile-icon-mobile');
+        rectElement = svgElement.querySelector('circle');
+        rectElement.setAttribute("fill", "white");;
+}
