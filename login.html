@@ -3,14 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/fonts/fonts.css" />
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="icon" href="./assets/img/favicon.png" type="image/png" />
     <title>Join</title>
+    <script src="js/register.js"></script>
+    <script src="js/login.js"></script>
     <link rel="favicon" href="assets/img/favicon.png" />
     <link rel="stylesheet" href="all_logIn_css/style-login.css" />
     <link rel="stylesheet" href="assets/fonts/fonts.css">
-    <script src="./js/login.js"></script>
   </head>
   <body>
     <div class="contentAll">
@@ -19,13 +17,14 @@
         <img class="Join_Logo" src="assets/img/join-logo.svg" alt="join-logo" />
         </div>
         <div class="rightContent">
-            <a href="#">Not a Join user?</a>
+            <a href="register.html">Not a Join user?
             <button class="signUpBtn buttonLogin">Sign Up</button>
+          </a>
         </div>
       </div>
       
     <div class="login-content">
-        <form onsubmit="addUser();return false;" class="login-container" action="">
+        <form onsubmit="login();return false;" class="login-container" action="">
          <div class="login-header">
         <h1>LogIn</h1>
         <img src="assets/img/blueBar.svg" alt="">
@@ -55,6 +54,8 @@
         <a class="aHover" href="#">Privacy Policy</a>
         <a class="aHover" href="#">Legal notice</a>
     </footer>
+
 </div>
+
   </body>
 </html>

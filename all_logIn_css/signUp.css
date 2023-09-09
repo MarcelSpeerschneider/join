@@ -5,20 +5,21 @@ body {
   width: 100vw;
 }
 
-.contentAll {
+.contentAll{
   width: 100%;
+  height: fit-content;
 }
 
 .join-logo {
   position: relative;
-  margin-top: 80px;
-  margin-left: 77px;
+  margin-top: 60px;
+  margin-left: 100px;
 }
 
 .arrow-container {
   position: relative;
-  left: 60px;
-  top: 40px;
+  left:-250px;
+  top: 0;
   cursor: pointer;
 }
 
@@ -31,10 +32,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
   gap: 32px;
   width: 598px;
-  height: 560px;
+  height: 584px;
   background: #ffffff;
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
   border-radius: 30px;
@@ -43,6 +44,7 @@ body {
 header {
   display: flex;
   flex-direction: column;
+  margin-top: -93px;
 }
 
 header img {
@@ -133,11 +135,26 @@ footer a {
   color: rgb(40, 171, 226);
 }
 
-@media (max-width: 1000px) {
+@media(max-width:700px){
+  .signUp-content{
+    width: 95vw;
+  }
+
+  .arrow-container{
+    margin-left: 120px;
+  }
 }
 
-@media (max-width: 750px) {
-}
+@media(max-width:460px){
+  .input1,.input2,.input3,.input4{
+    width: 85vw;
+  }
 
-@media (max-width: 520px) {
+  .arrow-container{
+    margin-left: 215px;
+  }
+
+  .join-logo{
+    margin-top: 14px;
+  }
 }

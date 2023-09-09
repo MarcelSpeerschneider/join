@@ -134,7 +134,7 @@ h1 {
   width: 380px;
   font-size: 21px;
   font-weight: 400;
-  background-image: url(assets/img/mail.png);
+  background-image: url(assets/img/mail.svg);
   background-size: 25px;
   background-repeat: no-repeat;
   background-position: 358px 2px;
@@ -372,4 +372,9 @@ footer a {
   footer {
     display: none;
   }
+}
+
+
+.d-none{
+  display: none;
 }
