@@ -270,7 +270,7 @@ footer a {
 
 @media (max-width: 750px) {
   .Join_Logo {
-    margin-top: -65px;
+    margin-top: -50px;
     margin-left: -50px;
   }
   .login-content {
@@ -369,12 +369,11 @@ footer a {
     margin-top: 1300px;
   }
 
+  .Join_Logo{
+    margin-top: -50px;
+  }
+
   footer {
     display: none;
   }
-}
-
-
-.d-none{
-  display: none;
 }
