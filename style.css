@@ -11,6 +11,7 @@ body {
     height: 100svh;
     border: 1px solid blue;
     box-sizing: border-box;
+    display: flex;
 }
 
 #dashboard-logo {
@@ -129,4 +130,10 @@ menu {
     color: #369ee4;
     cursor: pointer;
 
+}
+
+.dashboard-content {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 96px;
 }
