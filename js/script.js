@@ -106,25 +106,47 @@ function renderSummary() {
 function renderAddTask() {
         let dashboard = document.getElementById('dashboard-content');
         dashboard.innerHTML = /*html*/`
-        <h1>Add Task</h1>
-        <div class="addtask-main-container">
-                <div class="addtask-left-side">
-                        <div class="addtask-title-container">
-                                Title
-                                <input placeholder="Enter a title" type="text" id="title">
-                        </div>
-                        <div class="addtask-description-container">
-                                Description
-                                <textarea name="description" id="description" cols="30" rows="10"></textarea>
-                        </div>
-                        <div class="addtask-assigned-to-container">
-                                Assigned to
-                                <div class="select-contacts-to-assign">
-                                        <span>Select Contacts to assign</span><img src="./../img/arrow_drop_down.svg"> 
+        <div class="addtask-main-content">
+                <h1 style="padding-left: 5%; margin-bottom: 4%">Add Task</h1>
+                <div class="addtask-content">
+                        <div class="addtask-side">
+                                <div class="addtask-title-container">
+                                        Title
+                                        <input placeholder="Enter a title" type="text" id="title">
+                                </div>
+                                <div class="addtask-description-container">
+                                        Description
+                                        <textarea name="description" id="description" cols="30" rows="10" placeholder="Enter a description"></textarea>
+                                </div>
+                                <div class="addtask-assigned-to-container">
+                                        Assigned to
+                                        <div class="select-contacts-to-assign">
+                                                <span>Select Contacts to assign</span><img src="./../img/arrow_drop_down.svg"> 
+                                        </div>
                                 </div>
                         </div>
-                </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="2" height="426" viewBox="0 0 2 426" fill="none">
+                        <path d="M1.24805 1L1.24854 425" stroke="#D1D1D1" stroke-linecap="round"/>
+                        </svg>
+                        <div class="addtask-side">
+                                <div class="addtask-title-container">
+                                        Due date
+                                        <input type="date" id="geburtstag" name="geburtstag" min="1900-01-01" max="2023-12-31" class="addtask-dates-select">
+                                </div>
+                                <div class="addtask-prio-main-container">
+                                        <div class="addtask-prio-container">
+                                                Urgent <img src="./../img/prio-urgent.svg">
+                                        </div>
+                                        <div class="addtask-prio-container">
+                                                Medium <img src="./../img/prio-medium.svg">  
+                                        </div>
+                                        <div class="addtask-prio-container">
+                                                Low <img src="./../img/prio-low.svg">
+                                        </div>
+                                </div>
+                        </div>
                 
+                </div>
         </div>
         `;
 }
