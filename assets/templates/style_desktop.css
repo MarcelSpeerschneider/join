@@ -222,6 +222,14 @@ h3 {
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
+.summary-task-number-box:hover {
+    background-color: #2A3647;
+    color: white;
+    scale: 1.1;
+    transition: 125ms ease-in-out;
+    cursor: pointer;
+}
+
 .summary-urgent-container {
     display: flex;
     width: 100%;
@@ -235,6 +243,15 @@ h3 {
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 
 }
+
+.summary-urgent-container:hover {
+    background-color: #2A3647;
+    color: white;
+    scale: 1.1;
+    transition: 125ms ease-in-out;
+    cursor: pointer;
+}
+
 
 .summary-todo-container {
     display: flex;
@@ -256,6 +273,18 @@ h3 {
     background: var(--white, #FFF);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
     gap: 18px;
+}
+
+.summary-todo:hover {
+    background-color: #2A3647;
+    color: white;
+    scale: 1.1;
+    transition: 125ms ease-in-out;
+    cursor: pointer;
+}
+
+.summary-todo:hover svg{
+    filter: invert();
 }
 
 .summary-greetings {
