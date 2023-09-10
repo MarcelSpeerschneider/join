@@ -91,19 +91,40 @@ function renderSummary() {
                                                 <h1>1</h1>
                                                 <span>Done</span>
                                         </div>
-                                </div>
-                                
+                                </div> 
                         </div>
-
-
                 </div>
                 <div class="summary-greetings">
                         <h3>Good morning,</h3>
                         <div class="summary-username">Test Test</div>
+                </div>        
+        </div>
+        </div>
+        `;
+}
+
+function renderAddTask() {
+        let dashboard = document.getElementById('dashboard-content');
+        dashboard.innerHTML = /*html*/`
+        <h1>Add Task</h1>
+        <div class="addtask-main-container">
+                <div class="addtask-left-side">
+                        <div class="addtask-title-container">
+                                Title
+                                <input placeholder="Enter a title" type="text" id="title">
+                        </div>
+                        <div class="addtask-description-container">
+                                Description
+                                <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="addtask-assigned-to-container">
+                                Assigned to
+                                <div class="select-contacts-to-assign">
+                                        <span>Select Contacts to assign</span><img src="./../img/arrow_drop_down.svg"> 
+                                </div>
+                        </div>
                 </div>
                 
-                
-        </div>
         </div>
         `;
 }
