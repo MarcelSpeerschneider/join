@@ -252,6 +252,11 @@ h3 {
     cursor: pointer;
 }
 
+.summary-urgent-container:hover .summary-deadline {
+    color: white;
+    transition: 125ms ease-in-out;
+}
+
 
 .summary-todo-container {
     display: flex;
@@ -283,7 +288,7 @@ h3 {
     cursor: pointer;
 }
 
-.summary-todo:hover svg{
+.summary-todo:hover svg {
     filter: invert();
 }
 
@@ -307,4 +312,34 @@ h3 {
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
+}
+
+.addtask-main-container {
+    display: flex;
+}
+
+.addtask-left-side {
+    display: flex;
+    flex-direction: column;
+}
+
+.addtask-title-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.addtask-title-container input {
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 10px;
+    border: 1px solid var(--Style, #D1D1D1);
+    background: #FFF;
+    padding: 12px 21px;
+
+}
+    
+
+.addtask-title-container input:focus {
+    outline: none;
 }
