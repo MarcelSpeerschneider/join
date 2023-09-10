@@ -23,6 +23,7 @@ let todos = [
 ];
 
 let currentDraggedElement;
+
 function renderBoard(){
     let board = document.getElementById('dashboard-content');
     board.innerHTML = /*html*/`
