@@ -1,4 +1,5 @@
 function renderBoard(){
+    alert('Test');
     let board = document.getElementById('dashboard-content');
     board.innerHTML = /*html*/`
         <div class="board-header">
