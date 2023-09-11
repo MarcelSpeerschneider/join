@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
-    <script src="js/register.js"></script>
-    <script src="js/login.js"></script>
     <link rel="favicon" href="assets/img/favicon.png" type="img" />
     <link rel="stylesheet" href="./assets/fonts/fonts.css">
     <link rel="stylesheet" href="login-styles.css/styleLogin.css">
+    <script src="js/register.js"></script>
+    <script src="js/login.js"></script>
+    
   </head>
   <body>
     <div class="contentAll">
@@ -31,13 +32,16 @@
         </div>
         <div class="login-input">
             <input required id="email" placeholder="Email" type="email">
+            <img src="assets/img/mail.png" alt="">
         </div>
         <div class="login-input">
-        <input required id="password" maxlength="15"  placeholder="Password" type="password">
-    </div>
+          <input required id="password" maxlength="15" placeholder="Password" type="password">
+          <img style="width: 25px;" id="lock-icon" src="assets/img/lock.png" alt="" onclick="showPassword()">
+        </div>
+        
     <div class="checkbox_forgotPasswort">
         <div class="checkbox-content">
-        <input class="checkbox" type="checkbox" name="" id="">
+        <input class="checkbox" type="checkbox" name="" id="checkboxLogin" value="yes">
         <span>Remeber me</span>
     </div>
     <div class="forgot-passwort">
@@ -45,8 +49,8 @@
     </div>
     </div>
     <div class="logInBtn">
-        <button class="log_in_btn buttonLogin">Log in</button>
-        <button class="guest_login_btn">Guest Log in</button>
+        <button  class="log_in_btn buttonLogin">Log in</button>
+        <button  class="guest_login_btn">Guest Log in</button>
     </div>
     </div>
     </form>

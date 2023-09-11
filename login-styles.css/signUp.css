@@ -63,6 +63,18 @@ header h1 {
   gap: 10px;
 }
 
+.input-img{
+  display: flex;
+  
+  align-items: center;
+
+}
+
+.input-img img{
+  position:relative;
+  left: -30px;
+}
+
 .input1,
 .input2,
 .input3,
@@ -147,7 +159,7 @@ footer a {
 
 @media(max-width:460px){
   .input1,.input2,.input3,.input4{
-    width: 85vw;
+    width: fit-content;
   }
 
   .arrow-container{
@@ -157,4 +169,13 @@ footer a {
   .join-logo{
     margin-top: 14px;
   }
+}
+
+.checkbox-alert {
+  display: none;
+  color: red;
+}
+
+#confirmPassword {
+  display: block; 
 }

@@ -1,51 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
     <script src="js/register.js"></script>
-    <link rel="favicon" href="assets/img/favicon.png">
-    <link rel="stylesheet" href="assets/fonts/fonts.css">
-    <link rel="stylesheet" href="login-styles.css/signUp.css">
-    
-</head>
-<body>
+    <link rel="favicon" href="assets/img/favicon.png" />
+    <link rel="stylesheet" href="assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="login-styles.css/signUp.css" />
+  </head>
+  <body>
     <div class="contentAll">
-        <img class="join-logo" src="assets/img/join-logo.svg" alt="">
-    <div class="signUp-container">
+      <img class="join-logo" src="assets/img/join-logo.svg" alt="" />
+      <div class="signUp-container">
         <form onsubmit="addUser(); return false" class="signUp-content">
-            <div class="arrow-container">
-                <a href="login.html">
-                <img src="assets/img/arrow.png" alt="">
+          <div class="arrow-container">
+            <a href="login.html">
+              <img src="assets/img/arrow.png" alt="" />
             </a>
-            </div>
-            <header>
-                <h1>Sign Up</h1>
-               <img src="assets/img/blueBar.svg" alt="">
-            </header>
-            
-            <div class="input-container">
-                <input class="input1" placeholder="Name" required type="text">
-                <input class="input2" placeholder="Email" required type="email" id="email">
-                <input class="input3" placeholder="Password" required type="password" id="password">
-                <input class="input4" placeholder="Confirm Password" required type="password">
-            </div>
+          </div>
+          <header>
+            <h1>Sign Up</h1>
+            <img src="assets/img/blueBar.svg" alt="" />
+          </header>
 
-            <div class="checkbox-container">
-                <input type="checkbox" name="" id="checkbox">
-                <span>I accept the </span>
-                <a href="#">Privacy policy</a>
+          <div class="input-container">
+            <div class="input-img">
+              <input class="input1" placeholder="Name" required type="text" />
+              <img src="assets/img/person.png" alt="" />
             </div>
+            <div class="input-img">
+              <input
+                class="input2"
+                placeholder="Email"
+                required
+                type="email"
+                id="email"
+              />
+              <img src="assets/img/mail.png" alt="" />
+            </div>
+            <div class="input-img">
+              <input
+                class="input3"
+                placeholder="Password"
+                required
+                type="password"
+                id="password"
+              />
+              <img
+                style="width: 25px"
+                id="lock-icon"
+                onclick="showPassword()"
+                src="assets/img/lock.png"
+                alt=""
+              />
+            </div>
+            <div class="input-img">
+              <input
+                class="input4"
+                placeholder="Confirm Password"
+                required
+                type="password"
+                id="confirmPassword"
+                oninput="toggleConfirmPassword()"
+              />
+              <img
+                style="width: 25px"
+                id="confirm-lock"
+                onclick="showConfirmPassword()"
+                src="assets/img/lock.png"
+                alt=""
+              />
+            </div>
+            <div id="passwordMatchMessage" style="display: none; color: red">
+              Passwords do not match
+            </div>
+          </div>
 
-            <button>Sign Up</button>
+          <div class="checkbox-container">
+            <input type="checkbox" name="" id="checkbox" />
+            <span>I accept the </span>
+            <a href="#">Privacy policy</a>
+          </div>
+          <div id="checkboxAlert" class="checkbox-alert">
+            Please accept the Privacy Policy to sign up.
+          </div>
+
+          <button>Sign Up</button>
         </form>
-    </div>
-    <footer>
+      </div>
+      <footer>
         <a class="aHover" href="#">Privacy Policy</a>
         <a class="aHover" href="#">Legal notice</a>
-    </footer>
-</div>
-
-</body>
+      </footer>
+    </div>
+  </body>
 </html>

@@ -65,11 +65,7 @@ body {
   width: 380px;
   font-size: 21px;
   font-weight: 400;
-  height: inherit;
-  background-image: url(assets/img/lock.png);
-  background-size: 25px;
-  background-repeat: no-repeat;
-  background-position: 358px 2px;
+ 
 }
 
 #confirmPassword {
@@ -77,19 +73,13 @@ body {
   width: 380px;
   font-size: 21px;
   font-weight: 400;
-  height: inherit;
 
-  background-image: url(assets/img/lock.png);
-  background-size: 25px;
-  background-repeat: no-repeat;
-  background-position: 358px 2px;
 }
 
 .input-field {
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  flex-direction: column;
   gap: 32px;
   border: 1px solid #d1d1d1;
   padding: 5px 15px;
@@ -162,13 +152,12 @@ button:hover{
 
 @media (max-width: 550px) {
   .input-field {
-    flex-direction: column;
-    align-items: flex-start;
+    
     width: 100%;
   }
 
   .input-field {
-    width: 80%;
+    width: fit-content;
   }
 
   #password,#confirmPassword{
@@ -176,7 +165,6 @@ button:hover{
   }
 
   button {
-    width: auto;
     white-space: nowrap;
   }
 }
@@ -204,8 +192,15 @@ button:hover{
   }
 }
 
-@media (max-width: 375px){
+@media (max-width: 414px){
     .join-logo{
-        display: none;
+        width:85px ;
+        margin-top: -56px;
     }
+}
+
+@media(max-width:375px){
+  .join-logo{
+    display: none;
+  }
 }
