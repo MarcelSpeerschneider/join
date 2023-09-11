@@ -8,7 +8,7 @@ function renderContacts() {
     <div class="contact-container">
         <div class="contact-list">
         <div class="button-container">
-        <button id="addContactBtn" onclick="addContact()">Add new contact</button>
+        <button id="addContactBtn" onclick="openContactForm()">Add new contact</button>
         </div>
         <div class="first-letter-of-name">
             <div class="letter-container">
@@ -34,7 +34,7 @@ function renderContacts() {
         </div>
         
         </div>
-        <div id="contactPopUp" class="contact-pop-up">
+        <div style="display:none;" id="contactPopUp" class="contact-pop-up">
             <div class="pup-up-content" action="">
     <div class="pop-up-left">
      <div class="join-logo">
@@ -56,7 +56,7 @@ function renderContacts() {
         <div class="blue-line"></div>
     </div>
     <div class="pop-up-right">
-        <div class="closeBtn">
+        <div onclick="closeWindow()" class="closeBtn">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="close">
         <mask id="mask0_83890_4117" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -75,14 +75,14 @@ function renderContacts() {
         </g>
         </svg>
         </div>
-        <div class="contactinput">
+        <div  class="contactinput">
             <form onsubmit="addNewContact(event);return false;">
                 <input required  placeholder="Name" type="text">
                 <input required class="contactMail" placeholder="Email" type="email">
                 <input required placeholder="Phone number" type="number">
 
                 <div class="contactBtn">
-                <button class="cancelBtn">Cancel</button>
+                <button onclick="closeWindow()" class="cancelBtn">Cancel</button>
                 <button class="createBtn">Create Contact
                     <img src="assets/img/close.svg" alt="">
                 </button>
@@ -99,4 +99,11 @@ function renderContacts() {
     `;
 }
 
-function newAddContact() {}
+function openContactForm() {
+    document.getElementById('contactPopUp').style.display="flex";
+}
+
+
+function closeWindow(){
+    document.getElementById('contactPopUp').style.display="none";
+}

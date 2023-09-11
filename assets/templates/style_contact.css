@@ -34,8 +34,6 @@
   box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
 }
 
-.first-letter-of-name {
-}
 
 .list-of-contacts {
   display: flex;
@@ -68,6 +66,7 @@
   width: 1212px;
   height: 594px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation:slideInFromRight 1s ;
 }
 
 .contact-pop-up {
@@ -81,6 +80,17 @@
   justify-content: center;
   align-items: center;
   z-index: 100;
+  
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .pop-up-left {
