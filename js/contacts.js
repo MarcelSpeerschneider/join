@@ -21,7 +21,7 @@ function renderContacts() {
                     </svg>
             </div>
         </div>
-        <div class="list-of-contacts">
+        <div class="list-of-contacts" id="contact-list">
             <div class="contact-profil-img">
                 <span>IG</span>
             </div>
@@ -83,8 +83,12 @@ function renderContacts() {
         </div>
         <div  class="contactinput">
             <form onsubmit="addNewContact(event);return false;">
+                <div class="input-img">
                 <input required  placeholder="Name" type="text">
+                </div>
+                <div>
                 <input required class="contactMail" placeholder="Email" type="email">
+                </div>
                 <input required placeholder="Phone number" type="number">
 
                 <div class="contactBtn">
@@ -103,7 +107,9 @@ function renderContacts() {
 
         </div>
     `;
+  
 }
+
 
 function openContactForm() {
     document.getElementById('contactPopUp').style.display="flex";
@@ -113,3 +119,4 @@ function openContactForm() {
 function closeWindow(){
     document.getElementById('contactPopUp').style.display="none";
 }
+  
