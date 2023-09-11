@@ -5,10 +5,6 @@
     margin: 50px;
 }
 
-.find-task {
-    display: flex;
-}
-
 .board-header-left p {
     color: #000;
     font-family: Inter;
@@ -16,6 +12,13 @@
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
+}
+
+.board-header-right{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 35px;
 }
 
 .magnifier {
@@ -42,6 +45,7 @@
 .addTaskButton {
     display: flex;
     padding: 8px 16px;
+    height: 55px;
     justify-content: center;
     align-items: center;
     gap: 4px;
