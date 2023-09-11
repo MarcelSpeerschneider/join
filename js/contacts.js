@@ -6,6 +6,7 @@ function renderContacts() {
   content.innerHTML = "";
   content.innerHTML += /*html*/ `
     <div class="contact-container">
+        <div class="contact-content">
         <div class="contact-list">
         <div class="button-container">
         <button id="addContactBtn" onclick="openContactForm()">Add new contact</button>
@@ -32,9 +33,14 @@ function renderContacts() {
                 test@test.de
             </div>
         </div>
-        
+        </div>    
+    </div>
+    <div class="showContactRight">
+        <div class="contacts-header">
+            <h1>Contacts</h1>
+            </div>
         </div>
-        <div style="display:none;" id="contactPopUp" class="contact-pop-up">
+    <div style="display:none;" id="contactPopUp" class="contact-pop-up">
             <div class="pup-up-content" action="">
     <div class="pop-up-left">
      <div class="join-logo">
@@ -93,9 +99,9 @@ function renderContacts() {
     </div>
     </div>
     </div>
-        </div>
-        <div class="contact-display"></div>
     </div>
+
+        </div>
     `;
 }
 

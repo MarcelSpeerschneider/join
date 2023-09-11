@@ -1,12 +1,47 @@
 .contact-container {
-  height: 100%;
+  display: flex;
+    flex-direction: column;
+    width: calc(100% - 232px);
+    height: calc(100% - 89px);
+    position: fixed;
+    top: 89px;
+    left: 232px;
+    background-color: #f5f5f5;
+    z-index: 0;
 }
 
+.contact-content{
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  height: 100vh;
+}
+
+
+.showContactRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 4% 5%;
+  flex: 2;
+}
+
+.contacts-header{
+  width: 100%;
+  top: 10%;
+  display: flex;
+  align-items: center;
+  height: 15%;
+}
+
+
+
 .contact-list {
-  width: 400px;
+  width: 430px;
   height: 100%;
   background-color: white;
   display: flex;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
   gap: 16px;
@@ -33,7 +68,6 @@
   background-color: rgb(40, 171, 226);
   box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
 }
-
 
 .list-of-contacts {
   display: flex;
@@ -66,7 +100,7 @@
   width: 1212px;
   height: 594px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  animation:slideInFromRight 1s ;
+  animation: slideInFromRight 1s;
 }
 
 .contact-pop-up {
@@ -80,7 +114,6 @@
   justify-content: center;
   align-items: center;
   z-index: 100;
-  
 }
 
 @keyframes slideInFromRight {
@@ -129,6 +162,7 @@
   justify-content: center;
   align-items: center;
   padding: 51px;
+  box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
 }
 
 .blue-line {
@@ -141,6 +175,10 @@
 .contactinput {
   display: flex;
   flex-direction: column;
+}
+
+input:focus {
+  outline: none;
 }
 
 .contactinput input {
@@ -167,6 +205,19 @@
   cursor: pointer;
   width: 22px;
   height: 22px;
+}
+
+.cancelBtn:hover {
+  border-color: #29aae1;
+  color: rgb(148, 213, 240) !important;
+  transform: scale(1.01);
+  transition: transform 225ms ease-in-out;
+  box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
+}
+
+.createBtn:hover {
+  background-color: rgb(40, 171, 226);
+  box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
 }
 
 .contactBtn {
@@ -204,7 +255,7 @@
   width: 218px;
   height: 55px;
   background-color: #2a3647;
-  border: 2px solid #2a3647;
+  border: none;
   padding: 5px;
   border-radius: 10px;
   font-size: 21px;
