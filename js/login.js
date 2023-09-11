@@ -5,7 +5,7 @@ function login() {
   if(user){
     console.log('user gefunden')
   }else{
-    alert('Register if you are not a user yet');
+    alert('Sign Up first');
 }
 }
 
