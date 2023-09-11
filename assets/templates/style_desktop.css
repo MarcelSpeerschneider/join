@@ -346,6 +346,7 @@ input {
     border: 1px solid #D1D1D1;
     background: #FFF;
     padding: 12px 16px;
+    box-sizing: border-box;
 }
 
 .addtask-title-container input:focus {
@@ -368,6 +369,7 @@ input {
     border: 1px solid #D1D1D1;
     background: #FFF;
     padding: 12px 16px;
+    height: 120px;
 }
 
 .addtask-assigned-to-container {
@@ -394,7 +396,7 @@ input {
     display: flex;
     justify-content: center;
     gap: 16px;
-    width: 100%;
+    width: 80%;
     flex-wrap: wrap;
 }
 
@@ -409,4 +411,26 @@ input {
     padding: 12px 16px;
     box-sizing: border-box;
     gap: 8px;
+    flex: 1;
+}
+
+.addtask-category-container {
+    width: 80%;
+    font-size: 20px;
+
+}
+
+select {
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    background: #FFF;
+    padding: 12px 16px;
+    box-sizing: border-box;
+    width: 100%;
+    background: white url('./../img/arrow_drop_down.svg') no-repeat;
+    background-position: right 16px center;
+    appearance: none;
+
 }

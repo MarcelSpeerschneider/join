@@ -131,17 +131,31 @@ function renderAddTask() {
                         <div class="addtask-side">
                                 <div class="addtask-title-container">
                                         Due date
-                                        <input type="date" id="geburtstag" name="geburtstag" min="1900-01-01" max="2023-12-31" class="addtask-dates-select">
+                                        <input type="date" id="due-date" name="due-date" min="1900-01-01" max="2099-12-31" class="addtask-dates-select">
                                 </div>
                                 <div class="addtask-prio-main-container">
-                                        <div class="addtask-prio-container">
+                                        <div class="addtask-prio-container" id="prio-urgent">
                                                 Urgent <img src="./../img/prio-urgent.svg">
                                         </div>
-                                        <div class="addtask-prio-container">
+                                        <div class="addtask-prio-container" id="prio-medium">
                                                 Medium <img src="./../img/prio-medium.svg">  
                                         </div>
-                                        <div class="addtask-prio-container">
+                                        <div class="addtask-prio-container" id="prio-low">
                                                 Low <img src="./../img/prio-low.svg">
+                                        </div>
+                                </div>
+                                <div class="addtask-category-container">
+                                                Category
+                                                <select name="category" id="select-category">
+                                                        <option value="" disabled>Select a category</option>
+                                                        <option value="technical-task">Technical Task</option>
+                                                        <option value="user-story">User Story</option>
+                                                </select>
+                                </div>
+                                <div class="addtask-assigned-to-container">
+                                        Subtasks
+                                        <div class="select-contacts-to-assign">
+                                                <span>Add new subtask</span><img src="./../img/add-subtask.svg">
                                         </div>
                                 </div>
                         </div>
