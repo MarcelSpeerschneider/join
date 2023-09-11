@@ -126,8 +126,16 @@
     align-items: center;
 }
 
-.drag-area-highlight {
+.drag-area-highlight{
     background-color: rgba(0, 0, 0, 0.2);
+}
+
+.todo {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
 }
 
 .card{

@@ -94,7 +94,7 @@ function renderBoard() {
                 <p>To do</p>
                 <img src="./../img/Capa.png">
             </div>
-            <div class="drag-area" id="boardCardToDo" ondrop="moveTo('todo')" ondragleave="removeHighlight('open')" ondragover="allowDrop(event); highlight('open')">
+            <div class="drag-area" id="todo" ondrop="moveTo('todo')" ondragleave="removeHighlight('todo')" ondragover="allowDrop(event); highlight('todo')">
 
             </div>
         </div>
@@ -103,7 +103,7 @@ function renderBoard() {
                 <p>In progress</p>
                 <img src="./../img/Capa.png">
             </div>
-            <div  class="drag-area" id="boardCardInProgress" ondrop="moveTo('inprogress')" ondragleave="removeHighlight('open')" ondragover="allowDrop(event); highlight('open')">
+            <div  class="drag-area" id="inprogress" ondrop="moveTo('inprogress')" ondragleave="removeHighlight('inprogress')" ondragover="allowDrop(event); highlight('inprogress')">
 
             </div>
         </div>
@@ -112,7 +112,7 @@ function renderBoard() {
                 <p>Await feedback</p>
                 <img src="./../img/Capa.png">
             </div>
-            <div class="drag-area" id="boardCardAwaitFeedback" ondrop="moveTo('awaitfeedback')" ondragleave="removeHighlight('open')" ondragover="allowDrop(event); highlight('open')">
+            <div class="drag-area" id="awaitfeedback" ondrop="moveTo('awaitfeedback')" ondragleave="removeHighlight('awaitfeedback')" ondragover="allowDrop(event); highlight('awaitfeedback')">
 
             </div>
         </div>
@@ -121,7 +121,7 @@ function renderBoard() {
                 <p>Done</p>
                 <img src="./../img/Capa.png">
             </div>
-            <div class="drag-area" id="boardCardDone" ondrop="moveTo('done')" ondragleave="removeHighlight('open')" ondragover="allowDrop(event); highlight('open')">
+            <div class="drag-area" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
 
             </div>
         </div>
@@ -132,36 +132,36 @@ function renderBoard() {
 
 function updateBoard() {
     let todo = todos.filter(t => t['taskcategory'] == 'todo');
-    document.getElementById('boardCardToDo').innerHTML = '';
+    document.getElementById('todo').innerHTML = '';
 
     todo.forEach(element => {
-        document.getElementById('boardCardToDo').innerHTML += generateToDoHTML(element);
+        document.getElementById('todo').innerHTML += generateToDoHTML(element);
     });
 
     let inprogress = todos.filter(i => i['taskcategory'] == 'inprogress');
-    document.getElementById('boardCardInProgress').innerHTML = '';
+    document.getElementById('inprogress').innerHTML = '';
 
     inprogress.forEach(element => {
-        document.getElementById('boardCardInProgress').innerHTML += generateToDoHTML(element);
+        document.getElementById('inprogress').innerHTML += generateToDoHTML(element);
     });
 
     let awaitfeedback = todos.filter(a => a['taskcategory'] == 'awaitfeedback');
-    document.getElementById('boardCardAwaitFeedback').innerHTML = '';
+    document.getElementById('awaitfeedback').innerHTML = '';
 
     awaitfeedback.forEach(element => {
-        document.getElementById('boardCardAwaitFeedback').innerHTML += generateToDoHTML(element);
+        document.getElementById('awaitfeedback').innerHTML += generateToDoHTML(element);
     });
 
     let done = todos.filter(d => d['taskcategory'] == 'done');
-    document.getElementById('boardCardDone').innerHTML = '';
+    document.getElementById('done').innerHTML = '';
 
     done.forEach(element => {
-        document.getElementById('boardCardDone').innerHTML += generateToDoHTML(element);
+        document.getElementById('done').innerHTML += generateToDoHTML(element);
     });
 }
 
 function generateToDoHTML(element) {
-    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="card">${element['taskheadline']}</div>`;
+    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="todo">${element['taskheadline']}</div>`;
 }
 
 function startDragging(id) {
