@@ -2,23 +2,67 @@
 let todos = [
     {
         'id': 0,
-        'title': 'ToDo Test Titel',
-        'category': 'todo'
+        'taskcategory':'todo',
+        'taskdepartment':'Development',
+        'taskheadline': 'Aufräumen',
+        'taskdescription': 'Code clean up',
+        'taskduedate':'',
+        'taskpriority':'medium',
+        'taskassignedto':[
+            {
+                'assigne1':'Andreas',
+                'assigne2':'Marcel',
+                'assigne3':'Ivan'
+            }
+        ]
     },
     {
         'id': 1,
-        'title': 'In Progress Test Titel',
-        'category': 'inprogress'
+        'taskcategory':'inprogress',
+        'taskdepartment':'Marketing',
+        'taskheadline': 'Product News',
+        'taskdescription': 'Neues Produkt anpreisen',
+        'taskduedate':'',
+        'taskpriority':'medium',
+        'taskassignedto':[
+            {
+                'assigne1':'Andreas',
+                'assigne2':'Marcel',
+                'assigne3':'Ivan'
+            }
+        ]
     },
     {
         'id': 2,
-        'title': 'Await Feedback Test Titel',
-        'category': 'awaitfeedback'
+        'taskcategory':'awaitfeedback',
+        'taskdepartment':'Einkauf',
+        'taskheadline': 'Einkaufen',
+        'taskdescription': 'Neue Büromöbel',
+        'taskduedate':'',
+        'taskpriority':'medium',
+        'taskassignedto':[
+            {
+                'assigne1':'Andreas',
+                'assigne2':'Marcel',
+                'assigne3':'Ivan'
+            }
+        ]
     },
     {
         'id': 3,
-        'title': 'Done Test Titel',
-        'category': 'done'
+        'taskcategory':'done',
+        'taskdepartment':'Geschäftsführung',
+        'taskheadline': 'Einstellungen',
+        'taskdescription': 'Personalgespräche führen',
+        'taskduedate':'',
+        'taskpriority':'medium',
+        'taskassignedto':[
+            {
+                'assigne1':'Andreas',
+                'assigne2':'Marcel',
+                'assigne3':'Ivan'
+            }
+        ]
     }
 ];
 
@@ -87,28 +131,28 @@ function renderBoard() {
 }
 
 function updateBoard() {
-    let todo = todos.filter(t => t['category'] == 'todo');
+    let todo = todos.filter(t => t['taskcategory'] == 'todo');
     document.getElementById('boardCardToDo').innerHTML = '';
 
     todo.forEach(element => {
         document.getElementById('boardCardToDo').innerHTML += generateToDoHTML(element);
     });
 
-    let inprogress = todos.filter(i => i['category'] == 'inprogress');
+    let inprogress = todos.filter(i => i['taskcategory'] == 'inprogress');
     document.getElementById('boardCardInProgress').innerHTML = '';
 
     inprogress.forEach(element => {
         document.getElementById('boardCardInProgress').innerHTML += generateToDoHTML(element);
     });
 
-    let awaitfeedback = todos.filter(a => a['category'] == 'awaitfeedback');
+    let awaitfeedback = todos.filter(a => a['taskcategory'] == 'awaitfeedback');
     document.getElementById('boardCardAwaitFeedback').innerHTML = '';
 
     awaitfeedback.forEach(element => {
         document.getElementById('boardCardAwaitFeedback').innerHTML += generateToDoHTML(element);
     });
 
-    let done = todos.filter(d => d['category'] == 'done');
+    let done = todos.filter(d => d['taskcategory'] == 'done');
     document.getElementById('boardCardDone').innerHTML = '';
 
     done.forEach(element => {
@@ -117,7 +161,7 @@ function updateBoard() {
 }
 
 function generateToDoHTML(element) {
-    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="card">${element['title']}</div>`;
+    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="card">${element['taskheadline']}</div>`;
 }
 
 function startDragging(id) {
@@ -128,8 +172,8 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(category) {
-    todos[currentDraggedElement]['category'] = category;
+function moveTo(taskcategory) {
+    todos[currentDraggedElement]['taskcategory'] = taskcategory;
     updateBoard();
 }
 
