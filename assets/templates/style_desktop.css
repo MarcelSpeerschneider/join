@@ -438,7 +438,15 @@ input {
     height: 40px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
+
+.select-contacts-to-assign-dropdown-contact-container:hover {
+    background-color: #f0f0f0 !important; 
+    cursor: pointer;
+    transform: translate(-0.5%);
+}
+
 
 .select-contacts-to-assign-dropdown-contact {
     display: flex;
@@ -462,6 +470,12 @@ input {
     transform: translate(-50%, -50%); 
 }
 
+.select-contacts-to-assign-dropdown-checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 12px;
+}
 
 .addtask-dates-select {
     width: 100%;
@@ -487,6 +501,11 @@ input {
     box-sizing: border-box;
     gap: 8px;
     flex: 1;
+}
+
+.addtask-prio-container:hover {
+    box-shadow:  -5px 5px 10px #9b9b9b;
+    cursor: pointer;
 }
 
 .addtask-category-container {

@@ -133,7 +133,7 @@ function renderAddTask() {
                                                         </svg>
                                                 </div>
                                                 <div class="select-contacts-to-assign-dropdown" id="select-contacts-to-assign-dropdown" onclick="childFunction(event)">
-                                                        <div class="select-contacts-to-assign-dropdown-contact-container">
+                                                        <div class="select-contacts-to-assign-dropdown-contact-container" id="select-contacts-to-assign-dropdown-contact-container1" onclick=assignContactToTask(1)>
                                                                 <div class="select-contacts-to-assign-dropdown-contact">
                                                                         <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
                                                                                 <svg width="28" height="28"><circle cx="14" cy="14" r="14" fill="#00bee8" /></svg>
@@ -141,26 +141,33 @@ function renderAddTask() {
                                                                         </div>
                                                                         <div class="select-contacts-to-assign-dropdown-contactname">Contact 1</div>
                                                                 </div>
+                                                                <div class="select-contacts-to-assign-dropdown-checkbox"><img src="./../img/checkbox-blank.svg" id="select-contacts-to-assign-dropdown-checkbox1"></div>
                                                         </div>
-                                                        <div class="select-contacts-to-assign-dropdown-contact-container">
+                                                        <div class="select-contacts-to-assign-dropdown-contact-container" id="select-contacts-to-assign-dropdown-contact-container2" onclick=assignContactToTask(2)>
                                                                 <div class="select-contacts-to-assign-dropdown-contact">
                                                                         <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
-                                                                                <svg width="28" height="28"><circle cx="14" cy="14" r="14" fill="#ff9b40" /></svg>
-                                                                                <div class="select-contacts-to-assign-dropdown-contact-credentials">SM</div>
+                                                                                <svg width="28" height="28"><circle cx="14" cy="14" r="14" fill="#ff7a00" /></svg>
+                                                                                <div class="select-contacts-to-assign-dropdown-contact-credentials">AB</div>
                                                                         </div>
-                                                                        <div class="select-contacts-to-assign-dropdown-contactname">Contact 1</div>
+                                                                        <div class="select-contacts-to-assign-dropdown-contactname">Contact 2</div>
                                                                 </div>
+                                                                <div class="select-contacts-to-assign-dropdown-checkbox"><img src="./../img/checkbox-blank.svg" id="select-contacts-to-assign-dropdown-checkbox2"></div>
                                                         </div>
-                                                        <div class="select-contacts-to-assign-dropdown-contact-container">
+                                                        <div class="select-contacts-to-assign-dropdown-contact-container" id="select-contacts-to-assign-dropdown-contact-container3" onclick=assignContactToTask(3)>
                                                                 <div class="select-contacts-to-assign-dropdown-contact">
                                                                         <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
-                                                                                <svg width="28" height="28"><circle cx="14" cy="14" r="14" fill="#9327FF" /></svg>
-                                                                                <div class="select-contacts-to-assign-dropdown-contact-credentials">SM</div>
+                                                                                <svg width="28" height="28"><circle cx="14" cy="14" r="14" fill="#bb78ff" /></svg>
+                                                                                <div class="select-contacts-to-assign-dropdown-contact-credentials">PA</div>
                                                                         </div>
-                                                                        <div class="select-contacts-to-assign-dropdown-contactname">Contact 1</div>
+                                                                        <div class="select-contacts-to-assign-dropdown-contactname">Contact 3</div>
                                                                 </div>
-                                                        </div>                                                </div>
-                                        </div>
+                                                                <div class="select-contacts-to-assign-dropdown-checkbox"><img src="./../img/checkbox-blank.svg" id="select-contacts-to-assign-dropdown-checkbox3"></div>
+                                                        </div>
+                                                                
+                                                        
+                                                                    
+                                                </div>
+                                        </div> 
                                 </div>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="2" height="426" viewBox="0 0 2 426" fill="none">
@@ -172,13 +179,13 @@ function renderAddTask() {
                                         <input type="date" id="due-date" name="due-date" min="1900-01-01" max="2099-12-31" class="addtask-dates-select">
                                 </div>
                                 <div class="addtask-prio-main-container">
-                                        <div class="addtask-prio-container" id="prio-urgent">
+                                        <div class="addtask-prio-container" id="prio-urgent" onclick="prioContainer('urgent')">
                                                 Urgent <img src="./../img/prio-urgent.svg">
                                         </div>
-                                        <div class="addtask-prio-container" id="prio-medium">
+                                        <div class="addtask-prio-container" id="prio-medium" onclick="prioContainer('medium')">
                                                 Medium <img src="./../img/prio-medium.svg">  
                                         </div>
-                                        <div class="addtask-prio-container" id="prio-low">
+                                        <div class="addtask-prio-container" id="prio-low" onclick="prioContainer('low')">
                                                 Low <img src="./../img/prio-low.svg">
                                         </div>
                                 </div>
@@ -221,4 +228,38 @@ function selectContactsToAssign() {
 
     function childFunction(event) {
         event.stopPropagation();
+}
+
+function assignContactToTask(i) {
+        let contactContainer = document.getElementById(`select-contacts-to-assign-dropdown-contact-container${i}`);
+        let checkbox = document.getElementById(`select-contacts-to-assign-dropdown-checkbox${i}`);
+        
+        if (contactContainer.getAttribute('data-selected') === 'true') {
+            contactContainer.style.backgroundColor = "#FFFFFF";
+            contactContainer.style.color = "black";
+            checkbox.src = "./../img/checkbox-blank.svg";
+            checkbox.style.filter = "";
+            contactContainer.setAttribute('data-selected', 'false');
+        } else {
+            contactContainer.style.backgroundColor = "#3b4e69";
+            contactContainer.style.color = "#FFFFFF";
+            checkbox.src = "./../img/checkbox-filled.svg";
+            checkbox.style.filter = "invert()";
+            contactContainer.setAttribute('data-selected', 'true');
+        }
     }
+
+
+function prioContainer(i) {
+        let container = document.getElementById(`prio-${i}`);
+        if (container.getAttribute('data-selected') === 'true') {
+                container.style.backgroundColor = "#FFFFFF";
+                container.style.color = "black";
+                container.setAttribute('data-selected', 'false');
+        }
+        else {
+                container.style.backgroundColor = "#3b4e69";
+                container.style.color = "#FFFFFF";
+                container.setAttribute('data-selected', 'true');
+        }
+}
