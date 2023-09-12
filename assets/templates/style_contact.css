@@ -43,11 +43,14 @@
   align-items: center;
   gap: 16px;
   overflow: scroll;
+  box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.3);
 }
 
 .button-container {
   position: sticky;
-  margin-top: 22.5px;
+    top: 10px;
+    height: 100%;
+    margin-top: 20px;
 }
 
 .button-container button {
@@ -88,6 +91,7 @@
   align-items: center;
   height: 79px;
   border-radius: 10px;
+  margin-bottom: 30px;
 }
 
 .list-of-contacts:hover {
@@ -97,6 +101,9 @@
 }
 
 .contact-profil-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .name-email {
@@ -306,12 +313,6 @@ input:focus {
   z-index: 200;
 }
 
-.contactMail {
-  background-image: url(assets/img/mail.svg);
-  background-repeat: no-repeat;
-  background-position: 95% 50%;
-}
-
 .first-letter-list {
   display: flex;
   flex-direction: column;
@@ -321,4 +322,14 @@ input:focus {
 .letter-container {
   margin: 5px 0;
   font-size: 1.2em;
+}
+
+.current-letter-content {
+  font-size: 20px;
+  border-bottom: 2px solid #ccc;
+  width: 320px;
+  display: flex;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding-bottom: 10px;
 }

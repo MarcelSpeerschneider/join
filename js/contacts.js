@@ -19,18 +19,17 @@ function renderContacts() {
         currentLetter = firstLetter;
   
         contactListElement.innerHTML += `
-              <span>${currentLetter}</span>
-            
-            <div class="list-of-contacts" id="contacts-${currentLetter.toLowerCase()}"></div>
+              <span class="current-letter-content">${currentLetter}</span>
+            <div class="first-letter-of-name" id="contacts-${currentLetter.toLowerCase()}"></div>
         `;
       }
   
       let letterContactsElement = document.getElementById(`contacts-${currentLetter.toLowerCase()}`);
   
       letterContactsElement.innerHTML += `
-        <div class="contact-profil-img">
-        <span class="profil-icon"></span>
-          <span>${contact.name.charAt(0)}</span>
+      <div class="list-of-contacts">
+        <div class="contact-profil-img" >
+        <span style="background-color:${contact.color}" class="profil-icon">${contact.name.charAt(0)}</span>
         </div>
         <div class="name-email">
           <div class="name">
@@ -40,6 +39,7 @@ function renderContacts() {
             ${contact.email}
           </div>
           <div class="number">${contact.phone}</div>
+        </div>
         </div>
       `;
     }
@@ -65,21 +65,6 @@ function returnRenderHTML(){
                     </svg>
             </div>
         </div>
-        <div class="list-of-contacts" id="contact-list">
-            <div class="contact-profil-img">
-            
-            </div>
-            <div class="name-email">
-            <div class="name">
-            <span></span>
-            </div>
-            <div class="email">
-            </div>
-            <div class="number">
-            </div>
-        </div>
-        </div>    
-
     </div>
     <div class="showContactRight">
         <div class="contacts-header">
@@ -143,6 +128,7 @@ function returnRenderHTML(){
                     <img src="assets/img/close.svg" alt="">
                 </button>
                 </div>
+                <div class="message" id="errorMessage"></div>
             </form>
 
         </div>
@@ -161,6 +147,14 @@ function addNewContact(event) {
     let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
     let phone = document.getElementById("number").value;
+
+    let existingContact = contacts.find(contact => contact.email === email)
+    if(existingContact) {
+        let errorMessage = document.getElementById("errorMessage");
+        errorMessage.textContent = "A contact with the same email already exists!";
+        errorMessage.style.color = "red";
+        return;
+    }
   
     let newContact = {
       name: name,
@@ -169,6 +163,9 @@ function addNewContact(event) {
     };
   
     contacts.push(newContact);
+
+    let randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+    newContact.color = randomColor;
   
     renderContacts();
     closeWindow();
