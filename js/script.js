@@ -249,17 +249,30 @@ function assignContactToTask(i) {
         }
     }
 
-
 function prioContainer(i) {
-        let container = document.getElementById(`prio-${i}`);
-        if (container.getAttribute('data-selected') === 'true') {
-                container.style.backgroundColor = "#FFFFFF";
-                container.style.color = "black";
-                container.setAttribute('data-selected', 'false');
+        let containerClicked = document.getElementById(`prio-${i}`);
+        let containers = [
+            document.getElementById('prio-urgent'),
+            document.getElementById('prio-medium'),
+            document.getElementById('prio-low')
+        ];
+    
+        // Setze alle Container zurück
+        containers.forEach((container) => {
+            container.style.backgroundColor = "#FFFFFF";
+            container.style.color = "black";
+            container.setAttribute('data-selected', 'false');
+        });
+    
+        // Spezielle Änderungen für den angeklickten Container
+        if (containerClicked.getAttribute('data-selected') === 'true') {
+            containerClicked.style.backgroundColor = "#FFFFFF";
+            containerClicked.style.color = "black";
+            containerClicked.setAttribute('data-selected', 'false');
+        } else {
+            containerClicked.style.backgroundColor = "#3b4e69";
+            containerClicked.style.color = "#FFFFFF";
+            containerClicked.setAttribute('data-selected', 'true');
         }
-        else {
-                container.style.backgroundColor = "#3b4e69";
-                container.style.color = "#FFFFFF";
-                container.setAttribute('data-selected', 'true');
-        }
-}
+    }
+    
