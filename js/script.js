@@ -120,8 +120,46 @@ function renderAddTask() {
                                 </div>
                                 <div class="addtask-assigned-to-container">
                                         Assigned to
-                                        <div class="select-contacts-to-assign">
-                                                <span>Select Contacts to assign</span><img src="./../img/arrow_drop_down.svg"> 
+                                        <div class="select-contacts-to-assign" id="select-contacts-to-assign" onclick="selectContactsToAssign()">
+                                                <span>Select Contacts to assign</span>
+                                                <div id="arrow-drop-down">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <mask id="mask0_83802_4068" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+                                                        <rect width="24" height="24" fill="#D9D9D9"/>
+                                                        </mask>
+                                                        <g mask="url(#mask0_83802_4068)">
+                                                        <path d="M11.3 14.3L8.69998 11.7C8.38331 11.3833 8.31248 11.0208 8.48748 10.6125C8.66248 10.2042 8.97498 10 9.42498 10H14.575C15.025 10 15.3375 10.2042 15.5125 10.6125C15.6875 11.0208 15.6166 11.3833 15.3 11.7L12.7 14.3C12.6 14.4 12.4916 14.475 12.375 14.525C12.2583 14.575 12.1333 14.6 12 14.6C11.8666 14.6 11.7416 14.575 11.625 14.525C11.5083 14.475 11.4 14.4 11.3 14.3Z" fill="#2A3647"/>
+                                                        </g>
+                                                        </svg>
+                                                </div>
+                                                <div class="select-contacts-to-assign-dropdown" id="select-contacts-to-assign-dropdown" onclick="childFunction(event)">
+                                                        <div class="select-contacts-to-assign-dropdown-contact-container">
+                                                                <div class="select-contacts-to-assign-dropdown-contact">
+                                                                        <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
+                                                                                <svg width="28" height="28"><circle cx="14" cy="14" r="14" fill="#00bee8" /></svg>
+                                                                                <div class="select-contacts-to-assign-dropdown-contact-credentials">SM</div>
+                                                                        </div>
+                                                                        <div class="select-contacts-to-assign-dropdown-contactname">Contact 1</div>
+                                                                </div>
+                                                        </div>
+                                                        <div class="select-contacts-to-assign-dropdown-contact-container">
+                                                                <div class="select-contacts-to-assign-dropdown-contact">
+                                                                        <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
+                                                                                <svg width="28" height="28"><circle cx="14" cy="14" r="14" fill="#ff9b40" /></svg>
+                                                                                <div class="select-contacts-to-assign-dropdown-contact-credentials">SM</div>
+                                                                        </div>
+                                                                        <div class="select-contacts-to-assign-dropdown-contactname">Contact 1</div>
+                                                                </div>
+                                                        </div>
+                                                        <div class="select-contacts-to-assign-dropdown-contact-container">
+                                                                <div class="select-contacts-to-assign-dropdown-contact">
+                                                                        <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
+                                                                                <svg width="28" height="28"><circle cx="14" cy="14" r="14" fill="#9327FF" /></svg>
+                                                                                <div class="select-contacts-to-assign-dropdown-contact-credentials">SM</div>
+                                                                        </div>
+                                                                        <div class="select-contacts-to-assign-dropdown-contactname">Contact 1</div>
+                                                                </div>
+                                                        </div>                                                </div>
                                         </div>
                                 </div>
                         </div>
@@ -164,3 +202,23 @@ function renderAddTask() {
         </div>
         `;
 }
+
+function selectContactsToAssign() {
+        let dropdown = document.getElementById('select-contacts-to-assign-dropdown');
+        let arrow = document.getElementById('arrow-drop-down');
+    
+        arrow.style.transition = 'transform 0.5s ease';
+    
+        if (dropdown.style.display === 'none') {
+            arrow.style.transform = 'rotate(180deg)';
+            setTimeout((() => {dropdown.style.display = 'block';}), 125);
+        }
+        else {
+            arrow.style.transform = 'rotate(0deg)';
+            setTimeout((() => {dropdown.style.display = 'none';}), 125);
+        }
+    }
+
+    function childFunction(event) {
+        event.stopPropagation();
+    }
