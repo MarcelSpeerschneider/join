@@ -1,5 +1,4 @@
 let contacts = [];
-let chosenContact = 0;
 
 function renderContacts() {
   let content = document.getElementById("dashboard-content");
