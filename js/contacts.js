@@ -1,16 +1,61 @@
 let contacts = [];
 
 function renderContacts() {
-  let content = document.getElementById("dashboard-content");
-  content.innerHTML = "";
-  content.innerHTML += /*html*/ `
+    let content = document.getElementById("dashboard-content");
+    content.innerHTML = "";
+    content.innerHTML += returnRenderHTML();
+  
+    let contactListElement = document.getElementById("firstLetterContainer");
+    contactListElement.innerHTML = "";
+  
+    contacts.sort((a, b) => a.name.localeCompare(b.name));
+  
+    let currentLetter = null;
+  
+    for (let contact of contacts) {
+      let firstLetter = contact.name.charAt(0).toUpperCase();
+  
+      if (firstLetter !== currentLetter) {
+        currentLetter = firstLetter;
+  
+        contactListElement.innerHTML += `
+              <span>${currentLetter}</span>
+            
+            <div class="list-of-contacts" id="contacts-${currentLetter.toLowerCase()}"></div>
+        `;
+      }
+  
+      let letterContactsElement = document.getElementById(`contacts-${currentLetter.toLowerCase()}`);
+  
+      letterContactsElement.innerHTML += `
+        <div class="contact-profil-img">
+        <span class="profil-icon"></span>
+          <span>${contact.name.charAt(0)}</span>
+        </div>
+        <div class="name-email">
+          <div class="name">
+            <span>${contact.name}</span>
+          </div>
+          <div class="email">
+            ${contact.email}
+          </div>
+          <div class="number">${contact.phone}</div>
+        </div>
+      `;
+    }
+  }
+  
+
+
+function returnRenderHTML(){
+    return /*html*/ `
     <div class="contact-container">
         <div class="contact-content">
         <div class="contact-list">
         <div class="button-container">
         <button id="addContactBtn" onclick="openContactForm()">Add new contact</button>
         </div>
-        <div class="first-letter-of-name">
+        <div id="firstLetterContainer" class="first-letter-of-name">
             <div class="letter-container">
             <span>A</span>
             </div>
@@ -22,17 +67,19 @@ function renderContacts() {
         </div>
         <div class="list-of-contacts" id="contact-list">
             <div class="contact-profil-img">
-                <span>IG</span>
+            
             </div>
             <div class="name-email">
             <div class="name">
-            <span>Ivan Gomes</span>
+            <span></span>
             </div>
             <div class="email">
-                test@test.de
+            </div>
+            <div class="number">
             </div>
         </div>
         </div>    
+
     </div>
     <div class="showContactRight">
         <div class="contacts-header">
@@ -83,15 +130,15 @@ function renderContacts() {
         <div  class="contactinput">
             <form onsubmit="addNewContact(event);return false;">
                 <div class="input-img">
-                <input required  placeholder="Name" type="text">
+                <input required  placeholder="Name" id="name" type="text">
                 </div>
                 <div>
-                <input required class="contactMail" placeholder="Email" type="email">
+                <input required class="contactMail" placeholder="Email" id="email" type="email">
                 </div>
-                <input required placeholder="Phone number" type="number">
+                <input required placeholder="Phone number" id="number" type="number">
 
                 <div class="contactBtn">
-                <button onclick="closeWindow()" class="cancelBtn">Cancel</button>
+                <button class="cancelBtn">Cancel</button>
                 <button class="createBtn">Create Contact
                     <img src="assets/img/close.svg" alt="">
                 </button>
@@ -106,16 +153,33 @@ function renderContacts() {
 
         </div>
     `;
-  
 }
 
+function addNewContact(event) {
+    event.preventDefault();
+  
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("number").value;
+  
+    let newContact = {
+      name: name,
+      email: email,
+      phone: phone,
+    };
+  
+    contacts.push(newContact);
+  
+    renderContacts();
+    closeWindow();
+  }
 
 function openContactForm() {
-    document.getElementById('contactPopUp').style.display="flex";
+  document.getElementById("contactPopUp").style.display = "flex";
+}
+
+function closeWindow() {
+  document.getElementById("contactPopUp").style.display = "none";
 }
 
 
-function closeWindow(){
-    document.getElementById('contactPopUp').style.display="none";
-}
-  

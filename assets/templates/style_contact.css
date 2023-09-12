@@ -1,22 +1,21 @@
 .contact-container {
   display: flex;
-    flex-direction: column;
-    width: calc(100% - 232px);
-    height: calc(100% - 89px);
-    position: fixed;
-    top: 89px;
-    left: 232px;
-    background-color: #f5f5f5;
-    z-index: 0;
+  flex-direction: column;
+  width: calc(100% - 232px);
+  height: calc(100% - 89px);
+  position: fixed;
+  top: 89px;
+  left: 232px;
+  background-color: #f5f5f5;
+  z-index: 0;
 }
 
-.contact-content{
+.contact-content {
   display: flex;
   justify-content: flex-start;
   position: relative;
   height: 100vh;
 }
-
 
 .showContactRight {
   display: flex;
@@ -26,15 +25,13 @@
   flex: 2;
 }
 
-.contacts-header{
+.contacts-header {
   width: 100%;
   top: 10%;
   display: flex;
   align-items: center;
   height: 15%;
 }
-
-
 
 .contact-list {
   width: 430px;
@@ -69,28 +66,73 @@
   box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
 }
 
+.profil-icon {
+  border: 2px solid transparent;
+  width: 25px;
+  height: 25px;
+  padding: 10px;
+  border-radius: 100%;
+  font-size: 16px;
+  border-color: white;
+  margin-left: 25px;
+  font-weight: 400;
+  color: white;
+  line-height: 1.5;
+  text-align: center;
+  background-color: rgb(91, 61, 94);
+}
+
 .list-of-contacts {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: start;
-  width: 300px;
-  gap: 70px;
+  height: 79px;
+  border-radius: 10px;
+}
+
+.list-of-contacts:hover {
+  cursor: pointer;
+  background: #f5f5f5;
+  transition: all ease-in-out 100ms;
 }
 
 .contact-profil-img {
-  background-color: lightgray;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
 }
 
 .name-email {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+  margin-left: 25px;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 5px;
+  margin-top: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 220px;
+}
+.email {
+  color: #007cee;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 220px;
+  margin-bottom: 5px;
+}
+.number {
+  color: #007cee;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 220px;
 }
 
 .pup-up-content {
@@ -268,4 +310,15 @@ input:focus {
   background-image: url(assets/img/mail.svg);
   background-repeat: no-repeat;
   background-position: 95% 50%;
+}
+
+.first-letter-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.letter-container {
+  margin: 5px 0;
+  font-size: 1.2em;
 }
