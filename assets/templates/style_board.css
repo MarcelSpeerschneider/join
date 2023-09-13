@@ -143,12 +143,22 @@
     top: 0px;
     right: 0px;
     display: block;
-    background-color:  white;
+    background-color: rgba(0,0,0, 0.2); /* Black w/opacity */
+    backdrop-filter: blur(10px);
     margin: 0;
     height: 100%;
-    width: 250px;
+    width: 100%;
     box-shadow: -1px -1px 8px #eee;
     z-index: 3;
     right: -100%;
     transition: all 0.8s ease;
 }
+
+  /* Position the content inside the overlay */
+  .overlay-content {
+    position: relative;
+    top: 25%; /* 25% from the top */
+    width: 100%; /* 100% width */
+    text-align: center; /* Centered text/links */
+    margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+  }
