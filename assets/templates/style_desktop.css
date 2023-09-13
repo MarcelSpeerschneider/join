@@ -583,10 +583,7 @@ select {
     transition: 125ms ease-in-out;
     border-color: #00bee8;
     color: #00bee8;
-}
-
-.button-clear:hover svg {
-    filter: contrast();
+    box-shadow: -5px 5px 10px #9b9b9b;
 }
 
 .button-create-task {
@@ -609,4 +606,6 @@ select {
 .button-create-task:hover {
     background-color: #00bee8;
     transition: 125ms ease-in-out;
+    border-color: #00bee8;
+    box-shadow: -5px 5px 10px #9b9b9b;
 }
