@@ -82,10 +82,7 @@ function renderBoard() {
                 <img class="magnifier" src="./../img/search.png">
             </div>
 
-            <button class="addTaskButton">
-                <p>Add task</p>
-                <img src="./../img/add.png">
-            </button>
+            <button class="addTaskButton" onclick="showTask()">Add task<img src="./../img/add.png"></button>
         </div>
     </div>
     <div class="board-content-container">
@@ -185,3 +182,6 @@ function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
+function showTask() {
+    document.getElementById('overlay').classList.add('overlayStyle');
+}

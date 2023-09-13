@@ -52,15 +52,13 @@
     border-radius: 10px;
     border: 1px solid #2A3647;
     background: #2A3647;
-}
-
-.addTaskButton p {
     color: var(--white, #FFF);
     font-family: Inter;
     font-size: 21px;
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
+    cursor: pointer;
 }
 
 .addTaskButton img {
@@ -70,11 +68,6 @@
 
 /* Style of the Board-Body */
 .board-content-container {
-    /* display: flex;
-    padding: 0px 64px;
-    justify-content: space-between;
-    align-items: flex-start; */
-
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -141,4 +134,21 @@
 .card{
     background-color: #FFFFFF;
     border-radius: 10px;
+}
+
+
+/* Overlay-Style */
+.overlayStyle{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    display: block;
+    background-color:  white;
+    margin: 0;
+    height: 100%;
+    width: 250px;
+    box-shadow: -1px -1px 8px #eee;
+    z-index: 3;
+    right: -100%;
+    transition: all 0.8s ease;
 }
