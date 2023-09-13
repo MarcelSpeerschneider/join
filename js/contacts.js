@@ -86,9 +86,9 @@ function renderContacts() {
     );
 
     letterContactsElement.innerHTML += generateContactHTML(contact);
-  
   }
 }
+
 
 function sortContactsByName(contacts) {
   return contacts.sort((a, b) => a.name.localeCompare(b.name));
@@ -104,9 +104,13 @@ function generateLetterContainers(currentLetter) {
 function generateContactHTML(contact) {
   let [firstName, lastName] = contact.name.split(" ");
   return /*html*/ `
-    <div  class="list-of-contacts" onclick="displayContactInfo('${contact.name}', '${contact.email}', '${contact.phone}',this,)">
+    <div  class="list-of-contacts" onclick="displayContactInfo('${
+      contact.name
+    }', '${contact.email}', '${contact.phone}',this,)">
       <div class="contact-profil-img" onload="generate">
-      <span style="background-color:${contact.color}" class="profil-icon">${firstName.charAt(0)}${
+      <span style="background-color:${
+        contact.color
+      }" class="profil-icon">${firstName.charAt(0)}${
     lastName ? lastName.charAt(0) : ""
   }
       </div>
@@ -126,17 +130,32 @@ function deleteContact(index) {
   renderContacts();
 }
 
-
-function displayContactInfo(name, email, phone, element,index) {
+function displayContactInfo(name, email, phone, element, index) {
   let contentshow = document.getElementById("contactsShow");
-  contentshow.innerHTML = /*html*/ `
-        <div class="icon-name">
-      <span class="profil-icon-right"></span>
-        <div class="name-edit-delete">
-        <h2>${name}</h2>
-        <div class="edit-delete">
-        <p class="edit-delete-hover">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  contentshow.innerHTML = generateContactInfoHTML(
+    name,
+    email,
+    phone,
+    element,
+    index
+  );
+
+  let allContacts = document.getElementsByClassName("list-of-contacts");
+  for (let i = 0; i < allContacts.length; i++) {
+    allContacts[i].style.backgroundColor = "";
+  }
+  element.style.backgroundColor = "rgb(42,54,72)";
+}
+
+function generateContactInfoHTML(name, email, phone, index) {
+  return /*html*/ `
+  <div class="icon-name">
+<span class="profil-icon-right"></span>
+  <div class="name-edit-delete">
+  <h2>${name}</h2>
+  <div class="edit-delete">
+  <p class="edit-delete-hover">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="edit">
 <mask id="mask0_84485_4268" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
 <rect id="Bounding box" width="24" height="24" fill="#D9D9D9"/>
@@ -146,10 +165,10 @@ function displayContactInfo(name, email, phone, element,index) {
 </g>
 </g>
 </svg>
-          Edit
-        </p>
-        <p onclick="deleteContact(${index})" class="edit-delete-hover">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    Edit
+  </p>
+  <p onclick="deleteContact(${index})" class="edit-delete-hover">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="delete">
 <mask id="mask0_84485_4113" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
 <rect id="Bounding box" width="24" height="24" fill="#D9D9D9"/>
@@ -159,34 +178,28 @@ function displayContactInfo(name, email, phone, element,index) {
 </g>
 </g>
 </svg>
-          Delete
-        </p>
-        </div>
-        </div>
-        </div>
-        <div class="contactInformation">
-          Contact Information
-      </div>
-        <div class="email-header">
-        <a href="mailto:${email}">
-          <span>Email</span>
-        <p>${email}</p>
-        </a>
-        </div>
-        <div class="phone-phone">
-          <a href="tel:${phone}">
-          <span>Phone</span>
-        <p>${phone}</p>
-        </a>
-        </div>
-        </div>
-  `;
-
-  let allContacts = document.getElementsByClassName('list-of-contacts');
-  for(let i = 0; i < allContacts.length; i++) {
-    allContacts[i].style.backgroundColor = '';
-  }
-  element.style.backgroundColor = 'rgb(42,54,72)';
+    Delete
+  </p>
+  </div>
+  </div>
+  </div>
+  <div class="contactInformation">
+    Contact Information
+</div>
+  <div class="email-header">
+  <a href="mailto:${email}">
+    <span>Email</span>
+  <p>${email}</p>
+  </a>
+  </div>
+  <div class="phone-phone">
+    <a href="tel:${phone}">
+    <span>Phone</span>
+  <p>${phone}</p>
+  </a>
+  </div>
+  </div>
+`;
 }
 
 function returnRenderHTML() {
@@ -207,7 +220,6 @@ function returnRenderHTML() {
 </g>
 </g>
 </svg>
-
         </button>
         </div>
         <div id="firstLetterContainer" class="first-letter-of-name">
@@ -355,28 +367,25 @@ function returnRenderHTML() {
 function addNewContact(event) {
   event.preventDefault();
 
-  let name = document.getElementById("name").value;
-  let email = document.getElementById("email").value;
-  let phone = document.getElementById("number").value;
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("number").value;
 
-  let existingContact = contacts.find((contact) => contact.email === email);
-  if (existingContact) {
-    let errorMessage = document.getElementById("errorMessage");
+  if (contacts.some((contact) => contact.email === email)) {
+    const errorMessage = document.getElementById("errorMessage");
     errorMessage.textContent = "A contact with the same email already exists!";
     errorMessage.style.color = "red";
     return;
   }
 
-  let newContact = {
-    name: name,
-    email: email,
-    phone: phone,
+  const newContact = {
+    name,
+    email,
+    phone,
+    color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
   };
 
   contacts.push(newContact);
-
-  let randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
-  newContact.color = randomColor;
 
   renderContacts();
   closeWindow();
