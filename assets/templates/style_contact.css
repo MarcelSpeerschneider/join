@@ -63,9 +63,9 @@
   border: none;
   cursor: pointer;
   display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
 }
 
 .button-container button:hover {
@@ -101,7 +101,6 @@
 .list-of-contacts:hover {
   cursor: pointer;
   background: #f5f5f5;
-  transition: all ease-in-out 100ms;
 }
 
 .contact-profil-img {
@@ -136,7 +135,6 @@
   width: 220px;
   margin-bottom: 5px;
 }
-
 
 .number {
   color: #007cee;
@@ -343,7 +341,7 @@ input:focus {
   padding-bottom: 10px;
 }
 
-.svgStyleInput{
+.svgStyleInput {
   width: 30px;
   height: 30px;
   position: relative;
@@ -351,18 +349,18 @@ input:focus {
   top: 7px;
 }
 
-.input-img{
+.input-img {
   display: flex;
   align-items: baseline;
 }
 
-#contactsShow{
+#contactsShow {
   display: flex;
-  flex-direction:  column;
+  flex-direction: column;
   gap: 50px;
 }
 
-.profil-icon-right{
+.profil-icon-right {
   border: 2px solid transparent;
   width: 70px;
   height: 70px;
@@ -378,49 +376,69 @@ input:focus {
   background-color: rgb(91, 61, 94);
 }
 
-
-.icon-name{
+.icon-name {
   display: flex;
   align-items: center;
   gap: 30px;
 }
 
-.icon-name h2{
+.icon-name h2 {
   font-size: 45px;
   white-space: nowrap;
 }
 
-.contactInformation{
+.contactInformation {
   font-size: 25px;
 }
 
-.email-heade{
+.email-heade {
+  border-radius: 10px;
+  padding: 10px;
 }
 
-.email-header span{
+.email-header span {
   color: black;
 }
 
-.email-header a{
+.email-header a {
   text-decoration: none;
 }
 
-.email-header p:hover{
+.email-header p:hover {
   text-decoration: underline;
 }
 
-.phone-phone{
-
+.phone-phone {
+  border-radius: 10px;
+  padding: 10px;
 }
 
-.phone-phone a{
+.phone-phone a {
   text-decoration: none;
 }
 
-.phone-phone span{
+.phone-phone span {
   color: black;
 }
 
-.phone-phone p:hover{
+.phone-phone p:hover {
   text-decoration: underline;
+}
+
+.edit-delete {
+  display: flex;
+  gap: 20px;
+}
+
+.edit-delete-hover:hover {
+  background-color: lightgray;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.edit-delete-hover {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
 }
