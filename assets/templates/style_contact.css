@@ -62,6 +62,10 @@
   font-size: 21px;
   border: none;
   cursor: pointer;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 }
 
 .button-container button:hover {
@@ -106,22 +110,6 @@
   align-items: center;
 }
 
-.profil-icon-right{
-  border: 2px solid transparent;
-  width: 25px;
-  height: 25px;
-  padding: 10px;
-  border-radius: 100%;
-  font-size: 16px;
-  border-color: white;
-  margin-left: 25px;
-  font-weight: 400;
-  color: white;
-  line-height: 1.5;
-  text-align: center;
-  background-color: rgb(91, 61, 94);
-}
-
 .name-email {
   margin-left: 25px;
 }
@@ -136,6 +124,7 @@
   text-overflow: ellipsis;
   width: 220px;
 }
+
 .email {
   color: #007cee;
   font-size: 16px;
@@ -147,6 +136,8 @@
   width: 220px;
   margin-bottom: 5px;
 }
+
+
 .number {
   color: #007cee;
   font-size: 16px;
@@ -365,4 +356,71 @@ input:focus {
   align-items: baseline;
 }
 
+#contactsShow{
+  display: flex;
+  flex-direction:  column;
+  gap: 50px;
+}
 
+.profil-icon-right{
+  border: 2px solid transparent;
+  width: 70px;
+  height: 70px;
+  padding: 10px;
+  border-radius: 100%;
+  font-size: 16px;
+  border-color: white;
+  margin-left: 25px;
+  font-weight: 400;
+  color: white;
+  line-height: 1.5;
+  text-align: center;
+  background-color: rgb(91, 61, 94);
+}
+
+
+.icon-name{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.icon-name h2{
+  font-size: 45px;
+  white-space: nowrap;
+}
+
+.contactInformation{
+  font-size: 25px;
+}
+
+.email-heade{
+}
+
+.email-header span{
+  color: black;
+}
+
+.email-header a{
+  text-decoration: none;
+}
+
+.email-header p:hover{
+  text-decoration: underline;
+}
+
+.phone-phone{
+
+}
+
+.phone-phone a{
+  text-decoration: none;
+}
+
+.phone-phone span{
+  color: black;
+}
+
+.phone-phone p:hover{
+  text-decoration: underline;
+}
