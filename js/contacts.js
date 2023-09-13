@@ -69,7 +69,7 @@ function renderContacts() {
   let contactListElement = document.getElementById("firstLetterContainer");
   contactListElement.innerHTML = "";
 
-  contacts.sort((a, b) => a.name.localeCompare(b.name));
+  sortContactsByName(contacts);
 
   let currentLetter = null;
 
@@ -89,20 +89,29 @@ function renderContacts() {
   }
 }
 
+function sortContactsByName(contacts) {
+  return contacts.sort((a, b) => a.name.localeCompare(b.name));
+}
+
 function generateLetterContainers(currentLetter) {
   return /*html*/ `
-    <span class="current-letter-content">${currentLetter}</span>
+     <span class="current-letter-content">${currentLetter}</span>
     <div class="first-letter-of-name" id="contacts-${currentLetter.toLowerCase()}"></div>
-  `;
+`;
 }
 
 function generateContactHTML(contact) {
+  let [firstName, lastName] = contact.name.split(" ");
   return /*html*/ `
-    <div class="list-of-contacts">
-      <div class="contact-profil-img">
-        <span style="background-color:${
-          contact.color
-        }" class="profil-icon">${contact.name.charAt(0)}</span>
+    <div class="list-of-contacts" onclick="displayContactInfo('${
+      contact.name
+    }', '${contact.email}', '${contact.phone}')">
+      <div class="contact-profil-img" onload="generate">
+      <span style="background-color:${
+        contact.color
+      }" class="profil-icon">${firstName.charAt(0)}${
+    lastName ? lastName.charAt(0) : ""
+  }
       </div>
       <div class="name-email">
         <div class="name">
@@ -111,6 +120,20 @@ function generateContactHTML(contact) {
         <div class="email">${contact.email}</div>
         <div class="number">${contact.phone}</div>
       </div>
+    </div>
+  `;
+}
+
+function displayContactInfo(name, email, phone) {
+  let contentshow = document.getElementById("contactsShow");
+  contentshow.innerHTML = /*html*/ `
+  <div  class="contact-profil-img">
+  <span class="profil-icon-right"></span>
+    <div class="contact-info">
+      <h2>${name}</h2>
+      <p>Email: ${email}</p>
+      <p>Phone: ${phone}</p>
+    </div>
     </div>
   `;
 }
@@ -217,7 +240,7 @@ function returnRenderHTML() {
 </svg>
                 </div>
                 <div class="input-img">
-                <input required placeholder="Phone number" onwheel="this.blur();"  id="number" type="number">
+                <input  placeholder="Phone number" onwheel="this.blur();"  id="number" type="number">
                 <svg class="svgStyleInput" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="call">
 <mask id="mask0_84485_2206" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
@@ -230,7 +253,7 @@ function returnRenderHTML() {
 </svg>
                 </div>
                 <div class="contactBtn">
-                <button class="cancelBtn">
+                <button onclick="closeWindow()" class="cancelBtn">
                   Cancel
                   <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g id="iconoir:cancel">
@@ -238,7 +261,8 @@ function returnRenderHTML() {
                   </g>
                   </svg>  
                 </button>
-                <button class="createBtn">Create Contact
+                <button class="createBtn">
+                  Create Contact
                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="check">
                 <mask id="mask0_84485_3902" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">

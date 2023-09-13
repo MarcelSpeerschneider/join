@@ -106,6 +106,22 @@
   align-items: center;
 }
 
+.profil-icon-right{
+  border: 2px solid transparent;
+  width: 25px;
+  height: 25px;
+  padding: 10px;
+  border-radius: 100%;
+  font-size: 16px;
+  border-color: white;
+  margin-left: 25px;
+  font-weight: 400;
+  color: white;
+  line-height: 1.5;
+  text-align: center;
+  background-color: rgb(91, 61, 94);
+}
+
 .name-email {
   margin-left: 25px;
 }
@@ -348,3 +364,5 @@ input:focus {
   display: flex;
   align-items: baseline;
 }
+
+
