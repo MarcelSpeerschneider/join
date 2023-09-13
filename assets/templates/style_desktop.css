@@ -331,7 +331,6 @@ h3 {
 .addtask-main-content {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     padding-top: 5%;
     box-sizing: border-box;
     height: 100%;
@@ -442,7 +441,7 @@ input {
 }
 
 .select-contacts-to-assign-dropdown-contact-container:hover {
-    background-color: #f0f0f0 !important; 
+    background-color: #f0f0f0 !important;
     cursor: pointer;
     transform: translate(-0.5%);
 }
@@ -467,7 +466,7 @@ input {
     font-size: 14px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
 }
 
 .select-contacts-to-assign-dropdown-checkbox {
@@ -475,6 +474,17 @@ input {
     justify-content: center;
     align-items: center;
     padding-right: 12px;
+}
+
+.add-new-contact-button {
+    width: 100%;
+    background-color: #2a3647;
+    color: white;
+    text-align: center;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .addtask-dates-select {
@@ -504,7 +514,7 @@ input {
 }
 
 .addtask-prio-container:hover {
-    box-shadow:  -5px 5px 10px #9b9b9b;
+    box-shadow: -5px 5px 10px #9b9b9b;
     cursor: pointer;
 }
 
@@ -527,4 +537,76 @@ select {
     background-position: right 16px center;
     appearance: none;
 
+}
+
+.add-task-bottom-button-left-side {
+    width: 50%;
+}
+
+.add-task-bottom-button-right-side {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.add-task-bottom-button {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+   
+}
+
+.add-task-bottom-button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 25px;
+    width: 80%;
+}
+
+.button-clear {
+    display: flex;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 10px;
+    border: 1px solid var(--version-2-main-color, #2A3647);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.button-clear:hover {
+    transition: 125ms ease-in-out;
+    border-color: #00bee8;
+    color: #00bee8;
+}
+
+.button-clear:hover svg {
+    filter: contrast();
+}
+
+.button-create-task {
+    display: flex;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 10px;
+    background: #2A3647;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    cursor: pointer;
+}
+
+.button-create-task:hover {
+    background-color: #00bee8;
+    transition: 125ms ease-in-out;
 }
