@@ -14,7 +14,7 @@
   display: flex;
   justify-content: flex-start;
   position: relative;
-  height: 100vh;
+  height: 100%;
 }
 
 .showContactRight {
@@ -30,6 +30,7 @@
   top: 10%;
   display: flex;
   align-items: center;
+  gap: 20px;
   height: 15%;
 }
 
@@ -48,9 +49,8 @@
 
 .button-container {
   position: sticky;
-    top: 10px;
-    height: 100%;
-    margin-top: 20px;
+  top: 10px;
+  margin-top: 20px;
 }
 
 .button-container button {
@@ -293,6 +293,7 @@ input:focus {
   margin-right: 20px;
   cursor: pointer;
   z-index: 200;
+  gap: 5px;
 }
 
 .createBtn {
@@ -311,6 +312,7 @@ input:focus {
   color: white;
   cursor: pointer;
   z-index: 200;
+  gap: 5px;
 }
 
 .first-letter-list {
@@ -332,4 +334,17 @@ input:focus {
   margin-bottom: 15px;
   margin-top: 15px;
   padding-bottom: 10px;
+}
+
+.svgStyleInput{
+  width: 30px;
+  height: 30px;
+  position: relative;
+  right: 35px;
+  top: 7px;
+}
+
+.input-img{
+  display: flex;
+  align-items: baseline;
 }
