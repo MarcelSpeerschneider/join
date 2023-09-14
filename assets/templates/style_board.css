@@ -154,12 +154,12 @@
 
   .overlay-content {
     background-color: white;
-    display: flex;
     border-radius: 31px;
-    width: 1212px;
-    height: 594px;
+    width: 915px;
+    height: 85vh;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     animation: slideInFromRight 1s;
+    padding: 30px;
   }
 
   .cross-close{
@@ -167,4 +167,46 @@
     width: 16px;
     transition: ease-in-out 125ms;
     cursor: pointer;
+  }
+
+  #addTaskOverlay input{
+    width: 422px;
+    height: 51px;
+    font-weight: 400;
+    font-size: 21px;
+  }
+
+  #addTaskOverlay textarea{
+    resize: none;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    background: #FFF;
+    padding: 12px 16px;
+    box-sizing: border-box;
+  }
+
+  #addTaskOverlayHead{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #addTaskOverlayBody{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #addTaskOverlayBodyLeft{
+    display: flex;
+    flex-direction: column;
+  }
+
+  #addTaskOverlayBodyMiddle{
+    border: 1px solid #D1D1D1;
+  }
+
+  #addTaskOverlayBodyRight{
+    display: flex;
+    flex-direction: column;
   }
