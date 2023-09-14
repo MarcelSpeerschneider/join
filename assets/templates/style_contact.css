@@ -372,8 +372,8 @@ input:focus {
 
 .profil-icon-right {
     border: 2px solid transparent;
-    width: 70px;
-    height: 70px;
+    width: 55px;
+    height: 55px;
     padding: 10px;
     border-radius: 100%;
     font-size: 16px;
@@ -381,74 +381,61 @@ input:focus {
     margin-left: 25px;
     font-weight: 400;
     color: white;
-    line-height: 1.5;
-    text-align: center;
-    background-color: rgb(91, 61, 94);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
 }
 
-.icon-name {
+
+
+.edit-delete-name{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-delete-Hover:hover {
+    background-color: lightgray;
+    cursor: pointer;
+    text-decoration: underline;
+    border-radius: 10px;
+    
+}
+
+.edit-delete-Hover{
     display: flex;
     align-items: center;
-    gap: 30px;
-}
-
-.icon-name h2 {
-    font-size: 45px;
-    white-space: nowrap;
-}
-
-.contactInformation {
-    font-size: 25px;
-}
-
-.email-heade {
-    border-radius: 10px;
-    padding: 10px;
-}
-
-.email-header span {
-    color: black;
-}
-
-.email-header a {
-    text-decoration: none;
-}
-
-.email-header p:hover {
-    text-decoration: underline;
-}
-
-.phone-phone {
-    border-radius: 10px;
-    padding: 10px;
-}
-
-.phone-phone a {
-    text-decoration: none;
-}
-
-.phone-phone span {
-    color: black;
-}
-
-.phone-phone p:hover {
-    text-decoration: underline;
+    padding: 5px;
 }
 
 .edit-delete {
     display: flex;
+    align-items: center;
     gap: 20px;
+    padding: 5px;
+    border-radius: 5px;
 }
 
-.edit-delete-hover:hover {
-    background-color: lightgray;
-    cursor: pointer;
+.info{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    gap: 15px;
+    text-decoration: none;
+    
+}
+
+.info label{
+color: black;
+cursor: pointer;
+}
+
+.info span:hover{
     text-decoration: underline;
 }
 
-.edit-delete-hover {
+.info-name{
     display: flex;
-    align-items: center;
-    padding: 5px;
-    border-radius: 5px;
+    align-items: baseline;
 }
