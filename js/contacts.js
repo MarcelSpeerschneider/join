@@ -104,7 +104,7 @@ function generateLetterContainers(currentLetter) {
 function generateContactHTML(contact) {
   let [firstName, lastName] = contact.name.split(" ");
   return /*html*/ `
-    <div  class="list-of-contacts" onclick="displayContactInfo('${contact.name }', '${contact.email}', '${contact.phone}')">
+    <div  class="list-of-contacts" onclick="displayContactInfo('${contact.name }', '${contact.email}', '${contact.phone}',this)">
       <div class="contact-profil-img" onload="generate">
       <span style="background-color:${
         contact.color
@@ -128,7 +128,7 @@ function deleteContact(index) {
  renderContacts();
 }
 
-function displayContactInfo(name, email, phone, element, index) {
+function displayContactInfo(name, email, phone,element, index) {
   let contentshow = document.getElementById("contactsShow");
   contentshow.innerHTML = generateContactInfoHTML(name,email,phone,index);
 
