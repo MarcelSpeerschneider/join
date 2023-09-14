@@ -1,4 +1,4 @@
-let contacts = [
+const contacts = [
   {
     name: "Peter Müller",
     email: "peter@example.com",
@@ -127,7 +127,7 @@ function generateContactHTML(contact) {
 
 function deleteContact(index) {
   contacts.splice(index, 1);
-  renderContacts();
+ renderContacts();
 }
 
 function displayContactInfo(name, email, phone, element, index) {
@@ -167,7 +167,7 @@ function generateContactInfoHTML(name, email, phone, index) {
 </svg>
     Edit
   </p>
-  <p onclick="deleteContact(${index})" class="edit-delete-hover">
+  <p id="deleteContactIndex" class="edit-delete-hover" onclick="deleteContact(${index})">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="delete">
 <mask id="mask0_84485_4113" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -200,6 +200,11 @@ function generateContactInfoHTML(name, email, phone, index) {
   </div>
   </div>
 `;
+}
+
+function deleteContact(index) {
+  contacts.splice(index, 1);
+  renderContacts();
 }
 
 function returnRenderHTML() {
