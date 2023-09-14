@@ -162,3 +162,9 @@
     animation: slideInFromRight 1s;
   }
 
+  .cross-close{
+    height: 16px;
+    width: 16px;
+    transition: ease-in-out 125ms;
+    cursor: pointer;
+  }

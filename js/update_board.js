@@ -124,13 +124,12 @@ function renderBoard() {
         </div>
     </div>
     <div id="overlay" class="overlayStyle">
-        <div class="overlay-content">
-            ${htmlElementAddTask()}
+        <div id="overlayContent" class="overlay-content">
         </div>
-        <button onclick="closeAddTaskForm()">Close</button>
     </div>
     `
     updateBoard();
+    renderPopUpAddTask();
 }
 
 function updateBoard() {
