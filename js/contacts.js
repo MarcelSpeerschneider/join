@@ -1,213 +1,155 @@
-const contacts = [
-  {
-    name: "Peter Müller",
-    email: "peter@example.com",
-    phone: "123-456-7890",
-    color: "#FF5733",
-  },
-  {
-    name: "Susanne Schmidt",
-    email: "susanne@example.com",
-    phone: "555-555-5555",
-    color: "#33FF57",
-  },
-  {
-    name: "Michaela Meier",
-    email: "michaela@example.com",
-    phone: "987-654-3210",
-    color: "#FF3366",
-  },
-  {
-    name: "Andreas Wagner",
-    email: "andreas@example.com",
-    phone: "555-123-4567",
-    color: "#3399FF",
-  },
-  {
-    name: "Janine Becker",
-    email: "janine@example.com",
-    phone: "789-456-1230",
-    color: "#33FF99",
-  },
-  {
-    name: "Matthias Huber",
-    email: "matthias@example.com",
-    phone: "111-222-3333",
-    color: "#FF9933",
-  },
-  {
-    name: "Christina Schneider",
-    email: "christina@example.com",
-    phone: "444-555-444",
-    color: "#9966FF",
-  },
-  {
-    name: "Stefan Fischer",
-    email: "stefan@example.com",
-    phone: "777-888-9999",
-    color: "#66FF33",
-  },
-  {
-    name: "Sabine Hoffmann",
-    email: "sabine@example.com",
-    phone: "222-333-4444",
-    color: "#FF6633",
-  },
-  {
-    name: "Markus Schuster",
-    email: "markus@example.com",
-    phone: "666-777-8888",
-    color: "#33FFCC",
-  },
+const contacts = [{
+        name: "John Doe",
+        email: "john.doe@example.com",
+        phone: "(123) 456-7890",
+        color: "#FF5733"
+    },
+    {
+        name: "Jane Smith",
+        email: "jane.smith@example.com",
+        phone: "(234) 567-8901",
+        color: "#33FF57"
+    },
+    {
+        name: "James Johnson",
+        email: "james.johnson@example.com",
+        phone: "(345) 678-9012",
+        color: "#5733FF"
+    },
+    {
+        name: "Emily Davis",
+        email: "emily.davis@example.com",
+        phone: "(456) 789-0123",
+        color: "#FF5733"
+    },
+    {
+        name: "Michael Wilson",
+        email: "michael.wilson@example.com",
+        phone: "(567) 890-1234",
+        color: "#33FF57"
+    },
+    {
+        name: "Sarah Brown",
+        email: "sarah.brown@example.com",
+        phone: "(678) 901-2345",
+        color: "#5733FF"
+    },
+    {
+        name: "David Lee",
+        email: "david.lee@example.com",
+        phone: "(789) 012-3456",
+        color: "#FF5733"
+    },
+    {
+        name: "Olivia Taylor",
+        email: "olivia.taylor@example.com",
+        phone: "(890) 123-4567",
+        color: "#33FF57"
+    },
+    {
+        name: "Daniel Clark",
+        email: "daniel.clark@example.com",
+        phone: "(901) 234-5678",
+        color: "#5733FF"
+    },
+    {
+        name: "Ava Hernandez",
+        email: "ava.hernandez@example.com",
+        phone: "(012) 345-6789",
+        color: "#FF5733"
+    }
 ];
 
+
+
+
 function renderContacts() {
-  let content = document.getElementById("dashboard-content");
-  content.innerHTML = "";
-  content.innerHTML += returnRenderHTML();
+    let content = document.getElementById("dashboard-content");
+    content.innerHTML = "";
+    content.innerHTML += returnRenderHTML();
 
-  let contactListElement = document.getElementById("firstLetterContainer");
-  contactListElement.innerHTML = "";
+    let contactListElement = document.getElementById("firstLetterContainer");
+    contactListElement.innerHTML = ``;
 
-  sortContactsByName(contacts);
+    sortContactsAlphabetically();
 
-  let currentLetter = null;
+    const colors = ["#FF5733", "#33FF57", "#5733FF", "#FF33F9", "#33F9FF"];
 
-  for (let contact of contacts) {
-    let firstLetter = contact.name.charAt(0).toUpperCase();
-
-    if (firstLetter !== currentLetter) {
-      currentLetter = firstLetter;
-      contactListElement.innerHTML += generateLetterContainers(currentLetter);
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        const firstLetterOfFirstName = contact.name.split(" ")[0][0];
+        const firstLetterOfLastName = contact.name.split(" ")[1][0];
+        const color = colors[i % colors.length];
+        contactListElement.innerHTML += /*html*/ `
+  <div onclick="displayContactInfo(${i}, '${color}')"  class="list-of-contacts">
+   <div class="contact-profil-img">
+   <span class="profil-icon"  style="background-color: ${color};" id="firstLetterOfContact">
+   ${firstLetterOfFirstName}${firstLetterOfLastName}
+  </span>
+   </div>
+   <div class="name-email">
+     <div class="name">
+       <span class="contact-name">${contact.name}</span>
+     </div>
+     <div class="email ">${contact.email}</div>
+     <div class="number">${contact.phone}</div>
+   </div>
+ </div>
+ `;
     }
-
-    let letterContactsElement = document.getElementById(
-      `contacts-${currentLetter.toLowerCase()}`
-    );
-
-    letterContactsElement.innerHTML += generateContactHTML(contact);
-  }
 }
 
-
-function sortContactsByName(contacts) {
-  return contacts.sort((a, b) => a.name.localeCompare(b.name));
+function sortContactsAlphabetically() {
+    contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-function generateLetterContainers(currentLetter) {
-  return /*html*/ `
-     <span class="current-letter-content">${currentLetter}</span>
-    <div class="first-letter-of-name" id="contacts-${currentLetter.toLowerCase()}"></div>
-`;
+function deleteContact(index) {
+    contacts.splice(index, 1);
+    renderContacts();
 }
 
-function generateContactHTML(contact) {
-  let [firstName, lastName] = contact.name.split(" ");
-  return /*html*/ `
-    <div  class="list-of-contacts" onclick="displayContactInfo('${contact.name }', '${contact.email}', '${contact.phone}',this)">
-      <div class="contact-profil-img" onload="generate">
-      <span style="background-color:${
-        contact.color
-      }" class="profil-icon">${firstName.charAt(0)}${
-    lastName ? lastName.charAt(0) : ""
-  }
-      </div>
-      <div class="name-email">
-        <div class="name">
-          <span class="contact-name">${contact.name}</span>
+function displayContactInfo(index, color) {
+    const contact = contacts[index];
+    let contentshow = document.getElementById("contactsShow");
+    contentshow.innerHTML = generateContactInfoHTML(contact, color);
+}
+
+function generateContactInfoHTML(contact, color) {
+    const firstLetterOfFirstName = contact.name.split(' ')[0][0];
+    const firstLetterOfLastName = contact.name.split(' ')[1][0];
+    return /*html*/ `
+    <div class="contact-info">
+        <div class="info-name">
+          <div style="background-color: ${color};" class="profil-icon">${firstLetterOfFirstName}${firstLetterOfLastName}</div>
+            <span>${contact.name}</span>
         </div>
-        <div class="email ">${contact.email}</div>
-        <div class="number">${contact.phone}</div>
-      </div>
+        <div>Contact Information</div>
+        <div class="info">
+            <label>Email:</label>
+            <span>${contact.email}</span>
+        </div>
+        <div class="info">
+            <label>Phone:</label>
+            <span>${contact.phone}</span>
+        </div>
     </div>
-  `;
-}
-
-function deleteContact(index) {
-  contacts.splice(index, 1);
- renderContacts();
-}
-
-function displayContactInfo(name, email, phone,element, index) {
-  let contentshow = document.getElementById("contactsShow");
-  contentshow.innerHTML = generateContactInfoHTML(name,email,phone,index);
-
-  let allContacts = document.getElementsByClassName("list-of-contacts");
-  for (let i = 0; i < allContacts.length; i++) {
-    allContacts[i].style.backgroundColor = "";
-  }
-  element.style.backgroundColor = "rgb(42,54,72)";
-}
-
-function generateContactInfoHTML(name, email, phone,index) {
-  return /*html*/ `
-  <div class="icon-name">
-<span class="profil-icon-right"></span>
-  <div class="name-edit-delete">
-  <h2>${name}</h2>
-  <div class="edit-delete">
-  <p class="edit-delete-hover">
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="edit">
-<mask id="mask0_84485_4268" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-<rect id="Bounding box" width="24" height="24" fill="#D9D9D9"/>
-</mask>
-<g mask="url(#mask0_84485_4268)">
-<path id="edit_2" d="M5 19H6.4L15.025 10.375L13.625 8.975L5 17.6V19ZM19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3042 2.75 17.8625 2.75C18.4208 2.75 18.8917 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.57083 21.275 6.1125C21.2917 6.65417 21.1083 7.11667 20.725 7.5L19.3 8.925ZM17.85 10.4L7.25 21H3V16.75L13.6 6.15L17.85 10.4Z" fill="#2A3647"/>
-</g>
-</g>
-</svg>
-    Edit
-  </p>
-  <p id="deleteContactIndex" class="edit-delete-hover" onclick="deleteContact(${index})">
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="delete">
-<mask id="mask0_84485_4113" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-<rect id="Bounding box" width="24" height="24" fill="#D9D9D9"/>
-</mask>
-<g mask="url(#mask0_84485_4113)">
-<path id="delete_2" d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM7 6V19H17V6H7ZM9 16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16ZM13 16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16Z" fill="#2A3647"/>
-</g>
-</g>
-</svg>
-    Delete
-  </p>
-  </div>
-  </div>
-  </div>
-  <div class="contactInformation">
-    Contact Information
-</div>
-  <div class="email-header">
-  <a href="mailto:${email}">
-    <span>Email</span>
-  <p>${email}</p>
-  </a>
-  </div>
-  <div class="phone-phone">
-    <a href="tel:${phone}">
-    <span>Phone</span>
-  <p>${phone}</p>
-  </a>
-  </div>
-  </div>
 `;
 }
 
 function deleteContact(index) {
-  contacts.splice(index, 1);
-  renderContacts();
+    contacts.splice(index, 1);
+    renderContacts();
 }
 
 function returnRenderHTML() {
-  return /*html*/ `
-    <div class="contact-container">
-        <div class="contact-content">
-        <div class="contact-list">
-        <div class="button-container">
-        <button
-         id="addContactBtn" onclick="openContactForm()">Add new contact
-         <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+    return /*html*/ `
+  <div class="contact-container">
+      <div class="contact-content">
+      <div id class="contact-list">
+      <div class="button-container">
+      <button
+       id="addContactBtn" onclick="openContactForm()">Add new contact
+       <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="person_add">
 <mask id="mask0_84485_4563" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="33" height="33">
 <rect id="Bounding box" x="0.5" y="0.5" width="32" height="32" fill="#D9D9D9"/>
@@ -217,91 +159,91 @@ function returnRenderHTML() {
 </g>
 </g>
 </svg>
-        </button>
-        </div>
-        <div id="firstLetterContainer" class="first-letter-of-name">
-            <div class="letter-container">
-            <span>A</span>
-            </div>
-            <div class="img-container">
-            <svg width="354" height="2" viewBox="0 0 354 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1H353" stroke="#D1D1D1" stroke-linecap="round"/>
-                    </svg>
-            </div>
-        </div>
-    </div>
-    <div class="showContactRight">
-        <div class="contacts-header">
-            <h1>Contacts</h1>
-            <div>
-            <svg width="4" height="63" viewBox="0 0 4 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path id="Vector 5" d="M2 2V61" stroke="#29ABE2" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-            </div>
-            <span>Better with a Team</span>
-            </div>
+      </button>
+      </div>
+      <div id="firstLetterContainer" class="first-letter-of-name">
+          <div class="letter-container">
+          <span></span>
+          </div>
+          <div class="img-container">
+          <svg width="354" height="2" viewBox="0 0 354 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1H353" stroke="#D1D1D1" stroke-linecap="round"/>
+                  </svg>
+          </div>
+      </div>
+  </div>
+  <div class="showContactRight">
+      <div class="contacts-header">
+          <h1>Contacts</h1>
+          <div>
+          <svg width="4" height="63" viewBox="0 0 4 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path id="Vector 5" d="M2 2V61" stroke="#29ABE2" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          </div>
+          <span>Better with a Team</span>
+          </div>
 
-            <div id="contactsShow" class="contact-onlick-content"></div>
-        </div>
-    <div style="display:none;" id="contactPopUp" class="contact-pop-up">
-            <div class="pup-up-content" action="">
-    <div class="pop-up-left">
-     <div class="join-logo">
-     <svg width="57" height="67" viewBox="0 0 57 67" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g id="Capa 2">
-        <g id="Capa 1">
-        <path id="Vector" d="M40.7397 0H28.4242V13.8957H40.7397V0Z" fill="white"/>
-        <path id="Vector_2" d="M28.4243 25.197H40.7397V44.7947C40.796 49.5105 39.4275 54.1362 36.8083 58.0839C34.222 61.9194 29.2295 66.4829 19.9929 66.4829C9.93211 66.4829 4.06806 61.8167 0.903931 59.2597L8.67215 49.8621C11.7605 52.3352 14.7351 54.3696 20.0403 54.3696C24.057 54.3696 25.658 52.7645 26.5959 51.3646C27.8709 49.4203 28.5304 47.1465 28.4906 44.8321L28.4243 25.197Z" fill="white"/>
-        <path id="Vector_3" d="M22.1434 16.4248H9.82792V28.5567H22.1434V16.4248Z" fill="#29ABE2"/>
-        <path id="Vector_4" d="M47.1911 60.7904C47.1911 63.3754 45.8554 64.7659 43.9891 64.7659C42.1228 64.7659 40.9008 63.1141 40.9008 60.9211C40.9008 58.728 42.1607 56.9922 44.0933 56.9922C46.0259 56.9922 47.1911 58.7 47.1911 60.7904ZM42.3312 60.8931C42.3312 62.4516 42.966 63.5994 44.0554 63.5994C45.1449 63.5994 45.7606 62.3862 45.7606 60.7997C45.7606 59.4092 45.1922 58.1027 44.0554 58.1027C42.9186 58.1027 42.3312 59.3626 42.3312 60.8931Z" fill="white"/>
-        <path id="Vector_5" d="M49.6353 57.104V64.6445H48.2711V57.104H49.6353Z" fill="white"/>
-        <path id="Vector_6" d="M51.1131 64.6445V57.104H52.6289L54.2583 60.2116C54.6778 61.0242 55.051 61.8592 55.3762 62.7127C55.2909 61.7795 55.253 60.7063 55.253 59.5117V57.104H56.5035V64.6445H55.092L53.4436 61.4715C53.0072 60.638 52.6182 59.7812 52.2784 58.9051C52.2784 59.8384 52.3447 60.8929 52.3447 62.1901V64.6351L51.1131 64.6445Z" fill="white"/>
-        </g>
-        </g>
-        </svg>
-     </div>
-        <h1>Add Contact</h1>
-        <span>Tasks are better with a team!</span>
-        <div class="blue-line"> </div>
-    </div>
-    <div class="pop-up-right">
-        <div onclick="closeWindow()" class="closeBtn">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g id="close">
-        <mask id="mask0_83890_4117" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-        <rect id="Bounding box" width="24" height="24" fill="#D9D9D9"/>
-        </mask>
-        <g mask="url(#mask0_83890_4117)">
-        <path id="close_2" d="M12 13.4L7.10005 18.3C6.91672 18.4834 6.68338 18.575 6.40005 18.575C6.11672 18.575 5.88338 18.4834 5.70005 18.3C5.51672 18.1167 5.42505 17.8834 5.42505 17.6C5.42505 17.3167 5.51672 17.0834 5.70005 16.9L10.6 12L5.70005 7.10005C5.51672 6.91672 5.42505 6.68338 5.42505 6.40005C5.42505 6.11672 5.51672 5.88338 5.70005 5.70005C5.88338 5.51672 6.11672 5.42505 6.40005 5.42505C6.68338 5.42505 6.91672 5.51672 7.10005 5.70005L12 10.6L16.9 5.70005C17.0834 5.51672 17.3167 5.42505 17.6 5.42505C17.8834 5.42505 18.1167 5.51672 18.3 5.70005C18.4834 5.88338 18.575 6.11672 18.575 6.40005C18.575 6.68338 18.4834 6.91672 18.3 7.10005L13.4 12L18.3 16.9C18.4834 17.0834 18.575 17.3167 18.575 17.6C18.575 17.8834 18.4834 18.1167 18.3 18.3C18.1167 18.4834 17.8834 18.575 17.6 18.575C17.3167 18.575 17.0834 18.4834 16.9 18.3L12 13.4Z" fill="#2A3647"/>
-        </g>
-        </g>
-        </svg>
-        </div>
-        <div class="icon">
-        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g id="Group 9">
-        <circle id="Ellipse 5" cx="60" cy="60" r="60" fill="#D1D1D1"/>
-        </g>
-        </svg>
-        </div>
-        <div  class="contactinput">
-            <form onsubmit="addNewContact(event);return false;">
-                <div class="input-img">
-                <input required  placeholder="Name" id="name" type="text">
-                <svg class="svgStyleInput" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="person">
-                <mask id="mask0_84485_2192" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-                <rect id="Bounding box" width="24" height="24" fill="#D9D9D9"/>
-                </mask>
-                <g mask="url(#mask0_84485_2192)">
-                <path id="person_2" d="M12 12C10.9 12 9.95833 11.6083 9.175 10.825C8.39167 10.0417 8 9.1 8 8C8 6.9 8.39167 5.95833 9.175 5.175C9.95833 4.39167 10.9 4 12 4C13.1 4 14.0417 4.39167 14.825 5.175C15.6083 5.95833 16 6.9 16 8C16 9.1 15.6083 10.0417 14.825 10.825C14.0417 11.6083 13.1 12 12 12ZM18 20H6C5.45 20 4.97917 19.8042 4.5875 19.4125C4.19583 19.0208 4 18.55 4 18V17.2C4 16.6333 4.14583 16.1125 4.4375 15.6375C4.72917 15.1625 5.11667 14.8 5.6 14.55C6.63333 14.0333 7.68333 13.6458 8.75 13.3875C9.81667 13.1292 10.9 13 12 13C13.1 13 14.1833 13.1292 15.25 13.3875C16.3167 13.6458 17.3667 14.0333 18.4 14.55C18.8833 14.8 19.2708 15.1625 19.5625 15.6375C19.8542 16.1125 20 16.6333 20 17.2V18C20 18.55 19.8042 19.0208 19.4125 19.4125C19.0208 19.8042 18.55 20 18 20ZM6 18H18V17.2C18 17.0167 17.9542 16.85 17.8625 16.7C17.7708 16.55 17.65 16.4333 17.5 16.35C16.6 15.9 15.6917 15.5625 14.775 15.3375C13.8583 15.1125 12.9333 15 12 15C11.0667 15 10.1417 15.1125 9.225 15.3375C8.30833 15.5625 7.4 15.9 6.5 16.35C6.35 16.4333 6.22917 16.55 6.1375 16.7C6.04583 16.85 6 17.0167 6 17.2V18ZM12 10C12.55 10 13.0208 9.80417 13.4125 9.4125C13.8042 9.02083 14 8.55 14 8C14 7.45 13.8042 6.97917 13.4125 6.5875C13.0208 6.19583 12.55 6 12 6C11.45 6 10.9792 6.19583 10.5875 6.5875C10.1958 6.97917 10 7.45 10 8C10 8.55 10.1958 9.02083 10.5875 9.4125C10.9792 9.80417 11.45 10 12 10Z" fill="#A8A8A8"/>
-                </g>
-                </g>
-                </svg>
-                </div>
-                <div class="input-img">
-                <input required class="contactMail" placeholder="Email" id="email" type="email">
-                <svg class="svgStyleInput" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div id="contactsShow" class="contact-onlick-content"></div>
+      </div>
+  <div style="display:none;" id="contactPopUp" class="contact-pop-up">
+          <div class="pup-up-content" action="">
+  <div class="pop-up-left">
+   <div class="join-logo">
+   <svg width="57" height="67" viewBox="0 0 57 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g id="Capa 2">
+      <g id="Capa 1">
+      <path id="Vector" d="M40.7397 0H28.4242V13.8957H40.7397V0Z" fill="white"/>
+      <path id="Vector_2" d="M28.4243 25.197H40.7397V44.7947C40.796 49.5105 39.4275 54.1362 36.8083 58.0839C34.222 61.9194 29.2295 66.4829 19.9929 66.4829C9.93211 66.4829 4.06806 61.8167 0.903931 59.2597L8.67215 49.8621C11.7605 52.3352 14.7351 54.3696 20.0403 54.3696C24.057 54.3696 25.658 52.7645 26.5959 51.3646C27.8709 49.4203 28.5304 47.1465 28.4906 44.8321L28.4243 25.197Z" fill="white"/>
+      <path id="Vector_3" d="M22.1434 16.4248H9.82792V28.5567H22.1434V16.4248Z" fill="#29ABE2"/>
+      <path id="Vector_4" d="M47.1911 60.7904C47.1911 63.3754 45.8554 64.7659 43.9891 64.7659C42.1228 64.7659 40.9008 63.1141 40.9008 60.9211C40.9008 58.728 42.1607 56.9922 44.0933 56.9922C46.0259 56.9922 47.1911 58.7 47.1911 60.7904ZM42.3312 60.8931C42.3312 62.4516 42.966 63.5994 44.0554 63.5994C45.1449 63.5994 45.7606 62.3862 45.7606 60.7997C45.7606 59.4092 45.1922 58.1027 44.0554 58.1027C42.9186 58.1027 42.3312 59.3626 42.3312 60.8931Z" fill="white"/>
+      <path id="Vector_5" d="M49.6353 57.104V64.6445H48.2711V57.104H49.6353Z" fill="white"/>
+      <path id="Vector_6" d="M51.1131 64.6445V57.104H52.6289L54.2583 60.2116C54.6778 61.0242 55.051 61.8592 55.3762 62.7127C55.2909 61.7795 55.253 60.7063 55.253 59.5117V57.104H56.5035V64.6445H55.092L53.4436 61.4715C53.0072 60.638 52.6182 59.7812 52.2784 58.9051C52.2784 59.8384 52.3447 60.8929 52.3447 62.1901V64.6351L51.1131 64.6445Z" fill="white"/>
+      </g>
+      </g>
+      </svg>
+   </div>
+      <h1>Add Contact</h1>
+      <span>Tasks are better with a team!</span>
+      <div class="blue-line"> </div>
+  </div>
+  <div class="pop-up-right">
+      <div onclick="closeWindow()" class="closeBtn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g id="close">
+      <mask id="mask0_83890_4117" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+      <rect id="Bounding box" width="24" height="24" fill="#D9D9D9"/>
+      </mask>
+      <g mask="url(#mask0_83890_4117)">
+      <path id="close_2" d="M12 13.4L7.10005 18.3C6.91672 18.4834 6.68338 18.575 6.40005 18.575C6.11672 18.575 5.88338 18.4834 5.70005 18.3C5.51672 18.1167 5.42505 17.8834 5.42505 17.6C5.42505 17.3167 5.51672 17.0834 5.70005 16.9L10.6 12L5.70005 7.10005C5.51672 6.91672 5.42505 6.68338 5.42505 6.40005C5.42505 6.11672 5.51672 5.88338 5.70005 5.70005C5.88338 5.51672 6.11672 5.42505 6.40005 5.42505C6.68338 5.42505 6.91672 5.51672 7.10005 5.70005L12 10.6L16.9 5.70005C17.0834 5.51672 17.3167 5.42505 17.6 5.42505C17.8834 5.42505 18.1167 5.51672 18.3 5.70005C18.4834 5.88338 18.575 6.11672 18.575 6.40005C18.575 6.68338 18.4834 6.91672 18.3 7.10005L13.4 12L18.3 16.9C18.4834 17.0834 18.575 17.3167 18.575 17.6C18.575 17.8834 18.4834 18.1167 18.3 18.3C18.1167 18.4834 17.8834 18.575 17.6 18.575C17.3167 18.575 17.0834 18.4834 16.9 18.3L12 13.4Z" fill="#2A3647"/>
+      </g>
+      </g>
+      </svg>
+      </div>
+      <div class="icon">
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g id="Group 9">
+      <circle id="Ellipse 5" cx="60" cy="60" r="60" fill="#D1D1D1"/>
+      </g>
+      </svg>
+      </div>
+      <div  class="contactinput">
+          <form onsubmit="addNewContact(event);return false;">
+              <div class="input-img">
+              <input required  placeholder="Name" id="name" type="text">
+              <svg class="svgStyleInput" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="person">
+              <mask id="mask0_84485_2192" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+              <rect id="Bounding box" width="24" height="24" fill="#D9D9D9"/>
+              </mask>
+              <g mask="url(#mask0_84485_2192)">
+              <path id="person_2" d="M12 12C10.9 12 9.95833 11.6083 9.175 10.825C8.39167 10.0417 8 9.1 8 8C8 6.9 8.39167 5.95833 9.175 5.175C9.95833 4.39167 10.9 4 12 4C13.1 4 14.0417 4.39167 14.825 5.175C15.6083 5.95833 16 6.9 16 8C16 9.1 15.6083 10.0417 14.825 10.825C14.0417 11.6083 13.1 12 12 12ZM18 20H6C5.45 20 4.97917 19.8042 4.5875 19.4125C4.19583 19.0208 4 18.55 4 18V17.2C4 16.6333 4.14583 16.1125 4.4375 15.6375C4.72917 15.1625 5.11667 14.8 5.6 14.55C6.63333 14.0333 7.68333 13.6458 8.75 13.3875C9.81667 13.1292 10.9 13 12 13C13.1 13 14.1833 13.1292 15.25 13.3875C16.3167 13.6458 17.3667 14.0333 18.4 14.55C18.8833 14.8 19.2708 15.1625 19.5625 15.6375C19.8542 16.1125 20 16.6333 20 17.2V18C20 18.55 19.8042 19.0208 19.4125 19.4125C19.0208 19.8042 18.55 20 18 20ZM6 18H18V17.2C18 17.0167 17.9542 16.85 17.8625 16.7C17.7708 16.55 17.65 16.4333 17.5 16.35C16.6 15.9 15.6917 15.5625 14.775 15.3375C13.8583 15.1125 12.9333 15 12 15C11.0667 15 10.1417 15.1125 9.225 15.3375C8.30833 15.5625 7.4 15.9 6.5 16.35C6.35 16.4333 6.22917 16.55 6.1375 16.7C6.04583 16.85 6 17.0167 6 17.2V18ZM12 10C12.55 10 13.0208 9.80417 13.4125 9.4125C13.8042 9.02083 14 8.55 14 8C14 7.45 13.8042 6.97917 13.4125 6.5875C13.0208 6.19583 12.55 6 12 6C11.45 6 10.9792 6.19583 10.5875 6.5875C10.1958 6.97917 10 7.45 10 8C10 8.55 10.1958 9.02083 10.5875 9.4125C10.9792 9.80417 11.45 10 12 10Z" fill="#A8A8A8"/>
+              </g>
+              </g>
+              </svg>
+              </div>
+              <div class="input-img">
+              <input required class="contactMail" placeholder="Email" id="email" type="email">
+              <svg class="svgStyleInput" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="mail">
 <mask id="mask0_84485_2199" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
 <rect id="Bounding box" width="24" height="24" fill="#D9D9D9"/>
@@ -311,10 +253,10 @@ function returnRenderHTML() {
 </g>
 </g>
 </svg>
-                </div>
-                <div class="input-img">
-                <input  placeholder="Phone number" onwheel="this.blur();"  id="number" type="number">
-                <svg class="svgStyleInput" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              </div>
+              <div class="input-img">
+              <input  placeholder="Phone number" onwheel="this.blur();"  id="number" type="number">
+              <svg class="svgStyleInput" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="call">
 <mask id="mask0_84485_2206" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
 <rect id="Bounding box" y="0.5" width="24" height="24" fill="#D9D9D9"/>
@@ -324,74 +266,74 @@ function returnRenderHTML() {
 </g>
 </g>
 </svg>
-                </div>
-                <div class="contactBtn">
-                <button onclick="closeWindow()" class="cancelBtn">
-                  Cancel
-                  <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g id="iconoir:cancel">
-                  <path id="Vector" d="M12.001 12.5001L17.244 17.7431M6.758 17.7431L12.001 12.5001L6.758 17.7431ZM17.244 7.25708L12 12.5001L17.244 7.25708ZM12 12.5001L6.758 7.25708L12 12.5001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </g>
-                  </svg>  
-                </button>
-                <button class="createBtn">
-                  Create Contact
+              </div>
+              <div class="contactBtn">
+              <button onclick="closeWindow()" class="cancelBtn">
+                Cancel
                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="check">
-                <mask id="mask0_84485_3902" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
-                <rect id="Bounding box" y="0.5" width="24" height="24" fill="#D9D9D9"/>
-                </mask>
-                <g mask="url(#mask0_84485_3902)">
-                <path id="check_2" d="M9.55057 15.65L18.0256 7.175C18.2256 6.975 18.4631 6.875 18.7381 6.875C19.0131 6.875 19.2506 6.975 19.4506 7.175C19.6506 7.375 19.7506 7.6125 19.7506 7.8875C19.7506 8.1625 19.6506 8.4 19.4506 8.6L10.2506 17.8C10.0506 18 9.81724 18.1 9.55057 18.1C9.28391 18.1 9.05057 18 8.85057 17.8L4.55057 13.5C4.35057 13.3 4.25474 13.0625 4.26307 12.7875C4.27141 12.5125 4.37557 12.275 4.57557 12.075C4.77557 11.875 5.01307 11.775 5.28807 11.775C5.56307 11.775 5.80057 11.875 6.00057 12.075L9.55057 15.65Z" fill="white"/>
+                <g id="iconoir:cancel">
+                <path id="Vector" d="M12.001 12.5001L17.244 17.7431M6.758 17.7431L12.001 12.5001L6.758 17.7431ZM17.244 7.25708L12 12.5001L17.244 7.25708ZM12 12.5001L6.758 7.25708L12 12.5001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </g>
-                </g>
-                </svg>
-                </button>
-                </div>
-                <div class="message" id="errorMessage"></div>
-            </form>
+                </svg>  
+              </button>
+              <button class="createBtn">
+                Create Contact
+              <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="check">
+              <mask id="mask0_84485_3902" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
+              <rect id="Bounding box" y="0.5" width="24" height="24" fill="#D9D9D9"/>
+              </mask>
+              <g mask="url(#mask0_84485_3902)">
+              <path id="check_2" d="M9.55057 15.65L18.0256 7.175C18.2256 6.975 18.4631 6.875 18.7381 6.875C19.0131 6.875 19.2506 6.975 19.4506 7.175C19.6506 7.375 19.7506 7.6125 19.7506 7.8875C19.7506 8.1625 19.6506 8.4 19.4506 8.6L10.2506 17.8C10.0506 18 9.81724 18.1 9.55057 18.1C9.28391 18.1 9.05057 18 8.85057 17.8L4.55057 13.5C4.35057 13.3 4.25474 13.0625 4.26307 12.7875C4.27141 12.5125 4.37557 12.275 4.57557 12.075C4.77557 11.875 5.01307 11.775 5.28807 11.775C5.56307 11.775 5.80057 11.875 6.00057 12.075L9.55057 15.65Z" fill="white"/>
+              </g>
+              </g>
+              </svg>
+              </button>
+              </div>
+              <div class="message" id="errorMessage"></div>
+          </form>
 
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
+      </div>
+  </div>
+  </div>
+  </div>
+  </div>
 
-        </div>
-    `;
+      </div>
+  `;
 }
 
 function addNewContact(event) {
-  event.preventDefault();
+    event.preventDefault();
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const phone = document.getElementById("number").value;
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("number").value;
 
-  if (contacts.some((contact) => contact.email === email)) {
-    const errorMessage = document.getElementById("errorMessage");
-    errorMessage.textContent = "A contact with the same email already exists!";
-    errorMessage.style.color = "red";
-    return;
-  }
+    if (contacts.some((contact) => contact.email === email)) {
+        const errorMessage = document.getElementById("errorMessage");
+        errorMessage.textContent = "A contact with the same email already exists!";
+        errorMessage.style.color = "red";
+        return;
+    }
 
-  const newContact = {
-    name,
-    email,
-    phone,
-    color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
-  };
+    const newContact = {
+        name,
+        email,
+        phone,
+        color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+    };
 
-  contacts.push(newContact);
+    contacts.push(newContact);
 
-  renderContacts();
-  closeWindow();
+    renderContacts();
+    closeWindow();
 }
 
 function openContactForm() {
-  document.getElementById("contactPopUp").style.display = "flex";
+    document.getElementById("contactPopUp").style.display = "flex";
 }
 
 function closeWindow() {
-  document.getElementById("contactPopUp").style.display = "none";
+    document.getElementById("contactPopUp").style.display = "none";
 }

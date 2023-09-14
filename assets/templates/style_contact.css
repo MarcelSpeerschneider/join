@@ -1,444 +1,454 @@
 .contact-container {
-  display: flex;
-  flex-direction: column;
-  width: calc(100% - 232px);
-  height: calc(100% - 89px);
-  position: fixed;
-  top: 89px;
-  left: 232px;
-  background-color: #f5f5f5;
-  z-index: 0;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 232px);
+    height: calc(100% - 89px);
+    position: fixed;
+    top: 89px;
+    left: 232px;
+    background-color: #f5f5f5;
+    z-index: 0;
 }
 
 .contact-content {
-  display: flex;
-  justify-content: flex-start;
-  position: relative;
-  height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    height: 100%;
 }
 
 .showContactRight {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 4% 5%;
-  flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 4% 5%;
+    flex: 2;
 }
 
 .contacts-header {
-  width: 100%;
-  top: 10%;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  height: 15%;
+    width: 100%;
+    top: 10%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 15%;
 }
 
 .contact-list {
-  width: 430px;
-  height: 100%;
-  background-color: white;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  overflow: scroll;
-  box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.3);
+    width: 430px;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    overflow: scroll;
+    box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.3);
 }
 
 .button-container {
-  position: sticky;
-  top: 10px;
-  margin-top: 20px;
+    position: sticky;
+    top: 10px;
+    margin-top: 20px;
 }
 
 .button-container button {
-  width: 352px;
-  height: 56px;
-  border-radius: 10px;
-  background-color: #2a3647;
-  color: white;
-  font-size: 21px;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
+    width: 352px;
+    height: 56px;
+    border-radius: 10px;
+    background-color: #2a3647;
+    color: white;
+    font-size: 21px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 }
 
 .button-container button:hover {
-  background-color: rgb(40, 171, 226);
-  box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
+    background-color: rgb(40, 171, 226);
+    box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
 }
 
 .profil-icon {
-  border: 2px solid transparent;
-  width: 25px;
-  height: 25px;
-  padding: 10px;
-  border-radius: 100%;
-  font-size: 16px;
-  border-color: white;
-  margin-left: 25px;
-  font-weight: 400;
-  color: white;
-  line-height: 1.5;
-  text-align: center;
-  background-color: rgb(91, 61, 94);
+    border: 2px solid transparent;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 100%;
+    font-size: 16px;
+    border-color: white;
+    margin-left: 25px;
+    font-weight: 400;
+    color: white;
+    line-height: 1.5;
+    text-align: center;
+    background-color: rgb(91, 61, 94);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
 }
 
 .list-of-contacts {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 79px;
-  border-radius: 10px;
-  margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 79px;
+    border-radius: 10px;
+    margin-top: 15px;
 }
 
 .list-of-contacts:hover {
-  cursor: pointer;
-  background: #f5f5f5;
+    cursor: pointer;
+    background: #f5f5f5;
 }
 
 .contact-profil-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .name-email {
-  margin-left: 25px;
+    margin-left: 25px;
 }
 
 .name {
-  font-size: 20px;
-  font-weight: 400;
-  margin-bottom: 5px;
-  margin-top: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 220px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    margin-top: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 220px;
 }
 
 .email {
-  color: #007cee;
-  font-size: 16px;
-  font-weight: 400;
-  margin: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 220px;
-  margin-bottom: 5px;
+    color: #007cee;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 220px;
+    margin-bottom: 5px;
 }
 
 .number {
-  color: #007cee;
-  font-size: 16px;
-  font-weight: 400;
-  margin: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 220px;
+    color: #007cee;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 220px;
 }
 
 .pup-up-content {
-  background-color: white;
-  display: flex;
-  border-radius: 31px;
-  width: 1212px;
-  height: 594px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  animation: slideInFromRight 1s;
+    background-color: white;
+    display: flex;
+    border-radius: 31px;
+    width: 1212px;
+    height: 594px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: slideInFromRight 1s;
 }
 
 .contact-pop-up {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
 }
 
 @keyframes slideInFromRight {
-  0% {
-    transform: translateX(100%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 .pop-up-left {
-  background-color: #2a3647;
-  border-radius: 30px 0 0 30px;
-  width: 460px;
-  display: flex;
-  gap: 16px;
-  padding: 46px;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  justify-content: center;
-  align-items: flex-start;
-  color: white;
+    background-color: #2a3647;
+    border-radius: 30px 0 0 30px;
+    width: 460px;
+    display: flex;
+    gap: 16px;
+    padding: 46px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: flex-start;
+    color: white;
 }
 
 .pop-up-left h1 {
-  font-size: 46px;
+    font-size: 46px;
 }
 
 .pop-up-left span {
-  font-size: 21px;
-  font-weight: 200;
+    font-size: 21px;
+    font-weight: 200;
 }
 
 .join-logo {
-  width: 55px;
-  height: 66px;
+    width: 55px;
+    height: 66px;
 }
 
 .pop-up-right {
-  width: 700px;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  padding: 51px;
-  box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
+    width: 700px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding: 51px;
+    box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
 }
 
 .blue-line {
-  width: 90px;
-  height: 0px;
-  border: 2px solid #29abe2;
-  border-radius: 10px;
+    width: 90px;
+    height: 0px;
+    border: 2px solid #29abe2;
+    border-radius: 10px;
 }
 
 .contactinput {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 input:focus {
-  outline: none;
+    outline: none;
 }
 
 .contactinput input {
-  width: 422px;
-  height: 51px;
-  padding: 2px 10px 2px 10px;
-  border-color: #d1d1d1;
-  border-radius: 10px;
-  border-width: 2px;
-  border-style: solid;
-  font-size: 21px;
-  margin-bottom: 50px;
+    width: 422px;
+    height: 51px;
+    padding: 2px 10px 2px 10px;
+    border-color: #d1d1d1;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    font-size: 21px;
+    margin-bottom: 50px;
 }
 
 .icon {
-  height: 120px;
-  width: 120px;
-  padding-right: 50px;
+    height: 120px;
+    width: 120px;
+    padding-right: 50px;
 }
 
 .closeBtn {
-  position: absolute;
-  transform: translate(316px, -262px);
-  cursor: pointer;
-  width: 22px;
-  height: 22px;
+    position: absolute;
+    transform: translate(316px, -262px);
+    cursor: pointer;
+    width: 22px;
+    height: 22px;
 }
 
 .cancelBtn:hover {
-  border-color: #29aae1;
-  color: rgb(148, 213, 240) !important;
-  transform: scale(1.01);
-  transition: transform 225ms ease-in-out;
-  box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
+    border-color: #29aae1;
+    color: rgb(148, 213, 240) !important;
+    transform: scale(1.01);
+    transition: transform 225ms ease-in-out;
+    box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
 }
 
 .createBtn:hover {
-  background-color: rgb(40, 171, 226);
-  box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
+    background-color: rgb(40, 171, 226);
+    box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
 }
 
 .contactBtn {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  margin-right: 28px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 28px;
 }
 
 .cancelBtn {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  width: 136px;
-  height: 55px;
-  background-color: white;
-  border: 2px solid #2a3647;
-  padding: 5px;
-  border-radius: 10px;
-  font-size: 21px;
-  margin-right: 20px;
-  cursor: pointer;
-  z-index: 200;
-  gap: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 136px;
+    height: 55px;
+    background-color: white;
+    border: 2px solid #2a3647;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 21px;
+    margin-right: 20px;
+    cursor: pointer;
+    z-index: 200;
+    gap: 5px;
 }
 
 .createBtn {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  width: 218px;
-  height: 55px;
-  background-color: #2a3647;
-  border: none;
-  padding: 5px;
-  border-radius: 10px;
-  font-size: 21px;
-  color: white;
-  cursor: pointer;
-  z-index: 200;
-  gap: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 218px;
+    height: 55px;
+    background-color: #2a3647;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 21px;
+    color: white;
+    cursor: pointer;
+    z-index: 200;
+    gap: 5px;
 }
 
 .first-letter-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.letter {
+    display: flex;
+    border-bottom: 2px solid lightgray;
+    padding: 5px;
+    font-size: 22px;
 }
 
 .letter-container {
-  margin: 5px 0;
-  font-size: 1.2em;
+    margin: 5px 0;
+    font-size: 1.2em;
 }
 
 .current-letter-content {
-  font-size: 20px;
-  border-bottom: 2px solid #ccc;
-  width: 320px;
-  display: flex;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  padding-bottom: 10px;
+    font-size: 20px;
+    border-bottom: 2px solid #ccc;
+    width: 320px;
+    display: flex;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-bottom: 10px;
 }
 
 .svgStyleInput {
-  width: 30px;
-  height: 30px;
-  position: relative;
-  right: 35px;
-  top: 7px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    right: 35px;
+    top: 7px;
 }
 
 .input-img {
-  display: flex;
-  align-items: baseline;
+    display: flex;
+    align-items: baseline;
 }
 
 #contactsShow {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
 }
 
 .profil-icon-right {
-  border: 2px solid transparent;
-  width: 70px;
-  height: 70px;
-  padding: 10px;
-  border-radius: 100%;
-  font-size: 16px;
-  border-color: white;
-  margin-left: 25px;
-  font-weight: 400;
-  color: white;
-  line-height: 1.5;
-  text-align: center;
-  background-color: rgb(91, 61, 94);
+    border: 2px solid transparent;
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+    border-radius: 100%;
+    font-size: 16px;
+    border-color: white;
+    margin-left: 25px;
+    font-weight: 400;
+    color: white;
+    line-height: 1.5;
+    text-align: center;
+    background-color: rgb(91, 61, 94);
 }
 
 .icon-name {
-  display: flex;
-  align-items: center;
-  gap: 30px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
 .icon-name h2 {
-  font-size: 45px;
-  white-space: nowrap;
+    font-size: 45px;
+    white-space: nowrap;
 }
 
 .contactInformation {
-  font-size: 25px;
+    font-size: 25px;
 }
 
 .email-heade {
-  border-radius: 10px;
-  padding: 10px;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .email-header span {
-  color: black;
+    color: black;
 }
 
 .email-header a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .email-header p:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .phone-phone {
-  border-radius: 10px;
-  padding: 10px;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .phone-phone a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .phone-phone span {
-  color: black;
+    color: black;
 }
 
 .phone-phone p:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .edit-delete {
-  display: flex;
-  gap: 20px;
+    display: flex;
+    gap: 20px;
 }
 
 .edit-delete-hover:hover {
-  background-color: lightgray;
-  cursor: pointer;
-  text-decoration: underline;
+    background-color: lightgray;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .edit-delete-hover {
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
 }
