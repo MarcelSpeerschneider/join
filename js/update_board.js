@@ -82,7 +82,7 @@ function renderBoard() {
                 <img class="magnifier" src="./../img/search.png">
             </div>
 
-            <button class="addTaskButton" onclick="showTask()">Add task<img src="./../img/add.png"></button>
+            <button class="addTaskButton" onclick="openAddTaskForm()">Add task<img src="./../img/add.png"></button>
         </div>
     </div>
     <div class="board-content-container">
@@ -122,6 +122,12 @@ function renderBoard() {
 
             </div>
         </div>
+    </div>
+    <div id="overlay" class="overlayStyle">
+        <div class="overlay-content">
+            ${htmlElementAddTask()}
+        </div>
+        <button onclick="closeAddTaskForm()">Close</button>
     </div>
     `
     updateBoard();

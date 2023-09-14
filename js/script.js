@@ -115,152 +115,156 @@ function renderSummary() {
 
 function renderAddTask() {
         let dashboard = document.getElementById('dashboard-content');
-        dashboard.innerHTML = /*html*/`
-        <div class="addtask-main-content">
-            <h1 style="padding-left: 5%; margin-bottom: 4%">Add Task</h1>
-            <div class="addtask-content">
-                <div class="addtask-side">
-                    <div class="addtask-title-container">
-                        Title
-                        <input placeholder="Enter a title" type="text" id="title">
+        dashboard.innerHTML = htmlElementAddTask();
+}
+
+function htmlElementAddTask(){
+    return /*html*/`
+    <div class="addtask-main-content">
+        <h1 style="padding-left: 5%; margin-bottom: 4%">Add Task</h1>
+        <div class="addtask-content">
+            <div class="addtask-side">
+                <div class="addtask-title-container">
+                    Title
+                    <input placeholder="Enter a title" type="text" id="title">
+                </div>
+                <div class="addtask-description-container">
+                    Description
+                    <textarea name="description" id="description" cols="30" rows="10"
+                        placeholder="Enter a description"></textarea>
+                </div>
+                <div class="addtask-assigned-to-container">
+                    Assigned to
+                    <div class="select-contacts-to-assign" id="select-contacts-to-assign"
+                        onclick="selectContactsToAssign()">
+                        <span>Select Contacts to assign</span>
+                        <div id="arrow-drop-down">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <mask id="mask0_83802_4068" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                    width="24" height="24">
+                                    <rect width="24" height="24" fill="#D9D9D9" />
+                                </mask>
+                                <g mask="url(#mask0_83802_4068)">
+                                    <path
+                                        d="M11.3 14.3L8.69998 11.7C8.38331 11.3833 8.31248 11.0208 8.48748 10.6125C8.66248 10.2042 8.97498 10 9.42498 10H14.575C15.025 10 15.3375 10.2042 15.5125 10.6125C15.6875 11.0208 15.6166 11.3833 15.3 11.7L12.7 14.3C12.6 14.4 12.4916 14.475 12.375 14.525C12.2583 14.575 12.1333 14.6 12 14.6C11.8666 14.6 11.7416 14.575 11.625 14.525C11.5083 14.475 11.4 14.4 11.3 14.3Z"
+                                        fill="#2A3647" />
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="select-contacts-to-assign-dropdown" id="select-contacts-to-assign-dropdown"
+                            onclick="childFunction(event)">
+                            <div class="select-contacts-to-assign-dropdown-contact-container"
+                                id="select-contacts-to-assign-dropdown-contact-container1" onclick=assignContactToTask(1)>
+                                <div class="select-contacts-to-assign-dropdown-contact">
+                                    <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
+                                        <svg width="28" height="28">
+                                            <circle cx="14" cy="14" r="14" fill="#00bee8" />
+                                        </svg>
+                                        <div class="select-contacts-to-assign-dropdown-contact-credentials">SM</div>
+                                    </div>
+                                    <div class="select-contacts-to-assign-dropdown-contactname">Contact 1</div>
+                                </div>
+                                <div class="select-contacts-to-assign-dropdown-checkbox"><img
+                                        src="./../img/checkbox-blank.svg" id="select-contacts-to-assign-dropdown-checkbox1">
+                                </div>
+                            </div>
+                            <div class="select-contacts-to-assign-dropdown-contact-container"
+                                id="select-contacts-to-assign-dropdown-contact-container2" onclick=assignContactToTask(2)>
+                                <div class="select-contacts-to-assign-dropdown-contact">
+                                    <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
+                                        <svg width="28" height="28">
+                                            <circle cx="14" cy="14" r="14" fill="#ff7a00" />
+                                        </svg>
+                                        <div class="select-contacts-to-assign-dropdown-contact-credentials">AB</div>
+                                    </div>
+                                    <div class="select-contacts-to-assign-dropdown-contactname">Contact 2</div>
+                                </div>
+                                <div class="select-contacts-to-assign-dropdown-checkbox"><img
+                                        src="./../img/checkbox-blank.svg" id="select-contacts-to-assign-dropdown-checkbox2">
+                                </div>
+                            </div>
+                            <div class="select-contacts-to-assign-dropdown-contact-container"
+                                id="select-contacts-to-assign-dropdown-contact-container3" onclick=assignContactToTask(3)>
+                                <div class="select-contacts-to-assign-dropdown-contact">
+                                    <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
+                                        <svg width="28" height="28">
+                                            <circle cx="14" cy="14" r="14" fill="#bb78ff" />
+                                        </svg>
+                                        <div class="select-contacts-to-assign-dropdown-contact-credentials">PA</div>
+                                    </div>
+                                    <div class="select-contacts-to-assign-dropdown-contactname">Contact 3</div>
+                                </div>
+                                <div class="select-contacts-to-assign-dropdown-checkbox"><img
+                                        src="./../img/checkbox-blank.svg" id="select-contacts-to-assign-dropdown-checkbox3">
+                                </div>
+                            </div>
+                            <button class="add-new-contact-button">Add new Contact</button>
+                        </div>
                     </div>
-                    <div class="addtask-description-container">
-                        Description
-                        <textarea name="description" id="description" cols="30" rows="10"
-                            placeholder="Enter a description"></textarea>
-                    </div>
-                    <div class="addtask-assigned-to-container">
-                        Assigned to
-                        <div class="select-contacts-to-assign" id="select-contacts-to-assign"
-                            onclick="selectContactsToAssign()">
-                            <span>Select Contacts to assign</span>
-                            <div id="arrow-drop-down">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <mask id="mask0_83802_4068" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
-                                        width="24" height="24">
-                                        <rect width="24" height="24" fill="#D9D9D9" />
-                                    </mask>
-                                    <g mask="url(#mask0_83802_4068)">
-                                        <path
-                                            d="M11.3 14.3L8.69998 11.7C8.38331 11.3833 8.31248 11.0208 8.48748 10.6125C8.66248 10.2042 8.97498 10 9.42498 10H14.575C15.025 10 15.3375 10.2042 15.5125 10.6125C15.6875 11.0208 15.6166 11.3833 15.3 11.7L12.7 14.3C12.6 14.4 12.4916 14.475 12.375 14.525C12.2583 14.575 12.1333 14.6 12 14.6C11.8666 14.6 11.7416 14.575 11.625 14.525C11.5083 14.475 11.4 14.4 11.3 14.3Z"
-                                            fill="#2A3647" />
-                                    </g>
+    
+                    <div>
+                        <div class="select-contacts-to-assign-dropdown-contact" id="contact-summary">
+                            <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
+                                <svg width="28" height="28">
+                                    <circle cx="14" cy="14" r="14" fill="#bb78ff" />
                                 </svg>
-                            </div>
-                            <div class="select-contacts-to-assign-dropdown" id="select-contacts-to-assign-dropdown"
-                                onclick="childFunction(event)">
-                                <div class="select-contacts-to-assign-dropdown-contact-container"
-                                    id="select-contacts-to-assign-dropdown-contact-container1" onclick=assignContactToTask(1)>
-                                    <div class="select-contacts-to-assign-dropdown-contact">
-                                        <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
-                                            <svg width="28" height="28">
-                                                <circle cx="14" cy="14" r="14" fill="#00bee8" />
-                                            </svg>
-                                            <div class="select-contacts-to-assign-dropdown-contact-credentials">SM</div>
-                                        </div>
-                                        <div class="select-contacts-to-assign-dropdown-contactname">Contact 1</div>
-                                    </div>
-                                    <div class="select-contacts-to-assign-dropdown-checkbox"><img
-                                            src="./../img/checkbox-blank.svg" id="select-contacts-to-assign-dropdown-checkbox1">
-                                    </div>
-                                </div>
-                                <div class="select-contacts-to-assign-dropdown-contact-container"
-                                    id="select-contacts-to-assign-dropdown-contact-container2" onclick=assignContactToTask(2)>
-                                    <div class="select-contacts-to-assign-dropdown-contact">
-                                        <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
-                                            <svg width="28" height="28">
-                                                <circle cx="14" cy="14" r="14" fill="#ff7a00" />
-                                            </svg>
-                                            <div class="select-contacts-to-assign-dropdown-contact-credentials">AB</div>
-                                        </div>
-                                        <div class="select-contacts-to-assign-dropdown-contactname">Contact 2</div>
-                                    </div>
-                                    <div class="select-contacts-to-assign-dropdown-checkbox"><img
-                                            src="./../img/checkbox-blank.svg" id="select-contacts-to-assign-dropdown-checkbox2">
-                                    </div>
-                                </div>
-                                <div class="select-contacts-to-assign-dropdown-contact-container"
-                                    id="select-contacts-to-assign-dropdown-contact-container3" onclick=assignContactToTask(3)>
-                                    <div class="select-contacts-to-assign-dropdown-contact">
-                                        <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
-                                            <svg width="28" height="28">
-                                                <circle cx="14" cy="14" r="14" fill="#bb78ff" />
-                                            </svg>
-                                            <div class="select-contacts-to-assign-dropdown-contact-credentials">PA</div>
-                                        </div>
-                                        <div class="select-contacts-to-assign-dropdown-contactname">Contact 3</div>
-                                    </div>
-                                    <div class="select-contacts-to-assign-dropdown-checkbox"><img
-                                            src="./../img/checkbox-blank.svg" id="select-contacts-to-assign-dropdown-checkbox3">
-                                    </div>
-                                </div>
-                                <button class="add-new-contact-button">Add new Contact</button>
-                            </div>
-                        </div>
-        
-                        <div>
-                            <div class="select-contacts-to-assign-dropdown-contact" id="contact-summary">
-                                <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
-                                    <svg width="28" height="28">
-                                        <circle cx="14" cy="14" r="14" fill="#bb78ff" />
-                                    </svg>
-                                    <div class="select-contacts-to-assign-dropdown-contact-credentials">PA</div>
-                                </div>
+                                <div class="select-contacts-to-assign-dropdown-contact-credentials">PA</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="2" height="426" viewBox="0 0 2 426" fill="none">
-                    <path d="M1.24805 1L1.24854 425" stroke="#D1D1D1" stroke-linecap="round" />
-                </svg>
-                <div class="addtask-side">
-                    <div class="addtask-title-container">
-                        Due date
-                        <input type="date" id="due-date" name="due-date" min="1900-01-01" max="2099-12-31"
-                            class="addtask-dates-select">
-                    </div>
-                    <div class="addtask-prio-main-container">
-                        <div class="addtask-prio-container" id="prio-urgent" onclick="prioContainer('urgent')">
-                            Urgent <img src="./../img/prio-urgent.svg">
-                        </div>
-                        <div class="addtask-prio-container" id="prio-medium" onclick="prioContainer('medium')">
-                            Medium <img src="./../img/prio-medium.svg">
-                        </div>
-                        <div class="addtask-prio-container" id="prio-low" onclick="prioContainer('low')">
-                            Low <img src="./../img/prio-low.svg">
-                        </div>
-                    </div>
-                    <div class="addtask-category-container">
-                        Category
-                        <select name="category" id="select-category">
-                            <option value="" disabled>Select a category</option>
-                            <option value="technical-task">Technical Task</option>
-                            <option value="user-story">User Story</option>
-                        </select>
-                    </div>
-                    <div class="addtask-assigned-to-container">
-                        Subtasks
-                        <div class="select-contacts-to-assign">
-                            <span>Add new subtask</span><img src="./../img/add-subtask.svg">
-                        </div>
-                    </div>
-                </div>
-        
             </div>
-            <div class="add-task-bottom-button">
-                <div class="add-task-bottom-button-left-side"></div>
-                <div class="add-task-bottom-button-right-side">
-                        <div class="add-task-bottom-button-container">
-                                <button class="button-clear" onmouseover="buttonCreateTaskChangeColor()" onmouseout="buttonCreateTaskChangeColorBack()">Clear<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="add-task-icon-cancel">
-                                <path d="M12.2495 12.0001L17.4925 17.2431M7.00653 17.2431L12.2495 12.0001L7.00653 17.2431ZM17.4925 6.75708L12.2485 12.0001L17.4925 6.75708ZM12.2485 12.0001L7.00653 6.75708L12.2485 12.0001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                </button>
-                                <button class= "button-create-task">Create Task<img src="./../img/check.svg" id="button-create-task"></button>
-                        </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="2" height="426" viewBox="0 0 2 426" fill="none">
+                <path d="M1.24805 1L1.24854 425" stroke="#D1D1D1" stroke-linecap="round" />
+            </svg>
+            <div class="addtask-side">
+                <div class="addtask-title-container">
+                    Due date
+                    <input type="date" id="due-date" name="due-date" min="1900-01-01" max="2099-12-31"
+                        class="addtask-dates-select">
                 </div>
+                <div class="addtask-prio-main-container">
+                    <div class="addtask-prio-container" id="prio-urgent" onclick="prioContainer('urgent')">
+                        Urgent <img src="./../img/prio-urgent.svg">
+                    </div>
+                    <div class="addtask-prio-container" id="prio-medium" onclick="prioContainer('medium')">
+                        Medium <img src="./../img/prio-medium.svg">
+                    </div>
+                    <div class="addtask-prio-container" id="prio-low" onclick="prioContainer('low')">
+                        Low <img src="./../img/prio-low.svg">
+                    </div>
+                </div>
+                <div class="addtask-category-container">
+                    Category
+                    <select name="category" id="select-category">
+                        <option value="" disabled>Select a category</option>
+                        <option value="technical-task">Technical Task</option>
+                        <option value="user-story">User Story</option>
+                    </select>
+                </div>
+                <div class="addtask-assigned-to-container">
+                    Subtasks
+                    <div class="select-contacts-to-assign">
+                        <span>Add new subtask</span><img src="./../img/add-subtask.svg">
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+        <div class="add-task-bottom-button">
+            <div class="add-task-bottom-button-left-side"></div>
+            <div class="add-task-bottom-button-right-side">
+                    <div class="add-task-bottom-button-container">
+                            <button class="button-clear" onmouseover="buttonCreateTaskChangeColor()" onmouseout="buttonCreateTaskChangeColorBack()">Clear<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="add-task-icon-cancel">
+                            <path d="M12.2495 12.0001L17.4925 17.2431M7.00653 17.2431L12.2495 12.0001L7.00653 17.2431ZM17.4925 6.75708L12.2485 12.0001L17.4925 6.75708ZM12.2485 12.0001L7.00653 6.75708L12.2485 12.0001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            </button>
+                            <button class= "button-create-task">Create Task<img src="./../img/check.svg" id="button-create-task"></button>
+                    </div>
             </div>
         </div>
-        `;
+    </div>
+    `;
 }
 
 function selectContactsToAssign() {
