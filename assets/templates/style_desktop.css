@@ -414,8 +414,6 @@ input {
     border: 1px solid #a7a7a7;
 }
 
-
-
 .select-contacts-to-assign-dropdown {
     position: absolute;
     top: calc(100% - 5px);
@@ -493,10 +491,9 @@ input {
 
 .addtask-prio-main-container {
     display: flex;
-    justify-content: center;
-    gap: 16px;
-    width: 80%;
+    justify-content: space-between;
     flex-wrap: wrap;
+    gap: 10px;
 }
 
 .addtask-prio-container {
