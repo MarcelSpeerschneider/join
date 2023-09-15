@@ -79,14 +79,10 @@
     height: 40px;
     padding: 10px;
     border-radius: 100%;
-    font-size: 16px;
     border-color: white;
     margin-left: 25px;
-    font-weight: 400;
+    font-weight: 500;
     color: white;
-    line-height: 1.5;
-    text-align: center;
-    background-color: rgb(91, 61, 94);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,6 +96,11 @@
     height: 79px;
     border-radius: 10px;
     margin-top: 15px;
+}
+
+.list-of-contacts.clicked {
+    background-color: rgb(42, 54, 72);
+    color: white;
 }
 
 .list-of-contacts:hover {
@@ -253,7 +254,14 @@ input:focus {
 .icon {
     height: 120px;
     width: 120px;
-    padding-right: 50px;
+    background-color: lightgray;
+    border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-right: 50px;
+   border: 1px solid #f5f5f5;
+   border-color: gray;
 }
 
 .closeBtn {
@@ -376,7 +384,6 @@ input:focus {
     height: 55px;
     padding: 10px;
     border-radius: 100%;
-    font-size: 16px;
     border-color: white;
     margin-left: 25px;
     font-weight: 400;
@@ -438,4 +445,10 @@ cursor: pointer;
 .info-name{
     display: flex;
     align-items: baseline;
+}
+
+.input-pop-up{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
