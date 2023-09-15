@@ -260,7 +260,7 @@ function generateEditContactPopupHTML(){
 </svg>
         </div>
         <div class="input-img">
-        <input required id="phone"  placeholder="Phone number" onwheel="this.blur();" type="number">
+        <input required id="phoneValueOne"  placeholder="Phone number" onwheel="this.blur();" type="number">
         <svg class="svgStyleInput" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="call">
 <mask id="mask0_84485_2206" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
@@ -421,7 +421,7 @@ function returnRenderHTML() {
 </svg>
               </div>
               <div class="input-img">
-              <input  placeholder="Phone number" onwheel="this.blur();"  id="phone" type="number">
+              <input  placeholder="Phone number" onwheel="this.blur();"  id="phoneValueTwo" type="number">
               <svg class="svgStyleInput" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="call">
 <mask id="mask0_84485_2206" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
@@ -531,9 +531,11 @@ function openEditContact(index) {
     const contact = contacts[index];
     document.getElementById('name').value = contact.name;
     document.getElementById('email').value = contact.email;
-    document.getElementById('phone').value = contact.phone;
+    document.getElementById('phoneValueOne').value = contact.phone;
     
-    console.log(contact.phone)
+    console.log(contact.name);
+    console.log(contact.email);
+    console.log(contact.phone);
 
     document.getElementById('editPopUp').style.display = 'flex';
 }
