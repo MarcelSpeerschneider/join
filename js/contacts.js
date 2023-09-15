@@ -60,26 +60,20 @@ const contacts = [{
     }
 ];
 
-
 function renderContacts() {
     let content = document.getElementById("dashboard-content");
     content.innerHTML = "";
     content.innerHTML += returnRenderHTML();
 
-
+    sortContactsAlphabetically();
+    const colors = generateColors();
+    let currentLetter=initializeCurrentLetter();
     let contactListElement = document.getElementById("firstLetterContainer");
     contactListElement.innerHTML = ``;
-
-    sortContactsAlphabetically();
-
-    const colors = ["#FF5733", "#33FF57", "#5733FF", "#FF33F9", "#33F9FF"];
-
-    let currentLetter=null;
-
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
-        const firstLetterOfFirstName = contact.name.split(" ")[0][0].toLocaleUpperCase();
-        if (firstLetterOfFirstName !== currentLetter) {
+        const firstLetterOfFirstName = getFirstLetterOfFirstName(contact);
+        if (isFirstLetterDifferent(firstLetterOfFirstName, currentLetter)) {
             currentLetter = firstLetterOfFirstName;
             contactListElement.innerHTML += generateLetterContainer(currentLetter);
         }
@@ -96,7 +90,6 @@ function generateLetterContainer(currentLetter) {
         </div>
     `;
 }
-
 
 function generateContactHTML(contact, i, color) {
     const firstLetterOfFirstName = contact.name.split(" ")[0][0].toUpperCase();
@@ -120,15 +113,6 @@ function generateContactHTML(contact, i, color) {
     `;
 }
 
-function sortContactsAlphabetically() {
-    contacts.sort((a, b) => a.name.localeCompare(b.name));
-}
-
-function deleteContact(index) {
-    contacts.splice(index, 1);
-    renderContacts();
-}
-
 function displayContactInfo(index, color) {
     const contact = contacts[index];
     let contentshow = document.getElementById("contactsShow");
@@ -141,7 +125,6 @@ function displayContactInfo(index, color) {
     const currentContact = document.getElementById(`contact-${index}`);
     currentContact.classList.add('clicked');
 }
-
 
 function generateContactInfoHTML(contact,index, color) {
     const firstLetterOfFirstName = contact.name.split(' ')[0][0];
@@ -277,7 +260,7 @@ function generateEditContactPopupHTML(){
 </svg>
         </div>
         <div class="input-img">
-        <input required  placeholder="Phone number" onwheel="this.blur();"  id="phone" type="number">
+        <input required id="phone"  placeholder="Phone number" onwheel="this.blur();" type="number">
         <svg class="svgStyleInput" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="call">
 <mask id="mask0_84485_2206" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
@@ -315,11 +298,6 @@ function generateEditContactPopupHTML(){
     </form>
 </div>
 `;
-}
-
-function deleteContact(index) {
-    contacts.splice(index, 1);
-    renderContacts();
 }
 
 function returnRenderHTML() {
@@ -491,6 +469,37 @@ function returnRenderHTML() {
   `;
 }
 
+function getFirstLetterOfFirstName(contact) {
+    return contact.name.split(" ")[0][0].toLocaleUpperCase();
+}
+
+function generateColors() {
+    return ["#FF5733", "#33FF57", "#5733FF", "#FF33F9", "#33F9FF"];
+}
+
+function isFirstLetterDifferent(firstLetterOfFirstName, currentLetter) {
+    return firstLetterOfFirstName !== currentLetter;
+}
+
+function deleteContact(index) {
+    contacts.splice(index, 1);
+    renderContacts();
+}
+
+function initializeCurrentLetter() {
+    let currentLetter = null;
+    return currentLetter;
+}
+
+function sortContactsAlphabetically() {
+    contacts.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function deleteContact(index) {
+    contacts.splice(index, 1);
+    renderContacts();
+}
+
 function addNewContact(event) {
     event.preventDefault();
 
@@ -518,15 +527,18 @@ function addNewContact(event) {
     closeWindow();
 }
 
-function openEditContact(index){
+function openEditContact(index) {
     const contact = contacts[index];
     document.getElementById('name').value = contact.name;
     document.getElementById('email').value = contact.email;
     document.getElementById('phone').value = contact.phone;
+    
+    console.log(contact.phone)
 
-
-    document.getElementById('editPopUp').style.display='flex';
+    document.getElementById('editPopUp').style.display = 'flex';
 }
+
+
 
 function closeEditWindow(){
     document.getElementById('editPopUp').style.display='none';
