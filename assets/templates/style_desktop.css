@@ -556,27 +556,35 @@ select {
     padding: 12px 0px;
 }
 
-.ul.add-new-subtask-list {
+.add-new-subtask-list ul {
     padding-inline-start: 24px;
     width: 100%;
+    padding-inline-start: 0px;
+    display: flex;
 }
 
 .add-new-subtask-list li {
-    position: relative;
-    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0px 16px;
 }
+
+.add-new-subtask-list li:before {
+    content: "•";
+    margin-right: 10px;
+  }
 
 .add-new-subtask-list li input {
     border: 0;
     padding: 0;
     background-color: transparent;
     border-radius: 8;
-}
+    justify-self: flex-start;
+    width: 100%;
+    }
 
 .add-new-subtask-icon-container-list {
-    position: absolute;
-    top: 0;
-    right: 28px;
     display: flex;
     justify-content: center;
     align-items: center;
