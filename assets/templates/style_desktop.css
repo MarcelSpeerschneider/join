@@ -494,6 +494,7 @@ input {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 10px;
+    width: 80%;
 }
 
 .addtask-prio-container {
@@ -536,6 +537,62 @@ select {
 
 }
 
+.add-new-subtask {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    background: #FFF;
+    padding: 0px 16px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+
+.add-new-subtask input {
+    border: none;
+    padding: 12px 0px;
+}
+
+.ul.add-new-subtask-list {
+    padding-inline-start: 24px;
+}
+
+.add-new-subtask-list li {
+    position: relative;
+    margin-top: 8px;
+}
+
+.add-new-subtask-list li input {
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 8;
+}
+
+.add-new-subtask-icon-container-list {
+    position: absolute;
+    top: 0;
+    right: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #bbbbbb;
+}
+
+.add-new-subtask-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #bbbbbb;
+}
+
+.add-new-subtask-icon-container :hover {
+    cursor: pointer;
+}
+
 .add-task-bottom-button-left-side {
     width: 50%;
 }
@@ -551,7 +608,7 @@ select {
     margin-top: 50px;
     width: 100%;
     display: flex;
-   
+
 }
 
 .add-task-bottom-button-container {
