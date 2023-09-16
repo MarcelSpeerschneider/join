@@ -89,7 +89,7 @@ function HTMLrenderPopUpAddTask() {
                     </svg>
                 </button>
                 <button type="submit" class="button-create-task">Create Task<img src="./../img/check.svg"
-                        id="button-create-task"></button>
+                        id="button-create-task" onclick="addToDoTaskToBoard()"></button>
             </div>
     </form>
     `;
@@ -113,10 +113,18 @@ function clearAddTaskFields(){
     let addTaskElements = document.getElementsByClassName('taskInput');
     for (let index = 0; index < addTaskElements.length; index++) {
         let elementByID = addTaskElements[index]['id'];
-        let setPlaceholder = document.getElementById(`${elementByID}`).placeholder;
-        let emptyValue = document.getElementById(`${elementByID}`);
-        emptyValue.value = '';
-        document.getElementById(`${elementByID}`).placeholder = `${setPlaceholder}`;
+        setPlaceHolder(elementByID);
     }
     document.getElementById('subTaskList').innerHTML = '';
+}
+
+function setPlaceHolder(elementByID){
+    let placeholderValue = document.getElementById(`${elementByID}`).placeholder;
+    let emptyValue = document.getElementById(`${elementByID}`);
+    emptyValue.value = '';
+    document.getElementById(`${elementByID}`).placeholder = `${placeholderValue}`;
+}
+
+function addToDoTaskToBoard(){
+
 }
