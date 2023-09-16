@@ -558,6 +558,7 @@ select {
 
 .ul.add-new-subtask-list {
     padding-inline-start: 24px;
+    width: 100%;
 }
 
 .add-new-subtask-list li {
@@ -575,7 +576,7 @@ select {
 .add-new-subtask-icon-container-list {
     position: absolute;
     top: 0;
-    right: 16px;
+    right: 28px;
     display: flex;
     justify-content: center;
     align-items: center;
