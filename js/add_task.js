@@ -13,7 +13,7 @@ function renderPopUpAddTask() {
 
 function HTMLrenderPopUpAddTask() {
     return /*html*/`
-    <form id="addTaskOverlay">
+    <form id="addTaskOverlay" onsubmit="submitClassList('button-create-task')">
         <div id="addTaskOverlayHead">
             <h1>Add Task</h1>
             <img class="cross-close" onclick="closeAddTaskForm()" src="./../img/cross.png">
@@ -36,7 +36,7 @@ function HTMLrenderPopUpAddTask() {
                 </div>
                 <div class="elementInAddTaskOverlayBody">
                     <label for="assignment">Assigned to</label>
-                    <select name="assignment" id="taskAssignment" required>
+                    <select name="assignment" id="taskAssignment">
                         <option value="" disabled selected>Select contacts to assign</option>
                     </select>
                 </div>
@@ -80,16 +80,16 @@ function HTMLrenderPopUpAddTask() {
         </div>
         <div class="addTaskOverlayBottom">
             <div class="add-task-bottom-button-container">
-                <button type="reset" class="button-clear" onmouseover="buttonCreateTaskChangeColor()"
-                    onmouseout="buttonCreateTaskChangeColorBack()" onclick="clearAddTaskFields()">Clear<svg width="25" height="24" viewBox="0 0 25 24"
+                <button type="reset" class="button-clear" id="button-clear" onmouseover="buttonCreateTaskChangeColor()"
+                    onmouseout="buttonCreateTaskChangeColorBack()" onclick="submitClassList(this.id)">Clear<svg width="25" height="24" viewBox="0 0 25 24"
                         fill="none" xmlns="http://www.w3.org/2000/svg" id="add-task-icon-cancel">
                         <path
                             d="M12.2495 12.0001L17.4925 17.2431M7.00653 17.2431L12.2495 12.0001L7.00653 17.2431ZM17.4925 6.75708L12.2485 12.0001L17.4925 6.75708ZM12.2485 12.0001L7.00653 6.75708L12.2485 12.0001Z"
                             stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </button>
-                <button type="submit" class="button-create-task">Create Task<img src="./../img/check.svg"
-                        id="button-create-task" onclick="addToDoTaskToBoard()"></button>
+                <button class="button-create-task">Create Task<img src="./../img/check.svg"
+                        id="button-create-task"></button>
             </div>
     </form>
     `;
@@ -99,6 +99,7 @@ function renderNewSubtask() {
     let newSubTaskValue = document.getElementById('addNewSubtask').value;
     let subTaskList = document.getElementById('subTaskList');
     subTaskList.innerHTML += HTMLrenderNewSubtask(newSubTaskValue);
+    document.getElementById('addNewSubtask').value = '';
 }
 
 function HTMLrenderNewSubtask(newSubTaskValue) {
@@ -109,16 +110,21 @@ function HTMLrenderNewSubtask(newSubTaskValue) {
     `;
 }
 
-function clearAddTaskFields(){
+function submitClassList(id){
     let addTaskElements = document.getElementsByClassName('taskInput');
     for (let index = 0; index < addTaskElements.length; index++) {
         let elementByID = addTaskElements[index]['id'];
-        setPlaceHolder(elementByID);
+        if(id==='button-clear'){
+            resetPlaceHolder(elementByID);
+        }
+        else if(id==='button-create-task'){
+            addToDoTaskToBoard();
+        }
     }
     document.getElementById('subTaskList').innerHTML = '';
 }
 
-function setPlaceHolder(elementByID){
+function resetPlaceHolder(elementByID){
     let placeholderValue = document.getElementById(`${elementByID}`).placeholder;
     let emptyValue = document.getElementById(`${elementByID}`);
     emptyValue.value = '';
@@ -126,5 +132,22 @@ function setPlaceHolder(elementByID){
 }
 
 function addToDoTaskToBoard(){
-
+    let myObject = {
+        'id': 4,
+        'taskcategory':'todo',
+        'taskdepartment':'Development',
+        'taskheadline': 'Aufräumen',
+        'taskdescription': 'Code clean up',
+        'taskduedate':'',
+        'taskpriority':'medium',
+        'taskassignedto':[
+            {
+                'assigne1':'Andreas',
+                'assigne2':'Marcel',
+                'assigne3':'Ivan'
+            }
+        ]
+    };
+    todos.push(myObject);
+    debugger;
 }
