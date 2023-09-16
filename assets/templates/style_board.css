@@ -1,8 +1,9 @@
 .board-header {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    margin: 50px;
+    padding: 0 20px 0 20px;
 }
 
 .board-header-left p {
@@ -31,15 +32,36 @@
     border: none;
 }
 
-.search-field {
-    display: flex;
-    width: 312px;
-    padding: 8px 16px;
-    align-items: center;
-    gap: 10px;
-    border-radius: 10px;
-    border: 1px solid var(--icon, #A8A8A8);
-    background: #FFF;
+.boardSearchContainer{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 13px 21px;
+  gap: 10px;
+  background: #FFFFFF;
+  border: 1px solid #A8A8A8;
+  border-radius: 10px;
+}
+.boardSearchInputField{
+  width: 226px;
+  height: 31px;
+  border: none;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  cursor: pointer;
+}
+
+.boardSearchBtn{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-left: 1px solid #D1D1D1;
+  width: 43px;
+  cursor: pointer;
 }
 
 .addTaskButton {

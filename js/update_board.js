@@ -76,12 +76,12 @@ function renderBoard() {
             <p>Board</p>
         </div>
         <div class="board-header-right">
-            <div class="search-field">
-                <input id="searchBarInput" type="text" placeholder="Find Task">
-                <img src="./../img/verticalLine.png">
-                <img class="magnifier" src="./../img/search.png">
+            <div class="boardSearchContainer">
+                <input oninput="searchTask()" id="searchInput" class="boardSearchInputField" type="text" placeholder="Find task">
+                <div class="boardSearchBtn">
+                    <img src="./../img/search.png" alt="">
+                </div>
             </div>
-
             <button class="addTaskButton" onclick="openAddTaskForm()">Add task<img src="./../img/add.png"></button>
         </div>
     </div>
