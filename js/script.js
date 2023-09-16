@@ -240,9 +240,10 @@ function renderAddTask() {
                     </div>
                     <div class="addtask-assigned-to-container">
                         Subtasks
-                        <div class="select-contacts-to-assign">
-                            <span>Add new subtask</span><img src="./../img/add-subtask.svg">
+                        <div class="add-new-subtask">
+                            <input placeholder="Add new subtask" id="add-new-subtask-input" required><div class="add-new-subtask-icon-container" id="add-new-subtask-icon-container"><img src="./../img/add-subtask.svg" class="add-new-subtask-plus" onclick="selectNewSubtask()"></div>
                         </div>
+                        <div><ul class="add-new-subtask-list"></ul></div>
                     </div>
                 </div>
         
@@ -354,4 +355,59 @@ function buttonCreateTaskChangeColor() {
 function buttonCreateTaskChangeColorBack() {
         let icon = document.querySelector('#add-task-icon-cancel path');
         icon.setAttribute("stroke", "#2A3647");
+}
+
+function selectNewSubtask() {
+    let container = document.getElementById('add-new-subtask-icon-container');
+    container.innerHTML = /*html*/`
+    <img src="./../img/check-black.svg" onclick="addNewSubtask()">|
+    <img src="./../img/icon-cancel.svg" onclick="clearNewSubtask()">
+    `;
+}
+
+
+function addNewSubtask() {
+    let list = document.querySelector('.add-new-subtask-list');
+    let input = document.getElementById('add-new-subtask-input');
+    if (input.value) {
+        list.innerHTML+= /*html*/`<li><input id="add-new-subtask-listinput1" value="${input.value}" disabled>
+        <div class="add-new-subtask-icon-container-list" id="add-new-subtask-icon-container-list1"><img src="./../img/edit-icon.svg" onclick="editNewSubtaskInput(1)">|<img src="./../img/delete-icon.svg" onclick="clearNewSubtaskInput(1)"></li></div>
+        `;
+        document.getElementById('add-new-subtask-input').value = '';
+    }
+    else {
+        input.placeholder = 'please add subtask';
+    }
+}
+
+function clearNewSubtask() {
+    document.getElementById('add-new-subtask-input').value = '';
+    let container = document.getElementById('add-new-subtask-icon-container');
+    container.innerHTML = /*html*/ `
+    <img src="./../img/add-subtask.svg" class="add-new-subtask-plus" onclick="selectNewSubtask()">
+    `;
+}
+
+function clearNewSubtaskInput(i) {
+    document.getElementById(`add-new-subtask-listinput${i}`).value = '';
+} 
+
+function editNewSubtaskInput(i) {
+    let input = document.getElementById(`add-new-subtask-listinput${i}`);
+    let iconContainer = document.getElementById(`add-new-subtask-icon-container-list${i}`);
+    input.disabled = false;
+    input.style.backgroundColor = 'white';
+    iconContainer.innerHTML = /*html*/ `
+    <img src="./../img/check-black.svg" onclick="saveNewSubtask(${i})">|<img src="./../img/delete-icon.svg">
+    `;
+}
+
+function saveNewSubtask(i) {
+    let input = document.getElementById(`add-new-subtask-listinput${i}`);
+    let iconContainer = document.getElementById(`add-new-subtask-icon-container-list${i}`);
+    input.disabled = true;
+    input.style.backgroundColor = 'transparent';
+    iconContainer.innerHTML = /*html*/ `
+      <div class="add-new-subtask-icon-container-list" id="add-new-subtask-icon-container-list1"><img src="./../img/edit-icon.svg" onclick="editNewSubtaskInput(${i})">|<img src="./../img/delete-icon.svg" onclick="clearNewSubtaskInput(${i})"></li></div>
+    `;
 }
