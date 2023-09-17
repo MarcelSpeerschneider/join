@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Der gesamte Code, der darauf wartet, dass das Dokument geladen ist
+    // All the code that waits for the document to be loaded
 });
 
 function changeBackgroundColor() {
@@ -65,6 +65,17 @@ function childFunction(event) {
     event.stopPropagation();
 }
 
+/**
+ * Toggles the selection state of a contact in a dropdown for task assignment.
+ * This function alters both the visual appearance and the 'data-selected' attribute 
+ * of the contact's container element. When a contact is selected, its background 
+ * changes to blue, and a filled checkbox is displayed. Conversely, deselection reverts 
+ * these visual elements and updates the 'data-selected' attribute accordingly.
+ * 
+ * @param {number} i - The index or identifier for the contact. Used to target 
+ * specific DOM elements related to the contact.
+ */
+
 function assignContactToTask(i) {
     let contactContainer = document.getElementById(`select-contacts-to-assign-dropdown-contact-container${i}`);
     let checkbox = document.getElementById(`select-contacts-to-assign-dropdown-checkbox${i}`);
@@ -83,6 +94,19 @@ function assignContactToTask(i) {
         contactContainer.setAttribute('data-selected', 'true');
     }
 }
+
+/**
+ * Toggles the selection state of a priority container in a UI list.
+ * The function initially resets the background and 'data-selected' attribute of all 
+ * predefined priority containers ('urgent', 'medium', 'low') to their unselected states.
+ * 
+ * After resetting, the function checks the 'data-selected' attribute of the clicked container.
+ * If the container is already selected ('true'), it reverts the appearance and sets the attribute to 'false'.
+ * Otherwise, it updates the background and text color to indicate that the container is selected, 
+ * and sets the 'data-selected' attribute to 'true'.
+ * 
+ * @param {number} i - The index or identifier used to specify which priority container is targeted.
+ */
 
 function prioContainer(i) {
     let containerClicked = document.getElementById(`prio-${i}`);
@@ -143,6 +167,15 @@ function selectNewSubtask() {
     `;
 }
 
+/**
+ * Adds a new subtask to a list of subtasks in the UI.
+ * 
+ * The function checks if the input field for new subtasks has a value.
+ * If a value exists, it appends a new list item to a predefined list.
+ * The list item includes the subtask description and associated action icons for editing and deleting.
+ * 
+ * If the input field is empty, the function sets the placeholder text to prompt the user to add a subtask.
+ */
 
 function addNewSubtask() {
     let list = document.querySelector('.add-new-subtask-list');
