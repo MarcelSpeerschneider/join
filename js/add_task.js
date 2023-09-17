@@ -148,7 +148,7 @@ function HTMLrenderPopUpAddTask() {
                 <div class="addtask-assigned-to-container">
                     Subtasks
                     <div class="add-new-subtask">
-                        <input placeholder="Add new subtask" id="add-new-subtask-input" required><div class="add-new-subtask-icon-container" id="add-new-subtask-icon-container"><img src="./../img/add-subtask.svg" class="add-new-subtask-plus" onclick="selectNewSubtask()"></div>
+                        <input placeholder="Add new subtask" id="add-new-subtask-input"><div class="add-new-subtask-icon-container" id="add-new-subtask-icon-container"><img src="./../img/add-subtask.svg" class="add-new-subtask-plus" onclick="selectNewSubtask()"></div>
                     </div>
                     <div><ul class="add-new-subtask-list"></ul></div>
                 </div>
