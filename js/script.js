@@ -195,7 +195,7 @@ function renderSummaryinnerHtml() {
     return /*html*/`
         <div class="summary-headline">
             <h1>Summary</h1>
-            <svg xmlns="http://www.w3.org/2000/svg" width="4" height="63" viewBox="0 0 4 63" fill="none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="4" height="63" viewBox="0 0 4 63" fill="none" id="summary-headline-seperator">
                 <path d="M2 2V61" stroke="#29ABE2" stroke-width="3" stroke-linecap="round" />
             </svg>
             <h2>Everything in a nutshell!</h2>
@@ -373,7 +373,7 @@ function renderAddTaskInnerHtml() {
                     </div>
                 </div>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="2" height="426" viewBox="0 0 2 426" fill="none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2" height="426" viewBox="0 0 2 426" fill="none" id="addtask-separator">
                 <path d="M1.24805 1L1.24854 425" stroke="#D1D1D1" stroke-linecap="round" />
             </svg>
             <div class="addtask-side">

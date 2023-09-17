@@ -594,7 +594,7 @@ select {
 .add-new-subtask-list li:before {
     content: "•";
     margin-right: 10px;
-  }
+}
 
 .add-new-subtask-list li input {
     border: 0;
@@ -603,7 +603,7 @@ select {
     border-radius: 8;
     justify-self: flex-start;
     width: 100%;
-    }
+}
 
 .add-new-subtask-icon-container-list {
     display: flex;
@@ -702,9 +702,11 @@ select {
     .summary-greetings {
         display: none;
     }
+
     .add-task-bottom-button-container {
         flex-direction: column;
     }
+
     .add-new-subtask input {
         width: 150px;
     }
@@ -716,7 +718,93 @@ select {
         font-family: 'Inter', sans-serif;
         height: 100svh;
     }
+
     .dashboard {
         display: none;
+    }
+
+    .addtask-main-content {
+        font-size: 12px;
+    }
+
+    .addtask-content {
+        flex-direction: column;
+    }
+
+    .addtask-side {
+        width: 100%;
+    }
+
+    #addtask-separator {
+        display: none;
+    }
+
+    .add-task-bottom-button-left-side {
+        display: none;
+    }
+
+    .add-task-bottom-button-right-side {
+        width: 100%;
+        margin-bottom: 4%;
+    }
+    .summary-headline {
+        flex-direction: column;
+        width: 100%;
+        margin-left: 0;
+    }
+    #summary-headline-seperator {
+        display: none;
+    }
+    .summary-task-container {
+        width: 396px;
+        gap: 24px;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+
+    .summary-task-number-container {
+        gap: 24px;
+        width: auto;
+        height: auto;
+        justify-content: center;
+    }
+
+    .summary-task-number-box {
+        width: 116px;
+        height: 116px;
+        border-radius: 12px;
+        gap: 13px;
+        font-size: 48px;
+
+    }
+
+    .summary-task-info {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .summary-urgent-container {
+        padding: 8px 8px;
+        gap: 8px;
+        width: 100%;
+
+    }
+
+    .summary-deadline-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .summary-todo-container {
+        width: 100%;
+        justify-content: center;
+        justify-content: space-between;
+    }
+
+    .summary-todo {
+        width: auto;
+        height: auto;
     }
 }
