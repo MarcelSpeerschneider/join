@@ -312,18 +312,20 @@ function renderSummaryinnerHtml() {
 
 function renderAddTaskInnerHtml() {
     return /*html*/`
-    <div class="addtask-main-content">
-        <h1 style="padding-left: 5%; margin-bottom: 4%">Add Task</h1>
+    
+<div class="addtask-main-content">
+    <h1 style="padding-left: 5%; margin-bottom: 4%">Add Task</h1>
+    <form onsubmit="submitClassList('button-create-task')">
         <div class="addtask-content">
             <div class="addtask-side">
                 <div class="addtask-title-container">
                     Title
-                    <input placeholder="Enter a title" type="text" id="title">
+                    <input class="taskInput" placeholder="Enter a title" type="text" id="title" required>
                 </div>
                 <div class="addtask-description-container">
                     Description
-                    <textarea name="description" id="description" cols="30" rows="10"
-                        placeholder="Enter a description"></textarea>
+                    <textarea class="taskInput" name="description" id="description" cols="30" rows="10"
+                        placeholder="Enter a description" required></textarea>
                 </div>
                 <div class="addtask-assigned-to-container">
                     Assigned to
@@ -331,9 +333,10 @@ function renderAddTaskInnerHtml() {
                         onclick="selectContactsToAssign()">
                         <span>Select Contacts to assign</span>
                         <div id="arrow-drop-down">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <mask id="mask0_83802_4068" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
-                                    width="24" height="24">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <mask id="mask0_83802_4068" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
+                                    y="0" width="24" height="24">
                                     <rect width="24" height="24" fill="#D9D9D9" />
                                 </mask>
                                 <g mask="url(#mask0_83802_4068)">
@@ -346,7 +349,8 @@ function renderAddTaskInnerHtml() {
                         <div class="select-contacts-to-assign-dropdown" id="select-contacts-to-assign-dropdown"
                             onclick="childFunction(event)">
                             <div class="select-contacts-to-assign-dropdown-contact-container"
-                                id="select-contacts-to-assign-dropdown-contact-container1" onclick=assignContactToTask(1)>
+                                id="select-contacts-to-assign-dropdown-contact-container1"
+                                onclick=assignContactToTask(1)>
                                 <div class="select-contacts-to-assign-dropdown-contact">
                                     <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
                                         <svg width="28" height="28">
@@ -357,11 +361,13 @@ function renderAddTaskInnerHtml() {
                                     <div class="select-contacts-to-assign-dropdown-contactname">Contact 1</div>
                                 </div>
                                 <div class="select-contacts-to-assign-dropdown-checkbox"><img
-                                        src="./../img/checkbox-blank.svg" id="select-contacts-to-assign-dropdown-checkbox1">
+                                        src="./../img/checkbox-blank.svg"
+                                        id="select-contacts-to-assign-dropdown-checkbox1">
                                 </div>
                             </div>
                             <div class="select-contacts-to-assign-dropdown-contact-container"
-                                id="select-contacts-to-assign-dropdown-contact-container2" onclick=assignContactToTask(2)>
+                                id="select-contacts-to-assign-dropdown-contact-container2"
+                                onclick=assignContactToTask(2)>
                                 <div class="select-contacts-to-assign-dropdown-contact">
                                     <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
                                         <svg width="28" height="28">
@@ -372,11 +378,13 @@ function renderAddTaskInnerHtml() {
                                     <div class="select-contacts-to-assign-dropdown-contactname">Contact 2</div>
                                 </div>
                                 <div class="select-contacts-to-assign-dropdown-checkbox"><img
-                                        src="./../img/checkbox-blank.svg" id="select-contacts-to-assign-dropdown-checkbox2">
+                                        src="./../img/checkbox-blank.svg"
+                                        id="select-contacts-to-assign-dropdown-checkbox2">
                                 </div>
                             </div>
                             <div class="select-contacts-to-assign-dropdown-contact-container"
-                                id="select-contacts-to-assign-dropdown-contact-container3" onclick=assignContactToTask(3)>
+                                id="select-contacts-to-assign-dropdown-contact-container3"
+                                onclick=assignContactToTask(3)>
                                 <div class="select-contacts-to-assign-dropdown-contact">
                                     <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
                                         <svg width="28" height="28">
@@ -387,13 +395,14 @@ function renderAddTaskInnerHtml() {
                                     <div class="select-contacts-to-assign-dropdown-contactname">Contact 3</div>
                                 </div>
                                 <div class="select-contacts-to-assign-dropdown-checkbox"><img
-                                        src="./../img/checkbox-blank.svg" id="select-contacts-to-assign-dropdown-checkbox3">
+                                        src="./../img/checkbox-blank.svg"
+                                        id="select-contacts-to-assign-dropdown-checkbox3">
                                 </div>
                             </div>
                             <button class="add-new-contact-button">Add new Contact</button>
                         </div>
                     </div>
-    
+
                     <div class="select-contacts-to-assign-dropdown-contact-bottom-container">
                         <div class="select-contacts-to-assign-dropdown-contact" id="contact-summary">
                             <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
@@ -406,17 +415,18 @@ function renderAddTaskInnerHtml() {
                     </div>
                 </div>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="2" height="426" viewBox="0 0 2 426" fill="none" id="addtask-separator">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2" height="426" viewBox="0 0 2 426" fill="none"
+                id="addtask-separator">
                 <path d="M1.24805 1L1.24854 425" stroke="#D1D1D1" stroke-linecap="round" />
             </svg>
             <div class="addtask-side">
                 <div class="addtask-title-container">
                     Due date
-                    <input type="date" id="due-date" name="due-date" min="1900-01-01" max="2099-12-31"
-                        class="addtask-dates-select">
+                    <input class="taskInput" type="date" id="due-date" name="due-date" min="1900-01-01" max="2099-12-31"
+                        class="addtask-dates-select" required>
                 </div>
                 <div class="addtask-prio-main-container">
-                    <div class="addtask-prio-container" id="prio-urgent" onclick="prioContainer('urgent')">
+                    <div class="addtask-prio-container priority" id="prio-urgent" onclick="prioContainer('urgent')">
                         Urgent <img src="./../img/prio-urgent.svg">
                     </div>
                     <div class="addtask-prio-container" id="prio-medium" onclick="prioContainer('medium')">
@@ -428,7 +438,7 @@ function renderAddTaskInnerHtml() {
                 </div>
                 <div class="addtask-category-container">
                     Category
-                    <select name="category" id="select-category">
+                    <select name="category" id="select-category" class="taskInput">
                         <option value="" disabled>Select a category</option>
                         <option value="technical-task">Technical Task</option>
                         <option value="user-story">User Story</option>
@@ -437,25 +447,38 @@ function renderAddTaskInnerHtml() {
                 <div class="addtask-assigned-to-container">
                     Subtasks
                     <div class="add-new-subtask">
-                        <input placeholder="Add new subtask" id="add-new-subtask-input" required><div class="add-new-subtask-icon-container" id="add-new-subtask-icon-container"><img src="./../img/add-subtask.svg" class="add-new-subtask-plus" onclick="selectNewSubtask()"></div>
+                        <input placeholder="Add new subtask" id="add-new-subtask-input">
+                        <div class="add-new-subtask-icon-container" id="add-new-subtask-icon-container"><img
+                                src="./../img/add-subtask.svg" class="add-new-subtask-plus"
+                                onclick="selectNewSubtask()">
+                        </div>
                     </div>
-                    <div><ul class="add-new-subtask-list"></ul></div>
+                    <div>
+                        <ul class="add-new-subtask-list"></ul>
+                    </div>
                 </div>
             </div>
-    
+
         </div>
         <div class="add-task-bottom-button">
             <div class="add-task-bottom-button-left-side"></div>
             <div class="add-task-bottom-button-right-side">
-                    <div class="add-task-bottom-button-container">
-                            <button class="button-clear" onmouseover="buttonCreateTaskChangeColor()" onmouseout="buttonCreateTaskChangeColorBack()">Clear<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="add-task-icon-cancel">
-                            <path d="M12.2495 12.0001L17.4925 17.2431M7.00653 17.2431L12.2495 12.0001L7.00653 17.2431ZM17.4925 6.75708L12.2485 12.0001L17.4925 6.75708ZM12.2485 12.0001L7.00653 6.75708L12.2485 12.0001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            </button>
-                            <button class= "button-create-task">Create Task<img src="./../img/check.svg" id="button-create-task"></button>
-                    </div>
+                <div class="add-task-bottom-button-container">
+                    <button class="button-clear" id="button-clear" onclick=submitClassList(this.id) onmouseover="buttonCreateTaskChangeColor()"
+                        onmouseout="buttonCreateTaskChangeColorBack()">Clear<svg width="25" height="24"
+                            viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            id="add-task-icon-cancel">
+                            <path
+                                d="M12.2495 12.0001L17.4925 17.2431M7.00653 17.2431L12.2495 12.0001L7.00653 17.2431ZM17.4925 6.75708L12.2485 12.0001L17.4925 6.75708ZM12.2485 12.0001L7.00653 6.75708L12.2485 12.0001Z"
+                                stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <button class="button-create-task">Create Task<img src="./../img/check.svg"
+                            id="button-create-task"></button>
+                </div>
             </div>
         </div>
-    </div>
-    `;
+    </form>
+</div>
+`;
 }

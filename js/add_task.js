@@ -185,9 +185,9 @@ function HTMLrenderPopUpAddTask() {
 
 function renderNewSubtask() {
     let newSubTaskValue = document.getElementById('addNewSubtask').value;
-    if(newSubTaskValue === ''){
+    if (newSubTaskValue === '') {
         return;
-    }else{
+    } else {
         let subTaskList = document.getElementById('subTaskList');
         subTaskList.innerHTML += HTMLrenderNewSubtask(newSubTaskValue);
         document.getElementById('addNewSubtask').value = '';
@@ -202,40 +202,50 @@ function HTMLrenderNewSubtask(newSubTaskValue) {
     `;
 }
 
-function submitClassList(id){
+function submitClassList(id) {
     let addTaskElements = document.getElementsByClassName('taskInput');
     let elementByID = '';
     let valueOfInput = [];
+    let taskPriority = '';
 
     for (let index = 0; index < addTaskElements.length; index++) {
         elementByID = addTaskElements[index]['id'];
         valueOfInput.push(document.getElementById(elementByID).value);
-        if(id==='button-clear'){
+        if (id === 'button-clear') {
             resetPlaceHolder(elementByID);
         }
     }
-    if(id==='button-create-task'){
+    if (id === 'button-create-task') {
+        // let priorities;
+        // priorities.push(document.querySelectorAll('.priority'));
+        // for (let priority of priorities) {
+        //     if (data - selected == true) {
+        //         taskPriority = priority.id;
+        //     }
+        // }
+
         addTaskToArray(valueOfInput);
     }
-    document.getElementById('subTaskList').innerHTML = '';
+    // document.getElementById('subTaskList').innerHTML = '';
 }
 
-function resetPlaceHolder(elementByID){
+function resetPlaceHolder(elementByID) {
     let placeholderValue = document.getElementById(`${elementByID}`).placeholder;
     let emptyValue = document.getElementById(`${elementByID}`);
     emptyValue.value = '';
     document.getElementById(`${elementByID}`).placeholder = `${placeholderValue}`;
 }
 
-function addTaskToArray(valueOfInput){
+function addTaskToArray(valueOfInput, taskPriority) {
     let id = todos.length;
-    let myObject ={
+    let myObject = {
         'id': id,
-        'taskCategory':'User Story',
-        'taskStatus':'todo',
-        'taskInputTitle':valueOfInput[0],
-        'taskInputDescription':valueOfInput[1],
-        'taskInputDate':valueOfInput[2]
+        'taskCategory': 'User Story',
+        'taskStatus': 'todo',
+        'taskInputTitle': valueOfInput[0],
+        'taskInputDescription': valueOfInput[1],
+        'taskInputDate': valueOfInput[2],
+        'taskPriority': taskPriority
     };
     todos.push(myObject);
     renderBoard();
