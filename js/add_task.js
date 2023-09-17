@@ -1,3 +1,6 @@
+// Globale Variablen
+let globalStatus = '';
+
 function openAddTaskForm() {
     document.getElementById('overlay').style.display = 'flex';
 }
@@ -6,8 +9,11 @@ function closeAddTaskForm() {
     document.getElementById('overlay').style.display = 'none';
 }
 
-function renderPopUpAddTask(myTest) {
-    alert(myTest);
+function renderPopUpAddTask(status) {
+    if(status==='todo' | status==='inprogress' | status==='awaitfeedback' | status==='done'){
+        openAddTaskForm();
+        globalStatus = status;
+    }
     let popUp = document.getElementById('overlayContent');
     popUp.innerHTML = HTMLrenderPopUpAddTask();
 }
@@ -217,7 +223,7 @@ function submitClassList(id){
     if(id==='button-create-task'){
         addTaskToArray(valueOfInput);
     }
-    document.getElementById('subTaskList').innerHTML = '';
+    // document.getElementById('subTaskList').innerHTML = '';
 }
 
 function resetPlaceHolder(elementByID){
@@ -232,7 +238,7 @@ function addTaskToArray(valueOfInput){
     let myObject ={
         'id': id,
         'taskCategory':'User Story',
-        'taskStatus':'todo',
+        'taskStatus':globalStatus,
         'taskInputTitle':valueOfInput[0],
         'taskInputDescription':valueOfInput[1],
         'taskInputDate':valueOfInput[2]
