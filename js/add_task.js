@@ -35,11 +35,91 @@ function HTMLrenderPopUpAddTask() {
                         <option value="" disabled selected>Select task category</option>
                     </select>
                 </div>
-                <div class="elementInAddTaskOverlayBody">
+                <!-- <div class="elementInAddTaskOverlayBody">
                     <label for="assignment">Assigned to</label>
                     <select name="assignment" id="taskAssignment">
                         <option value="" disabled selected>Select contacts to assign</option>
                     </select>
+                </div> -->
+                <div class="addtask-assigned-to-container" style="width: 100%">
+                    Assigned to
+                    <div class="select-contacts-to-assign" id="select-contacts-to-assign"
+                        onclick="selectContactsToAssign()">
+                        <span>Select Contacts to assign</span>
+                        <div id="arrow-drop-down">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <mask id="mask0_83802_4068" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                    width="24" height="24">
+                                    <rect width="24" height="24" fill="#D9D9D9" />
+                                </mask>
+                                <g mask="url(#mask0_83802_4068)">
+                                    <path
+                                        d="M11.3 14.3L8.69998 11.7C8.38331 11.3833 8.31248 11.0208 8.48748 10.6125C8.66248 10.2042 8.97498 10 9.42498 10H14.575C15.025 10 15.3375 10.2042 15.5125 10.6125C15.6875 11.0208 15.6166 11.3833 15.3 11.7L12.7 14.3C12.6 14.4 12.4916 14.475 12.375 14.525C12.2583 14.575 12.1333 14.6 12 14.6C11.8666 14.6 11.7416 14.575 11.625 14.525C11.5083 14.475 11.4 14.4 11.3 14.3Z"
+                                        fill="#2A3647" />
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="select-contacts-to-assign-dropdown" id="select-contacts-to-assign-dropdown"
+                            onclick="childFunction(event)">
+                            <div class="select-contacts-to-assign-dropdown-contact-container"
+                                id="select-contacts-to-assign-dropdown-contact-container1" onclick=assignContactToTask(1)>
+                                <div class="select-contacts-to-assign-dropdown-contact">
+                                    <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
+                                        <svg width="28" height="28">
+                                            <circle cx="14" cy="14" r="14" fill="#00bee8" />
+                                        </svg>
+                                        <div class="select-contacts-to-assign-dropdown-contact-credentials">SM</div>
+                                    </div>
+                                    <div class="select-contacts-to-assign-dropdown-contactname">Contact 1</div>
+                                </div>
+                                <div class="select-contacts-to-assign-dropdown-checkbox"><img
+                                        src="./../img/checkbox-blank.svg" id="select-contacts-to-assign-dropdown-checkbox1">
+                                </div>
+                            </div>
+                            <div class="select-contacts-to-assign-dropdown-contact-container"
+                                id="select-contacts-to-assign-dropdown-contact-container2" onclick=assignContactToTask(2)>
+                                <div class="select-contacts-to-assign-dropdown-contact">
+                                    <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
+                                        <svg width="28" height="28">
+                                            <circle cx="14" cy="14" r="14" fill="#ff7a00" />
+                                        </svg>
+                                        <div class="select-contacts-to-assign-dropdown-contact-credentials">AB</div>
+                                    </div>
+                                    <div class="select-contacts-to-assign-dropdown-contactname">Contact 2</div>
+                                </div>
+                                <div class="select-contacts-to-assign-dropdown-checkbox"><img
+                                        src="./../img/checkbox-blank.svg" id="select-contacts-to-assign-dropdown-checkbox2">
+                                </div>
+                            </div>
+                            <div class="select-contacts-to-assign-dropdown-contact-container"
+                                id="select-contacts-to-assign-dropdown-contact-container3" onclick=assignContactToTask(3)>
+                                <div class="select-contacts-to-assign-dropdown-contact">
+                                    <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
+                                        <svg width="28" height="28">
+                                            <circle cx="14" cy="14" r="14" fill="#bb78ff" />
+                                        </svg>
+                                        <div class="select-contacts-to-assign-dropdown-contact-credentials">PA</div>
+                                    </div>
+                                    <div class="select-contacts-to-assign-dropdown-contactname">Contact 3</div>
+                                </div>
+                                <div class="select-contacts-to-assign-dropdown-checkbox"><img
+                                        src="./../img/checkbox-blank.svg" id="select-contacts-to-assign-dropdown-checkbox3">
+                                </div>
+                            </div>
+                            <button class="add-new-contact-button">Add new Contact</button>
+                        </div>
+                    </div>
+    
+                    <div class="select-contacts-to-assign-dropdown-contact-bottom-container">
+                        <div class="select-contacts-to-assign-dropdown-contact" id="contact-summary">
+                            <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
+                                <svg width="28" height="28">
+                                    <circle cx="14" cy="14" r="14" fill="#bb78ff" />
+                                </svg>
+                                <div class="select-contacts-to-assign-dropdown-contact-credentials">PA</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="addTaskOverlayBodyMiddle"></div>
@@ -65,7 +145,14 @@ function HTMLrenderPopUpAddTask() {
                         </div>
                     </div>
                 </div>
-                <div class="elementInAddTaskOverlayBody">
+                <div class="addtask-assigned-to-container">
+                    Subtasks
+                    <div class="add-new-subtask">
+                        <input placeholder="Add new subtask" id="add-new-subtask-input" required><div class="add-new-subtask-icon-container" id="add-new-subtask-icon-container"><img src="./../img/add-subtask.svg" class="add-new-subtask-plus" onclick="selectNewSubtask()"></div>
+                    </div>
+                    <div><ul class="add-new-subtask-list"></ul></div>
+                </div>
+                <!-- <div class="elementInAddTaskOverlayBody">
                     <label>Subtasks</label>
                     <div class="newSubTaskInputArea">
                         <input id="addNewSubtask" type="text" placeholder="Add new subtask">
@@ -76,7 +163,7 @@ function HTMLrenderPopUpAddTask() {
                 </div>
                 <div class="elementInAddTaskOverlayBody" id="subTaskList">
 
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="addTaskOverlayBottom">
