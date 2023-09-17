@@ -1,7 +1,7 @@
 const contacts = [{
         name: "John Doe",
         email: "john.doe@example.com",
-        phone: 4567890",
+        phone: "4567890",
         color: "#FF5733"
     },
     {
@@ -260,7 +260,7 @@ function generateEditContactPopupHTML(){
 </svg>
         </div>
         <div class="input-img">
-        <input required id="phoneValueTwo"  placeholder="Phone number" type="number" onwheel="this.blur();">
+        <input required id="phoneValueTwo"  placeholder="Phone number"  onwheel="this.blur();">
         <svg class="svgStyleInput" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="call">
 <mask id="mask0_84485_2206" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
