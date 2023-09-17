@@ -6,7 +6,8 @@ function closeAddTaskForm() {
     document.getElementById('overlay').style.display = 'none';
 }
 
-function renderPopUpAddTask() {
+function renderPopUpAddTask(myTest) {
+    alert(myTest);
     let popUp = document.getElementById('overlayContent');
     popUp.innerHTML = HTMLrenderPopUpAddTask();
 }
@@ -143,7 +144,8 @@ function addTaskToArray(valueOfInput){
     let id = todos.length;
     let myObject ={
         'id': id,
-        'taskcategory':'todo',
+        'taskCategory':'User Story',
+        'taskStatus':'todo',
         'taskInputTitle':valueOfInput[0],
         'taskInputDescription':valueOfInput[1],
         'taskInputDate':valueOfInput[2]
