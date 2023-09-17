@@ -97,9 +97,13 @@ function HTMLrenderPopUpAddTask() {
 
 function renderNewSubtask() {
     let newSubTaskValue = document.getElementById('addNewSubtask').value;
-    let subTaskList = document.getElementById('subTaskList');
-    subTaskList.innerHTML += HTMLrenderNewSubtask(newSubTaskValue);
-    document.getElementById('addNewSubtask').value = '';
+    if(newSubTaskValue === ''){
+        return;
+    }else{
+        let subTaskList = document.getElementById('subTaskList');
+        subTaskList.innerHTML += HTMLrenderNewSubtask(newSubTaskValue);
+        document.getElementById('addNewSubtask').value = '';
+    }
 }
 
 function HTMLrenderNewSubtask(newSubTaskValue) {

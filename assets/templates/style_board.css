@@ -1,12 +1,13 @@
 .board-header {
     display: flex;
     flex-wrap: wrap;
+    gap: 20px;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px 0 20px;
+    padding: 82px 20px 0 20px;
 }
 
-.board-header-left p {
+.board-header-left {
     color: #000;
     font-family: Inter;
     font-size: 61px;

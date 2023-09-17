@@ -76,9 +76,8 @@ function renderBoard() {
     let board = document.getElementById('dashboard-content');
     board.innerHTML = /*html*/`
         <div class="board-header">
-        <div class="board-header-left">
-            <p>Board</p>
-        </div>
+        <div class="board-header-left">Board</div>
+            <!-- <p>Board</p> -->
         <div class="board-header-right">
             <div class="boardSearchContainer">
                 <input oninput="searchTask()" id="searchInput" class="boardSearchInputField" type="text" placeholder="Find task">
@@ -167,7 +166,7 @@ function updateBoard() {
 }
 
 function generateToDoHTML(element) {
-    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
+    return `<div onclick="openAddTaskForm()" draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
         <div class="bgc-${element['taskdepartment']} taskHeadline-bg">${element['taskdepartment']}</div>
         <div>${element['taskheadline']}</div>
         <div>${element['taskdescription']}</div>

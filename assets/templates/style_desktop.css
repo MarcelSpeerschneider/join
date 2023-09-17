@@ -165,7 +165,11 @@ menu {
     box-sizing: border-box;
     margin-top: 96px;
     background-color: #F6F7F8;
+    overflow: auto;
 }
+.dashboard-content::-webkit-scrollbar {
+    display: none;
+  }
 
 .summary-headline {
     display: inline-flex;
