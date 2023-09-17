@@ -1,61 +1,61 @@
 const contacts = [{
         name: "John Doe",
         email: "john.doe@example.com",
-        phone: "(123) 456-7890",
+        phone: 4567890",
         color: "#FF5733"
     },
     {
         name: "Jane Smith",
         email: "jane.smith@example.com",
-        phone: "(234) 567-8901",
+        phone: "5678901",
         color: "#33FF57"
     },
     {
         name: "James Johnson",
         email: "james.johnson@example.com",
-        phone: "(345) 678-9012",
+        phone: " 6789012",
         color: "#5733FF"
     },
     {
         name: "Emily Davis",
         email: "emily.davis@example.com",
-        phone: "(456) 789-0123",
+        phone: "7890123",
         color: "#FF5733"
     },
     {
         name: "Michael Wilson",
         email: "michael.wilson@example.com",
-        phone: "(567) 890-1234",
+        phone: "8901234",
         color: "#33FF57"
     },
     {
         name: "Sarah Brown",
         email: "sarah.brown@example.com",
-        phone: "(678) 901-2345",
+        phone: "9012345",
         color: "#5733FF"
     },
     {
         name: "David Lee",
         email: "david.lee@example.com",
-        phone: "(789) 012-3456",
+        phone: "0123456",
         color: "#FF5733"
     },
     {
         name: "Olivia Taylor",
         email: "olivia.taylor@example.com",
-        phone: "(890) 123-4567",
+        phone: " 1234567",
         color: "#33FF57"
     },
     {
         name: "Daniel Clark",
         email: "daniel.clark@example.com",
-        phone: "(901) 234-5678",
+        phone: " 2345678",
         color: "#5733FF"
     },
     {
         name: "Ava Hernandez",
         email: "ava.hernandez@example.com",
-        phone: "(012) 345-6789",
+        phone: " 3456789",
         color: "#FF5733"
     }
 ];
@@ -260,7 +260,7 @@ function generateEditContactPopupHTML(){
 </svg>
         </div>
         <div class="input-img">
-        <input required id="phoneValueTwo"  placeholder="Phone number" onwheel="this.blur();">
+        <input required id="phoneValueTwo"  placeholder="Phone number" type="number" onwheel="this.blur();">
         <svg class="svgStyleInput" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="call">
 <mask id="mask0_84485_2206" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
