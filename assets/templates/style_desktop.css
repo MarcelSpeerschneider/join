@@ -165,7 +165,6 @@ menu {
     box-sizing: border-box;
     margin-top: 96px;
     background-color: #F6F7F8;
-    flex-direction: column;
 }
 
 .summary-headline {
