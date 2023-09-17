@@ -30,7 +30,7 @@ function HTMLrenderPopUpAddTask() {
                 </div>
                 <div class="elementInAddTaskOverlayBody">
                     <label for="categories">Category</label>
-                    <select name="categories" id="taskCategories">
+                    <select name="categories" id="taskInputCategories">
                         <option value="" disabled selected>Select task category</option>
                     </select>
                 </div>
@@ -45,7 +45,7 @@ function HTMLrenderPopUpAddTask() {
             <div id="addTaskOverlayBodyRight">
                 <div class="elementInAddTaskOverlayBody">
                     <label>Due Date</label>
-                    <input id="taskDate" class="taskInput" type="date" placeholder="dd/mm/yyyy" required>
+                    <input id="taskInputDate" class="taskInput" type="date" placeholder="dd/mm/yyyy" required>
                 </div>
                 <div class="elementInAddTaskOverlayBody">
                     <label>Prio</label>

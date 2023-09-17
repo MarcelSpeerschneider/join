@@ -145,12 +145,13 @@
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-.todo {
-    background-color: white;
-    border: 1px solid black;
+.tasksInBoardOverview {
+    background-color: #FFFFFF;
+    border: none;
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
+    cursor: pointer;
 }
 
 .card{

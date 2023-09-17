@@ -163,7 +163,11 @@ function updateBoard() {
 }
 
 function generateToDoHTML(element) {
-    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="todo">${element['taskheadline']}</div>`;
+    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
+        <div>${element['taskdepartment']}</div>
+        <div>${element['taskheadline']}</div>
+        <div>${element['taskdescription']}</div>
+    </div>`;;
 }
 
 function startDragging(id) {
