@@ -67,7 +67,7 @@ function HTMLrenderPopUpAddTask() {
                 <div class="elementInAddTaskOverlayBody">
                     <label>Subtasks</label>
                     <div class="newSubTaskInputArea">
-                        <input class="taskInput" id="addNewSubtask" type="text" placeholder="Add new subtask">
+                        <input id="addNewSubtask" type="text" placeholder="Add new subtask">
                         <div class="subTaskImage" onclick="renderNewSubtask()">
                             <img src="./../img/add-subtask.svg">
                         </div>
@@ -116,14 +116,18 @@ function HTMLrenderNewSubtask(newSubTaskValue) {
 
 function submitClassList(id){
     let addTaskElements = document.getElementsByClassName('taskInput');
+    let elementByID = '';
+    let valueOfInput = [];
+
     for (let index = 0; index < addTaskElements.length; index++) {
-        let elementByID = addTaskElements[index]['id'];
+        elementByID = addTaskElements[index]['id'];
+        valueOfInput.push(document.getElementById(elementByID).value);
         if(id==='button-clear'){
             resetPlaceHolder(elementByID);
         }
-        else if(id==='button-create-task'){
-            addToDoTaskToBoard();
-        }
+    }
+    if(id==='button-create-task'){
+        addTaskToArray(valueOfInput);
     }
     document.getElementById('subTaskList').innerHTML = '';
 }
@@ -135,23 +139,14 @@ function resetPlaceHolder(elementByID){
     document.getElementById(`${elementByID}`).placeholder = `${placeholderValue}`;
 }
 
-function addToDoTaskToBoard(){
-    debugger;
-    let myObject = {
-        'id': 4,
+function addTaskToArray(valueOfInput){
+    let id = todos.length;
+    let myObject ={
+        'id': id,
         'taskcategory':'todo',
-        'taskdepartment':'Development',
-        'taskheadline': 'Aufräumen',
-        'taskdescription': 'Code clean up',
-        'taskduedate':'',
-        'taskpriority':'medium',
-        'taskassignedto':[
-            {
-                'assigne1':'Andreas',
-                'assigne2':'Marcel',
-                'assigne3':'Ivan'
-            }
-        ]
+        'taskInputTitle':valueOfInput[0],
+        'taskInputDescription':valueOfInput[1],
+        'taskInputDate':valueOfInput[2]
     };
     todos.push(myObject);
     renderBoard();

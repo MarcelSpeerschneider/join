@@ -3,70 +3,38 @@ let todos = [
     {
         'id': 0,
         'taskcategory':'todo',
-        'taskdepartment':'Development',
-        'taskheadline': 'Aufräumen',
-        'taskdescription': 'Code clean up',
-        'taskduedate':'',
-        'taskpriority':'medium',
-        'taskassignedto':[
-            {
-                'assigne1':'Andreas',
-            },
-            {
-                'assigne2':'Marcel',
-            },
-            {
-                'assigne3':'Ivan'
-            }
-        ]
+        'taskDepartment':'Development',
+        'taskInputTitle': 'Aufräumen',
+        'taskInputDescription': 'Code clean up',
+        'taskInputDate':'',
+        'taskpriority':'medium'
     },
     {
         'id': 1,
         'taskcategory':'inprogress',
-        'taskdepartment':'Marketing',
-        'taskheadline': 'Product News',
-        'taskdescription': 'Neues Produkt anpreisen',
+        'taskDepartment':'Marketing',
+        'taskInputTitle': 'Aufräumen',
+        'taskInputDescription': 'Code clean up',
         'taskduedate':'',
         'taskpriority':'medium',
-        'taskassignedto':[
-            {
-                'assigne1':'Andreas',
-                'assigne2':'Marcel',
-                'assigne3':'Ivan'
-            }
-        ]
     },
     {
         'id': 2,
         'taskcategory':'awaitfeedback',
-        'taskdepartment':'Einkauf',
-        'taskheadline': 'Einkaufen',
-        'taskdescription': 'Neue Büromöbel',
+        'taskDepartment':'Einkauf',
+        'taskInputTitle': 'Aufräumen',
+        'taskInputDescription': 'Code clean up',
         'taskduedate':'',
         'taskpriority':'medium',
-        'taskassignedto':[
-            {
-                'assigne1':'Andreas',
-                'assigne2':'Marcel',
-                'assigne3':'Ivan'
-            }
-        ]
     },
     {
         'id': 3,
         'taskcategory':'done',
-        'taskdepartment':'Support',
-        'taskheadline': 'Einstellungen',
-        'taskdescription': 'Personalgespräche führen',
+        'taskDepartment':'Support',
+        'taskInputTitle': 'Aufräumen',
+        'taskInputDescription': 'Code clean up',
         'taskduedate':'',
         'taskpriority':'medium',
-        'taskassignedto':[
-            {
-                'assigne1':'Andreas',
-                'assigne2':'Marcel',
-                'assigne3':'Ivan'
-            }
-        ]
     }
 ];
 
@@ -166,10 +134,10 @@ function updateBoard() {
 }
 
 function generateToDoHTML(element) {
-    return `<div onclick="openAddTaskForm()" draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
-        <div class="bgc-${element['taskdepartment']} taskHeadline-bg">${element['taskdepartment']}</div>
-        <div>${element['taskheadline']}</div>
-        <div>${element['taskdescription']}</div>
+    return `<div onclick="changeTask()" draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
+        <div class="bgc-${element['taskDepartment']} taskHeadline-bg">${element['taskDepartment']}</div>
+        <div>${element['taskInputTitle']}</div>
+        <div>${element['taskInputDescription']}</div>
     </div>`;;
 }
 
