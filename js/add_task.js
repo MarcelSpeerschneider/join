@@ -132,6 +132,7 @@ function resetPlaceHolder(elementByID){
 }
 
 function addToDoTaskToBoard(){
+    debugger;
     let myObject = {
         'id': 4,
         'taskcategory':'todo',
@@ -149,5 +150,5 @@ function addToDoTaskToBoard(){
         ]
     };
     todos.push(myObject);
-    debugger;
+    renderBoard();
 }
