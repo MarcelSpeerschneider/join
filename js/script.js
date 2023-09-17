@@ -1,132 +1,138 @@
+
 document.addEventListener("DOMContentLoaded", function () {
-        // Der gesamte Code, der darauf wartet, dass das Dokument geladen ist
+    // Der gesamte Code, der darauf wartet, dass das Dokument geladen ist
 });
 
 function changeBackgroundColor() {
-        var svgElement = document.querySelector('.user-profile-icon');
-        var rectElement = svgElement.querySelector('rect');
-        rectElement.setAttribute("fill", "#E1E5EC");
+    var svgElement = document.querySelector('.user-profile-icon');
+    var rectElement = svgElement.querySelector('rect');
+    rectElement.setAttribute("fill", "#E1E5EC");
 }
 
 function changeBackgroundColorBack() {
-        var svgElement = document.querySelector('.user-profile-icon');
-        var rectElement = svgElement.querySelector('rect');
-        rectElement.setAttribute("fill", "white");
+    var svgElement = document.querySelector('.user-profile-icon');
+    var rectElement = svgElement.querySelector('rect');
+    rectElement.setAttribute("fill", "white");
 }
 
 function changeBackgroundColorMobile() {
-        var svgElement = document.querySelector('.user-profile-icon-mobile');
-        rectElement = svgElement.querySelector('circle');
-        rectElement.setAttribute("fill", "#E1E5EC");
+    var svgElement = document.querySelector('.user-profile-icon-mobile');
+    rectElement = svgElement.querySelector('circle');
+    rectElement.setAttribute("fill", "#E1E5EC");
 }
 
 function changeBackgroundColorBackMobile() {
-        var svgElement = document.querySelector('.user-profile-icon-mobile');
-        rectElement = svgElement.querySelector('circle');
-        rectElement.setAttribute("fill", "white");
+    var svgElement = document.querySelector('.user-profile-icon-mobile');
+    rectElement = svgElement.querySelector('circle');
+    rectElement.setAttribute("fill", "white");
 }
 
 function renderSummary() {
-        let dashboard = document.getElementById('dashboard-content');
-        dashboard.innerHTML = renderSummaryinnerHtml();
+    let dashboardDesktop = document.getElementById('dashboard-content');
+    let dashboardMobile = document.getElementById('dashboard-content-mobile');
+    dashboardDesktop.innerHTML = renderSummaryinnerHtml();
+    dashboardMobile.innerHTML = renderSummaryinnerHtml();
 }
 
 function renderAddTask() {
-        let dashboard = document.getElementById('dashboard-content');
-        dashboard.innerHTML = renderAddTaskInnerHtml();
+    let dashboardDesktop = document.getElementById('dashboard-content');
+    let dashboardMobile = document.getElementById('dashboard-content-mobile');
+    dashboardDesktop.innerHTML = renderAddTaskInnerHtml();
+    dashboardMobile.innerHTML = renderAddTaskInnerHtml();
+
 }
 
 function selectContactsToAssign() {
-        let dropdown = document.getElementById('select-contacts-to-assign-dropdown');
-        let arrow = document.getElementById('arrow-drop-down');
+    let dropdown = document.getElementById('select-contacts-to-assign-dropdown');
+    let arrow = document.getElementById('arrow-drop-down');
 
-        arrow.style.transition = 'transform 0.5s ease';
+    arrow.style.transition = 'transform 0.5s ease';
 
-        if (dropdown.style.display === 'none') {
-                arrow.style.transform = 'rotate(180deg)';
-                setTimeout((() => { dropdown.style.display = 'flex'; }), 125);
-                dropdown.setAttribute('data-selected', 'true')
-        }
-        else {
-                arrow.style.transform = 'rotate(0deg)';
-                setTimeout((() => { dropdown.style.display = 'none'; }), 125);
-                dropdown.setAttribute('data-selected', 'false')
-        }
-        contactSummary();
+    if (dropdown.style.display === 'none') {
+        arrow.style.transform = 'rotate(180deg)';
+        setTimeout((() => { dropdown.style.display = 'flex'; }), 125);
+        dropdown.setAttribute('data-selected', 'true')
+    }
+    else {
+        arrow.style.transform = 'rotate(0deg)';
+        setTimeout((() => { dropdown.style.display = 'none'; }), 125);
+        dropdown.setAttribute('data-selected', 'false')
+    }
+    contactSummary();
 }
 
 function childFunction(event) {
-        event.stopPropagation();
+    event.stopPropagation();
 }
 
 function assignContactToTask(i) {
-        let contactContainer = document.getElementById(`select-contacts-to-assign-dropdown-contact-container${i}`);
-        let checkbox = document.getElementById(`select-contacts-to-assign-dropdown-checkbox${i}`);
+    let contactContainer = document.getElementById(`select-contacts-to-assign-dropdown-contact-container${i}`);
+    let checkbox = document.getElementById(`select-contacts-to-assign-dropdown-checkbox${i}`);
 
-        if (contactContainer.getAttribute('data-selected') === 'true') {
-                contactContainer.style.backgroundColor = "#FFFFFF";
-                contactContainer.style.color = "black";
-                checkbox.src = "./../img/checkbox-blank.svg";
-                checkbox.style.filter = "";
-                contactContainer.setAttribute('data-selected', 'false');
-        } else {
-                contactContainer.style.backgroundColor = "#3b4e69";
-                contactContainer.style.color = "#FFFFFF";
-                checkbox.src = "./../img/checkbox-filled.svg";
-                checkbox.style.filter = "invert()";
-                contactContainer.setAttribute('data-selected', 'true');
-        }
+    if (contactContainer.getAttribute('data-selected') === 'true') {
+        contactContainer.style.backgroundColor = "#FFFFFF";
+        contactContainer.style.color = "black";
+        checkbox.src = "./../img/checkbox-blank.svg";
+        checkbox.style.filter = "";
+        contactContainer.setAttribute('data-selected', 'false');
+    } else {
+        contactContainer.style.backgroundColor = "#3b4e69";
+        contactContainer.style.color = "#FFFFFF";
+        checkbox.src = "./../img/checkbox-filled.svg";
+        checkbox.style.filter = "invert()";
+        contactContainer.setAttribute('data-selected', 'true');
+    }
 }
 
 function prioContainer(i) {
-        let containerClicked = document.getElementById(`prio-${i}`);
-        let containers = [
-                document.getElementById('prio-urgent'),
-                document.getElementById('prio-medium'),
-                document.getElementById('prio-low')
-        ];
+    let containerClicked = document.getElementById(`prio-${i}`);
+    let containers = [
+        document.getElementById('prio-urgent'),
+        document.getElementById('prio-medium'),
+        document.getElementById('prio-low')
+    ];
 
-        // Setze alle Container zurück
-        containers.forEach((container) => {
-                container.style.backgroundColor = "#FFFFFF";
-                container.style.color = "black";
-                container.setAttribute('data-selected', 'false');
-        });
+    // Setze alle Container zurück
+    containers.forEach((container) => {
+        container.style.backgroundColor = "#FFFFFF";
+        container.style.color = "black";
+        container.setAttribute('data-selected', 'false');
+    });
 
-        // Spezielle Änderungen für den angeklickten Container
-        if (containerClicked.getAttribute('data-selected') === 'true') {
-                containerClicked.style.backgroundColor = "#FFFFFF";
-                containerClicked.style.color = "black";
-                containerClicked.setAttribute('data-selected', 'false');
-        } else {
-                containerClicked.style.backgroundColor = "#3b4e69";
-                containerClicked.style.color = "#FFFFFF";
-                containerClicked.setAttribute('data-selected', 'true');
-        }
+    // Spezielle Änderungen für den angeklickten Container
+    if (containerClicked.getAttribute('data-selected') === 'true') {
+        containerClicked.style.backgroundColor = "#FFFFFF";
+        containerClicked.style.color = "black";
+        containerClicked.setAttribute('data-selected', 'false');
+    } else {
+        containerClicked.style.backgroundColor = "#3b4e69";
+        containerClicked.style.color = "#FFFFFF";
+        containerClicked.setAttribute('data-selected', 'true');
+    }
 }
 
 
 function contactSummary() {
-        let dropdown = document.getElementById('select-contacts-to-assign-dropdown');
-        let contactSummary = document.getElementById('contact-summary');
+    let dropdown = document.getElementById('select-contacts-to-assign-dropdown');
+    let contactSummary = document.getElementById('contact-summary');
 
-        if (dropdown.getAttribute('data-selected') === 'true') {
-                setTimeout(() => { contactSummary.style.display = 'none'; }, 125)
-        }
+    if (dropdown.getAttribute('data-selected') === 'true') {
+        setTimeout(() => { contactSummary.style.display = 'none'; }, 125)
+    }
 
-        else {
-                setTimeout(() => { contactSummary.style.display = 'flex'; }, 125)
-        }
+    else {
+        setTimeout(() => { contactSummary.style.display = 'flex'; }, 125)
+    }
 }
 
 function buttonCreateTaskChangeColor() {
-        let icon = document.querySelector('#add-task-icon-cancel path');
-        icon.setAttribute("stroke", "#00bee8");
+    let icon = document.querySelector('#add-task-icon-cancel path');
+    icon.setAttribute("stroke", "#00bee8");
 }
 
 function buttonCreateTaskChangeColorBack() {
-        let icon = document.querySelector('#add-task-icon-cancel path');
-        icon.setAttribute("stroke", "#2A3647");
+    let icon = document.querySelector('#add-task-icon-cancel path');
+    icon.setAttribute("stroke", "#2A3647");
 }
 
 function selectNewSubtask() {
@@ -142,7 +148,7 @@ function addNewSubtask() {
     let list = document.querySelector('.add-new-subtask-list');
     let input = document.getElementById('add-new-subtask-input');
     if (input.value) {
-        list.innerHTML+= /*html*/`<li><input id="add-new-subtask-listinput1" value="${input.value}" disabled>
+        list.innerHTML += /*html*/`<li><input id="add-new-subtask-listinput1" value="${input.value}" disabled>
         <div class="add-new-subtask-icon-container-list" id="add-new-subtask-icon-container-list1"><img src="./../img/edit-icon.svg" onclick="editNewSubtaskInput(1)">|<img src="./../img/delete-icon.svg" onclick="clearNewSubtaskInput(1)"></li></div>
         `;
         document.getElementById('add-new-subtask-input').value = '';
@@ -162,7 +168,7 @@ function clearNewSubtask() {
 
 function clearNewSubtaskInput(i) {
     document.getElementById(`add-new-subtask-listinput${i}`).value = '';
-} 
+}
 
 function editNewSubtaskInput(i) {
     let input = document.getElementById(`add-new-subtask-listinput${i}`);
@@ -355,7 +361,7 @@ function renderAddTaskInnerHtml() {
                         </div>
                     </div>
     
-                    <div>
+                    <div class="select-contacts-to-assign-dropdown-contact-bottom-container">
                         <div class="select-contacts-to-assign-dropdown-contact" id="contact-summary">
                             <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
                                 <svg width="28" height="28">
