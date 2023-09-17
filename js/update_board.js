@@ -51,7 +51,7 @@ let todos = [
     {
         'id': 3,
         'taskcategory':'done',
-        'taskdepartment':'Geschäftsführung',
+        'taskdepartment':'Support',
         'taskheadline': 'Einstellungen',
         'taskdescription': 'Personalgespräche führen',
         'taskduedate':'',
@@ -164,7 +164,7 @@ function updateBoard() {
 
 function generateToDoHTML(element) {
     return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
-        <div>${element['taskdepartment']}</div>
+        <div class="bgc-${element['taskdepartment']} taskHeadline-bg">${element['taskdepartment']}</div>
         <div>${element['taskheadline']}</div>
         <div>${element['taskdescription']}</div>
     </div>`;;
