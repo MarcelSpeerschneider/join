@@ -78,7 +78,7 @@ function renderBoard() {
         <div class="board-card">
             <div class="board-card-header">
                 <p>Await feedback</p>
-                <img src="./../img/Capa.png" onclick="openAddTaskForm()">
+                <img src="./../img/Capa.png" id="" onclick="openAddTaskForm()">
             </div>
             <div class="drag-area" id="awaitfeedback" ondrop="moveTo('awaitfeedback')" ondragleave="removeHighlight('awaitfeedback')" ondragover="allowDrop(event); highlight('awaitfeedback')">
 
@@ -87,7 +87,7 @@ function renderBoard() {
         <div class="board-card">
             <div class="board-card-header">
                 <p>Done</p>
-                <img src="./../img/Capa.png" onclick="openAddTaskForm()">
+                <img src="./../img/Capa.png" onclick="renderPopUpAddTask('MyTest')">
             </div>
             <div class="drag-area" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
 
