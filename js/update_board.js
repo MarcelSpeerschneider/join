@@ -2,8 +2,8 @@
 let todos = [
     {
         'id': 0,
-        'taskcategory':'todo',
-        'taskDepartment':'Development',
+        'taskStatus':'todo',
+        'taskCategory':'User Story',
         'taskInputTitle': 'Aufräumen',
         'taskInputDescription': 'Code clean up',
         'taskInputDate':'',
@@ -11,8 +11,8 @@ let todos = [
     },
     {
         'id': 1,
-        'taskcategory':'inprogress',
-        'taskDepartment':'Marketing',
+        'taskStatus':'inprogress',
+        'taskCategory':'Technical Task',
         'taskInputTitle': 'Aufräumen',
         'taskInputDescription': 'Code clean up',
         'taskduedate':'',
@@ -20,8 +20,8 @@ let todos = [
     },
     {
         'id': 2,
-        'taskcategory':'awaitfeedback',
-        'taskDepartment':'Einkauf',
+        'taskStatus':'awaitfeedback',
+        'taskCategory':'User Story',
         'taskInputTitle': 'Aufräumen',
         'taskInputDescription': 'Code clean up',
         'taskduedate':'',
@@ -29,8 +29,8 @@ let todos = [
     },
     {
         'id': 3,
-        'taskcategory':'done',
-        'taskDepartment':'Support',
+        'taskStatus':'done',
+        'taskCategory':'Technical Task',
         'taskInputTitle': 'Aufräumen',
         'taskInputDescription': 'Code clean up',
         'taskduedate':'',
@@ -104,28 +104,28 @@ function renderBoard() {
 }
 
 function updateBoard() {
-    let todo = todos.filter(t => t['taskcategory'] == 'todo');
+    let todo = todos.filter(t => t['taskStatus'] == 'todo');
     document.getElementById('todo').innerHTML = '';
 
     todo.forEach(element => {
         document.getElementById('todo').innerHTML += generateToDoHTML(element);
     });
 
-    let inprogress = todos.filter(i => i['taskcategory'] == 'inprogress');
+    let inprogress = todos.filter(i => i['taskStatus'] == 'inprogress');
     document.getElementById('inprogress').innerHTML = '';
 
     inprogress.forEach(element => {
         document.getElementById('inprogress').innerHTML += generateToDoHTML(element);
     });
 
-    let awaitfeedback = todos.filter(a => a['taskcategory'] == 'awaitfeedback');
+    let awaitfeedback = todos.filter(a => a['taskStatus'] == 'awaitfeedback');
     document.getElementById('awaitfeedback').innerHTML = '';
 
     awaitfeedback.forEach(element => {
         document.getElementById('awaitfeedback').innerHTML += generateToDoHTML(element);
     });
 
-    let done = todos.filter(d => d['taskcategory'] == 'done');
+    let done = todos.filter(d => d['taskStatus'] == 'done');
     document.getElementById('done').innerHTML = '';
 
     done.forEach(element => {
@@ -134,11 +134,12 @@ function updateBoard() {
 }
 
 function generateToDoHTML(element) {
+    let temp = element['taskCategory'].replace(/\s/g, '').toLowerCase();
     return `<div onclick="changeTask()" draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
-        <div class="bgc-${element['taskDepartment']} taskHeadline-bg">${element['taskDepartment']}</div>
+        <div class="bgc-${temp} taskHeadline-bg">${element['taskCategory']}</div>
         <div>${element['taskInputTitle']}</div>
         <div>${element['taskInputDescription']}</div>
-    </div>`;;
+    </div>`;
 }
 
 function startDragging(id) {
@@ -149,8 +150,8 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(taskcategory) {
-    todos[currentDraggedElement]['taskcategory'] = taskcategory;
+function moveTo(taskStatus) {
+    todos[currentDraggedElement]['taskStatus'] = taskStatus;
     updateBoard();
 }
 

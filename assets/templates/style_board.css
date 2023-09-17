@@ -160,17 +160,11 @@
 }
 
 /* Background-Colors of the different departments */
-.bgc-Development{
-  background-color: #FF7A00;
-}
-.bgc-Marketing{
+.bgc-technicaltask{
   background-color: #1FD7C1;
 }
-.bgc-Einkauf{
+.bgc-userstory{
   background-color: #0038FF;
-}
-.bgc-Support{
-  background-color: #FF4646;
 }
 
 .taskHeadline-bg{
