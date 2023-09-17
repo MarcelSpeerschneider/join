@@ -703,9 +703,9 @@ select {
         display: none;
     }
 
-    .add-task-bottom-button-container {
+    /* .add-task-bottom-button-container {
         flex-direction: column;
-    }
+    } */
 
     .add-new-subtask input {
         width: 150px;

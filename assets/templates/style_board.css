@@ -223,6 +223,7 @@
     height: 51px;
     font-weight: 400;
     font-size: 21px;
+    width: -webkit-fill-available;
   }
 
   #addTaskOverlay textarea{
@@ -309,4 +310,21 @@
 .addTaskOverlayBottom{
   display: flex;
   flex-direction: row-reverse;
+}
+
+@media(max-width: 1100px) {
+  #addTaskOverlayBody{
+    display: flex;
+    flex-direction: column;
+  }
+  .overlay-content{
+    overflow-y: auto;
+    margin: 10px;
+  }
+   .overlay-content::-webkit-scrollbar {
+    display: none;
+  }
+  #addTaskOverlayBodyMiddle{
+    display: none;
+  }
 }
