@@ -1,61 +1,61 @@
 const contacts = [{
         name: "John Doe",
         email: "john.doe@example.com",
-        phone: "(123) 456-7890",
+        phone: "4567890",
         color: "#FF5733"
     },
     {
         name: "Jane Smith",
         email: "jane.smith@example.com",
-        phone: "(234) 567-8901",
+        phone: "5678901",
         color: "#33FF57"
     },
     {
         name: "James Johnson",
         email: "james.johnson@example.com",
-        phone: "(345) 678-9012",
+        phone: " 6789012",
         color: "#5733FF"
     },
     {
         name: "Emily Davis",
         email: "emily.davis@example.com",
-        phone: "(456) 789-0123",
+        phone: "7890123",
         color: "#FF5733"
     },
     {
         name: "Michael Wilson",
         email: "michael.wilson@example.com",
-        phone: "(567) 890-1234",
+        phone: "8901234",
         color: "#33FF57"
     },
     {
         name: "Sarah Brown",
         email: "sarah.brown@example.com",
-        phone: "(678) 901-2345",
+        phone: "9012345",
         color: "#5733FF"
     },
     {
         name: "David Lee",
         email: "david.lee@example.com",
-        phone: "(789) 012-3456",
+        phone: "0123456",
         color: "#FF5733"
     },
     {
         name: "Olivia Taylor",
         email: "olivia.taylor@example.com",
-        phone: "(890) 123-4567",
+        phone: " 1234567",
         color: "#33FF57"
     },
     {
         name: "Daniel Clark",
         email: "daniel.clark@example.com",
-        phone: "(901) 234-5678",
+        phone: " 2345678",
         color: "#5733FF"
     },
     {
         name: "Ava Hernandez",
         email: "ava.hernandez@example.com",
-        phone: "(012) 345-6789",
+        phone: " 3456789",
         color: "#FF5733"
     }
 ];
@@ -93,7 +93,7 @@ function generateLetterContainer(currentLetter) {
 
 function generateContactHTML(contact, i, color) {
     const firstLetterOfFirstName = contact.name.split(" ")[0][0].toUpperCase();
-    const firstLetterOfLastName = contact.name.split(" ")[1][0];
+    const firstLetterOfLastName = contact.name.split(" ")[1][0].toUpperCase();
 
     return /*html*/ `
         <div id="contact-${i}" onclick="displayContactInfo(${i}, '${color}')"  class="list-of-contacts">
@@ -127,8 +127,8 @@ function displayContactInfo(index, color) {
 }
 
 function generateContactInfoHTML(contact,index, color) {
-    const firstLetterOfFirstName = contact.name.split(' ')[0][0];
-    const firstLetterOfLastName = contact.name.split(' ')[1][0];
+    const firstLetterOfFirstName = contact.name.split(' ')[0][0].toUpperCase();
+    const firstLetterOfLastName = contact.name.split(' ')[1][0].toUpperCase();
     return /*html*/ `
     <div class="contact-info">
         <div class="info-name">
@@ -232,9 +232,9 @@ function generateEditContactPopupHTML(){
 
 </div>
 <div  class="contactinput">
-    <form class="input-pop-up" onsubmit="saveEditContact();return false;">
+    <form class="input-pop-up" onsubmit="addEditContact(event);return false;">
         <div class="input-img">
-        <input required  placeholder="Name" id="name" type="text">
+        <input required  placeholder="Name" id="nameValueTwo" type="text">
         <svg class="svgStyleInput" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="person">
         <mask id="mask0_84485_2192" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -247,7 +247,7 @@ function generateEditContactPopupHTML(){
         </svg>
         </div>
         <div class="input-img">
-        <input required class="contactMail" placeholder="Email" id="email" type="email">
+        <input required class="contactMail" placeholder="Email" id="emailValueTwo" type="email">
         <svg class="svgStyleInput" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="mail">
 <mask id="mask0_84485_2199" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -260,7 +260,7 @@ function generateEditContactPopupHTML(){
 </svg>
         </div>
         <div class="input-img">
-        <input required id="phoneValueOne"  placeholder="Phone number" onwheel="this.blur();" type="number">
+        <input required id="phoneValueTwo"  placeholder="Phone number"  onwheel="this.blur();">
         <svg class="svgStyleInput" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="call">
 <mask id="mask0_84485_2206" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
@@ -395,7 +395,7 @@ function returnRenderHTML() {
       <div  class="contactinput">
           <form class="input-pop-up" onsubmit="addNewContact(event);return false;">
               <div class="input-img">
-              <input required  placeholder="Name" id="name" type="text">
+              <input required  placeholder="Name" id="nameValueOne" type="text">
               <svg class="svgStyleInput" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g id="person">
               <mask id="mask0_84485_2192" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -408,7 +408,7 @@ function returnRenderHTML() {
               </svg>
               </div>
               <div class="input-img">
-              <input required class="contactMail" placeholder="Email" id="email" type="email">
+              <input required class="contactMail" placeholder="Email" id="emailValueOne" type="email">
               <svg class="svgStyleInput" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="mail">
 <mask id="mask0_84485_2199" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -421,7 +421,7 @@ function returnRenderHTML() {
 </svg>
               </div>
               <div class="input-img">
-              <input  placeholder="Phone number" onwheel="this.blur();"  id="phoneValueTwo" type="number">
+              <input  placeholder="Phone number" onwheel="this.blur();"  id="phoneValueOne" type="number">
               <svg class="svgStyleInput" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="call">
 <mask id="mask0_84485_2206" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
@@ -503,9 +503,9 @@ function deleteContact(index) {
 function addNewContact(event) {
     event.preventDefault();
 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
+    const name = document.getElementById("nameValueOne").value;
+    const email = document.getElementById("emailValueOne").value;
+    const phone = document.getElementById("phoneValueOne").value;
 
     if (contacts.some((contact) => contact.email === email)) {
         const errorMessage = document.getElementById("errorMessage");
@@ -527,20 +527,39 @@ function addNewContact(event) {
     closeWindow();
 }
 
+function addEditContact(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("nameValueTwo").value;
+    const email = document.getElementById("emailValueTwo").value;
+    const phone = document.getElementById("phoneValueTwo").value;
+
+    const editedContact = {
+        name,
+        email,
+        phone,
+        color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+    };
+
+    const index = contacts.findIndex(contact => contact.name === name);
+
+    if (index !== -1) {
+        contacts.splice(index, 1, editedContact);
+    }
+
+    renderContacts();
+    closeWindow();
+}
+
 function openEditContact(index) {
     const contact = contacts[index];
-    document.getElementById('name').value = contact.name;
-    document.getElementById('email').value = contact.email;
-    document.getElementById('phoneValueOne').value = contact.phone;
+    document.getElementById('nameValueTwo').value = contact.name;
+    document.getElementById('emailValueTwo').value = contact.email;
+    document.getElementById('phoneValueTwo').value = contact.phone;
     
-    console.log(contact.name);
-    console.log(contact.email);
-    console.log(contact.phone);
 
     document.getElementById('editPopUp').style.display = 'flex';
 }
-
-
 
 function closeEditWindow(){
     document.getElementById('editPopUp').style.display='none';

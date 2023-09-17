@@ -1,3 +1,6 @@
+// Globale Variablen
+let globalStatus = '';
+
 function openAddTaskForm() {
     document.getElementById('overlay').style.display = 'flex';
 }
@@ -6,8 +9,11 @@ function closeAddTaskForm() {
     document.getElementById('overlay').style.display = 'none';
 }
 
-function renderPopUpAddTask(myTest) {
-    alert(myTest);
+function renderPopUpAddTask(status) {
+    if(status==='todo' | status==='inprogress' | status==='awaitfeedback' | status==='done'){
+        openAddTaskForm();
+        globalStatus = status;
+    }
     let popUp = document.getElementById('overlayContent');
     popUp.innerHTML = HTMLrenderPopUpAddTask();
 }
@@ -240,12 +246,11 @@ function addTaskToArray(valueOfInput, taskPriority) {
     let id = todos.length;
     let myObject = {
         'id': id,
-        'taskCategory': 'User Story',
-        'taskStatus': 'todo',
-        'taskInputTitle': valueOfInput[0],
-        'taskInputDescription': valueOfInput[1],
-        'taskInputDate': valueOfInput[2],
-        'taskPriority': taskPriority
+        'taskCategory':'User Story',
+        'taskStatus':'todo',
+        'taskInputTitle':valueOfInput[0],
+        'taskInputDescription':valueOfInput[1],
+        'taskInputDate':valueOfInput[2]
     };
     todos.push(myObject);
     renderBoard();

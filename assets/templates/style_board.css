@@ -208,10 +208,9 @@
   }
 
   .cross-close{
-    height: 16px;
-    width: 16px;
-    transition: ease-in-out 125ms;
     cursor: pointer;
+    width: 25px;
+    height: 25px;
   }
 
   #addTaskOverlay input{
