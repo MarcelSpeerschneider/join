@@ -232,7 +232,7 @@ function generateEditContactPopupHTML(){
 
 </div>
 <div  class="contactinput">
-    <form class="input-pop-up" onsubmit="addEditContact(event);return false;">
+    <form class="input-pop-up" onsubmit="addEditContact();return false;">
         <div class="input-img">
         <input required  placeholder="Name" id="nameValueTwo" type="text>
         <svg class="svgStyleInput" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -395,7 +395,7 @@ function returnRenderHTML() {
       <div  class="contactinput">
           <form class="input-pop-up" onsubmit="addNewContact(event);return false;">
               <div class="input-img">
-              <input required  placeholder="Name" id="nameValueOne" type="text>
+              <input required  placeholder="Name" id="nameValueOne" type="text">
               <svg class="svgStyleInput" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g id="person">
               <mask id="mask0_84485_2192" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -523,33 +523,36 @@ function addNewContact(event) {
     closeWindow();
 }
 
-function addEditContact(event) {
-    event.preventDefault();
-
-    const name = document.getElementById("nameValueTwo").value;
-    const email = document.getElementById("emailValueTwo").value;
-    const phone = document.getElementById("phoneValueTwo").value;
-
-    const editedContact = {
-        name,
-        email,
-        phone,
-        color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
-    };
-
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Phone:", phone);
-
-    const index = contacts.findIndex(contact => contact.name === name);
-
-    if (index !== -1) {
-        contacts.splice(index, 1, editedContact);
-    }
-
-    renderContacts();
-    closeWindow();
+function addEditContact() {
+   
 }
+
+
+
+// function addEditContact(event) {
+//     event.preventDefault();
+
+//     const name = document.getElementById("nameValueTwo").value;
+//     const email = document.getElementById("emailValueTwo").value;
+//     const phone = document.getElementById("phoneValueTwo").value;
+
+//     const editedContact = {
+//         name,
+//         email,
+//         phone,
+//         color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+//     };
+
+//     const index = newContact.findIndex(contacts => contacts.name === name);
+
+//     if (index !== -1) {
+//         contacts[index] = editedContact;
+//     }
+
+
+//     renderContacts();
+//     closeWindow();
+// }
 
 function openEditContact(index) {
     const contact = contacts[index];
