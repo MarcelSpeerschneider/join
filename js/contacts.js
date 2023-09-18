@@ -523,36 +523,30 @@ function addNewContact(event) {
     closeWindow();
 }
 
-function addEditContact() {
-   
+function addEditContact(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("nameValueTwo").value;
+    const email = document.getElementById("emailValueTwo").value;
+    const phone = document.getElementById("phoneValueTwo").value;
+
+    const editedContact = {
+        name,
+        email,
+        phone,
+        color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+    };
+
+    const index = contacts.findIndex(contacts => contacts.name === name);
+
+    if (index !== -1) {
+        contacts[index] = editedContact;
+    }
+
+
+    renderContacts();
+    closeWindow();
 }
-
-
-
-// function addEditContact(event) {
-//     event.preventDefault();
-
-//     const name = document.getElementById("nameValueTwo").value;
-//     const email = document.getElementById("emailValueTwo").value;
-//     const phone = document.getElementById("phoneValueTwo").value;
-
-//     const editedContact = {
-//         name,
-//         email,
-//         phone,
-//         color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
-//     };
-
-//     const index = newContact.findIndex(contacts => contacts.name === name);
-
-//     if (index !== -1) {
-//         contacts[index] = editedContact;
-//     }
-
-
-//     renderContacts();
-//     closeWindow();
-// }
 
 function openEditContact(index) {
     const contact = contacts[index];
