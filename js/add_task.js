@@ -10,7 +10,7 @@ function closeAddTaskForm() {
 }
 
 function renderPopUpAddTask(status) {
-    if(status==='todo' | status==='inprogress' | status==='awaitfeedback' | status==='done'){
+    if (status === 'todo' | status === 'inprogress' | status === 'awaitfeedback' | status === 'done') {
         openAddTaskForm();
         globalStatus = status;
     }
@@ -222,15 +222,15 @@ function submitClassList(id) {
         }
     }
     if (id === 'button-create-task') {
-        // let priorities;
-        // priorities.push(document.querySelectorAll('.priority'));
-        // for (let priority of priorities) {
-        //     if (data - selected == true) {
-        //         taskPriority = priority.id;
-        //     }
-        // }
+        const elements = document.querySelectorAll('.priority');
 
-        addTaskToArray(valueOfInput);
+        for (let i = 0; i < elements.length; i++) {
+            if (elements[i].getAttribute('data-selected') === 'true') {
+                taskPriority = elements[i].id;
+                break
+            }
+        }
+        addTaskToArray(valueOfInput, taskPriority);
     }
     // document.getElementById('subTaskList').innerHTML = '';
 }
@@ -246,11 +246,12 @@ function addTaskToArray(valueOfInput, taskPriority) {
     let id = todos.length;
     let myObject = {
         'id': id,
-        'taskCategory':'User Story',
-        'taskStatus':'todo',
-        'taskInputTitle':valueOfInput[0],
-        'taskInputDescription':valueOfInput[1],
-        'taskInputDate':valueOfInput[2]
+        'taskCategory': 'User Story',
+        'taskStatus': 'todo',
+        'taskInputTitle': valueOfInput[0],
+        'taskInputDescription': valueOfInput[1],
+        'taskInputDate': valueOfInput[2],
+        'taskPriority': taskPriority
     };
     todos.push(myObject);
     renderBoard();

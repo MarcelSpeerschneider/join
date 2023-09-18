@@ -58,6 +58,7 @@ function selectContactsToAssign() {
         setTimeout((() => { dropdown.style.display = 'none'; }), 125);
         dropdown.setAttribute('data-selected', 'false')
     }
+    selectContactsToAssignDropdownRender();
     contactSummary();
 }
 
@@ -223,6 +224,52 @@ function saveNewSubtask(i) {
     `;
 }
 
+function selectContactsToAssignDropdownRender() {
+    let container = document.getElementById('select-contacts-to-assign-dropdown');
+    container.innerHTML = '';
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        container.innerHTML += /*html*/`
+         <div class="select-contacts-to-assign-dropdown-contact-container"
+                                id="select-contacts-to-assign-dropdown-contact-container${i}"
+                                onclick=assignContactToTask(${i})>
+                                <div class="select-contacts-to-assign-dropdown-contact">
+                                    <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
+                                        <svg width="28" height="28">
+                                            <circle cx="14" cy="14" r="14" fill=${getRandomColor()} />
+                                        </svg>
+                                        <div class="select-contacts-to-assign-dropdown-contact-credentials">${generateCredentials(contact.name)}</div>
+                                    </div>
+                                    <div class="select-contacts-to-assign-dropdown-contactname">${contact.name}</div>
+                                </div>
+                                <div class="select-contacts-to-assign-dropdown-checkbox"><img
+                                        src="./../img/checkbox-blank.svg"
+                                        id="select-contacts-to-assign-dropdown-checkbox${i}">
+                                </div>
+                            </div>
+        `;
+    }
+}
+
+function generateCredentials(fullName) {
+    let names = fullName.split(" ");  // Teilt den String in ein Array
+
+    let firstName = names[0];
+    let lastName = names[1];
+
+    let firstInitial = firstName.charAt(0).toUpperCase();
+    let lastInitial = lastName.charAt(0).toUpperCase();
+
+    return `${firstInitial}${lastInitial}`;
+}
+
+
+function getRandomColor() {
+    let colors = ["#00bee8", "#ff7a00", "#bb78ff", "#00bee8", "#ffbb2b", "#9327ff", "#ff4646", "#fc71ff", "#cd5c5c", "#ff00ff", "#add8e6", "#98fb98"];
+    let randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+}
+
 function renderSummaryinnerHtml() {
 
     return /*html*/`
@@ -346,59 +393,10 @@ function renderAddTaskInnerHtml() {
                                 </g>
                             </svg>
                         </div>
+
                         <div class="select-contacts-to-assign-dropdown" id="select-contacts-to-assign-dropdown"
                             onclick="childFunction(event)">
-                            <div class="select-contacts-to-assign-dropdown-contact-container"
-                                id="select-contacts-to-assign-dropdown-contact-container1"
-                                onclick=assignContactToTask(1)>
-                                <div class="select-contacts-to-assign-dropdown-contact">
-                                    <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
-                                        <svg width="28" height="28">
-                                            <circle cx="14" cy="14" r="14" fill="#00bee8" />
-                                        </svg>
-                                        <div class="select-contacts-to-assign-dropdown-contact-credentials">SM</div>
-                                    </div>
-                                    <div class="select-contacts-to-assign-dropdown-contactname">Contact 1</div>
-                                </div>
-                                <div class="select-contacts-to-assign-dropdown-checkbox"><img
-                                        src="./../img/checkbox-blank.svg"
-                                        id="select-contacts-to-assign-dropdown-checkbox1">
-                                </div>
-                            </div>
-                            <div class="select-contacts-to-assign-dropdown-contact-container"
-                                id="select-contacts-to-assign-dropdown-contact-container2"
-                                onclick=assignContactToTask(2)>
-                                <div class="select-contacts-to-assign-dropdown-contact">
-                                    <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
-                                        <svg width="28" height="28">
-                                            <circle cx="14" cy="14" r="14" fill="#ff7a00" />
-                                        </svg>
-                                        <div class="select-contacts-to-assign-dropdown-contact-credentials">AB</div>
-                                    </div>
-                                    <div class="select-contacts-to-assign-dropdown-contactname">Contact 2</div>
-                                </div>
-                                <div class="select-contacts-to-assign-dropdown-checkbox"><img
-                                        src="./../img/checkbox-blank.svg"
-                                        id="select-contacts-to-assign-dropdown-checkbox2">
-                                </div>
-                            </div>
-                            <div class="select-contacts-to-assign-dropdown-contact-container"
-                                id="select-contacts-to-assign-dropdown-contact-container3"
-                                onclick=assignContactToTask(3)>
-                                <div class="select-contacts-to-assign-dropdown-contact">
-                                    <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
-                                        <svg width="28" height="28">
-                                            <circle cx="14" cy="14" r="14" fill="#bb78ff" />
-                                        </svg>
-                                        <div class="select-contacts-to-assign-dropdown-contact-credentials">PA</div>
-                                    </div>
-                                    <div class="select-contacts-to-assign-dropdown-contactname">Contact 3</div>
-                                </div>
-                                <div class="select-contacts-to-assign-dropdown-checkbox"><img
-                                        src="./../img/checkbox-blank.svg"
-                                        id="select-contacts-to-assign-dropdown-checkbox3">
-                                </div>
-                            </div>
+                            <!-- Here the contacts will be rendered in -->
                             <button class="add-new-contact-button">Add new Contact</button>
                         </div>
                     </div>
@@ -429,10 +427,10 @@ function renderAddTaskInnerHtml() {
                     <div class="addtask-prio-container priority" id="prio-urgent" onclick="prioContainer('urgent')">
                         Urgent <img src="./../img/prio-urgent.svg">
                     </div>
-                    <div class="addtask-prio-container" id="prio-medium" onclick="prioContainer('medium')">
+                    <div class="addtask-prio-container priority" id="prio-medium" onclick="prioContainer('medium')">
                         Medium <img src="./../img/prio-medium.svg">
                     </div>
-                    <div class="addtask-prio-container" id="prio-low" onclick="prioContainer('low')">
+                    <div class="addtask-prio-container priority" id="prio-low" onclick="prioContainer('low')">
                         Low <img src="./../img/prio-low.svg">
                     </div>
                 </div>
