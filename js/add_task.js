@@ -10,7 +10,7 @@ function closeAddTaskForm() {
 }
 
 function renderPopUpAddTask(status) {
-    if(status==='todo' | status==='inprogress' | status==='awaitfeedback' | status==='done'){
+    if (status === 'todo' | status === 'inprogress' | status === 'awaitfeedback' | status === 'done') {
         openAddTaskForm();
         globalStatus = status;
     }
@@ -154,7 +154,7 @@ function HTMLrenderPopUpAddTask() {
                 <div class="addtask-assigned-to-container">
                     Subtasks
                     <div class="add-new-subtask">
-                        <input placeholder="Add new subtask" id="add-new-subtask-input" required><div class="add-new-subtask-icon-container" id="add-new-subtask-icon-container"><img src="./../img/add-subtask.svg" class="add-new-subtask-plus" onclick="selectNewSubtask()"></div>
+                        <input placeholder="Add new subtask" id="add-new-subtask-input"><div class="add-new-subtask-icon-container" id="add-new-subtask-icon-container"><img src="./../img/add-subtask.svg" class="add-new-subtask-plus" onclick="selectNewSubtask()"></div>
                     </div>
                     <div><ul class="add-new-subtask-list"></ul></div>
                 </div>
@@ -191,9 +191,9 @@ function HTMLrenderPopUpAddTask() {
 
 function renderNewSubtask() {
     let newSubTaskValue = document.getElementById('addNewSubtask').value;
-    if(newSubTaskValue === ''){
+    if (newSubTaskValue === '') {
         return;
-    }else{
+    } else {
         let subTaskList = document.getElementById('subTaskList');
         subTaskList.innerHTML += HTMLrenderNewSubtask(newSubTaskValue);
         document.getElementById('addNewSubtask').value = '';
@@ -208,40 +208,50 @@ function HTMLrenderNewSubtask(newSubTaskValue) {
     `;
 }
 
-function submitClassList(id){
+function submitClassList(id) {
     let addTaskElements = document.getElementsByClassName('taskInput');
     let elementByID = '';
     let valueOfInput = [];
+    let taskPriority = '';
 
     for (let index = 0; index < addTaskElements.length; index++) {
         elementByID = addTaskElements[index]['id'];
         valueOfInput.push(document.getElementById(elementByID).value);
-        if(id==='button-clear'){
+        if (id === 'button-clear') {
             resetPlaceHolder(elementByID);
         }
     }
-    if(id==='button-create-task'){
-        addTaskToArray(valueOfInput);
+    if (id === 'button-create-task') {
+        const elements = document.querySelectorAll('.priority');
+
+        for (let i = 0; i < elements.length; i++) {
+            if (elements[i].getAttribute('data-selected') === 'true') {
+                taskPriority = elements[i].id;
+                break
+            }
+        }
+        addTaskToArray(valueOfInput, taskPriority);
     }
     // document.getElementById('subTaskList').innerHTML = '';
 }
 
-function resetPlaceHolder(elementByID){
+function resetPlaceHolder(elementByID) {
     let placeholderValue = document.getElementById(`${elementByID}`).placeholder;
     let emptyValue = document.getElementById(`${elementByID}`);
     emptyValue.value = '';
     document.getElementById(`${elementByID}`).placeholder = `${placeholderValue}`;
 }
 
-function addTaskToArray(valueOfInput){
+function addTaskToArray(valueOfInput, taskPriority) {
     let id = todos.length;
-    let myObject ={
+    let myObject = {
         'id': id,
-        'taskCategory':'User Story',
-        'taskStatus':globalStatus,
-        'taskInputTitle':valueOfInput[0],
-        'taskInputDescription':valueOfInput[1],
-        'taskInputDate':valueOfInput[2]
+        'taskCategory': 'User Story',
+        'taskStatus': 'todo',
+        'taskInputTitle': valueOfInput[0],
+        'taskInputDescription': valueOfInput[1],
+        'taskInputDate': valueOfInput[2],
+        'taskPriority': taskPriority
     };
     todos.push(myObject);
     renderBoard();
