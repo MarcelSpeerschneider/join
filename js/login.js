@@ -21,5 +21,3 @@ function showPassword() {
     lockIcon.src = "assets/img/hide.png";
   }
 }
-
-
