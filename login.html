@@ -1,65 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join</title>
-    <link rel="favicon" href="assets/img/favicon.png" type="img" />
-    <link rel="stylesheet" href="./assets/fonts/fonts.css">
-    <link rel="stylesheet" href="login-styles.css/styleLogin.css">
-    <script src="js/register.js"></script>
-    <script src="js/login.js"></script>
-    
-  </head>
-  <body>
-    <div class="contentAll">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join</title>
+  <link rel="favicon" href="assets/img/favicon.png" type="img" />
+  <link rel="stylesheet" href="./assets/fonts/fonts.css">
+  <link rel="stylesheet" href="login-styles.css/styleLogin.css">
+</head>
+
+<body onload="initUsers()">
+  <div class="contentAll">
     <div class="logo-container">
-        <div class="left-image">
+      <div class="left-image">
         <img class="Join_Logo" src="assets/img/join-logo.svg" alt="join-logo" />
-        </div>
-        <div class="rightContent">
-            <a href="register.html">Not a Join user?
-            <button class="signUpBtn buttonLogin">Sign Up</button>
-          </a>
-        </div>
       </div>
-      
+      <div class="rightContent">
+        <a href="register.html">Not a Join user?
+          <button class="signUpBtn buttonLogin">Sign Up</button>
+        </a>
+      </div>
+    </div>
+
     <div class="login-content">
-        <form onsubmit="login();return false;" class="login-container" action="">
-         <div class="login-header">
-        <h1>LogIn</h1>
-        <img src="assets/img/blueBar.svg" alt="">
+      <form onsubmit="login();return false;" class="login-container" action="">
+        <div class="login-header">
+          <h1>LogIn</h1>
+          <img src="assets/img/blueBar.svg" alt="">
         </div>
         <div class="login-input">
-            <input required id="email" placeholder="Email" type="email">
-            <img src="assets/img/mail.png" alt="">
+          <input required id="email" placeholder="Email" type="email">
+          <img src="assets/img/mail.png" alt="">
         </div>
         <div class="login-input">
           <input required id="password" maxlength="15" placeholder="Password" type="password">
           <img style="width: 25px;" id="lock-icon" src="assets/img/lock.png" alt="" onclick="showPassword()">
         </div>
-    <div class="checkbox_forgotPasswort">
-        <div class="checkbox-content">
-        <input class="checkbox" type="checkbox" name="" id="checkboxLogin" value="yes">
-        <span>Remeber me</span>
-    </div>
-    
-    <div class="forgot-passwort">
-        <a href="forgot-password.html">I forgot my password</a>
-    </div>
-    </div>
-    <div class="logInBtn">
-        <button  class="log_in_btn buttonLogin">Log in</button>
-        <button  class="guest_login_btn">Guest Log in</button>
-    </div>
+        <div class="checkbox_forgotPasswort">
+          <div class="checkbox-content">
+            <input class="checkbox" type="checkbox" name="" id="checkboxLogin" value="yes">
+            <span>Remeber me</span>
+          </div>
+
+          <div class="forgot-passwort">
+            <a href="forgot-password.html">I forgot my password</a>
+          </div>
+        </div>
+        <div class="logInBtn">
+          <button class="log_in_btn buttonLogin">Log in</button>
+          <button class="guest_login_btn" onclick="window.location.href='./assets/templates/template.html';"
+            type="button">Guest Login</button>
+        </div>
     </div>
     </form>
     <footer>
-        <a class="aHover" href="#">Privacy Policy</a>
-        <a class="aHover" href="#">Legal notice</a>
+      <a class="aHover" href="#">Privacy Policy</a>
+      <a class="aHover" href="#">Legal notice</a>
     </footer>
 
-</div>
+  </div>
+  <script src="js/register.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/readFromBackend.js"></script>
+  <script src="js/writeToBackend.js"></script>
+</body>
 
-  </body>
 </html>

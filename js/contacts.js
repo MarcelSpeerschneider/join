@@ -234,7 +234,7 @@ function generateEditContactPopupHTML(){
 <div  class="contactinput">
     <form class="input-pop-up" onsubmit="addEditContact(event);return false;">
         <div class="input-img">
-        <input required  placeholder="Name" id="nameValueTwo" type="text">
+        <input required  placeholder="Name" id="nameValueTwo" type="text>
         <svg class="svgStyleInput" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="person">
         <mask id="mask0_84485_2192" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -395,7 +395,7 @@ function returnRenderHTML() {
       <div  class="contactinput">
           <form class="input-pop-up" onsubmit="addNewContact(event);return false;">
               <div class="input-img">
-              <input required  placeholder="Name" id="nameValueOne" type="text">
+              <input required  placeholder="Name" id="nameValueOne" type="text>
               <svg class="svgStyleInput" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g id="person">
               <mask id="mask0_84485_2192" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -495,10 +495,6 @@ function sortContactsAlphabetically() {
     contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-function deleteContact(index) {
-    contacts.splice(index, 1);
-    renderContacts();
-}
 
 function addNewContact(event) {
     event.preventDefault();
@@ -540,6 +536,10 @@ function addEditContact(event) {
         phone,
         color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
     };
+
+    console.log("Name:", name);
+    console.log("Email:", email);
+    console.log("Phone:", phone);
 
     const index = contacts.findIndex(contact => contact.name === name);
 
