@@ -40,12 +40,23 @@ function toggleConfirmPassword() {
   }
 }
 
-function checkPasswordsAndRedirect() {
+async function checkPasswordsAndRedirect() {
   let password = document.getElementById("password").value;
   let confirmPassword = document.getElementById("confirmPassword").value;
+  let usermail = localStorage.getItem('resetPasswordForUser');
 
   if (password === confirmPassword) {
-    window.location.href = "login.html";
+
+    for (let index = 0; index < usersjoin.length; index++) {
+      const element = usersjoin[index];
+      let boolUserCheck = element['usermail'].includes(usermail);
+      if(boolUserCheck){
+        element['userpassword']=`${password}`;
+        await setItem('usersjoin', JSON.stringify(usersjoin));
+        window.location.href = "login.html";
+        return;
+      }
+    }
   } else {
     document.getElementById("passwordMatchMessage").style.display = "block";
   }

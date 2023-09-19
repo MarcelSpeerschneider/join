@@ -28,30 +28,35 @@ async function registerUser() {
   }
 
   checkboxAlert.style.display = "none";
-  checkUser();
+  checkUserRegistration();
 }
 
-async function checkUser() {
-  // await loadUsers();
-  debugger;
+async function checkUserRegistration() {
+  let userIsAlreadyRegistered = false; 
+  let element = '';
+
   if (usersjoin.length === 0) {
     fillLocalArray();
+    await setItem('usersjoin', JSON.stringify(usersjoin));
+    window.location.href = "login.html";
   }
-  if (usersjoin.length !== 0) {
+  else if (usersjoin.length !== 0) {
     for (let index = 0; index < usersjoin.length; index++) {
-      const element = usersjoin[index];
+      element = usersjoin[index];
       const boolregisterEmail = element['usermail'].includes(registerEmail.value);
-      if (boolregisterEmail) {
-        alert('User existiert bereits');
-        return;
+      if(boolregisterEmail){
+        userIsAlreadyRegistered = true;
       }
-      else if (!boolregisterEmail) {
-        fillLocalArray();
-        await setItem('usersjoin', JSON.stringify(usersjoin));
-        alert('User wurde angelegt');
-        window.location.href = "login.html";
-        return;
-      }
+    }
+    if (!userIsAlreadyRegistered) {
+      fillLocalArray();
+      await setItem('usersjoin', JSON.stringify(usersjoin));
+      alert(`Der Account mit der Mail-Adresse: ${element['usermail']} wurde regsitriert!`);
+      window.location.href = "login.html";
+    }
+    else{
+      alert(`Der User mit er Mail-Adresse: ${element['usermail']} existiert bereits!`);
+      window.location.href = "login.html";
     }
   }
 }
@@ -64,22 +69,22 @@ function fillLocalArray() {
   });
 }
 
-function addUser() {
-  let email = document.getElementById("email");
-  let password = document.getElementById("password");
-  let checkbox = document.getElementById("checkbox");
-  let checkboxAlert = document.getElementById("checkboxAlert");
+// function addUser() {
+//   let email = document.getElementById("email");
+//   let password = document.getElementById("password");
+//   let checkbox = document.getElementById("checkbox");
+//   let checkboxAlert = document.getElementById("checkboxAlert");
 
-  if (!checkbox.checked) {
-    checkboxAlert.style.display = "block";
-    return;
-  }
+//   if (!checkbox.checked) {
+//     checkboxAlert.style.display = "block";
+//     return;
+//   }
 
-  checkboxAlert.style.display = "none";
+//   checkboxAlert.style.display = "none";
 
-  usersjoin.push({ email: email.value, password: password.value });
-  window.location.href = "login.html";
-}
+//   usersjoin.push({ email: email.value, password: password.value });
+//   window.location.href = "login.html";
+// }
 
 function showPassword() {
   let passwordInput = document.getElementById("password");
