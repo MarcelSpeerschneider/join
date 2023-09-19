@@ -44,7 +44,14 @@ function checkPasswordsAndRedirect() {
   let password = document.getElementById("password").value;
   let confirmPassword = document.getElementById("confirmPassword").value;
 
+
   if (password === confirmPassword) {
+    let usermail = localStorage.getItem('resetPasswordForUser');
+    for (let index = 0; index < usersjoin.length; index++) {
+      const element = usersjoin[index];
+      const boolregisterEmail = element['usermail'].includes(usermail);
+      boolregisterEmail['userpassword'] = password;
+    }
     window.location.href = "login.html";
   } else {
     document.getElementById("passwordMatchMessage").style.display = "block";
