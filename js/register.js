@@ -32,23 +32,31 @@ async function registerUser() {
 }
 
 async function checkUserRegistration() {
+  let userIsAlreadyRegistered = false; 
+  let element = '';
+
   if (usersjoin.length === 0) {
     fillLocalArray();
     await setItem('usersjoin', JSON.stringify(usersjoin));
+    window.location.href = "login.html";
   }
   else if (usersjoin.length !== 0) {
     for (let index = 0; index < usersjoin.length; index++) {
-      const element = usersjoin[index];
+      element = usersjoin[index];
       const boolregisterEmail = element['usermail'].includes(registerEmail.value);
-      if (!boolregisterEmail) {
-        fillLocalArray();
-        await setItem('usersjoin', JSON.stringify(usersjoin));
-        window.location.href = "login.html";
-        return;
+      if(boolregisterEmail){
+        userIsAlreadyRegistered = true;
       }
-      else{
-        alert(`Der User mit er Mail-Adresse: ${element['usermail']} existiert bereits!`);
-      }
+    }
+    if (!userIsAlreadyRegistered) {
+      fillLocalArray();
+      await setItem('usersjoin', JSON.stringify(usersjoin));
+      alert(`Der Account mit der Mail-Adresse: ${element['usermail']} wurde regsitriert!`);
+      window.location.href = "login.html";
+    }
+    else{
+      alert(`Der User mit er Mail-Adresse: ${element['usermail']} existiert bereits!`);
+      window.location.href = "login.html";
     }
   }
 }

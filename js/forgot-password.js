@@ -1,5 +1,4 @@
 function openResetPassword(email) {
-    debugger;
     let resetPasswordOfMail = email.value;
     for (let index = 0; index < usersjoin.length; index++) {
         const element = usersjoin[index];
