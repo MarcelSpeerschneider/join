@@ -10,6 +10,9 @@ async function login() {
         window.location.href = "assets/templates/template.html";
         return;
       }
+      else{
+        alert('Username or Password incorrect!');
+      }
     }
   }
 }
