@@ -1,4 +1,5 @@
 function openResetPassword(email) {
+    debugger;
     let resetPasswordOfMail = email.value;
     for (let index = 0; index < usersjoin.length; index++) {
         const element = usersjoin[index];
@@ -6,6 +7,7 @@ function openResetPassword(email) {
         if (boolregisterEmail) {
             localStorage.setItem('resetPasswordForUser', resetPasswordOfMail);
             window.location.href = 'resetpassword.html';
+            return;
         }
         else {
             window.location.href = 'register.html';
