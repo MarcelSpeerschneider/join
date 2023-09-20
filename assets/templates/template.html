@@ -9,17 +9,12 @@
     <link rel="stylesheet" href="style_desktop.css">
     <link rel="stylesheet" href="style_board.css">
     <link rel="stylesheet" href="style_mobile.css">
-    <script src="./../../js/script.js"></script>
-    <script src="./../../js/update_board.js"></script>
-    <script src="./../../js/contacts.js"></script>
-    <script src="./../../js/add_task.js"></script>
-    <script src="./../../js/change_task.js"></script>
     <link rel="stylesheet" href="style_contact.css">
 
     <title>Join</title>
 </head>
 
-<body onload="renderSummary()">
+<body onload="renderSummary(), initContacts()">
     <main id="main">
         <div class="dashboard">
             <header>
@@ -114,7 +109,13 @@
         </div>
 
     </main>
-
+    <script src="./../../js/script.js"></script>
+    <script src="./../../js/update_board.js"></script>
+    <script src="./../../js/contacts.js"></script>
+    <script src="./../../js/add_task.js"></script>
+    <script src="./../../js/change_task.js"></script>
+    <script src="./../../js/readFromBackend.js"></script>
+    <script src="./../../js/writeToBackend.js"></script>
 </body>
 
 </html>

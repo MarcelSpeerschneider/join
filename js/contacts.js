@@ -1,64 +1,73 @@
-const contacts = [{
-        name: "John Doe",
-        email: "john.doe@example.com",
-        phone: "4567890",
-        color: "#FF5733"
-    },
-    {
-        name: "Jane Smith",
-        email: "jane.smith@example.com",
-        phone: "5678901",
-        color: "#33FF57"
-    },
-    {
-        name: "James Johnson",
-        email: "james.johnson@example.com",
-        phone: " 6789012",
-        color: "#5733FF"
-    },
-    {
-        name: "Emily Davis",
-        email: "emily.davis@example.com",
-        phone: "7890123",
-        color: "#FF5733"
-    },
-    {
-        name: "Michael Wilson",
-        email: "michael.wilson@example.com",
-        phone: "8901234",
-        color: "#33FF57"
-    },
-    {
-        name: "Sarah Brown",
-        email: "sarah.brown@example.com",
-        phone: "9012345",
-        color: "#5733FF"
-    },
-    {
-        name: "David Lee",
-        email: "david.lee@example.com",
-        phone: "0123456",
-        color: "#FF5733"
-    },
-    {
-        name: "Olivia Taylor",
-        email: "olivia.taylor@example.com",
-        phone: " 1234567",
-        color: "#33FF57"
-    },
-    {
-        name: "Daniel Clark",
-        email: "daniel.clark@example.com",
-        phone: " 2345678",
-        color: "#5733FF"
-    },
-    {
-        name: "Ava Hernandez",
-        email: "ava.hernandez@example.com",
-        phone: " 3456789",
-        color: "#FF5733"
-    }
-];
+// const contacts = [{
+//         name: "John Doe",
+//         email: "john.doe@example.com",
+//         phone: "4567890",
+//         color: "#FF5733"
+//     },
+//     {
+//         name: "Jane Smith",
+//         email: "jane.smith@example.com",
+//         phone: "5678901",
+//         color: "#33FF57"
+//     },
+//     {
+//         name: "James Johnson",
+//         email: "james.johnson@example.com",
+//         phone: " 6789012",
+//         color: "#5733FF"
+//     },
+//     {
+//         name: "Emily Davis",
+//         email: "emily.davis@example.com",
+//         phone: "7890123",
+//         color: "#FF5733"
+//     },
+//     {
+//         name: "Michael Wilson",
+//         email: "michael.wilson@example.com",
+//         phone: "8901234",
+//         color: "#33FF57"
+//     },
+//     {
+//         name: "Sarah Brown",
+//         email: "sarah.brown@example.com",
+//         phone: "9012345",
+//         color: "#5733FF"
+//     },
+//     {
+//         name: "David Lee",
+//         email: "david.lee@example.com",
+//         phone: "0123456",
+//         color: "#FF5733"
+//     },
+//     {
+//         name: "Olivia Taylor",
+//         email: "olivia.taylor@example.com",
+//         phone: " 1234567",
+//         color: "#33FF57"
+//     },
+//     {
+//         name: "Daniel Clark",
+//         email: "daniel.clark@example.com",
+//         phone: " 2345678",
+//         color: "#5733FF"
+//     },
+//     {
+//         name: "Ava Hernandez",
+//         email: "ava.hernandez@example.com",
+//         phone: " 3456789",
+//         color: "#FF5733"
+//     }
+// ];
+
+// Test Function to pump up the array (contacts) to the backend
+// async function pumpUp(){
+//     let mykey = 'contactsjoin';
+//     let myContacts = contacts;
+//     await setItem(mykey, myContacts)
+// }
+
+let contacts = [];
 
 function renderContacts() {
     let content = document.getElementById("dashboard-content");
