@@ -211,5 +211,5 @@ function addTaskToArray(valueOfInput, taskPriority) {
     globalStatus = 'todo';
     todos.push(myObject);
     setItem("tasksjoin", todos);
-    renderBoard();
+    renderBoardSite();
 }

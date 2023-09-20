@@ -63,9 +63,13 @@ function renderBoardSite() {
     if (window.innerWidth >= 830) {
         dashboardDesktop.innerHTML = renderBoard();
         dashboardMobile.innerHTML = '';
+        updateBoard();
+        renderPopUpAddTask();
     } else {
         dashboardMobile.innerHTML = renderBoard();
         dashboardDesktop.innerHTML = '';
+        updateBoard();
+        renderPopUpAddTask();
     }
 }
 
