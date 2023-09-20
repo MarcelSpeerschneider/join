@@ -79,17 +79,10 @@ function renderContactsSite() {
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
 
     if (window.innerWidth >= 830) {
-<<<<<<< HEAD
         dashboardDesktop.innerHTML =returnRenderHTML(),renderContactsAlphabetically();
         dashboardMobile.innerHTML = '';
     } else {
         dashboardMobile.innerHTML =returnRenderHTML(),renderContactsAlphabetically() ;
-=======
-        dashboardDesktop.innerHTML = returnRenderHTML();
-        dashboardMobile.innerHTML = '';
-    } else {
-        dashboardMobile.innerHTML =  returnRenderHTML();
->>>>>>> 31cfc82f48bb7e117fb293de63ef412f5c12a4f5
         dashboardDesktop.innerHTML = '';
     }
 }
