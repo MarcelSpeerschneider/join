@@ -32,16 +32,27 @@ function changeBackgroundColorBackMobile() {
 function renderSummary() {
     let dashboardDesktop = document.getElementById('dashboard-content');
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
-    dashboardDesktop.innerHTML = renderSummaryinnerHtml();
-    dashboardMobile.innerHTML = renderSummaryinnerHtml();
+
+    if (window.innerWidth >= 830) {
+        dashboardDesktop.innerHTML = renderSummaryinnerHtml();
+        dashboardMobile.innerHTML = '';
+    } else {
+        dashboardMobile.innerHTML = renderSummaryinnerHtml();
+        dashboardDesktop.innerHTML = '';
+    }
 }
 
 function renderAddTask() {
     let dashboardDesktop = document.getElementById('dashboard-content');
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
-    dashboardDesktop.innerHTML = renderAddTaskInnerHtml();
-    dashboardMobile.innerHTML = renderAddTaskInnerHtml();
 
+    if (window.innerWidth >= 830) {
+        dashboardDesktop.innerHTML = renderAddTaskInnerHtml();
+        dashboardMobile.innerHTML = '';
+    } else {
+        dashboardMobile.innerHTML = renderAddTaskInnerHtml();
+        dashboardDesktop.innerHTML = '';
+    }
 }
 
 function selectContactsToAssign() {
