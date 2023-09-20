@@ -188,7 +188,6 @@
 
 /* Overlay-Style */
 .overlayStyle {
-<<<<<<< HEAD
   position: fixed;
   top: 0;
   left: 0;
@@ -200,109 +199,6 @@
   align-items: center;
   z-index: 100;
   display: none;
-=======
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-    display: none;
-  }
-
-  .overlay-content {
-    background-color: white;
-    border-radius: 31px;
-    width: 915px;
-    max-height: 85vh;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    animation: slideInFromRight 1s;
-    padding: 30px;
-    position: relative;
-  }
-
-  .cross-close{
-    cursor: pointer;
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    top: 16px;
-    right: 16px;
-  }
-
-  #addTaskOverlay input{
-    height: 51px;
-    font-weight: 400;
-    font-size: 21px;
-    width: -webkit-fill-available;
-  }
-
-  #addTaskOverlay textarea{
-    resize: none;
-    font-size: 20px;
-    font-weight: 400;
-    border-radius: 10px;
-    border: 1px solid #D1D1D1;
-    background: #FFF;
-    padding: 12px 16px;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-  }
-
-  #addTaskOverlayHead{
-    display: flex;
-    justify-content: space-between;
-  }
-
-  #addTaskOverlayBody{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  #addTaskOverlayBodyLeft{
-    display: flex;
-    flex-direction: column;
-  }
-
-  #addTaskOverlayBodyMiddle{
-    border: 1px solid #D1D1D1;
-  }
-
-  #addTaskOverlayBodyRight{
-    display: flex;
-    flex-direction: column;
-  }
-
-  .elementInAddTaskOverlayBody{
-    display: flex;
-    flex-direction: column;
-    margin: 10px 0px 10px 0px;
-  }
-
-  .subTaskImage{
-    border-left: 1px solid #D1D1D1;
-    width: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .newSubTaskInputArea {
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-    font-weight: 400;
-    border-radius: 10px;
-    border: 1px solid #D1D1D1;
-    background: #FFF;
-    position: relative;
-    box-sizing: border-box;
->>>>>>> d010f0cfb699051e9cc2438946edcd697099ba2a
 }
 
 .overlay-content {
@@ -313,12 +209,16 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   animation: slideInFromRight 1s;
   padding: 30px;
+  position: relative;
 }
 
 .cross-close {
   cursor: pointer;
   width: 25px;
   height: 25px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
 }
 
 #addTaskOverlay input {
