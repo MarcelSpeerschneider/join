@@ -82,7 +82,7 @@ function renderContactsSite() {
         dashboardDesktop.innerHTML =returnRenderHTML(),renderContactsAlphabetically();
         dashboardMobile.innerHTML = '';
     } else {
-        dashboardMobile.innerHTML =returnRenderHTML(),renderContactsAlphabetically() ;
+        dashboardMobile.innerHTML = returnRenderHTML(),renderContactsAlphabetically() ;
         dashboardDesktop.innerHTML = '';
     }
 }

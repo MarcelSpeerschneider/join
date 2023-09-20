@@ -71,7 +71,6 @@ let contacts = [];
 
 function renderContacts() {
    
-
     renderContactsAlphabetically();
     }
 
@@ -567,10 +566,17 @@ function openEditContact(index) {
     document.getElementById('nameValueTwo').value = contact.name;
     document.getElementById('emailValueTwo').value = contact.email;
     document.getElementById('phoneValueTwo').value = contact.phone;
-    
+
+    if (window.innerWidth < 830) {
+        const contactsShow = document.getElementById('contactsShow');
+        const contactList = document.querySelector('.contact-list');
+        contactsShow.style.display = 'flex';
+        contactList.style.display = 'none';
+    }
 
     document.getElementById('editPopUp').style.display = 'flex';
 }
+
 
 function closeEditWindow(){
     document.getElementById('editPopUp').style.display='none';

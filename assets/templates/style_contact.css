@@ -1,10 +1,9 @@
 .contact-container {
     display: flex;
     flex-direction: column;
-   width: 100%;
+    width:-webkit-fill-available;
     height: calc(100% - 89px);
     position: absolute;
-    top: 89px;
     left: 232px;
     background-color: #f5f5f5;
     z-index: 0;
@@ -443,4 +442,114 @@ cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* Existing CSS */
+
+@media (max-width: 830px) {
+    .contact-container {
+        flex-direction: column;
+        left: 0;
+        width: 100%;
+        height: auto;
+        position: static;
+        height: 100vh;
+    }
+
+    .contact-content {
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .showContactRight {
+        margin: 4% 0;
+        flex: none;
+        width: 100%;
+    }
+
+    .contact-list {
+        width: 100%;
+        margin-bottom: 80px;
+    }
+
+    .button-container button {
+        width: 100%;
+    }
+
+    .list-of-contacts {
+        width: 100%;
+    }
+
+    .name, .email, .number {
+        width: auto;
+    }
+
+    .pup-up-content {
+        width: 100%;
+        height: auto;
+    }
+
+    .pop-up-left {
+        width: 100%;
+    }
+
+    .pop-up-right{
+        width: 100%;
+    }
+    .closeBtn {
+        transform: none;
+    }
+
+    .current-letter-content {
+        width: 100%;
+    }
+    
+    /* Add more responsive adjustments as needed */
+}
+
+@media (max-width: 1045px) {
+    .contact-container {
+        overflow: scroll;
+    }
+
+    .showContactRight {
+        display: none;
+    }
+
+    .contact-list {
+        width: 100%;
+    }
+
+    .button-container button {
+        width: 100%;
+    }
+
+    .list-of-contacts {
+        width: 100%;
+    }
+
+    .name, .email, .number {
+        width: 100%;
+    }
+
+    .pup-up-content {
+        width: 100%;
+        height: auto;
+    }
+
+    .pop-up-left {
+        width: 100%;
+    }
+
+    .pop-up-right{
+        width: 100%;
+    }
+
+    .closeBtn {
+        transform: none;
+    }
+
+    .current-letter-content {
+        width: 100%;
+    }
 }
