@@ -70,13 +70,15 @@
 let contacts = [];
 
 function renderContacts() {
-    let content = document.getElementById("dashboard-content");
-    content.innerHTML = "";
-    content.innerHTML += returnRenderHTML();
+   
 
+    renderContactsAlphabetically();
+    }
+
+function renderContactsAlphabetically() {
     sortContactsAlphabetically();
     const colors = generateColors();
-    let currentLetter=initializeCurrentLetter();
+    let currentLetter = initializeCurrentLetter();
     let contactListElement = document.getElementById("firstLetterContainer");
     contactListElement.innerHTML = ``;
     for (let i = 0; i < contacts.length; i++) {
@@ -91,6 +93,7 @@ function renderContacts() {
         contactListElement.innerHTML += contactHTML;
     }
 }
+
 
 function generateLetterContainer(currentLetter) {
     return `
@@ -476,6 +479,8 @@ function returnRenderHTML() {
 
       </div>
   `;
+
+  
 }
 
 function getFirstLetterOfFirstName(contact) {

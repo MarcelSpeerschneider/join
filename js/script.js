@@ -75,10 +75,10 @@ function renderContactsSite() {
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
 
     if (window.innerWidth >= 830) {
-        dashboardDesktop.innerHTML = renderContacts();
+        dashboardDesktop.innerHTML =returnRenderHTML(),renderContactsAlphabetically();
         dashboardMobile.innerHTML = '';
     } else {
-        dashboardMobile.innerHTML = renderContacts();
+        dashboardMobile.innerHTML =returnRenderHTML(),renderContactsAlphabetically() ;
         dashboardDesktop.innerHTML = '';
     }
 }
