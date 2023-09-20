@@ -578,3 +578,16 @@ function openContactForm() {
 function closeWindow() {
     document.getElementById("contactPopUp").style.display = "none";
 }
+
+function renderContactsMobile() {
+    let dashboardDesktop = document.getElementById('dashboard-content');
+    let dashboardMobile = document.getElementById('dashboard-content-mobile');
+
+    if (window.innerWidth >= 830) {
+        dashboardDesktop.innerHTML = renderContacts();
+        dashboardMobile.innerHTML = '';
+    } else {
+        dashboardMobile.innerHTML = renderContacts();
+        dashboardDesktop.innerHTML = '';
+    }
+}
