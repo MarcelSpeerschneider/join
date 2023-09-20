@@ -240,6 +240,9 @@ function resetPlaceHolder(elementByID) {
     let emptyValue = document.getElementById(`${elementByID}`);
     emptyValue.value = '';
     document.getElementById(`${elementByID}`).placeholder = `${placeholderValue}`;
+    document.getElementById('contact-summary').innerHTML = '';
+    selectedContacts = [];
+    subTasks = [];
 }
 
 function addTaskToArray(valueOfInput, taskPriority) {
@@ -251,7 +254,10 @@ function addTaskToArray(valueOfInput, taskPriority) {
         'taskInputTitle': valueOfInput[0],
         'taskInputDescription': valueOfInput[1],
         'taskInputDate': valueOfInput[2],
-        'taskPriority': taskPriority
+        'taskPriority': taskPriority,
+        'taskInputCategory': valueOfInput[3],
+        'taskSubtasks': subTasks
+
     };
     todos.push(myObject);
     renderBoard();

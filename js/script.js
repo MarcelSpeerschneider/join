@@ -1,3 +1,5 @@
+let selectedContacts = [];
+let subTasks = [];
 
 document.addEventListener("DOMContentLoaded", function () {
     // All the code that waits for the document to be loaded
@@ -77,7 +79,7 @@ function childFunction(event) {
  * specific DOM elements related to the contact.
  */
 
-function assignContactToTask(i) {
+function assignContactToTask(i, contact) {
     let contactContainer = document.getElementById(`select-contacts-to-assign-dropdown-contact-container${i}`);
     let checkbox = document.getElementById(`select-contacts-to-assign-dropdown-checkbox${i}`);
 
@@ -87,12 +89,22 @@ function assignContactToTask(i) {
         checkbox.src = "./../img/checkbox-blank.svg";
         checkbox.style.filter = "";
         contactContainer.setAttribute('data-selected', 'false');
+        // Entfernen des Kontakts aus dem Array, wenn er existiert
+
+        const index = selectedContacts.indexOf(contact);
+        if (index > -1) {
+             selectedContacts.splice(index, 1);
+        }
+
+
     } else {
         contactContainer.style.backgroundColor = "#3b4e69";
         contactContainer.style.color = "#FFFFFF";
         checkbox.src = "./../img/checkbox-filled.svg";
         checkbox.style.filter = "invert()";
         contactContainer.setAttribute('data-selected', 'true');
+        selectedContacts.push(contact);
+
     }
 }
 
@@ -181,14 +193,24 @@ function selectNewSubtask() {
 function addNewSubtask() {
     let list = document.querySelector('.add-new-subtask-list');
     let input = document.getElementById('add-new-subtask-input');
+
+    // Füge der subTasks-Liste nur ein neues Element hinzu, wenn im Eingabefeld etwas steht.
     if (input.value) {
-        list.innerHTML += /*html*/`<li><input id="add-new-subtask-listinput1" value="${input.value}" disabled>
-        <div class="add-new-subtask-icon-container-list" id="add-new-subtask-icon-container-list1"><img src="./../img/edit-icon.svg" onclick="editNewSubtaskInput(1)">|<img src="./../img/delete-icon.svg" onclick="clearNewSubtaskInput(1)"></li></div>
-        `;
-        document.getElementById('add-new-subtask-input').value = '';
+        subTasks.push(input.value);
+        input.value = '';
     }
-    else {
-        input.placeholder = 'please add subtask';
+
+    // Leere die Liste vor dem Neurendern
+    list.innerHTML = '';
+
+    // Neurendern der Liste
+    for (let i = 0; i < subTasks.length; i++) {
+        const subtask = subTasks[i];
+        list.innerHTML += /*html*/`<li><input id="add-new-subtask-listinput${i}" value="${subtask}" disabled>
+        <div class="add-new-subtask-icon-container-list" id="add-new-subtask-icon-container-list${i}">
+            <img src="./../img/edit-icon.svg" onclick="editNewSubtaskInput(${i})">|
+            <img src="./../img/delete-icon.svg" onclick="clearNewSubtaskInput(${i})">
+        </div></li>`;
     }
 }
 
@@ -202,6 +224,8 @@ function clearNewSubtask() {
 
 function clearNewSubtaskInput(i) {
     document.getElementById(`add-new-subtask-listinput${i}`).value = '';
+    subTasks.splice(i, 1);
+    addNewSubtask();
 }
 
 function editNewSubtaskInput(i) {
@@ -222,6 +246,7 @@ function saveNewSubtask(i) {
     iconContainer.innerHTML = /*html*/ `
       <div class="add-new-subtask-icon-container-list" id="add-new-subtask-icon-container-list1"><img src="./../img/edit-icon.svg" onclick="editNewSubtaskInput(${i})">|<img src="./../img/delete-icon.svg" onclick="clearNewSubtaskInput(${i})"></li></div>
     `;
+    subTasks[i] = input.value;
 }
 
 function selectContactsToAssignDropdownRender() {
@@ -229,10 +254,12 @@ function selectContactsToAssignDropdownRender() {
     container.innerHTML = '';
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
+        const isSelected = selectedContacts.includes(contact.name);
         container.innerHTML += /*html*/`
-         <div class="select-contacts-to-assign-dropdown-contact-container"
+         <div class="select-contacts-to-assign-dropdown-contact-container ${isSelected ? 'selected' : ''}"
                                 id="select-contacts-to-assign-dropdown-contact-container${i}"
-                                onclick=assignContactToTask(${i})>
+                                onclick = "assignContactToTask(${i},'${contact.name}')"
+                                data-selected="${isSelected ? 'true' : 'false'}">
                                 <div class="select-contacts-to-assign-dropdown-contact">
                                     <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
                                         <svg width="28" height="28">
@@ -243,12 +270,32 @@ function selectContactsToAssignDropdownRender() {
                                     <div class="select-contacts-to-assign-dropdown-contactname">${contact.name}</div>
                                 </div>
                                 <div class="select-contacts-to-assign-dropdown-checkbox"><img
-                                        src="./../img/checkbox-blank.svg"
+                                        src="./../img/${isSelected ? 'checkbox-filled' : 'checkbox-blank'}.svg"
                                         id="select-contacts-to-assign-dropdown-checkbox${i}">
                                 </div>
                             </div>
         `;
     }
+    renderCredentials();
+}
+
+function renderCredentials() {
+
+    let container = document.getElementById('contact-summary');
+    container.innerHTML = '';
+
+    for (let i = 0; i < selectedContacts.length; i++) {
+        const contact = selectedContacts[i];
+        container.innerHTML += /*html*/ `
+        <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
+        <svg width="28" height="28">
+            <circle cx="14" cy="14" r="14" fill="${getRandomColor()}"/>
+        </svg>
+        <div class="select-contacts-to-assign-dropdown-contact-credentials">${generateCredentials(contact)}</div>
+        </div>
+        `;
+    }
+
 }
 
 function generateCredentials(fullName) {
@@ -403,12 +450,7 @@ function renderAddTaskInnerHtml() {
 
                     <div class="select-contacts-to-assign-dropdown-contact-bottom-container">
                         <div class="select-contacts-to-assign-dropdown-contact" id="contact-summary">
-                            <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
-                                <svg width="28" height="28">
-                                    <circle cx="14" cy="14" r="14" fill="#bb78ff" />
-                                </svg>
-                                <div class="select-contacts-to-assign-dropdown-contact-credentials">PA</div>
-                            </div>
+                            <!-- Hier the credentials will be rendered in -->
                         </div>
                     </div>
                 </div>
@@ -427,7 +469,7 @@ function renderAddTaskInnerHtml() {
                     <div class="addtask-prio-container priority" id="prio-urgent" onclick="prioContainer('urgent')">
                         Urgent <img src="./../img/prio-urgent.svg">
                     </div>
-                    <div class="addtask-prio-container priority" id="prio-medium" onclick="prioContainer('medium')">
+                    <div class="addtask-prio-container priority pre-selected" id="prio-medium" onclick="prioContainer('medium')" data-selected="true">
                         Medium <img src="./../img/prio-medium.svg">
                     </div>
                     <div class="addtask-prio-container priority" id="prio-low" onclick="prioContainer('low')">

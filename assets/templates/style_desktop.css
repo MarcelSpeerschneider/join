@@ -472,6 +472,7 @@ input {
 .select-contacts-to-assign-dropdown-contact {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 16px;
     padding: 12px;
 }
@@ -538,6 +539,11 @@ input {
 .addtask-prio-container:hover {
     box-shadow: -5px 5px 10px #9b9b9b;
     cursor: pointer;
+}
+
+.pre-selected {
+    background-color: #3b4e69;
+    color: #FFFFFF;
 }
 
 .addtask-category-container {
