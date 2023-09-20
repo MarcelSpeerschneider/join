@@ -41,8 +41,7 @@ let todos = [
 let currentDraggedElement;
 
 function renderBoard() {
-    let board = document.getElementById('dashboard-content');
-    board.innerHTML = /*html*/`
+        return /*html*/`
         <div class="board-header">
         <div class="board-header-left">Board</div>
             <!-- <p>Board</p> -->

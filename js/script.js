@@ -55,6 +55,35 @@ function renderAddTask() {
     }
 }
 
+
+function renderBoardSite() {
+    let dashboardDesktop = document.getElementById('dashboard-content');
+    let dashboardMobile = document.getElementById('dashboard-content-mobile');
+
+    if (window.innerWidth >= 830) {
+        dashboardDesktop.innerHTML = renderBoard();
+        dashboardMobile.innerHTML = '';
+    } else {
+        dashboardMobile.innerHTML = renderBoard();
+        dashboardDesktop.innerHTML = '';
+    }
+}
+
+
+function renderContactsSite() {
+    let dashboardDesktop = document.getElementById('dashboard-content');
+    let dashboardMobile = document.getElementById('dashboard-content-mobile');
+
+    if (window.innerWidth >= 830) {
+        dashboardDesktop.innerHTML = renderContacts();
+        dashboardMobile.innerHTML = '';
+    } else {
+        dashboardMobile.innerHTML = renderContacts();
+        dashboardDesktop.innerHTML = '';
+    }
+}
+
+
 function selectContactsToAssign() {
     let dropdown = document.getElementById('select-contacts-to-assign-dropdown');
     let arrow = document.getElementById('arrow-drop-down');
