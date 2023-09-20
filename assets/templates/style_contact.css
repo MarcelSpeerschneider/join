@@ -126,9 +126,7 @@
 
 .email {
     color: #007cee;
-    font-size: 16px;
-    font-weight: 400;
-    margin: 0;
+    font-weight: 500;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -138,9 +136,7 @@
 
 .number {
     color: #007cee;
-    font-size: 16px;
-    font-weight: 400;
-    margin: 0;
+    font-weight: 600;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

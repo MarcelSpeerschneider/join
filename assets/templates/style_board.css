@@ -1,54 +1,54 @@
 .board-header {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    align-items: center;
-    justify-content: space-between;
-    padding: 82px 20px 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 82px 20px 0 20px;
 }
 
 .board-header-left {
-    color: #000;
-    font-family: Inter;
-    font-size: 61px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%;
+  color: #000;
+  font-family: Inter;
+  font-size: 61px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
 }
 
-.board-header-right{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 35px;
+.board-header-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 35px;
 }
 
 .magnifier {
-    width: 32px;
-    height: 32px;
+  width: 32px;
+  height: 32px;
 }
 
 .search-field input {
-    background-color: transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
 }
 
-.boardSearchContainer{
+.boardSearchContainer {
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 13px 21px;
   gap: 10px;
-  background: #FFFFFF;
-  border: 1px solid #A8A8A8;
+  background: #ffffff;
+  border: 1px solid #a8a8a8;
   border-radius: 10px;
 }
-.boardSearchInputField{
+.boardSearchInputField {
   width: 226px;
   height: 31px;
   border: none;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -56,238 +56,242 @@
   cursor: pointer;
 }
 
-.boardSearchBtn{
+.boardSearchBtn {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  border-left: 1px solid #D1D1D1;
+  border-left: 1px solid #d1d1d1;
   width: 43px;
   cursor: pointer;
 }
 
 .addTaskButton {
-    display: flex;
-    padding: 8px 16px;
-    height: 55px;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    border-radius: 10px;
-    border: 1px solid #2A3647;
-    background: #2A3647;
-    color: var(--white, #FFF);
-    font-family: Inter;
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%;
-    cursor: pointer;
+  display: flex;
+  padding: 8px 16px;
+  height: 55px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 10px;
+  border: 1px solid #2a3647;
+  background: #2a3647;
+  color: var(--white, #fff);
+  font-family: Inter;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  cursor: pointer;
 }
 
 .addTaskButton img {
-    width: 32px;
-    height: 32px;
+  width: 32px;
+  height: 32px;
 }
 
 /* Style of the Board-Body */
 .board-content-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 0px;
-    margin-top: 80px;
-    margin-bottom: 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
+  margin-top: 80px;
 }
 
 .board-card-header {
-    display: flex;
-    width: 244px;
-    justify-content: space-between;
-    align-items: center;
-    flex-shrink: 0;
+  display: flex;
+  width: 244px;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
 }
 
-.board-card-header p{
-    width: fit-content;
-    height: 25px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
+.board-card-header p {
+  width: fit-content;
+  height: 25px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 21px;
 }
 
 .board-card-header img {
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    border: 2px solid #2A3647;
-    cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 2px solid #2a3647;
+  cursor: pointer;
 }
 
-.board-card{
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-.drag-area{
-    min-height: 50px;
-    background-color: #E7E7E7;
-    border: 1px dashed black;
-    border-radius: 10px;
-    margin-bottom: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.board-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 50px;
 }
 
 .drag-area-highlight{
-    background-color: rgba(0, 0, 0, 0.2);
+  border: 2px dashed;
+  min-height: 300px;
 }
+
+.drag-area {
+  min-height: 200px;
+  min-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding: 10px;
+}
+
 
 .tasksInBoardOverview {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 80%;
-  background-color: #FFFFFF;
+  gap: 20px;
+  width: 250px;
+  background-color: #ffffff;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 10px;
-  margin: 10px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 /* Background-Colors of the different departments */
-.bgc-technicaltask{
-  background-color: #1FD7C1;
+.bgc-technicaltask {
+  background-color: #1fd7c1;
 }
-.bgc-userstory{
-  background-color: #0038FF;
+.bgc-userstory {
+  background-color: #0038ff;
 }
 
-.taskHeadline-bg{
+.taskHeadline-bg {
   width: fit-content;
-  padding: 4px;
+  padding: 10px;
   border-radius: 10px;
   color: white;
   font-weight: 400;
   font-size: 16px;
 }
 
-.card{
-    background-color: #FFFFFF;
-    border-radius: 10px;
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
 }
 
+.input-title {
+  overflow-y: scroll;
+  max-height: 90px;
+}
 
 /* Overlay-Style */
 .overlayStyle {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-    display: none;
-  }
-
-  .overlay-content {
-    background-color: white;
-    border-radius: 31px;
-    width: 915px;
-    max-height: 85vh;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    animation: slideInFromRight 1s;
-    padding: 30px;
-  }
-
-  .cross-close{
-    cursor: pointer;
-    width: 25px;
-    height: 25px;
-  }
-
-  #addTaskOverlay input{
-    height: 51px;
-    font-weight: 400;
-    font-size: 21px;
-    width: -webkit-fill-available;
-  }
-
-  #addTaskOverlay textarea{
-    resize: none;
-    font-size: 20px;
-    font-weight: 400;
-    border-radius: 10px;
-    border: 1px solid #D1D1D1;
-    background: #FFF;
-    padding: 12px 16px;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-  }
-
-  #addTaskOverlayHead{
-    display: flex;
-    justify-content: space-between;
-  }
-
-  #addTaskOverlayBody{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  #addTaskOverlayBodyLeft{
-    display: flex;
-    flex-direction: column;
-  }
-
-  #addTaskOverlayBodyMiddle{
-    border: 1px solid #D1D1D1;
-  }
-
-  #addTaskOverlayBodyRight{
-    display: flex;
-    flex-direction: column;
-  }
-
-  .elementInAddTaskOverlayBody{
-    display: flex;
-    flex-direction: column;
-    margin: 10px 0px 10px 0px;
-  }
-
-  .subTaskImage{
-    border-left: 1px solid #D1D1D1;
-    width: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .newSubTaskInputArea {
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-    font-weight: 400;
-    border-radius: 10px;
-    border: 1px solid #D1D1D1;
-    background: #FFF;
-    position: relative;
-    box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  display: none;
 }
 
-.newSubTaskInputArea input{
+.overlay-content {
+  background-color: white;
+  border-radius: 31px;
+  width: 915px;
+  max-height: 85vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: slideInFromRight 1s;
+  padding: 30px;
+}
+
+.cross-close {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
+
+#addTaskOverlay input {
+  height: 51px;
+  font-weight: 400;
+  font-size: 21px;
+  width: -webkit-fill-available;
+}
+
+#addTaskOverlay textarea {
+  resize: none;
+  font-size: 20px;
+  font-weight: 400;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  background: #fff;
+  padding: 12px 16px;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+#addTaskOverlayHead {
+  display: flex;
+  justify-content: space-between;
+}
+
+#addTaskOverlayBody {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+#addTaskOverlayBodyLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+#addTaskOverlayBodyMiddle {
+  border: 1px solid #d1d1d1;
+}
+
+#addTaskOverlayBodyRight {
+  display: flex;
+  flex-direction: column;
+}
+
+.elementInAddTaskOverlayBody {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px 10px 0px;
+}
+
+.subTaskImage {
+  border-left: 1px solid #d1d1d1;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newSubTaskInputArea {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: 400;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  background: #fff;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.newSubTaskInputArea input {
   border: none;
 }
 
-#subTaskList{
+#subTaskList {
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -296,29 +300,29 @@
   overflow-y: auto;
 }
 
-.subTask{
+.subTask {
   display: flex;
   align-items: center;
 }
 
-.addTaskOverlayBottom{
+.addTaskOverlayBottom {
   display: flex;
   flex-direction: row-reverse;
 }
 
-@media(max-width: 1100px) {
-  #addTaskOverlayBody{
+@media (max-width: 1100px) {
+  #addTaskOverlayBody {
     display: flex;
     flex-direction: column;
   }
-  .overlay-content{
+  .overlay-content {
     overflow-y: auto;
     margin: 10px;
   }
-   .overlay-content::-webkit-scrollbar {
+  .overlay-content::-webkit-scrollbar {
     display: none;
   }
-  #addTaskOverlayBodyMiddle{
+  #addTaskOverlayBodyMiddle {
     display: none;
   }
 }

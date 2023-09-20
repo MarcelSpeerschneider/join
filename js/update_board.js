@@ -138,7 +138,7 @@ function generateToDoHTML(element) {
     let temp = element['taskCategory'].replace(/\s/g, '').toLowerCase();
     return `<div onclick="changeTask()" draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
         <div class="bgc-${temp} taskHeadline-bg">${element['taskCategory']}</div>
-        <div>${element['taskInputTitle']}</div>
+        <div class="input-title">${element['taskInputTitle']}</div>
         <div>${element['taskInputDescription']}</div>
     </div>`;
 }
