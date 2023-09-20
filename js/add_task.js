@@ -1,5 +1,6 @@
 // Globale Variablen
-let globalStatus = '';
+let globalStatus = 'todo';
+let tasks = [];
 
 function openAddTaskForm() {
     document.getElementById('overlay').style.display = 'flex';
@@ -198,7 +199,7 @@ function addTaskToArray(valueOfInput, taskPriority) {
     let myObject = {
         'id': id,
         'taskCategory': 'User Story',
-        'taskStatus': 'todo',
+        'taskStatus': globalStatus,
         'taskInputTitle': valueOfInput[0],
         'taskInputDescription': valueOfInput[1],
         'taskInputDate': valueOfInput[2],
@@ -207,6 +208,7 @@ function addTaskToArray(valueOfInput, taskPriority) {
         'taskSubtasks': subTasks
 
     };
+    globalStatus = 'todo';
     todos.push(myObject);
     setItem("tasksjoin", todos);
     renderBoard();
