@@ -20,7 +20,8 @@ function renderPopUpAddTask(status) {
 
 function HTMLrenderPopUpAddTask() {
     return /*html*/`
-   <div class="addtask-main-content">
+    <div class="addtask-main-content">
+    <img class="cross-close" onclick="closeAddTaskForm()" src="./../img/cross.png">
     <h1 style="padding-left: 5%; margin-bottom: 4%">Add Task</h1>
     <form onsubmit="submitClassList('button-create-task')">
         <div class="addtask-content">
