@@ -29,6 +29,10 @@
     background-color: #2A3647;
     color: white;
     gap: 15px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 .mobile-link {
