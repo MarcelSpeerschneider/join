@@ -33,7 +33,7 @@ function renderSummary() {
     let dashboardDesktop = document.getElementById('dashboard-content');
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
 
-    if (window.innerWidth >= 830) {
+    if (window.innerWidth >= 650) {
         dashboardDesktop.innerHTML = renderSummaryinnerHtml();
         dashboardMobile.innerHTML = '';
     } else {

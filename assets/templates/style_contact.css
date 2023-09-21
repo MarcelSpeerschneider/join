@@ -444,7 +444,6 @@ cursor: pointer;
     align-items: center;
 }
 
-/* Existing CSS */
 
 @media (max-width: 830px) {
     .contact-container {
@@ -454,6 +453,10 @@ cursor: pointer;
         height: auto;
         position: static;
         height: 100vh;
+    }
+    
+    .list-of-contacts:hover{
+        background-color: #F6F7F8;
     }
 
     .contact-content {
@@ -504,7 +507,6 @@ cursor: pointer;
         width: 100%;
     }
     
-    /* Add more responsive adjustments as needed */
 }
 
 @media (max-width: 1045px) {
