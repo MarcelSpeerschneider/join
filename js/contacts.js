@@ -443,9 +443,11 @@ function isFirstLetterDifferent(firstLetterOfFirstName, currentLetter) {
     return firstLetterOfFirstName !== currentLetter;
 }
 
-function deleteContact(index) {
+async function deleteContact(index) {
     contacts.splice(index, 1);
+    await setItem('contactsjoin', JSON.stringify(contacts));
     renderContacts();
+    renderContactsSite();
 }
 
 function initializeCurrentLetter() {
@@ -458,7 +460,7 @@ function sortContactsAlphabetically() {
 }
 
 
-function addNewContact(event) {
+async function addNewContact(event) {
     event.preventDefault();
 
     const name = document.getElementById("nameValueOne").value;
@@ -480,17 +482,18 @@ function addNewContact(event) {
     };
 
     contacts.push(newContact);
+    await setItem('contactsjoin', JSON.stringify(contacts));
 
     renderContacts();
+    renderContactsSite();
     closeWindow();
 }
 
 async function addEditContact(id) {
-    debugger;
     const name = document.getElementById('nameValueTwo').value;
     const email = document.getElementById('emailValueTwo').value;
     const phone = document.getElementById('phoneValueTwo').value;
-    const color = document.getElementById('bgcContacts').style.backgroundColor;
+    const color = contacts[id]['color'];
     const editedContact = {
         name,
         email,
@@ -504,7 +507,7 @@ async function addEditContact(id) {
 
     renderContacts();
     renderContactsSite();
-    displayContactInfo(id, `#${Math.floor(Math.random() * 16777215).toString(16)}`);
+    displayContactInfo(id, color);
     closeWindow();
 }
 
