@@ -29,7 +29,8 @@ function changeBackgroundColorBackMobile() {
     rectElement.setAttribute("fill", "white");
 }
 
-function renderSummary() {
+async function renderSummary() {
+    await getTaskByStatus();
     let dashboardDesktop = document.getElementById('dashboard-content');
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
 
@@ -362,7 +363,7 @@ function getRandomColor() {
 }
 
 function renderSummaryinnerHtml() {
-
+    debugger;
     return /*html*/`
         <div class="summary-headline">
             <h1>Summary</h1>
@@ -376,13 +377,13 @@ function renderSummaryinnerHtml() {
                 <div class="summary-task-number-container">
                     <div class="summary-task-number-box">
                         <span class="summary-task-number">
-                            <h1>4</h1>
+                            <h1>${todo.length}</h1>
                         </span>
                         <span class="summary-task-info">Tasks in Board</span>
                     </div>
                     <div class="summary-task-number-box">
                         <span class="summary-task-number">
-                            <h1>2</h1>
+                            <h1>${todo.length}</h1>
                         </span>
                         <span class="summary-task-info">Tasks in Progress</span>
                     </div>
