@@ -57,6 +57,7 @@ function renderAddTask() {
 
 
 function renderBoardSite() {
+    debugger;
     let dashboardDesktop = document.getElementById('dashboard-content');
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
 

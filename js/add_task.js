@@ -1,6 +1,6 @@
 // Globale Variablen
 let globalStatus = 'todo';
-let tasks = [];
+// let tasks = [];
 
 function openAddTaskForm() {
     document.getElementById('overlay').style.display = 'flex';

@@ -28,8 +28,9 @@ async function loadContactsFromBackend() {
 }
 
 async function loadTasks() {
+    debugger;
     try {
-        tasks = JSON.parse(await getItem('tasksjoin'));
+        todos = JSON.parse(await getItem('tasksjoin'));
     } catch (e) {
         console.error('Loading error:', e);
     }

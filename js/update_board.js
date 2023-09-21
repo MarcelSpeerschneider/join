@@ -1,41 +1,41 @@
 // Global Elements
 let todos = [
-    {
-        'id': 0,
-        'taskStatus':'todo',
-        'taskCategory':'User Story',
-        'taskInputTitle': 'Aufräumen',
-        'taskInputDescription': 'Code clean up',
-        'taskInputDate':'',
-        'taskpriority':'medium'
-    },
-    {
-        'id': 1,
-        'taskStatus':'inprogress',
-        'taskCategory':'Technical Task',
-        'taskInputTitle': 'Aufräumen',
-        'taskInputDescription': 'Code clean up',
-        'taskduedate':'',
-        'taskpriority':'medium',
-    },
-    {
-        'id': 2,
-        'taskStatus':'awaitfeedback',
-        'taskCategory':'User Story',
-        'taskInputTitle': 'Aufräumen',
-        'taskInputDescription': 'Code clean up',
-        'taskduedate':'',
-        'taskpriority':'medium',
-    },
-    {
-        'id': 3,
-        'taskStatus':'done',
-        'taskCategory':'Technical Task',
-        'taskInputTitle': 'Aufräumen',
-        'taskInputDescription': 'Code clean up',
-        'taskduedate':'',
-        'taskpriority':'medium',
-    }
+    // {
+    //     'id': 0,
+    //     'taskStatus':'todo',
+    //     'taskCategory':'User Story',
+    //     'taskInputTitle': 'Aufräumen',
+    //     'taskInputDescription': 'Code clean up',
+    //     'taskInputDate':'',
+    //     'taskpriority':'medium'
+    // },
+    // {
+    //     'id': 1,
+    //     'taskStatus':'inprogress',
+    //     'taskCategory':'Technical Task',
+    //     'taskInputTitle': 'Aufräumen',
+    //     'taskInputDescription': 'Code clean up',
+    //     'taskduedate':'',
+    //     'taskpriority':'medium',
+    // },
+    // {
+    //     'id': 2,
+    //     'taskStatus':'awaitfeedback',
+    //     'taskCategory':'User Story',
+    //     'taskInputTitle': 'Aufräumen',
+    //     'taskInputDescription': 'Code clean up',
+    //     'taskduedate':'',
+    //     'taskpriority':'medium',
+    // },
+    // {
+    //     'id': 3,
+    //     'taskStatus':'done',
+    //     'taskCategory':'Technical Task',
+    //     'taskInputTitle': 'Aufräumen',
+    //     'taskInputDescription': 'Code clean up',
+    //     'taskduedate':'',
+    //     'taskpriority':'medium',
+    // }
 ];
 
 let currentDraggedElement;
@@ -103,7 +103,9 @@ function renderBoard() {
     renderPopUpAddTask();
 }
 
-function updateBoard() {
+async function updateBoard() {
+    await loadTasks();
+
     let todo = todos.filter(t => t['taskStatus'] == 'todo');
     document.getElementById('todo').innerHTML = '';
 
