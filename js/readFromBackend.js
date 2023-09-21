@@ -28,7 +28,6 @@ async function loadContactsFromBackend() {
 }
 
 async function loadTasks() {
-    debugger;
     try {
         todos = JSON.parse(await getItem('tasksjoin'));
     } catch (e) {

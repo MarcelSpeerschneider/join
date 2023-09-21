@@ -1,42 +1,5 @@
 // Global Elements
-let todos = [
-    // {
-    //     'id': 0,
-    //     'taskStatus':'todo',
-    //     'taskCategory':'User Story',
-    //     'taskInputTitle': 'Aufräumen',
-    //     'taskInputDescription': 'Code clean up',
-    //     'taskInputDate':'',
-    //     'taskpriority':'medium'
-    // },
-    // {
-    //     'id': 1,
-    //     'taskStatus':'inprogress',
-    //     'taskCategory':'Technical Task',
-    //     'taskInputTitle': 'Aufräumen',
-    //     'taskInputDescription': 'Code clean up',
-    //     'taskduedate':'',
-    //     'taskpriority':'medium',
-    // },
-    // {
-    //     'id': 2,
-    //     'taskStatus':'awaitfeedback',
-    //     'taskCategory':'User Story',
-    //     'taskInputTitle': 'Aufräumen',
-    //     'taskInputDescription': 'Code clean up',
-    //     'taskduedate':'',
-    //     'taskpriority':'medium',
-    // },
-    // {
-    //     'id': 3,
-    //     'taskStatus':'done',
-    //     'taskCategory':'Technical Task',
-    //     'taskInputTitle': 'Aufräumen',
-    //     'taskInputDescription': 'Code clean up',
-    //     'taskduedate':'',
-    //     'taskpriority':'medium',
-    // }
-];
+let todos = [];
 
 let currentDraggedElement;
 
@@ -99,8 +62,6 @@ function renderBoard() {
         </div>
     </div>
     `
-    updateBoard();
-    renderPopUpAddTask();
 }
 
 async function updateBoard() {
@@ -152,8 +113,9 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(taskStatus) {
+async function moveTo(taskStatus) {
     todos[currentDraggedElement]['taskStatus'] = taskStatus;
+    await setItem('tasksjoin', JSON.stringify(todos));
     updateBoard();
 }
 
