@@ -1,5 +1,8 @@
 let selectedContacts = [];
 let subTasks = [];
+// let greeting = checkCurrentTimeForGreeting();
+let greeting = checkCurrentTimeForGreeting();
+
 
 document.addEventListener("DOMContentLoaded", function () {
     // All the code that waits for the document to be loaded
@@ -355,6 +358,22 @@ function generateCredentials(fullName) {
     return `${firstInitial}${lastInitial}`;
 }
 
+function checkCurrentTimeForGreeting(){
+    let today = new Date();
+    let hour = today.getHours();
+    let temp = 'Good morning';
+    if(hour === 12){
+        temp = 'Have a lunch, don´t think about the work'
+    }
+    else if(hour>12 && hour <17){
+        temp = 'Good Afternoon'
+    }
+    else if(hour > 17 && hour < 20){
+        temp =  'Good Evening'
+    }
+    return temp;
+}
+
 
 function getRandomColor() {
     let colors = ["#00bee8", "#ff7a00", "#bb78ff", "#00bee8", "#ffbb2b", "#9327ff", "#ff4646", "#fc71ff", "#cd5c5c", "#ff00ff", "#add8e6", "#98fb98"];
@@ -440,7 +459,7 @@ function renderSummaryinnerHtml() {
                 </div>
             </div>
             <div class="summary-greetings">
-                <h3>Good morning,</h3>
+                <h3>${greeting},</h3>
                 <div class="summary-username">Test Test</div>
             </div>
         </div>
