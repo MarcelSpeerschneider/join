@@ -342,6 +342,11 @@
   flex-direction: column;
 }
 
+.board-content-container{
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
 .select-contacts-to-assign-dropdown-contact{
   display: flex;
   justify-content: center;
@@ -366,4 +371,10 @@
 .drag-area{
   margin-bottom: 0;
 }
+}
+
+@media(max-width:630px){
+  .board-content-container{
+
+  }
 }
