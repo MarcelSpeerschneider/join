@@ -55,4 +55,8 @@
     .dashboard-mobile {
         display: flex;
     }
+
+    .dash-content-mobile{
+        background-color: #f1f1f1;
+    }
 }
