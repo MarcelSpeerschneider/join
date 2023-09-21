@@ -460,7 +460,7 @@ function renderSummaryinnerHtml() {
             </div>
             <div class="summary-greetings">
                 <h3>${greeting},</h3>
-                <div class="summary-username">Test Test</div>
+                <div class="summary-username">${localStorage.getItem('username')}</div>
             </div>
         </div>
         </div>
