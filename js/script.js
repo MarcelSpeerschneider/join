@@ -376,7 +376,7 @@ function renderSummaryinnerHtml() {
                 <div class="summary-task-number-container">
                     <div class="summary-task-number-box">
                         <span class="summary-task-number">
-                            <h1>${todo.length}</h1>
+                            <h1>${todos.length}</h1>
                         </span>
                         <span class="summary-task-info">Tasks in Board</span>
                     </div>
