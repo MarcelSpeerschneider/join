@@ -1,7 +1,7 @@
 let contacts = [];
 
 async function renderContacts() {
-    await loadContacts();
+    await initContacts();
     renderContactsAlphabetically();
 }
 
@@ -232,7 +232,7 @@ function generateEditContactPopupHTML() {
 </svg>
         </div>
         <div class="contactBtn">
-        <button onclick="closeEditWindow()" class="cancelBtn">
+        <button type="reset" onclick="closeEditWindow()" class="cancelBtn">
           Cancel
           <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="iconoir:cancel">
@@ -240,7 +240,7 @@ function generateEditContactPopupHTML() {
           </g>
           </svg>  
         </button>
-        <button class="createBtn">
+        <button type="submit" class="createBtn">
           Save Contact
         <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="check">
@@ -504,11 +504,12 @@ async function addEditContact(id) {
     // }
     await setItem('contactsjoin', JSON.stringify(contacts));
 
-    // renderContacts();
-    // closeWindow();
+    renderContacts();
+    closeWindow();
 }
 
 function openEditContact(index) {
+    debugger;
     const contact = contacts[index];
     document.getElementById('nameValueTwo').value = contact.name;
     document.getElementById('emailValueTwo').value = contact.email;
