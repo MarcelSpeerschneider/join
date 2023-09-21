@@ -1,5 +1,8 @@
 let selectedContacts = [];
 let subTasks = [];
+// let greeting = checkCurrentTimeForGreeting();
+let greeting = checkCurrentTimeForGreeting();
+
 
 document.addEventListener("DOMContentLoaded", function () {
     // All the code that waits for the document to be loaded
@@ -29,7 +32,8 @@ function changeBackgroundColorBackMobile() {
     rectElement.setAttribute("fill", "white");
 }
 
-function renderSummary() {
+async function renderSummary() {
+    await getTaskByStatus();
     let dashboardDesktop = document.getElementById('dashboard-content');
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
 
@@ -354,6 +358,19 @@ function generateCredentials(fullName) {
     return `${firstInitial}${lastInitial}`;
 }
 
+function checkCurrentTimeForGreeting(){
+    let today = new Date();
+    let hour = today.getHours();
+    let temp = 'Good morning';
+    if(hour>=12 && hour <17){
+        temp = 'Good Afternoon'
+    }
+    else if(hour > 17 && hour < 20){
+        temp =  'Good Evening'
+    }
+    return temp;
+}
+
 
 function getRandomColor() {
     let colors = ["#00bee8", "#ff7a00", "#bb78ff", "#00bee8", "#ffbb2b", "#9327ff", "#ff4646", "#fc71ff", "#cd5c5c", "#ff00ff", "#add8e6", "#98fb98"];
@@ -362,7 +379,6 @@ function getRandomColor() {
 }
 
 function renderSummaryinnerHtml() {
-
     return /*html*/`
         <div class="summary-headline">
             <h1>Summary</h1>
@@ -376,19 +392,19 @@ function renderSummaryinnerHtml() {
                 <div class="summary-task-number-container">
                     <div class="summary-task-number-box">
                         <span class="summary-task-number">
-                            <h1>5</h1>
+                            <h1>${todos.length}</h1>
                         </span>
                         <span class="summary-task-info">Tasks in Board</span>
                     </div>
                     <div class="summary-task-number-box">
                         <span class="summary-task-number">
-                            <h1>2</h1>
+                            <h1>${inprogress.length}</h1>
                         </span>
                         <span class="summary-task-info">Tasks in Progress</span>
                     </div>
                     <div class="summary-task-number-box">
                         <span class="summary-task-number">
-                            <h1>2</h1>
+                            <h1>${awaitfeedback.length}</h1>
                         </span>
                         <span class="summary-task-info">Awaiting Feedback</span>
                     </div>
@@ -421,7 +437,7 @@ function renderSummaryinnerHtml() {
                             </g>
                         </svg>
                         <div class="todo-number">
-                            <h1>1</h1>
+                            <h1>${todo.length}</h1>
                             <span>To-Do</span>
                         </div>
                     </div>
@@ -433,15 +449,15 @@ function renderSummaryinnerHtml() {
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <div class="todo-number">
-                            <h1>1</h1>
+                            <h1>${done.length}</h1>
                             <span>Done</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="summary-greetings">
-                <h3>Good morning,</h3>
-                <div class="summary-username">Test Test</div>
+                <h3>${greeting},</h3>
+                <div class="summary-username">${localStorage.getItem('username')}</div>
             </div>
         </div>
         </div>

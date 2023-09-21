@@ -1,42 +1,7 @@
 // Global Elements
-let todos = [
-    {
-        'id': 0,
-        'taskStatus':'todo',
-        'taskCategory':'User Story',
-        'taskInputTitle': 'Aufräumen',
-        'taskInputDescription': 'Code clean up',
-        'taskInputDate':'',
-        'taskpriority':'medium'
-    },
-    {
-        'id': 1,
-        'taskStatus':'inprogress',
-        'taskCategory':'Technical Task',
-        'taskInputTitle': 'Aufräumen',
-        'taskInputDescription': 'Code clean up',
-        'taskduedate':'',
-        'taskpriority':'medium',
-    },
-    {
-        'id': 2,
-        'taskStatus':'awaitfeedback',
-        'taskCategory':'User Story',
-        'taskInputTitle': 'Aufräumen',
-        'taskInputDescription': 'Code clean up',
-        'taskduedate':'',
-        'taskpriority':'medium',
-    },
-    {
-        'id': 3,
-        'taskStatus':'done',
-        'taskCategory':'Technical Task',
-        'taskInputTitle': 'Aufräumen',
-        'taskInputDescription': 'Code clean up',
-        'taskduedate':'',
-        'taskpriority':'medium',
-    }
-];
+let todos = [];
+let todo = [];
+let inprogress, awaitfeedback, done;
 
 let currentDraggedElement;
 
@@ -99,38 +64,46 @@ function renderBoard() {
         </div>
     </div>
     `
-    updateBoard();
-    renderPopUpAddTask();
 }
 
-function updateBoard() {
-    let todo = todos.filter(t => t['taskStatus'] == 'todo');
+async function updateBoard() {
+    await getTaskByStatus();
+
+    // todo = todos.filter(t => t['taskStatus'] == 'todo');
     document.getElementById('todo').innerHTML = '';
 
     todo.forEach(element => {
         document.getElementById('todo').innerHTML += generateToDoHTML(element);
     });
 
-    let inprogress = todos.filter(i => i['taskStatus'] == 'inprogress');
+    // inprogress = todos.filter(i => i['taskStatus'] == 'inprogress');
     document.getElementById('inprogress').innerHTML = '';
 
     inprogress.forEach(element => {
         document.getElementById('inprogress').innerHTML += generateToDoHTML(element);
     });
 
-    let awaitfeedback = todos.filter(a => a['taskStatus'] == 'awaitfeedback');
+    // awaitfeedback = todos.filter(a => a['taskStatus'] == 'awaitfeedback');
     document.getElementById('awaitfeedback').innerHTML = '';
 
     awaitfeedback.forEach(element => {
         document.getElementById('awaitfeedback').innerHTML += generateToDoHTML(element);
     });
 
-    let done = todos.filter(d => d['taskStatus'] == 'done');
+    // done = todos.filter(d => d['taskStatus'] == 'done');
     document.getElementById('done').innerHTML = '';
 
     done.forEach(element => {
         document.getElementById('done').innerHTML += generateToDoHTML(element);
     });
+}
+
+async function getTaskByStatus(){
+    await loadTasks();
+    todo = todos.filter(t => t['taskStatus'] == 'todo');
+    inprogress = todos.filter(i => i['taskStatus'] == 'inprogress');
+    awaitfeedback = todos.filter(a => a['taskStatus'] == 'awaitfeedback');
+    done = todos.filter(d => d['taskStatus'] == 'done');
 }
 
 function generateToDoHTML(element) {
@@ -163,8 +136,9 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(taskStatus) {
+async function moveTo(taskStatus) {
     todos[currentDraggedElement]['taskStatus'] = taskStatus;
+    await setItem('tasksjoin', JSON.stringify(todos));
     updateBoard();
 }
 

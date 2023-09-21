@@ -1,6 +1,6 @@
-async function initUsers() {
-    loadUsers();
-}
+// async function initUsers() {
+//     loadUsers();
+// }
 
 async function initContacts() {
     if(contacts.length===0){
@@ -12,27 +12,43 @@ async function initContacts() {
 }
 
 async function loadUsers() {
-    try {
-        usersjoin = JSON.parse(await getItem('usersjoin'));
-    } catch (e) {
-        console.error('Loading error:', e);
-    }
+    const backendContainer = 'usersjoin';
+    usersjoin = await getInfo(backendContainer);
+    // try {
+    //     usersjoin = JSON.parse(await getItem('usersjoin'));
+    // } catch (e) {
+    //     console.error('Loading error:', e);
+    // }
 }
 
 async function loadContactsFromBackend() {
-    try {
-        contacts = JSON.parse(await getItem('contactsjoin'));
-    } catch (e) {
-        console.error('Loading error:', e);
-    }
+    const backendContainer = 'contactsjoin';
+    contacts = await getInfo(backendContainer);
+    // try {
+    //     contacts = JSON.parse(await getItem('contactsjoin'));
+    // } catch (e) {
+    //     console.error('Loading error:', e);
+    // }
 }
 
 async function loadTasks() {
+    const backendContainer = 'tasksjoin';
+    todos = await getInfo(backendContainer);
+    // try {
+    //     todos = JSON.parse(await getItem('tasksjoin'));
+    // } catch (e) {
+    //     console.error('Loading error:', e);
+    // }
+}
+
+async function getInfo(backendContainer){
+    let valuesFromBackend
     try {
-        tasks = JSON.parse(await getItem('tasksjoin'));
+        valuesFromBackend = JSON.parse(await getItem(backendContainer));
     } catch (e) {
         console.error('Loading error:', e);
     }
+    return valuesFromBackend;
 }
 
 async function getItem(key) {

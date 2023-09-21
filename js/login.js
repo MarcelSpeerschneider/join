@@ -8,6 +8,7 @@ async function login() {
       const boolPassword = element['userpassword'].includes(password.value);
       if (boolEmail & boolPassword) {
         window.location.href = "assets/templates/template.html";
+        localStorage.setItem('username', element['username']);
         return;
       }
       else{
