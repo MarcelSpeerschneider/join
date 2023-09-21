@@ -119,7 +119,7 @@ function HTMLrenderPopUpAddTask() {
             <div class="add-task-bottom-button-left-side"></div>
             <div class="add-task-bottom-button-right-side">
                 <div class="add-task-bottom-button-container">
-                    <button class="button-clear" id="button-clear" onclick=submitClassList(this.id) onmouseover="buttonCreateTaskChangeColor()"
+                    <button type="reset" class="button-clear" id="button-clear" onclick=submitClassList(this.id) onmouseover="buttonCreateTaskChangeColor()"
                         onmouseout="buttonCreateTaskChangeColorBack()">Clear<svg width="25" height="24"
                             viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                             id="add-task-icon-cancel">

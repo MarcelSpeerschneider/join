@@ -3,7 +3,12 @@ async function initUsers() {
 }
 
 async function initContacts() {
-    loadContacts();
+    if(contacts.length===0){
+        loadContactsFromBackend();
+    }
+    else{
+        return contacts;
+    }
 }
 
 async function loadUsers() {
@@ -14,7 +19,7 @@ async function loadUsers() {
     }
 }
 
-async function loadContacts() {
+async function loadContactsFromBackend() {
     try {
         contacts = JSON.parse(await getItem('contactsjoin'));
     } catch (e) {

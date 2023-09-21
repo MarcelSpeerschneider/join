@@ -1,7 +1,8 @@
 let contacts = [];
+openedPopUpFormID = 'openedPopUpForm';
 
 async function renderContacts() {
-    await loadContacts();
+    await initContacts();
     renderContactsAlphabetically();
 }
 
@@ -91,7 +92,7 @@ function generateContactInfoHTML(contact, index, color) {
     return /*html*/ `
     <div class="contact-info">
         <div class="info-name">
-          <div style="background-color: ${color};" class="profil-icon-right">${firstLetterOfFirstName}${firstLetterOfLastName}</div>
+          <div id="bgcContacts" style="background-color: ${color};" class="profil-icon-right">${firstLetterOfFirstName}${firstLetterOfLastName}</div>
           <div class="edit-delete-name">
             <span style="font-size:40px;margin-left:30px;margin-top:30px;">${contact.name}</span>
             <div class="edit-delete">
@@ -191,7 +192,7 @@ function generateEditContactPopupHTML() {
 </div>
 <div  class="contactinput">
     <!-- <form class="input-pop-up" onsubmit="addEditContact(event);return false;"> -->
-    <form id="openedPopUpForm" class="input-pop-up" onsubmit="addEditContact(this.id)">
+    <form id="openedPopUpForm" class="input-pop-up" onsubmit="addEditContact(this.id);return false;">
         <div class="input-img">
         <input required  placeholder="Name" id="nameValueTwo" type="text>
         <svg class="svgStyleInput" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -232,7 +233,7 @@ function generateEditContactPopupHTML() {
 </svg>
         </div>
         <div class="contactBtn">
-        <button onclick="closeEditWindow()" class="cancelBtn">
+        <button type="reset" onclick="closeEditWindow()" class="cancelBtn">
           Cancel
           <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="iconoir:cancel">
@@ -240,7 +241,7 @@ function generateEditContactPopupHTML() {
           </g>
           </svg>  
         </button>
-        <button class="createBtn">
+        <button type="submit" class="createBtn">
           Save Contact
         <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="check">
@@ -442,9 +443,11 @@ function isFirstLetterDifferent(firstLetterOfFirstName, currentLetter) {
     return firstLetterOfFirstName !== currentLetter;
 }
 
-function deleteContact(index) {
+async function deleteContact(index) {
     contacts.splice(index, 1);
+    await setItem('contactsjoin', JSON.stringify(contacts));
     renderContacts();
+    renderContactsSite();
 }
 
 function initializeCurrentLetter() {
@@ -457,7 +460,7 @@ function sortContactsAlphabetically() {
 }
 
 
-function addNewContact(event) {
+async function addNewContact(event) {
     event.preventDefault();
 
     const name = document.getElementById("nameValueOne").value;
@@ -479,33 +482,33 @@ function addNewContact(event) {
     };
 
     contacts.push(newContact);
+    await setItem('contactsjoin', JSON.stringify(contacts));
 
     renderContacts();
+    renderContactsSite();
     closeWindow();
 }
 
 async function addEditContact(id) {
-    // event.preventDefault();
     const name = document.getElementById('nameValueTwo').value;
     const email = document.getElementById('emailValueTwo').value;
     const phone = document.getElementById('phoneValueTwo').value;
-
+    const color = contacts[id]['color'];
     const editedContact = {
         name,
         email,
         phone,
-        color: `#${Math.floor(Math.random() * 16777215).toString(16)}`
+        color
+        // color: `#${Math.floor(Math.random() * 16777215).toString(16)}`
     };
 
-    // const index = contacts.findIndex(contact => contact.name === name);
-
-    // if (index !== -1) {
     contacts[id] = editedContact;
-    // }
     await setItem('contactsjoin', JSON.stringify(contacts));
 
-    // renderContacts();
-    // closeWindow();
+    renderContacts();
+    renderContactsSite();
+    displayContactInfo(id, color);
+    closeWindow();
 }
 
 function openEditContact(index) {
@@ -513,7 +516,12 @@ function openEditContact(index) {
     document.getElementById('nameValueTwo').value = contact.name;
     document.getElementById('emailValueTwo').value = contact.email;
     document.getElementById('phoneValueTwo').value = contact.phone;
-    document.getElementById('openedPopUpForm').id = index;
+    try {
+        document.getElementById('openedPopUpForm').id = index;
+        openedPopUpFormID = index;
+    } catch (e) {
+        document.getElementById(openedPopUpFormID).id = index;
+    }
 
     if (window.innerWidth < 830) {
         const contactsShow = document.getElementById('contactsShow');
