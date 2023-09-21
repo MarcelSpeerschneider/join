@@ -1,5 +1,6 @@
 // Global Elements
 let todos = [];
+let todo, inprogress, awaitfeedback, done;
 
 let currentDraggedElement;
 
@@ -67,28 +68,28 @@ function renderBoard() {
 async function updateBoard() {
     await loadTasks();
 
-    let todo = todos.filter(t => t['taskStatus'] == 'todo');
+    todo = todos.filter(t => t['taskStatus'] == 'todo');
     document.getElementById('todo').innerHTML = '';
 
     todo.forEach(element => {
         document.getElementById('todo').innerHTML += generateToDoHTML(element);
     });
 
-    let inprogress = todos.filter(i => i['taskStatus'] == 'inprogress');
+    inprogress = todos.filter(i => i['taskStatus'] == 'inprogress');
     document.getElementById('inprogress').innerHTML = '';
 
     inprogress.forEach(element => {
         document.getElementById('inprogress').innerHTML += generateToDoHTML(element);
     });
 
-    let awaitfeedback = todos.filter(a => a['taskStatus'] == 'awaitfeedback');
+    awaitfeedback = todos.filter(a => a['taskStatus'] == 'awaitfeedback');
     document.getElementById('awaitfeedback').innerHTML = '';
 
     awaitfeedback.forEach(element => {
         document.getElementById('awaitfeedback').innerHTML += generateToDoHTML(element);
     });
 
-    let done = todos.filter(d => d['taskStatus'] == 'done');
+    done = todos.filter(d => d['taskStatus'] == 'done');
     document.getElementById('done').innerHTML = '';
 
     done.forEach(element => {
