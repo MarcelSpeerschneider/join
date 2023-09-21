@@ -363,7 +363,6 @@ function getRandomColor() {
 }
 
 function renderSummaryinnerHtml() {
-    debugger;
     return /*html*/`
         <div class="summary-headline">
             <h1>Summary</h1>
@@ -383,13 +382,13 @@ function renderSummaryinnerHtml() {
                     </div>
                     <div class="summary-task-number-box">
                         <span class="summary-task-number">
-                            <h1>${todo.length}</h1>
+                            <h1>${inprogress.length}</h1>
                         </span>
                         <span class="summary-task-info">Tasks in Progress</span>
                     </div>
                     <div class="summary-task-number-box">
                         <span class="summary-task-number">
-                            <h1>2</h1>
+                            <h1>${awaitfeedback.length}</h1>
                         </span>
                         <span class="summary-task-info">Awaiting Feedback</span>
                     </div>
@@ -422,7 +421,7 @@ function renderSummaryinnerHtml() {
                             </g>
                         </svg>
                         <div class="todo-number">
-                            <h1>1</h1>
+                            <h1>${todo.length}</h1>
                             <span>To-Do</span>
                         </div>
                     </div>
@@ -434,7 +433,7 @@ function renderSummaryinnerHtml() {
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <div class="todo-number">
-                            <h1>1</h1>
+                            <h1>${done.length}</h1>
                             <span>Done</span>
                         </div>
                     </div>
