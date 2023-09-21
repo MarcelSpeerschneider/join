@@ -1,78 +1,9 @@
-// const contacts = [{
-//         name: "John Doe",
-//         email: "john.doe@example.com",
-//         phone: "4567890",
-//         color: "#FF5733"
-//     },
-//     {
-//         name: "Jane Smith",
-//         email: "jane.smith@example.com",
-//         phone: "5678901",
-//         color: "#33FF57"
-//     },
-//     {
-//         name: "James Johnson",
-//         email: "james.johnson@example.com",
-//         phone: " 6789012",
-//         color: "#5733FF"
-//     },
-//     {
-//         name: "Emily Davis",
-//         email: "emily.davis@example.com",
-//         phone: "7890123",
-//         color: "#FF5733"
-//     },
-//     {
-//         name: "Michael Wilson",
-//         email: "michael.wilson@example.com",
-//         phone: "8901234",
-//         color: "#33FF57"
-//     },
-//     {
-//         name: "Sarah Brown",
-//         email: "sarah.brown@example.com",
-//         phone: "9012345",
-//         color: "#5733FF"
-//     },
-//     {
-//         name: "David Lee",
-//         email: "david.lee@example.com",
-//         phone: "0123456",
-//         color: "#FF5733"
-//     },
-//     {
-//         name: "Olivia Taylor",
-//         email: "olivia.taylor@example.com",
-//         phone: " 1234567",
-//         color: "#33FF57"
-//     },
-//     {
-//         name: "Daniel Clark",
-//         email: "daniel.clark@example.com",
-//         phone: " 2345678",
-//         color: "#5733FF"
-//     },
-//     {
-//         name: "Ava Hernandez",
-//         email: "ava.hernandez@example.com",
-//         phone: " 3456789",
-//         color: "#FF5733"
-//     }
-// ];
-
-// Test Function to pump up the array (contacts) to the backend
-// async function pumpUp(){
-//     let mykey = 'contactsjoin';
-//     let myContacts = contacts;
-//     await setItem(mykey, myContacts)
-// }
-
 let contacts = [];
 
-function renderContacts() {
-   
+async function renderContacts() {
+    await loadContacts();
     renderContactsAlphabetically();
-    }
+}
 
 function renderContactsAlphabetically() {
     sortContactsAlphabetically();
@@ -103,9 +34,17 @@ function generateLetterContainer(currentLetter) {
 }
 
 function generateContactHTML(contact, i, color) {
-    const firstLetterOfFirstName = contact.name.split(" ")[0][0].toUpperCase();
-    const firstLetterOfLastName = contact.name.split(" ")[1][0].toUpperCase();
-
+    let firstLetterOfFirstName = '';
+    let firstLetterOfLastName = '';
+    let indexOfEmptySpace = contact.name.search(' ');
+    if(indexOfEmptySpace >0){
+        firstLetterOfFirstName = contact.name.split(" ")[0][0].toUpperCase();
+        firstLetterOfLastName = contact.name.split(" ")[1][0].toUpperCase();
+    }
+    else{
+        firstLetterOfFirstName = contact.name[0];
+        firstLetterOfLastName = '';
+    }
     return /*html*/ `
         <div id="contact-${i}" onclick="displayContactInfo(${i}, '${color}')"  class="list-of-contacts">
             <div class="contact-profil-img">
@@ -127,7 +66,7 @@ function generateContactHTML(contact, i, color) {
 function displayContactInfo(index, color) {
     const contact = contacts[index];
     let contentshow = document.getElementById("contactsShow");
-    contentshow.innerHTML = generateContactInfoHTML(contact,index, color);
+    contentshow.innerHTML = generateContactInfoHTML(contact, index, color);
 
     const clickedContact = document.querySelector('.list-of-contacts.clicked');
     if (clickedContact) {
@@ -137,9 +76,18 @@ function displayContactInfo(index, color) {
     currentContact.classList.add('clicked');
 }
 
-function generateContactInfoHTML(contact,index, color) {
-    const firstLetterOfFirstName = contact.name.split(' ')[0][0].toUpperCase();
-    const firstLetterOfLastName = contact.name.split(' ')[1][0].toUpperCase();
+function generateContactInfoHTML(contact, index, color) {
+    let firstLetterOfFirstName = '';
+    let firstLetterOfLastName = '';
+    let indexOfEmptySpace = contact.name.search(' ');
+    if(indexOfEmptySpace >0){
+        firstLetterOfFirstName = contact.name.split(" ")[0][0].toUpperCase();
+        firstLetterOfLastName = contact.name.split(" ")[1][0].toUpperCase();
+    }
+    else{
+        firstLetterOfFirstName = contact.name[0];
+        firstLetterOfLastName = '';
+    }
     return /*html*/ `
     <div class="contact-info">
         <div class="info-name">
@@ -189,11 +137,10 @@ function generateContactInfoHTML(contact,index, color) {
     </div>
 
     ${generateEditContactPopupHTML(index)}
-    
 `;
 }
 
-function generateEditContactPopupHTML(){
+function generateEditContactPopupHTML() {
     return /*html*/ `
     <div style="display:none;" id="editPopUp" class="contact-pop-up">
     <div class="pup-up-content" action="">
@@ -243,7 +190,8 @@ function generateEditContactPopupHTML(){
 
 </div>
 <div  class="contactinput">
-    <form class="input-pop-up" onsubmit="addEditContact(event);return false;">
+    <!-- <form class="input-pop-up" onsubmit="addEditContact(event);return false;"> -->
+    <form id="openedPopUpForm" class="input-pop-up" onsubmit="addEditContact(this.id)">
         <div class="input-img">
         <input required  placeholder="Name" id="nameValueTwo" type="text>
         <svg class="svgStyleInput" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -479,7 +427,7 @@ function returnRenderHTML() {
       </div>
   `;
 
-  
+
 }
 
 function getFirstLetterOfFirstName(contact) {
@@ -536,29 +484,28 @@ function addNewContact(event) {
     closeWindow();
 }
 
-function addEditContact(event) {
-    event.preventDefault();
-
-    const name = document.getElementById("nameValueTwo").value;
-    const email = document.getElementById("emailValueTwo").value;
-    const phone = document.getElementById("phoneValueTwo").value;
+async function addEditContact(id) {
+    // event.preventDefault();
+    const name = document.getElementById('nameValueTwo').value;
+    const email = document.getElementById('emailValueTwo').value;
+    const phone = document.getElementById('phoneValueTwo').value;
 
     const editedContact = {
         name,
         email,
         phone,
-        color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+        color: `#${Math.floor(Math.random() * 16777215).toString(16)}`
     };
 
-    const index = contacts.findIndex(contact => contact.name === name);
+    // const index = contacts.findIndex(contact => contact.name === name);
 
-    if (index !== -1) {
-        contacts[index] = editedContact;
-    }
+    // if (index !== -1) {
+    contacts[id] = editedContact;
+    // }
+    await setItem('contactsjoin', JSON.stringify(contacts));
 
-
-    renderContacts();
-    closeWindow();
+    // renderContacts();
+    // closeWindow();
 }
 
 function openEditContact(index) {
@@ -566,6 +513,7 @@ function openEditContact(index) {
     document.getElementById('nameValueTwo').value = contact.name;
     document.getElementById('emailValueTwo').value = contact.email;
     document.getElementById('phoneValueTwo').value = contact.phone;
+    document.getElementById('openedPopUpForm').id = index;
 
     if (window.innerWidth < 830) {
         const contactsShow = document.getElementById('contactsShow');
@@ -578,8 +526,8 @@ function openEditContact(index) {
 }
 
 
-function closeEditWindow(){
-    document.getElementById('editPopUp').style.display='none';
+function closeEditWindow() {
+    document.getElementById('editPopUp').style.display = 'none';
 }
 
 function openContactForm() {
