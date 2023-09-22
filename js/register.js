@@ -1,8 +1,10 @@
+// Global variables
 let usersjoin = [];
 let registerName = document.getElementById('userName');
 let registerEmail = document.getElementById('email');
 let registerPassword = document.getElementById('password');
 let checkboxAlert = document.getElementById("checkboxAlert");
+let acronym = '';
 
 function toggleConfirmPassword() {
   let signUpBtn = document.getElementById('signUpButton');
@@ -51,18 +53,32 @@ async function checkUserRegistration() {
     if (!userIsAlreadyRegistered) {
       fillLocalArray();
       await setItem('usersjoin', JSON.stringify(usersjoin));
-      alert(`Der Account mit der Mail-Adresse: ${element['usermail']} wurde regsitriert!`);
       window.location.href = "login.html";
     }
     else{
-      alert(`Der User mit er Mail-Adresse: ${element['usermail']} existiert bereits!`);
       window.location.href = "login.html";
     }
   }
 }
 
+function createAcronym(){
+  let firstLetterOfFirstName = '';
+  let firstLetterOfLastName = '';
+  let indexOfEmptySpace = registerName.value.search(' ');
+  if(indexOfEmptySpace >0){
+      firstLetterOfFirstName = registerName.value.split(" ")[0][0].toUpperCase();
+      firstLetterOfLastName = registerName.value.split(" ")[1][0].toUpperCase();
+      return firstLetterOfFirstName+firstLetterOfLastName;
+  }
+  else{
+      firstLetterOfFirstName = registerName[0];
+      return firstLetterOfFirstName;
+  }
+}
+
 function fillLocalArray() {
   usersjoin.push({
+    useracronym: createAcronym(),
     username: registerName.value,
     usermail: registerEmail.value,
     userpassword: registerPassword.value

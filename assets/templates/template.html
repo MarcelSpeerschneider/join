@@ -14,7 +14,7 @@
     <title>Join</title>
 </head>
 
-<body onload="renderSummary(), initContacts()">
+<body onload="renderSummary(), initContacts(), setAcronym()">
     <main id="main">
         <div class="dashboard">
             <header>
@@ -27,7 +27,7 @@
                             <rect width="48" height="48" rx="24" transform="matrix(1 0 0 -1 4 52)" fill="white" />
                             <circle cx="28" cy="28" r="26.5" stroke="#2A3647" stroke-width="3" />
                         </svg>
-                        <div class="user-profile-icon-credentials">SM</div>
+                        <div id="useracronym" class="user-profile-icon-credentials"></div>
                         <!-- hier die Variable einsetzen für die Credentials des Users -->
                     </div>
                 </div>
@@ -110,6 +110,7 @@
 
     </main>
     <script src="./../../js/script.js"></script>
+    <script src="./../../js/login.js"></script>
     <script src="./../../js/update_board.js"></script>
     <script src="./../../js/contacts.js"></script>
     <script src="./../../js/add_task.js"></script>

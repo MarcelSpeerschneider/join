@@ -9,6 +9,7 @@ async function login() {
       if (boolEmail & boolPassword) {
         window.location.href = "assets/templates/template.html";
         localStorage.setItem('username', element['username']);
+        localStorage.setItem('acronym',element['useracronym']);
         return;
       }
       else{
@@ -29,4 +30,8 @@ function showPassword() {
     passwordInput.type = "password";
     lockIcon.src = "assets/img/hide.png";
   }
+}
+
+function setAcronym(){
+  document.getElementById('useracronym').innerHTML = localStorage.getItem('acronym');
 }
