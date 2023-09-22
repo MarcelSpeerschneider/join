@@ -1,6 +1,6 @@
-// async function initUsers() {
-//     loadUsers();
-// }
+async function initUsers() {
+    loadUsers();
+}
 
 async function initContacts() {
     if(contacts.length===0){
@@ -45,10 +45,11 @@ async function getInfo(backendContainer){
     let valuesFromBackend
     try {
         valuesFromBackend = JSON.parse(await getItem(backendContainer));
+        return valuesFromBackend;
     } catch (e) {
-        console.error('Loading error:', e);
+        console.error('Loading error, maybe there are no users in your backend - See the error message for more deatils -->', e);
+        return usersjoin;
     }
-    return valuesFromBackend;
 }
 
 async function getItem(key) {

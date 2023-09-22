@@ -1,20 +1,24 @@
 async function login() {
   let username = document.getElementById('email');
   let password = document.getElementById('password');
+  let boolEmail = false;
+  let boolPassword = false;
+
   if (usersjoin.length !== 0) {
     for (let index = 0; index < usersjoin.length; index++) {
       const element = usersjoin[index];
-      const boolEmail = element['usermail'].includes(username.value);
-      const boolPassword = element['userpassword'].includes(password.value);
-      if (boolEmail & boolPassword) {
+      boolEmail = element['usermail'].includes(username.value);
+      boolPassword = element['userpassword'].includes(password.value);
+      if (boolEmail && boolPassword) {
         window.location.href = "assets/templates/template.html";
         localStorage.setItem('username', element['username']);
+        localStorage.setItem('acronym',element['useracronym']);
         return;
       }
-      else{
-        alert('Username or Password incorrect!');
-      }
     }
+  }
+  if(!boolEmail | !boolPassword){
+    alert('Username or Password incorrect!');
   }
 }
 
@@ -29,4 +33,8 @@ function showPassword() {
     passwordInput.type = "password";
     lockIcon.src = "assets/img/hide.png";
   }
+}
+
+function setAcronym(){
+  document.getElementById('useracronym').innerHTML = localStorage.getItem('acronym');
 }
