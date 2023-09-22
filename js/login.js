@@ -38,3 +38,8 @@ function showPassword() {
 function setAcronym(){
   document.getElementById('useracronym').innerHTML = localStorage.getItem('acronym');
 }
+
+function guestLocalStorageInfo(){
+  localStorage.setItem('username','Guest');
+  localStorage.setItem('acronym','GU');
+}
