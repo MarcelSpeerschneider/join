@@ -291,6 +291,7 @@ function returnRenderHTML() {
           </div>
       </div>
   </div>
+  <div class="show-contact-right">
   <div class="showContactRight">
       <div class="contacts-header">
           <h1>Contacts</h1>
@@ -418,7 +419,7 @@ function returnRenderHTML() {
               </div>
               <div class="message" id="errorMessage"></div>
           </form>
-
+          </div>
       </div>
   </div>
   </div>
@@ -528,6 +529,7 @@ function openEditContact(index) {
         const contactList = document.querySelector('.contact-list');
         contactsShow.style.display = 'flex';
         contactList.style.display = 'none';
+        toggleShowContactRight();
     }
 
     document.getElementById('editPopUp').style.display = 'flex';
@@ -546,15 +548,19 @@ function closeWindow() {
     document.getElementById("contactPopUp").style.display = "none";
 }
 
-function renderContactsMobile() {
-    let dashboardDesktop = document.getElementById('dashboard-content');
-    let dashboardMobile = document.getElementById('dashboard-content-mobile');
-
-    if (window.innerWidth >= 830) {
-        dashboardDesktop.innerHTML = renderContacts();
-        dashboardMobile.innerHTML = '';
-    } else {
-        dashboardMobile.innerHTML = renderContacts();
-        dashboardDesktop.innerHTML = '';
-    }
+function toggleShowContactRight() {
+    const showContactRight = document.querySelector('.show-contact-right');
+    showContactRight.style.display = 'block';
 }
+
+function closeShowContactRight() {
+    const showContactRight = document.querySelector('.show-contact-right');
+    showContactRight.style.display = 'none';
+}
+
+function closeShowContactRight() {
+    const showContactRight = document.querySelector('.show-contact-right');
+    showContactRight.style.display = 'none';
+}
+
+

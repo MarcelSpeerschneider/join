@@ -1,25 +1,40 @@
 .contact-container {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     width:-webkit-fill-available;
     height: calc(100% - 89px);
     position: absolute;
     left: 232px;
     background-color: #f5f5f5;
-    z-index: 0;
+    z-index: 0; */
+    position: absolute;
+    top: 89px;
+    left: 232px;
+    bottom: 0;
+    right: 0;
 }
 
 .contact-content {
+    /* display: flex;
+    height: 100%; */
     display: flex;
+    flex-direction: row;
     height: 100%;
 }
 
 .showContactRight {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin: 4% 5%;
-    flex: 2;
+    flex: 2; */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #F5F5F5;
+    padding: 58px;
+    padding-top: 0;
+    justify-content: space-between;
 }
 
 .contacts-header {
@@ -31,7 +46,7 @@
     height: 15%;
 }
 
-.contact-list {
+/* .contact-list {
     width: 430px;
     background-color: white;
     display: flex;
@@ -39,6 +54,18 @@
     align-items: center;
     overflow: auto;
     box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.3);
+} */
+
+.contact-list{
+    min-width: 450px;
+    height: 100%;
+    border: solid transparent;
+    box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.1);
+    overflow-y: scroll;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .button-container {
@@ -444,10 +471,9 @@ cursor: pointer;
     align-items: center;
 }
 
-
-@media (max-width: 830px) {
+  @media (max-width: 830px) {
     .contact-container {
-        flex-direction: column;
+        display: flex;
         left: 0;
         width: 100%;
         height: auto;
@@ -464,7 +490,7 @@ cursor: pointer;
         height: 100%;
     }
 
-    .showContactRight {
+     .showContactRight {
         margin: 4% 0;
         flex: none;
         width: 100%;
@@ -499,9 +525,6 @@ cursor: pointer;
     .pop-up-right{
         width: 100%;
     }
-    .closeBtn {
-        transform: none;
-    }
 
     .current-letter-content {
         width: 100%;
@@ -514,7 +537,7 @@ cursor: pointer;
         overflow: scroll;
     }
 
-    .showContactRight {
+    .pop-up-left{
         display: none;
     }
 
@@ -547,11 +570,7 @@ cursor: pointer;
         width: 100%;
     }
 
-    .closeBtn {
-        transform: none;
-    }
-
     .current-letter-content {
         width: 100%;
     }
-}
+} */

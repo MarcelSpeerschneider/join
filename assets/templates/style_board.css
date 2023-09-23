@@ -226,6 +226,18 @@
   position: relative;
 }
 
+.edittask-main-content{
+  background-color: white;
+  padding: 20px;
+  border-radius: 30px;
+}
+
+.edittask-main-content{
+  background-color: white;
+  padding: 20px;
+  border-radius: 30px;
+}
+
 #openEditTaskPopUpContainer {
   position: absolute;
   top: 0;
@@ -238,6 +250,7 @@
   align-items: center;
   z-index: 1000;
   display: none;
+
 }
 
 .edit-popup-content {
