@@ -1,6 +1,7 @@
 // Global Elements
 let todos = [];
 let todo = [];
+let dateCollection = [];
 let inprogress, awaitfeedback, done, urgentPriority;
 
 let currentDraggedElement;
@@ -110,7 +111,20 @@ async function getTaskByStatusAndPrio(){
     inprogress = todos.filter(i => i['taskStatus'] == 'inprogress');
     awaitfeedback = todos.filter(a => a['taskStatus'] == 'awaitfeedback');
     done = todos.filter(d => d['taskStatus'] == 'done');
-    urgentPriority = todos.filter(prioH => prioH['taskPriority'] == 'prio-urgent')
+    urgentPriority = todos.filter(prioH => prioH['taskPriority'] == 'prio-urgent');
+    checkSmallestDate();
+}
+
+function checkSmallestDate(){
+    dateCollection = [];
+    for (let index = 0; index < todos.length; index++) {
+        dateCollection.push(todos[index]['taskInputDate']);
+    }
+    dateCollection.sort(function(a,b){
+        let dateA = new Date(a);
+        let dateB = new Date(b);
+        return dateA - dateB;
+    });
 }
 
 function generateToDoHTML(element) {
