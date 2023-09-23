@@ -194,7 +194,6 @@ function resetPlaceHolder(elementByID) {
 }
 
 function addTaskToArray(valueOfInput, taskPriority) {
-    debugger;
     let id = todos.length;
     let myObject = {
         'id': id,
