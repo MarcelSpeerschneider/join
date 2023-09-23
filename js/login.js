@@ -36,12 +36,8 @@ function showPassword() {
 }
 
 function setAcronym(size) {
-  if(size >830){
-    document.getElementById('useracronym').innerHTML = localStorage.getItem('acronym');
-  }
-  else{
-    document.getElementById('useracronym-mobile').innerHTML = localStorage.getItem('acronym');
-  }
+  document.getElementById('useracronym').innerHTML = localStorage.getItem('acronym');
+  document.getElementById('useracronym-mobile').innerHTML = localStorage.getItem('acronym');
 }
 
 function guestLocalStorageInfo() {

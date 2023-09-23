@@ -33,35 +33,21 @@ function changeBackgroundColorBackMobile() {
 }
 
 async function renderSummary() {
-    currentSize = window.innerWidth;
-    notMobileSize = 830;
-    mobileSize = 0;
     await getTaskByStatusAndPrio();
     let dashboardDesktop = document.getElementById('dashboard-content');
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
-    debugger;
-    if (window.innerWidth > notMobileSize) {
-        dashboardDesktop.innerHTML = renderSummaryinnerHtml();
-        dashboardMobile.innerHTML = '';
-        setAcronym(currentSize);
-    } else {
-        dashboardMobile.innerHTML = renderSummaryinnerHtml();
-        dashboardDesktop.innerHTML = '';
-        setAcronym(mobileSize);
-    }
+    
+    dashboardDesktop.innerHTML = renderSummaryinnerHtml();
+    dashboardMobile.innerHTML = renderSummaryinnerHtml();
+    setAcronym();
 }
 
 function renderAddTask() {
     let dashboardDesktop = document.getElementById('dashboard-content');
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
 
-    if (window.innerWidth >= 830) {
-        dashboardDesktop.innerHTML = renderAddTaskInnerHtml();
-        dashboardMobile.innerHTML = '';
-    } else {
-        dashboardMobile.innerHTML = renderAddTaskInnerHtml();
-        dashboardDesktop.innerHTML = '';
-    }
+    dashboardDesktop.innerHTML = renderAddTaskInnerHtml();
+    dashboardMobile.innerHTML = renderAddTaskInnerHtml();
 }
 
 
@@ -69,17 +55,10 @@ function renderBoardSite() {
     let dashboardDesktop = document.getElementById('dashboard-content');
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
 
-    if (window.innerWidth >= 830) {
-        dashboardDesktop.innerHTML = renderBoard();
-        dashboardMobile.innerHTML = '';
-        updateBoard();
-        renderPopUpAddTask();
-    } else {
-        dashboardMobile.innerHTML = renderBoard();
-        dashboardDesktop.innerHTML = '';
-        updateBoard();
-        renderPopUpAddTask();
-    }
+    dashboardDesktop.innerHTML = renderBoard();
+    dashboardMobile.innerHTML = renderBoard();
+    updateBoard();
+    renderPopUpAddTask();
 }
 
 
@@ -87,13 +66,8 @@ function renderContactsSite() {
     let dashboardDesktop = document.getElementById('dashboard-content');
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
 
-    if (window.innerWidth >= 830) {
-        dashboardDesktop.innerHTML =returnRenderHTML(),renderContactsAlphabetically();
-        dashboardMobile.innerHTML = '';
-    } else {
-        dashboardMobile.innerHTML = returnRenderHTML(),renderContactsAlphabetically() ;
-        dashboardDesktop.innerHTML = '';
-    }
+    dashboardDesktop.innerHTML = returnRenderHTML(), renderContactsAlphabetically();
+    dashboardMobile.innerHTML = returnRenderHTML(), renderContactsAlphabetically();
 }
 
 
@@ -146,7 +120,7 @@ function assignContactToTask(i, contact) {
 
         const index = selectedContacts.indexOf(contact);
         if (index > -1) {
-             selectedContacts.splice(index, 1);
+            selectedContacts.splice(index, 1);
         }
 
 
@@ -363,15 +337,15 @@ function generateCredentials(fullName) {
     return `${firstInitial}${lastInitial}`;
 }
 
-function checkCurrentTimeForGreeting(){
+function checkCurrentTimeForGreeting() {
     let today = new Date();
     let hour = today.getHours();
     let temp = 'Good morning';
-    if(hour>=12 && hour <17){
+    if (hour >= 12 && hour < 17) {
         temp = 'Good Afternoon'
     }
-    else if(hour > 17 && hour < 20){
-        temp =  'Good Evening'
+    else if (hour > 17 && hour < 20) {
+        temp = 'Good Evening'
     }
     return temp;
 }
