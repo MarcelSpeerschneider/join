@@ -157,7 +157,7 @@ function generateToDoHTML(element) {
     else if(element['taskPriority'] === 'prio-low'){
         prioPictureSource = "./../img/prio-low.svg";
     }
-
+    debugger;
     let temp = element['taskCategory'].replace(/\s/g, '').toLowerCase();
     return /*html*/ `
     <div onclick="changeTask()" draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
