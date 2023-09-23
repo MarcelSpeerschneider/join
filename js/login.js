@@ -12,12 +12,12 @@ async function login() {
       if (boolEmail && boolPassword) {
         window.location.href = "assets/templates/template.html";
         localStorage.setItem('username', element['username']);
-        localStorage.setItem('acronym',element['useracronym']);
+        localStorage.setItem('acronym', element['useracronym']);
         return;
       }
     }
   }
-  if(!boolEmail | !boolPassword){
+  if (!boolEmail | !boolPassword) {
     alert('Username or Password incorrect!');
   }
 }
@@ -35,11 +35,11 @@ function showPassword() {
   }
 }
 
-function setAcronym(){
+function setAcronym() {
   document.getElementById('useracronym').innerHTML = localStorage.getItem('acronym');
 }
 
-function guestLocalStorageInfo(){
-  localStorage.setItem('username','Guest');
-  localStorage.setItem('acronym','GU');
+function guestLocalStorageInfo() {
+  localStorage.setItem('username', 'Guest');
+  localStorage.setItem('acronym', 'GU');
 }
