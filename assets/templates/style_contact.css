@@ -499,9 +499,6 @@ cursor: pointer;
     .pop-up-right{
         width: 100%;
     }
-    .closeBtn {
-        transform: none;
-    }
 
     .current-letter-content {
         width: 100%;
@@ -514,7 +511,7 @@ cursor: pointer;
         overflow: scroll;
     }
 
-    .showContactRight {
+    .pop-up-left{
         display: none;
     }
 
@@ -545,10 +542,6 @@ cursor: pointer;
 
     .pop-up-right{
         width: 100%;
-    }
-
-    .closeBtn {
-        transform: none;
     }
 
     .current-letter-content {
