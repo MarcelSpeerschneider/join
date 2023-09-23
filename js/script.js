@@ -389,7 +389,7 @@ function renderSummaryinnerHtml() {
         </div>
         <div class="summary-main-container">
             <div class="summary-task-container">
-                <div class="summary-task-number-container">
+                <div class="summary-task-number-container" onclick="renderBoardSite()">
                     <div class="summary-task-number-box">
                         <span class="summary-task-number">
                             <h1>${todos.length}</h1>
@@ -409,7 +409,7 @@ function renderSummaryinnerHtml() {
                         <span class="summary-task-info">Awaiting Feedback</span>
                     </div>
                 </div>
-                <div class="summary-urgent-container">
+                <div class="summary-urgent-container" onclick="renderBoardSite()">
                     <img src="./../img/urgent-icon.svg">
                     <div class="summary-urgent-number">
                         <h1>${urgentPriority.length}</h1>Urgent
@@ -422,7 +422,7 @@ function renderSummaryinnerHtml() {
                         <span>Upcoming Deadline</span>
                     </div>
                 </div>
-                <div class="summary-todo-container">
+                <div class="summary-todo-container" onclick="renderBoardSite()">
                     <div class="summary-todo">
                         <svg xmlns="http://www.w3.org/2000/svg" width="69" height="70" viewBox="0 0 69 70" fill="none">
                             <circle cx="34.5" cy="35" r="34.5" fill="#2A3647" />
