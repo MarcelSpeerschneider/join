@@ -33,30 +33,21 @@ function changeBackgroundColorBackMobile() {
 }
 
 async function renderSummary() {
-    await getTaskByStatus();
+    await getTaskByStatusAndPrio();
     let dashboardDesktop = document.getElementById('dashboard-content');
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
 
-    if (window.innerWidth >= 650) {
-        dashboardDesktop.innerHTML = renderSummaryinnerHtml();
-        dashboardMobile.innerHTML = '';
-    } else {
-        dashboardMobile.innerHTML = renderSummaryinnerHtml();
-        dashboardDesktop.innerHTML = '';
-    }
+    dashboardDesktop.innerHTML = renderSummaryinnerHtml();
+    dashboardMobile.innerHTML = renderSummaryinnerHtml();
+    setAcronym();
 }
 
 function renderAddTask() {
     let dashboardDesktop = document.getElementById('dashboard-content');
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
 
-    if (window.innerWidth >= 830) {
-        dashboardDesktop.innerHTML = renderAddTaskInnerHtml();
-        dashboardMobile.innerHTML = '';
-    } else {
-        dashboardMobile.innerHTML = renderAddTaskInnerHtml();
-        dashboardDesktop.innerHTML = '';
-    }
+    dashboardDesktop.innerHTML = renderAddTaskInnerHtml();
+    dashboardMobile.innerHTML = renderAddTaskInnerHtml();
 }
 
 
@@ -64,17 +55,10 @@ function renderBoardSite() {
     let dashboardDesktop = document.getElementById('dashboard-content');
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
 
-    if (window.innerWidth >= 830) {
-        dashboardDesktop.innerHTML = renderBoard();
-        dashboardMobile.innerHTML = '';
-        updateBoard();
-        renderPopUpAddTask();
-    } else {
-        dashboardMobile.innerHTML = renderBoard();
-        dashboardDesktop.innerHTML = '';
-        updateBoard();
-        renderPopUpAddTask();
-    }
+    dashboardDesktop.innerHTML = renderBoard();
+    dashboardMobile.innerHTML = renderBoard();
+    updateBoard();
+    renderPopUpAddTask();
 }
 
 
@@ -82,13 +66,8 @@ function renderContactsSite() {
     let dashboardDesktop = document.getElementById('dashboard-content');
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
 
-    if (window.innerWidth >= 830) {
-        dashboardDesktop.innerHTML =returnRenderHTML(),renderContactsAlphabetically();
-        dashboardMobile.innerHTML = '';
-    } else {
-        dashboardMobile.innerHTML = returnRenderHTML(),renderContactsAlphabetically() ;
-        dashboardDesktop.innerHTML = '';
-    }
+    dashboardDesktop.innerHTML = returnRenderHTML(), renderContactsAlphabetically();
+    dashboardMobile.innerHTML = returnRenderHTML(), renderContactsAlphabetically();
 }
 
 
@@ -141,7 +120,7 @@ function assignContactToTask(i, contact) {
 
         const index = selectedContacts.indexOf(contact);
         if (index > -1) {
-             selectedContacts.splice(index, 1);
+            selectedContacts.splice(index, 1);
         }
 
 
@@ -358,15 +337,15 @@ function generateCredentials(fullName) {
     return `${firstInitial}${lastInitial}`;
 }
 
-function checkCurrentTimeForGreeting(){
+function checkCurrentTimeForGreeting() {
     let today = new Date();
     let hour = today.getHours();
     let temp = 'Good morning';
-    if(hour>=12 && hour <17){
+    if (hour >= 12 && hour < 17) {
         temp = 'Good Afternoon'
     }
-    else if(hour > 17 && hour < 20){
-        temp =  'Good Evening'
+    else if (hour > 17 && hour < 20) {
+        temp = 'Good Evening'
     }
     return temp;
 }
@@ -389,7 +368,7 @@ function renderSummaryinnerHtml() {
         </div>
         <div class="summary-main-container">
             <div class="summary-task-container">
-                <div class="summary-task-number-container">
+                <div class="summary-task-number-container" onclick="renderBoardSite()">
                     <div class="summary-task-number-box">
                         <span class="summary-task-number">
                             <h1>${todos.length}</h1>
@@ -409,20 +388,20 @@ function renderSummaryinnerHtml() {
                         <span class="summary-task-info">Awaiting Feedback</span>
                     </div>
                 </div>
-                <div class="summary-urgent-container">
+                <div class="summary-urgent-container" onclick="renderBoardSite()">
                     <img src="./../img/urgent-icon.svg">
                     <div class="summary-urgent-number">
-                        <h1>1</h1>Urgent
+                        <h1>${urgentPriority.length}</h1>Urgent
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="2" height="105" viewBox="0 0 2 105" fill="none">
                         <path d="M1 1.48828V103.511" stroke="#D1D1D1" stroke-width="2" stroke-linecap="round" />
                     </svg>
                     <div class="summary-deadline-container">
-                        <span class="summary-deadline">Oktober 16, 2022</span>
+                        <span class="summary-deadline">${dateCollection[0]}</span>
                         <span>Upcoming Deadline</span>
                     </div>
                 </div>
-                <div class="summary-todo-container">
+                <div class="summary-todo-container" onclick="renderBoardSite()">
                     <div class="summary-todo">
                         <svg xmlns="http://www.w3.org/2000/svg" width="69" height="70" viewBox="0 0 69 70" fill="none">
                             <circle cx="34.5" cy="35" r="34.5" fill="#2A3647" />

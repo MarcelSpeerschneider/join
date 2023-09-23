@@ -1,12 +1,13 @@
 // Global Elements
 let todos = [];
 let todo = [];
-let inprogress, awaitfeedback, done;
+let dateCollection = [];
+let inprogress, awaitfeedback, done, urgentPriority, prioPictureSource;
 
 let currentDraggedElement;
 
 function renderBoard() {
-        return /*html*/`
+    return /*html*/`
         <div class="board-header">
         <div class="board-header-left">Board</div>
             <!-- <p>Board</p> -->
@@ -73,7 +74,7 @@ function renderBoard() {
 }
 
 async function updateBoard() {
-    await getTaskByStatus();
+    await getTaskByStatusAndPrio();
 
     // todo = todos.filter(t => t['taskStatus'] == 'todo');
     document.getElementById('todo').innerHTML = '';
@@ -104,12 +105,34 @@ async function updateBoard() {
     });
 }
 
-async function getTaskByStatus(){
+async function getTaskByStatusAndPrio() {
     await loadTasks();
     todo = todos.filter(t => t['taskStatus'] == 'todo');
     inprogress = todos.filter(i => i['taskStatus'] == 'inprogress');
     awaitfeedback = todos.filter(a => a['taskStatus'] == 'awaitfeedback');
     done = todos.filter(d => d['taskStatus'] == 'done');
+    urgentPriority = todos.filter(prioH => prioH['taskPriority'] == 'prio-urgent');
+    checkSmallestDate();
+}
+
+function checkSmallestDate() {
+    dateCollection = [];
+    for (let index = 0; index < todos.length; index++) {
+        dateCollection.push(todos[index]['taskInputDate']);
+    }
+    dateCollection.sort(function (a, b) {
+        let dateA = new Date(a);
+        let dateB = new Date(b);
+        return dateA - dateB;
+    });
+}
+
+function deleteTask(taskId) {
+    const taskIndex = todos.findIndex(task => task.id === taskId);
+    if (taskIndex !== -1) {
+        todos.splice(taskIndex, 1);
+        updateBoard();
+    }
 }
 
 function deleteTask(taskId) {
@@ -121,24 +144,52 @@ function deleteTask(taskId) {
 }
 
 function generateToDoHTML(element) {
+    // let temp = element['taskCategory'].replace(/\s/g, '').toLowerCase();
+    // return /*html*/ `
+    // <div onclick="changeTask()" draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
+    // <div onclick="openEditTaskForm()" class="edit-board-icon">
+    //  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    // <g id="edit">
+    // <mask id="mask0_84485_4268" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+    // <rect id="Bounding box" width="24" height="24" fill="#D9D9D9"/>
+    // </mask>
+    // <g mask="url(#mask0_84485_4268)">
+    // <path id="edit_2" d="M5 19H6.4L15.025 10.375L13.625 8.975L5 17.6V19ZM19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3042 2.75 17.8625 2.75C18.4208 2.75 18.8917 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.57083 21.275 6.1125C21.2917 6.65417 21.1083 7.11667 20.725 7.5L19.3 8.925ZM17.85 10.4L7.25 21H3V16.75L13.6 6.15L17.85 10.4Z" fill="#2A3647"/>
+    // </g>
+    // </g>
+    // </svg>
+    // </div>
+    //     <div class="bgc-${temp} taskHeadline-bg">${element['taskCategory']}</div>
+    //     <div class="input-title">${element['taskInputTitle']}</div>
+    //     <div>${element['taskInputDescription']}</div>
+    // </div>`;
+
+    if(element['taskPriority'] === 'prio-urgent'){
+        prioPictureSource = "./../img/prio-urgent.svg";
+    }
+    else if(element['taskPriority'] === 'prio-medium'){
+        prioPictureSource = "./../img/prio-medium.svg";
+    }
+    else if(element['taskPriority'] === 'prio-low'){
+        prioPictureSource = "./../img/prio-low.svg";
+    }
+    debugger;
     let temp = element['taskCategory'].replace(/\s/g, '').toLowerCase();
-    return /*html*/ `<div onclick="changeTask()" draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
-    <div onclick="openEditTaskForm()" class="edit-board-icon">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g id="edit">
-    <mask id="mask0_84485_4268" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-    <rect id="Bounding box" width="24" height="24" fill="#D9D9D9"/>
-    </mask>
-    <g mask="url(#mask0_84485_4268)">
-    <path id="edit_2" d="M5 19H6.4L15.025 10.375L13.625 8.975L5 17.6V19ZM19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3042 2.75 17.8625 2.75C18.4208 2.75 18.8917 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.57083 21.275 6.1125C21.2917 6.65417 21.1083 7.11667 20.725 7.5L19.3 8.925ZM17.85 10.4L7.25 21H3V16.75L13.6 6.15L17.85 10.4Z" fill="#2A3647"/>
-    </g>
-    </g>
-    </svg>
+    return /*html*/ `
+    <div onclick="changeTask()" draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
+        <div class="taskCardInBoard">
+            <div class="bgc-${temp} taskHeadline-bg">${element['taskCategory']}</div>
+            <div class="input-title">${element['taskInputTitle']}</div>
+            <div>${element['taskInputDescription']}</div>
+            <div class="TaskInBoardFooter">
+                <div></div>
+                <div><img src=${prioPictureSource}></div>
+            </div>
+        </div>
     </div>
-        <div class="bgc-${temp} taskHeadline-bg">${element['taskCategory']}</div>
-        <div class="input-title">${element['taskInputTitle']}</div>
-        <div>${element['taskInputDescription']}</div>
-    </div>`;
+    `;
+
+
 }
 
 
@@ -174,7 +225,7 @@ function openEditTaskForm() {
     content.innerHTML = returnEditPopUpHTML();
 }
 
-function returnEditPopUpHTML(){
+function returnEditPopUpHTML() {
 
     return /*html*/ `<div class="edittask-main-content">
     <img class="close-edit-popup" onclick="closeEditTaskForm()" src="./../img/cross.png">
@@ -292,7 +343,7 @@ function returnEditPopUpHTML(){
 </div>`;
 }
 
-function closeEditTaskForm(){
-    let edittask=document.getElementById('openEditTaskPopUpContainer');
-    edittask.style.display="none";
+function closeEditTaskForm() {
+    let edittask = document.getElementById('openEditTaskPopUpContainer');
+    edittask.style.display = "none";
 }

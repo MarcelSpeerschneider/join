@@ -94,8 +94,8 @@ function HTMLrenderPopUpAddTask() {
                     Category
                     <select name="category" id="select-category" class="taskInput">
                         <option value="" disabled>Select a category</option>
-                        <option value="technical-task">Technical Task</option>
-                        <option value="user-story">User Story</option>
+                        <option value="Technical Task">Technical Task</option>
+                        <option value="User Story">User Story</option>
                     </select>
                 </div>
                 <div class="addtask-assigned-to-container">
@@ -194,10 +194,11 @@ function resetPlaceHolder(elementByID) {
 }
 
 function addTaskToArray(valueOfInput, taskPriority) {
+    debugger;
     let id = todos.length;
     let myObject = {
         'id': id,
-        'taskCategory': 'User Story',
+        'taskCategory': valueOfInput[3],
         'taskStatus': globalStatus,
         'taskInputTitle': valueOfInput[0],
         'taskInputDescription': valueOfInput[1],
