@@ -33,16 +33,21 @@ function changeBackgroundColorBackMobile() {
 }
 
 async function renderSummary() {
+    currentSize = window.innerWidth;
+    notMobileSize = 830;
+    mobileSize = 0;
     await getTaskByStatusAndPrio();
     let dashboardDesktop = document.getElementById('dashboard-content');
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
-
-    if (window.innerWidth >= 650) {
+    debugger;
+    if (window.innerWidth > notMobileSize) {
         dashboardDesktop.innerHTML = renderSummaryinnerHtml();
         dashboardMobile.innerHTML = '';
+        setAcronym(currentSize);
     } else {
         dashboardMobile.innerHTML = renderSummaryinnerHtml();
         dashboardDesktop.innerHTML = '';
+        setAcronym(mobileSize);
     }
 }
 
