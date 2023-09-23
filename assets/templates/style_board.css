@@ -141,8 +141,8 @@
   border-radius: 10px;
   margin-bottom: 30px;
   display: flex;
-  /* flex-direction: column;
-  justify-content: start; */
+  flex-direction: column;
+  justify-content: start;
   align-items: center;
   padding: 10px;
 }
@@ -193,8 +193,11 @@
 }
 
 .input-title {
-  overflow-y: scroll;
-  max-height: 90px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  margin-bottom: 8px;
+  word-wrap: break-word;
 }
 
 /* Overlay-Style */

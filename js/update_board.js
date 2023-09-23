@@ -2,7 +2,7 @@
 let todos = [];
 let todo = [];
 let dateCollection = [];
-let inprogress, awaitfeedback, done, urgentPriority;
+let inprogress, awaitfeedback, done, urgentPriority, prioPictureSource;
 
 let currentDraggedElement;
 
@@ -148,6 +148,10 @@ function generateToDoHTML(element) {
     //     <div>${element['taskInputDescription']}</div>
     // </div>`;
 
+    if(element['taskPriority'] === 'prio-urgent'){
+        prioPictureSource = "./../img/prio-urgent.svg";
+    }
+
     let temp = element['taskCategory'].replace(/\s/g, '').toLowerCase();
     return /*html*/ `
     <div onclick="changeTask()" draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
@@ -155,6 +159,10 @@ function generateToDoHTML(element) {
             <div class="bgc-${temp} taskHeadline-bg">${element['taskCategory']}</div>
             <div class="input-title">${element['taskInputTitle']}</div>
             <div>${element['taskInputDescription']}</div>
+            <div class="TaskInBoardFooter">
+                <div></div>
+                <div><img src=${prioPictureSource}></div>
+            </div>
         </div>
     </div>
     `;
