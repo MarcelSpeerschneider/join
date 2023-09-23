@@ -1,7 +1,7 @@
 // Global Elements
 let todos = [];
 let todo = [];
-let inprogress, awaitfeedback, done;
+let inprogress, awaitfeedback, done, urgentPriority;
 
 let currentDraggedElement;
 
@@ -73,7 +73,7 @@ function renderBoard() {
 }
 
 async function updateBoard() {
-    await getTaskByStatus();
+    await getTaskByStatusAndPrio();
 
     // todo = todos.filter(t => t['taskStatus'] == 'todo');
     document.getElementById('todo').innerHTML = '';
@@ -104,12 +104,13 @@ async function updateBoard() {
     });
 }
 
-async function getTaskByStatus(){
+async function getTaskByStatusAndPrio(){
     await loadTasks();
     todo = todos.filter(t => t['taskStatus'] == 'todo');
     inprogress = todos.filter(i => i['taskStatus'] == 'inprogress');
     awaitfeedback = todos.filter(a => a['taskStatus'] == 'awaitfeedback');
     done = todos.filter(d => d['taskStatus'] == 'done');
+    urgentPriority = todos.filter(prioH => prioH['taskPriority'] == 'prio-urgent')
 }
 
 function generateToDoHTML(element) {

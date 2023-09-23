@@ -33,7 +33,7 @@ function changeBackgroundColorBackMobile() {
 }
 
 async function renderSummary() {
-    await getTaskByStatus();
+    await getTaskByStatusAndPrio();
     let dashboardDesktop = document.getElementById('dashboard-content');
     let dashboardMobile = document.getElementById('dashboard-content-mobile');
 
@@ -412,7 +412,7 @@ function renderSummaryinnerHtml() {
                 <div class="summary-urgent-container">
                     <img src="./../img/urgent-icon.svg">
                     <div class="summary-urgent-number">
-                        <h1>1</h1>Urgent
+                        <h1>${urgentPriority.length}</h1>Urgent
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="2" height="105" viewBox="0 0 2 105" fill="none">
                         <path d="M1 1.48828V103.511" stroke="#D1D1D1" stroke-width="2" stroke-linecap="round" />
