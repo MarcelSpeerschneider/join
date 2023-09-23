@@ -151,6 +151,12 @@ function generateToDoHTML(element) {
     if(element['taskPriority'] === 'prio-urgent'){
         prioPictureSource = "./../img/prio-urgent.svg";
     }
+    else if(element['taskPriority'] === 'prio-medium'){
+        prioPictureSource = "./../img/prio-medium.svg";
+    }
+    else if(element['taskPriority'] === 'prio-low'){
+        prioPictureSource = "./../img/prio-low.svg";
+    }
 
     let temp = element['taskCategory'].replace(/\s/g, '').toLowerCase();
     return /*html*/ `
