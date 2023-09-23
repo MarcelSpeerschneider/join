@@ -13,7 +13,9 @@ async function initContacts() {
 
 async function loadUsers() {
     const backendContainer = 'usersjoin';
-    usersjoin = await getInfo(backendContainer);
+    let arrayContent = usersjoin;
+    let globalArrayName = 'usersjoin'
+    usersjoin = await getInfo(backendContainer, arrayContent, globalArrayName);
     // try {
     //     usersjoin = JSON.parse(await getItem('usersjoin'));
     // } catch (e) {
@@ -33,7 +35,9 @@ async function loadContactsFromBackend() {
 
 async function loadTasks() {
     const backendContainer = 'tasksjoin';
-    todos = await getInfo(backendContainer);
+    let arrayContent = todos;
+    let globalArrayName = 'todos'
+    todos = await getInfo(backendContainer, arrayContent, globalArrayName);
     // try {
     //     todos = JSON.parse(await getItem('tasksjoin'));
     // } catch (e) {
@@ -41,14 +45,14 @@ async function loadTasks() {
     // }
 }
 
-async function getInfo(backendContainer){
+async function getInfo(backendContainer, arrayContent, globalArrayName){
     let valuesFromBackend
     try {
         valuesFromBackend = JSON.parse(await getItem(backendContainer));
         return valuesFromBackend;
     } catch (e) {
-        console.error('Loading error, maybe there are no users in your backend - See the error message for more deatils -->', e);
-        return usersjoin;
+        console.error('Loading error, maybe there are no',globalArrayName,'in your backend. Therefore an empty Array will be returned! - See the error message for more deatils -->', e);
+        return arrayContent;
     }
 }
 
