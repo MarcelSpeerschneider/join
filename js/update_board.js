@@ -8,6 +8,7 @@ let currentDraggedElement;
 
 function renderBoard() {
     return /*html*/`
+    <div class="test"></div>
         <div class="board-header">
         <div class="board-header-left">Board</div>
             <!-- <p>Board</p> -->
@@ -61,8 +62,7 @@ function renderBoard() {
         </div>
     </div>
     <div id="overlay" class="overlayStyle">
-        <div id="overlayContent" class="overlay-content">
-        </div>
+        <div id="overlayContent" class="overlay-content"></div>
     </div>
 
     <div id="openEditTaskPopUpContainer">
@@ -176,7 +176,7 @@ function generateToDoHTML(element) {
 
     let temp = element['taskCategory'].replace(/\s/g, '').toLowerCase();
     return /*html*/ `
-    <div onclick="changeTask()" draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
+    <div id="${element['id']}" onclick="renderPopUpChangeTask(this.id)" draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
         <div class="taskCardInBoard">
             <div class="bgc-${temp} taskHeadline-bg">${element['taskCategory']}</div>
             <div class="input-title">${element['taskInputTitle']}</div>
