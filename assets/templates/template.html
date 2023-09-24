@@ -15,101 +15,99 @@
 </head>
 
 <body onload="renderSummary(), initContacts(), setAcronym()">
-    <main id="main">
-        <div class="dashboard">
-            <header>
-                Kanban Project Management Tool
-                <div class="header-icons">
-                    <img class="help-icon" src="../img/help.svg">
-                    <div class="user-profile-icon" id="user-profile-icon" onmouseover="changeBackgroundColor()"
-                        onmouseleave="changeBackgroundColorBack()">
-                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="48" height="48" rx="24" transform="matrix(1 0 0 -1 4 52)" fill="white" />
-                            <circle cx="28" cy="28" r="26.5" stroke="#2A3647" stroke-width="3" />
-                        </svg>
-                        <div id="useracronym" class="user-profile-icon-credentials"></div>
-                        <!-- hier die Variable einsetzen für die Credentials des Users -->
-                    </div>
-                </div>
-            </header>
-            <nav>
-                <img id="dashboard-logo" src="../img/dashboard-logo.svg">
-                <div class="menu-main-container">
-                    <menu>
-                        <div class="links">
-                            <div class="link" onclick="renderSummary()">
-                                <img src="../img/summary.svg" class="nav-icon">
-                                Summary
-                            </div>
-                            <div class="link" onclick="renderAddTask()">
-                                <img src="../img/add-task.svg" class="nav-icon">
-                                Add Task
-                            </div>
-                            <div class="link" onclick="renderBoardSite()">
-                                <img src="../img/board.svg" class="nav-icon">
-                                Board
-                            </div>
-                            <div class="link" onclick="renderContactsSite()">
-                                <img src="../img/contacts.svg" class="nav-icon">
-                                Contacts
-                            </div>
-                        </div>
-                    </menu>
-                    <div class="bottom-nav-container">
-                        <div class="information-container">
-                            <div class="information-link">Privacy Policy</div>
-                            <div class="information-link">Legal Notice</div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <div class="dashboard-content" id="dashboard-content">
-
-                <!-- Bitte hier euren Content rein rendern  -->
-
-            </div>
-        </div>
-
-        <div class="dashboard-mobile">
-            <div class="mobile-header">
-                <div class="mobile-logo"><img src="../img/mobile-logo.svg"></div>
-                <div class="user-profile-icon-mobile" onmouseover="changeBackgroundColorMobile()"
-                    onmouseleave="changeBackgroundColorBackMobile()">
-
-                    <div class="user-profile-icon" id="user-profile-icon" onmouseover="changeBackgroundColor()"
-                        onmouseleave="changeBackgroundColorBack()">
-                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="48" height="48" rx="24" transform="matrix(1 0 0 -1 4 52)" fill="white" />
-                            <circle cx="28" cy="28" r="26.5" stroke="#2A3647" stroke-width="3" />
-                        </svg>
-                        <div id="useracronym-mobile" class="user-profile-icon-credentials"></div>
-                        <!-- hier die Variable einsetzen für die Credentials des Users -->
-                    </div>
+    <div class="dashboard">
+        <header>
+            Kanban Project Management Tool
+            <div class="header-icons">
+                <img class="help-icon" src="../img/help.svg">
+                <div class="user-profile-icon" id="user-profile-icon" onmouseover="changeBackgroundColor()"
+                    onmouseleave="changeBackgroundColorBack()">
+                    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="48" height="48" rx="24" transform="matrix(1 0 0 -1 4 52)" fill="white" />
+                        <circle cx="28" cy="28" r="26.5" stroke="#2A3647" stroke-width="3" />
+                    </svg>
                     <div id="useracronym" class="user-profile-icon-credentials"></div>
+                    <!-- The acronym will be rendered here -->
                 </div>
             </div>
-            <div class="dashboard-content-mobile" id="dashboard-content-mobile">
-
-                <!-- Bitte hier euren Content rein rendern  -->
-
+        </header>
+        <nav>
+            <img id="dashboard-logo" src="../img/dashboard-logo.svg">
+            <div class="menu-main-container">
+                <menu>
+                    <div class="links">
+                        <div class="link" onclick="renderSummary()">
+                            <img src="../img/summary.svg" class="nav-icon">
+                            Summary
+                        </div>
+                        <div class="link" onclick="renderAddTask()">
+                            <img src="../img/add-task.svg" class="nav-icon">
+                            Add Task
+                        </div>
+                        <div class="link" onclick="renderBoardSite()">
+                            <img src="../img/board.svg" class="nav-icon">
+                            Board
+                        </div>
+                        <div class="link" onclick="renderContactsSite()">
+                            <img src="../img/contacts.svg" class="nav-icon">
+                            Contacts
+                        </div>
+                    </div>
+                </menu>
+                <div class="bottom-nav-container">
+                    <div class="information-container">
+                        <div class="information-link">Privacy Policy</div>
+                        <div class="information-link">Legal Notice</div>
+                    </div>
+                </div>
             </div>
-            <div class="mobile-nav">
-                <div class="mobile-link" onclick="renderSummary()">
-                    <img src="../img/mobile-summary.svg">
+        </nav>
+
+        <!-- Mobile Header Start -->
+        <div class="mobile-header">
+            <div class="mobile-logo"><img src="../img/mobile-logo.svg"></div>
+            <div class="user-profile-icon-mobile" onmouseover="changeBackgroundColorMobile()"
+                onmouseleave="changeBackgroundColorBackMobile()">
+
+                <div class="user-profile-icon" id="user-profile-icon" onmouseover="changeBackgroundColor()"
+                    onmouseleave="changeBackgroundColorBack()">
+                    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="48" height="48" rx="24" transform="matrix(1 0 0 -1 4 52)" fill="white" />
+                        <circle cx="28" cy="28" r="26.5" stroke="#2A3647" stroke-width="3" />
+                    </svg>
+                    <div id="useracronym-mobile" class="user-profile-icon-credentials"></div>
                 </div>
-                <div class="mobile-link">
-                    <img src="../img/mobile-board.svg" onclick="renderBoardSite()">
-                </div>
-                <div class="mobile-link">
-                    <img src="../img/mobile-add-task.svg" onclick="renderAddTask()">
-                </div>
-                <div class="mobile-link">
-                    <img src="../img/mobile-contact.svg" onclick="renderContactsSite()">
+                <div id="useracronym" class="user-profile-icon-credentials">
+                    <!-- The acronym will be rendered here -->
                 </div>
             </div>
         </div>
+        <!-- Mobile Header End -->
 
-    </main>
+        <div class="dashboard-content" id="dashboard-content">
+
+            <!-- PLEASE RENDER YOUR CONTENT HERE  -->
+
+        </div>
+
+        <!-- Mobile Nav Start -->
+        <div class="mobile-nav">
+            <div class="mobile-link" onclick="renderSummary()">
+                <img src="../img/mobile-summary.svg">
+            </div>
+            <div class="mobile-link">
+                <img src="../img/mobile-board.svg" onclick="renderBoardSite()">
+            </div>
+            <div class="mobile-link">
+                <img src="../img/mobile-add-task.svg" onclick="renderAddTask()">
+            </div>
+            <div class="mobile-link">
+                <img src="../img/mobile-contact.svg" onclick="renderContactsSite()">
+            </div>
+        </div>
+        <!-- Mobile Nav End -->
+
+    </div>
     <script src="./../../js/script.js"></script>
     <script src="./../../js/login.js"></script>
     <script src="./../../js/update_board.js"></script>

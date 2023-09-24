@@ -6,18 +6,12 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-main {
-    width: 100%;
-    height: 100svh;
-    box-sizing: border-box;
-    display: flex;
-}
-
 .dashboard {
     width: 100%;
     height: 100svh;
     box-sizing: border-box;
     display: flex;
+    position: relative;
 }
 
 #dashboard-logo {
@@ -726,14 +720,6 @@ select {
     .summary-greetings {
         display: none;
     }
-
-    /* .add-task-bottom-button-container {
-        flex-direction: column;
-    } 
-
-    .add-new-subtask input {
-        width: 150px;
-    } */
 }
 
 @media (max-width: 830px) {
@@ -744,8 +730,22 @@ select {
     }
 
     .dashboard {
+        flex-direction: column;
+    }
+
+    .dashboard-content {
+        margin-top: 0;
+        flex: 1;
+        margin-bottom: 84px;
+    }
+
+    header {
         display: none;
-    } */
+    }
+
+    nav {
+        display: none;
+    }
 
     .addtask-main-content {
         font-size: 12px;
@@ -770,7 +770,7 @@ select {
     .add-task-bottom-button-right-side {
         width: 100%;
         margin-bottom: 4%;
-    } */
+    }
 
     .summary-headline {
         flex-direction: column;

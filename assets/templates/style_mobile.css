@@ -19,6 +19,8 @@
     top: 0;
     background-color: white;
     z-index: 2;
+
+    display: none;
 }
 
 .user-profile-icon-mobile:hover {
@@ -37,6 +39,8 @@
     bottom: 0;
     right: 0;
     left: 0;
+
+    display: none;
 }
 
 .mobile-link {
@@ -52,11 +56,12 @@
 }
 
 @media (max-width: 830px) {
-    .dashboard-mobile {
+    .mobile-header {
         display: flex;
     }
-
-    .dash-content-mobile{
-        background-color: #f1f1f1;
+    .mobile-nav {
+        display: flex;
+        position: absolute;
     }
+
 }

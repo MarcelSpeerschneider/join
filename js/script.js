@@ -35,28 +35,19 @@ function changeBackgroundColorBackMobile() {
 async function renderSummary() {
     await getTaskByStatusAndPrio();
     let dashboardDesktop = document.getElementById('dashboard-content');
-    let dashboardMobile = document.getElementById('dashboard-content-mobile');
-
     dashboardDesktop.innerHTML = renderSummaryinnerHtml();
-    dashboardMobile.innerHTML = renderSummaryinnerHtml();
     setAcronym();
 }
 
 function renderAddTask() {
     let dashboardDesktop = document.getElementById('dashboard-content');
-    let dashboardMobile = document.getElementById('dashboard-content-mobile');
-
     dashboardDesktop.innerHTML = renderAddTaskInnerHtml();
-    dashboardMobile.innerHTML = renderAddTaskInnerHtml();
 }
 
 
 function renderBoardSite() {
     let dashboardDesktop = document.getElementById('dashboard-content');
-    let dashboardMobile = document.getElementById('dashboard-content-mobile');
-
     dashboardDesktop.innerHTML = renderBoard();
-    dashboardMobile.innerHTML = renderBoard();
     updateBoard();
     renderPopUpAddTask();
 }
@@ -64,10 +55,7 @@ function renderBoardSite() {
 
 function renderContactsSite() {
     let dashboardDesktop = document.getElementById('dashboard-content');
-    let dashboardMobile = document.getElementById('dashboard-content-mobile');
-
     dashboardDesktop.innerHTML = returnRenderHTML(), renderContactsAlphabetically();
-    dashboardMobile.innerHTML = returnRenderHTML(), renderContactsAlphabetically();
 }
 
 
