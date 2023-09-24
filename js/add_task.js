@@ -209,6 +209,7 @@ function addTaskToArray(valueOfInput, taskPriority) {
 
     };
     globalStatus = 'todo';
+    selectedContacts = [];
     todos.push(myObject);
     setItem("tasksjoin", todos);
     renderBoardSite();

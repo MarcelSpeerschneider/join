@@ -355,6 +355,7 @@ h3 {
     animation: slideInFromRight 1s;
     padding: 30px;
     position: relative;
+    overflow-y: auto;
 }
 
 .addtask-content {
@@ -745,7 +746,6 @@ select {
     .dashboard-content {
         margin-top: 0;
         flex: 1;
-        margin-bottom: 84px;
     }
 
     header {
