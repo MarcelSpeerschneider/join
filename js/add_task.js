@@ -181,7 +181,6 @@ function submitClassList(id) {
         }
         addTaskToArray(valueOfInput, taskPriority);
     }
-    // document.getElementById('subTaskList').innerHTML = '';
 }
 
 function resetPlaceHolder(elementByID) {
@@ -210,6 +209,7 @@ function addTaskToArray(valueOfInput, taskPriority) {
     };
     globalStatus = 'todo';
     selectedContacts = [];
+    subTasks = [];
     todos.push(myObject);
     setItem("tasksjoin", todos);
     renderBoardSite();

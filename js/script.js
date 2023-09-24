@@ -440,7 +440,7 @@ function renderAddTaskInnerHtml() {
         <div class="addtask-content">
             <div class="addtask-side">
                 <div class="addtask-title-container">
-                    Title
+                    <span>Title<span class="footnote-star">*</span></span>
                     <input class="taskInput" placeholder="Enter a title" type="text" id="title" required>
                 </div>
                 <div class="addtask-description-container">
@@ -488,7 +488,7 @@ function renderAddTaskInnerHtml() {
             </svg>
             <div class="addtask-side">
                 <div class="addtask-title-container">
-                    Due date
+                    <span>Due date<span class="footnote-star">*</span></span>
                     <input class="taskInput" type="date" id="due-date" name="due-date" min="1900-01-01" max="2099-12-31"
                         class="addtask-dates-select" required>
                 </div>
@@ -504,7 +504,7 @@ function renderAddTaskInnerHtml() {
                     </div>
                 </div>
                 <div class="addtask-category-container">
-                    Category
+                    <span>Category<span class="footnote-star">*</span></span>
                     <select name="category" id="select-category" class="taskInput">
                         <option value="" disabled>Select a category</option>
                         <option value="technical-task">Technical Task</option>
@@ -528,7 +528,13 @@ function renderAddTaskInnerHtml() {
 
         </div>
         <div class="add-task-bottom-button">
-            <div class="add-task-bottom-button-left-side"></div>
+            <div class="add-task-bottom-button-left-side">
+                <div class="footnote-info-container">
+                    <div class="footnote-info"><span class="footnote-star">*</span>
+                    This field is required
+                    </div>
+                </div>
+            </div>
             <div class="add-task-bottom-button-right-side">
                 <div class="add-task-bottom-button-container">
                     <button class="button-clear" id="button-clear" onclick=submitClassList(this.id) onmouseover="buttonCreateTaskChangeColor()"
