@@ -147,7 +147,7 @@
   padding: 10px;
 }
 
-.taskCardInBoard{
+.taskCardInBoard {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -226,13 +226,13 @@
   position: relative;
 }
 
-.edittask-main-content{
+.edittask-main-content {
   background-color: white;
   padding: 20px;
   border-radius: 30px;
 }
 
-.edittask-main-content{
+.edittask-main-content {
   background-color: white;
   padding: 20px;
   border-radius: 30px;
@@ -288,8 +288,8 @@
   width: 25px;
   height: 25px;
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 30px;
+  right: 30px;
 }
 
 #addTaskOverlay input {
@@ -461,7 +461,7 @@
 } */
 
 /* Styling of Existing Tasks PopUp*/
-.existingTaskOverviewPopUp{
+.existingTaskOverviewPopUp {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -476,4 +476,41 @@
   border-radius: 30px;
   box-sizing: border-box;
   overflow-y: auto;
+}
+.taskForm{
+  width: 100%;
+}
+
+.taskFormHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.taskFormSecondHeader-title {
+  margin-bottom: 25px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 61px;
+  line-height: 120%;
+  color: #2A3647;
+}
+
+.taskFormSecondHeader-description {
+  height: 50px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 120%;
+}
+
+.cross-close-editForm {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
 }

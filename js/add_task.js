@@ -14,15 +14,16 @@ function renderPopUpAddTask(status) {
         openAddTaskForm();
         globalStatus = status;
     }
-    let popUp = document.getElementById('overlayContent');
+    // let popUp = document.getElementById('overlayContent');
+    let popUp = document.getElementById('overlay');
     popUp.innerHTML = HTMLrenderPopUpAddTask();
 }
 
 function HTMLrenderPopUpAddTask() {
     return /*html*/`
-    <div class="addtask-main-content">
-    <img class="cross-close" onclick="closeAddTaskForm()" src="./../img/cross.png">
-    <h1 style="padding-left: 5%; margin-bottom: 4%">Add Task</h1>
+    <div class="addtask-popUp">
+        <h1 style="padding-left: 5%; margin-bottom: 4%">Add Task</h1>
+        <img class="cross-close" onclick="closeAddTaskForm()" src="./../img/cross.png">
     <form onsubmit="submitClassList('button-create-task')">
         <div class="addtask-content">
             <div class="addtask-side">

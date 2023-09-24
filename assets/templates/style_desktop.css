@@ -350,6 +350,17 @@ h3 {
     height: 100%;
 }
 
+.addtask-popUp{
+    background-color: white;
+    border-radius: 31px;
+    width: 915px;
+    max-height: 85vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: slideInFromRight 1s;
+    padding: 30px;
+    position: relative;
+}
+
 .addtask-content {
     display: flex;
     align-items: center;

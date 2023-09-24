@@ -62,7 +62,7 @@ function renderBoard() {
         </div>
     </div>
     <div id="overlay" class="overlayStyle">
-        <div id="overlayContent" class="overlay-content"></div>
+        <!-- <div id="overlayContent" class="overlay-content"></div> -->
     </div>
 
     <div id="openEditTaskPopUpContainer">
