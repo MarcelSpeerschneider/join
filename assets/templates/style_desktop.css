@@ -716,6 +716,15 @@ select {
     cursor: pointer;
 }
 
+@media(max-width: 1400px) {
+    h3 {
+        font-size: 32px;
+    }
+    .summary-username {
+        font-size: 32px;
+    }
+}
+
 @media (max-width: 1100px) {
     .summary-greetings {
         display: none;
