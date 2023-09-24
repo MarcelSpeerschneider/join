@@ -31,6 +31,11 @@
                 </div>
             </div>
         </header>
+        <div class="user-profile-popup" id="user-profile-popup">
+            <div>Legal Notice</div>
+            <div>Privacy Policy</div>
+            <div>Logout</div>
+        </div>
         <nav>
             <img id="dashboard-logo" src="../img/dashboard-logo.svg">
             <div class="menu-main-container">
@@ -66,7 +71,9 @@
         <!-- Mobile Header Start -->
         <div class="mobile-header">
             <div class="mobile-logo"><img src="../img/mobile-logo.svg"></div>
-            <div class="user-profile-icon-mobile" onmouseover="changeBackgroundColorMobile()"
+            <div class="header-icons-mobile">
+                <img class="help-icon" src="../img/help.svg">
+                <div class="user-profile-icon-mobile" onmouseover="changeBackgroundColorMobile()"
                 onmouseleave="changeBackgroundColorBackMobile()">
 
                 <div class="user-profile-icon" id="user-profile-icon" onmouseover="changeBackgroundColor()"
@@ -80,6 +87,7 @@
                 <div id="useracronym" class="user-profile-icon-credentials">
                     <!-- The acronym will be rendered here -->
                 </div>
+            </div>
             </div>
         </div>
         <!-- Mobile Header End -->

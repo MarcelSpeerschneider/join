@@ -70,6 +70,25 @@ header {
     cursor: pointer;
 }
 
+.user-profile-popup {
+    position: absolute;
+    top: 86px;
+    right: 38px;
+    border-radius: 20px 0px 20px 20px;
+    background: var(--version-2-main-color, #2A3647);
+    z-index: 10;
+    padding: 26px;
+    gap: 16px;
+    flex-direction: column;
+    color: white;
+    font-weight: 100;
+    display: none;
+}
+
+.appear {
+    display: flex;
+}
+
 .menu-main-container {
     width: 100%;
     height: 100%;

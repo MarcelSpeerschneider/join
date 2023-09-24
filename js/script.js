@@ -32,6 +32,26 @@ function changeBackgroundColorBackMobile() {
     rectElement.setAttribute("fill", "white");
 }
 
+
+document.getElementById('user-profile-icon').addEventListener('click', function() {
+    var popup = document.getElementById('user-profile-popup');
+    popup.style.display = 'flex';
+});
+
+document.addEventListener('click', function(event) {
+    var popup = document.getElementById('user-profile-popup'); 
+    var trigger = document.getElementById('user-profile-icon');
+
+  if (trigger.contains(event.target) && (popup.style.display === 'none' || popup.style.display === '')) {
+    popup.style.display = 'flex';
+    return;
+}
+
+if (popup.style.display === 'flex' && !popup.contains(event.target) && !trigger.contains(event.target)) {
+    popup.style.display = 'none';
+}
+});
+
 async function renderSummary() {
     await getTaskByStatusAndPrio();
     let dashboardDesktop = document.getElementById('dashboard-content');
