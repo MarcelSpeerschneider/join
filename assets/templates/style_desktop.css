@@ -169,6 +169,12 @@ menu {
     display: none;
 }
 
+.summary-headline-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .summary-headline {
     display: inline-flex;
     justify-content: center;
@@ -176,6 +182,11 @@ menu {
     gap: 30px;
     margin-left: 96px;
     margin-top: 4%;
+}
+
+#summary-headline-underline {
+    display: none;
+    align-self: flex-start;
 }
 
 h1 {
@@ -787,7 +798,7 @@ select {
     }
 
     .addtask-main-content {
-        padding-bottom: 30%;
+        padding-bottom: 15%;
     }
 
     .addtask-content {
@@ -822,7 +833,6 @@ select {
 
     .summary-headline {
         flex-direction: column;
-        width: 100%;
         margin-left: 0;
     }
 
@@ -830,13 +840,31 @@ select {
         display: none;
     }
 
+    #summary-headline-underline {
+        display: block;
+    }
+
+    h2 { 
+        font-size: 24px;
+    }
+
+   
+}
+
+@media(max-width: 660px) {
+
     .summary-task-container {
         width: 396px;
         gap: 24px;
-    }
+    } 
 
     h1 {
         font-size: 48px;
+    }
+
+    .summary-headline {
+        gap: 20px;
+        width: auto;
     }
 
     .summary-task-number-container {
@@ -844,8 +872,8 @@ select {
         width: auto;
         height: auto;
         justify-content: center;
-    }
-
+    } 
+ 
     .summary-task-number-box {
         width: 116px;
         height: 116px;
@@ -864,7 +892,6 @@ select {
         padding: 8px 8px;
         gap: 8px;
         width: 100%;
-
     }
 
     .summary-deadline-container {
@@ -881,10 +908,8 @@ select {
     .summary-todo {
         width: auto;
         height: 116px;
+        padding: 38px 25px;
     }
-}
-
-@media(max-width: 660px) {
     .button-clear {
         display: none;
     }
@@ -907,16 +932,25 @@ select {
 }
 
 @media(max-width: 430px) {
+    .summary-task-container {
+        scale: 0.9;
+    }
     .add-task-bottom-button-left-side {
         display: none;
     }
     .add-task-bottom-button-right-side {
         width: 100%;
     }
+    .addtask-main-content {
+        padding-bottom: 30%;
+    }
 }
 
 @media(max-width: 375px) {
     #add-new-subtask-input {
         width: 155px;
+    }
+    .summary-task-container {
+        scale: 0.8;
     }
 }
