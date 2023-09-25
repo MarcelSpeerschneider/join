@@ -204,7 +204,8 @@ function addTaskToArray(valueOfInput, taskPriority) {
         'taskInputDate': valueOfInput[2],
         'taskPriority': taskPriority,
         'taskInputCategory': valueOfInput[3],
-        'taskSubtasks': subTasks
+        'taskSubtasks': subTasks,
+        'tasksAssignedTo': selectedContacts
 
     };
     globalStatus = 'todo';

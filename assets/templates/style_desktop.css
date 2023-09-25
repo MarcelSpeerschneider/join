@@ -85,6 +85,10 @@ header {
     display: none;
 }
 
+.user-profile-popup div{
+    cursor: pointer;
+}
+
 .appear {
     display: flex;
 }

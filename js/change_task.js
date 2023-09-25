@@ -1,10 +1,11 @@
 function renderPopUpChangeTask(id) {
     let popUp = document.getElementById('overlay');
     popUp.innerHTML = HTMLrenderChangeTask(id);
+    inputSubTasksHTML(id);
     openAddTaskForm();
 }
 
-function HTMLrenderChangeTask(id){
+function HTMLrenderChangeTask(id) {
     return /*html*/ `
 <div id="${id}" class="existingTaskOverviewPopUp">
     <div class="taskFormHeader">
@@ -31,9 +32,11 @@ function HTMLrenderChangeTask(id){
         <p>Asigned to:</p>
         <div>Hier kommen dann die Divs mit Namen</div>
     </div>
-    <div id="subtasks">
-        <p>Subtasks</p>
-        <div>Hier kommen dann die Divs mit Namen</div>
+    <div id="subtasksOverview">
+        <p>Subtasks:</p>
+        <div id="subtasks" class="subtasks">
+
+        </div>
     </div>
     <div class="deleteEditContainer">
         <div class="deleteEditFunctions" onclick="deleteTask(${id})">
@@ -47,4 +50,20 @@ function HTMLrenderChangeTask(id){
     </div>
 </div>
     `;
+}
+
+function inputSubTasksHTML(id) {
+    let subTasks = todos[id]['taskSubtasks'];
+    for (let index = 0; index < subTasks.length; index++) {
+        document.getElementById('subtasks').innerHTML += /*html*/ `
+            <div class="subtask">
+                <input type="checkbox" id="[${id}][${index}]" onclick="subTaskChecked(this.id)">
+                <label>${subTasks[index]}</label>
+            </div>
+            `;
+    }
+}
+
+function subTaskChecked(id){
+    document.getElementById(`${id}`).checked = true;
 }
