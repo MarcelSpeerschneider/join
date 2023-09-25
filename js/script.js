@@ -33,24 +33,42 @@ function changeBackgroundColorBackMobile() {
 }
 
 
-document.getElementById('user-profile-icon').addEventListener('click', function() {
+document.addEventListener('click', function (event) {
     var popup = document.getElementById('user-profile-popup');
-    popup.style.display = 'flex';
-});
-
-document.addEventListener('click', function(event) {
-    var popup = document.getElementById('user-profile-popup'); 
     var trigger = document.getElementById('user-profile-icon');
+    if (trigger.contains(event.target) && (popup.style.display === 'none' || popup.style.display === '')) {
+        popup.style.display = 'flex';
+        return;
+    }
 
-  if (trigger.contains(event.target) && (popup.style.display === 'none' || popup.style.display === '')) {
-    popup.style.display = 'flex';
-    return;
-}
+    if (trigger.contains(event.target) && popup.style.display === 'flex') {
+        popup.style.display = 'none';
+        return;
+    }
 
-if (popup.style.display === 'flex' && !popup.contains(event.target) && !trigger.contains(event.target)) {
-    popup.style.display = 'none';
-}
+    if (popup.style.display === 'flex' && !popup.contains(event.target) && !trigger.contains(event.target)) {
+        popup.style.display = 'none';
+    }
 });
+
+
+// document.addEventListener('click', function(event) {
+//     var popup = document.getElementById('user-profile-popup');
+//     var trigger = document.getElementById('user-profile-icon-mobile');
+//     if (trigger.contains(event.target) && (popup.style.display === 'none' || popup.style.display === '')) {
+//         popup.style.display = 'flex';
+//         return; 
+//     }
+
+//     if (trigger.contains(event.target) && popup.style.display === 'flex') {
+//         popup.style.display = 'none';
+//         return; 
+//     }
+
+//     if (popup.style.display === 'flex' && !popup.contains(event.target) && !trigger.contains(event.target)) {
+//         popup.style.display = 'none';
+//     }
+// });
 
 async function renderSummary() {
     await getTaskByStatusAndPrio();
@@ -365,6 +383,22 @@ function getRandomColor() {
     return colors[randomIndex];
 }
 
+function renderPrivacyPolicy() {
+    let container = document.getElementById('dashboard-content');
+    container.innerHTML = renderPrivacyPolicyInnerHtml();
+}
+
+function renderLegalNotice() {
+    let container = document.getElementById('dashboard-content');
+    container.innerHTML = renderLegalNoticeInnerHtml();
+}
+
+function renderHelp() {
+    let container = document.getElementById('dashboard-content');
+    container.innerHTML = renderHelpInnerHtml();
+}
+
+
 function renderSummaryinnerHtml() {
     return /*html*/`
         <div class="summary-headline-container">
@@ -579,4 +613,198 @@ function renderAddTaskInnerHtml() {
     </form>
 </div>
 `;
+}
+
+function renderPrivacyPolicyInnerHtml() {
+    return /*html*/ `
+    
+<div class="app-information-container">
+    <h1>Privacy Policy</h1>
+
+    <p><strong>Last Updated: 25.09.2023</strong></p>
+
+    <h2>1. Introduction</h2>
+    <p>Welcome to Join360 (“we” or “our”). We respect your privacy and are committed to protecting your personal
+        information. This Privacy Policy will inform you as to how we look after your personal data when you visit our
+        website (regardless of where you visit it from) and tell you about your privacy rights and how the law protects
+        you.
+    </p>
+
+    <h2>2. Cookies</h2>
+    <p>Our website does not use cookies. We prioritize your privacy and ensure that we do not use any tracking or data
+        collection cookies.</p>
+
+    <h2>3. What Data We Collect</h2>
+    <p>We may collect, use, store and transfer different kinds of personal data about you which we have grouped together
+        as
+        follows:</p>
+    <ul>
+        <li><strong>Identity Data</strong> includes first name, last name, username or similar identifier.</li>
+        <li><strong>Contact Data</strong> includes email address and telephone numbers.</li>
+        <li><strong>Technical Data</strong> includes internet protocol (IP) address, browser type and version, time zone
+            setting and location, browser plug-in types and versions, operating system and platform, and other
+            technology on
+            the devices you use to access this website.</li>
+    </ul>
+
+    <h2>4. How We Use Your Data</h2>
+    <p>We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in
+        the
+        following circumstances:</p>
+    <ul>
+        <li>Where we need to perform the contract we are about to enter into or have entered into with you.</li>
+        <li>Where it is necessary for our legitimate interests (or those of a third party) and your interests and
+            fundamental rights do not override those interests.</li>
+        <li>Where we need to comply with a legal obligation.</li>
+    </ul>
+
+    <h2>5. Data Security</h2>
+    <p>We have put in place appropriate security measures to prevent your personal data from being accidentally lost,
+        used,
+        or accessed in an unauthorized way, altered, or disclosed. In addition, we limit access to your personal data to
+        those employees, agents, contractors, and other third parties who have a business need to know.</p>
+
+    <h2>6. Your Legal Rights</h2>
+    <p>Under certain circumstances, you have rights under data protection laws in relation to your personal data,
+        including
+        the right to receive a copy of the personal data we hold about you and the right to make a complaint at any time
+        to
+        the relevant data protection authority.</p>
+
+    <h2>7. Contact Us</h2>
+    <p>For any questions or concerns regarding this Privacy Policy, please contact us at [Your Contact Information].</p>
+</div>
+`;
+}
+
+function renderLegalNoticeInnerHtml() {
+    return /* html */ `
+    
+
+<div class="app-information-container">
+
+<h1>Imprint</h1>
+
+<p>
+<ul>
+    <li>Andreas Krapalies</li>
+    <li>Ivan Gomes</li>
+    <li>Marcel Speerschneider</li>
+</ul><br>
+[Address of the JOIN operator - e.g. one of the students]<br>
+[Postcode and city]</p>
+
+<h2>Exploring the Board</h2>
+<p>Email: [Email]</p>
+
+<h2>Acceptance of terms</h2>
+<p>By accessing and using Join (Product), you acknowledge and agree to the following terms and conditions, and any
+    policies, guidelines, or amendments thereto that may be presented to you from time to time. We, the listed
+    students, may update or change the terms and conditions from time to time without notice.</p>
+
+<h2>Scope and ownership of the product</h2>
+<p>Join has been developed as part of a student group project in a web development bootcamp at the <a
+        href="https://developerakademie.com/">Developer Akademie GmbH</a>. It has an educational purpose and is not
+    intended for extensive personal & business usage. As such, we cannot guarantee consistent availability,
+    reliability, accuracy, or any other aspect of quality regarding this Product.</p>
+
+<p>The design of Join is owned by the <a href="https://developerakademie.com/">Developer Akademie GmbH</a>.
+    Unauthorized use, reproduction, modification, distribution, or replication of the design is strictly prohibited.
+</p>
+
+<h2>Proprietary rights</h2>
+<p>Aside from the design owned by <a href="https://developerakademie.com/">Developer Akademie GmbH</a>, we, the
+    listed students, retain all proprietary rights in Join, including any associated copyrighted material,
+    trademarks, and other proprietary information.</p>
+
+<h2>Use of the product</h2>
+<p>Join is intended to be used for lawful purposes only, in accordance with all applicable laws and regulations. Any
+    use of Join for illegal activities, or to harass, harm, threaten, or intimidate another person, is strictly
+    prohibited. You are solely responsible for your interactions with other users of Join.</p>
+
+<h2>Disclaimer of warranties and limitation of liability</h2>
+<p>Join is provided "as is" without warranty of any kind, whether express or implied, including but not limited to
+    the implied warranties of merchantability, fitness for a particular purpose, and non-infringement. In no event
+    will we, the listed students, or the <a href="https://developerakademie.com/">Developer Akademie</a>, be liable
+    for any direct, indirect, incidental, special, consequential or exemplary damages, including but not limited to,
+    damages for loss of profits, goodwill, use, data, or other intangible losses, even if we have been advised of
+    the possibility of such damages, arising out of or in connection with the use or performance of Join.</p>
+
+<h2>Indemnity</h2>
+<p>You agree to indemnify, defend and hold harmless us, the listed students, the <a
+        href="https://developerakademie.com/">Developer Akademie</a>, and our affiliates, partners, officers,
+    directors, agents, and employees, from and against any claim, demand, loss, damage, cost, or liability
+    (including reasonable legal fees) arising out of or relating to your use of Join and/or your breach of this
+    Legal Notice.</p>
+
+<p>For any questions or notices, please contact us at [Contact Email].</p>
+
+<p>Date: July 26, 2023</p>
+</div>
+    `;
+}
+
+function renderHelpInnerHtml() {
+    return /* html */ `
+    <div class="app-information-container">
+    <h1>Help</h1>
+
+    <p>Welcome to the help page for Join, your guide to using our kanban project management tool. Here, we'll provide an
+        overview of what Join is, how it can benefit you, and how to use it.</p>
+
+    <h2>What is Join?</h2>
+    <p>Join is a kanban-based project management tool designed and built by a group of dedicated students as part of
+        their
+        web development bootcamp at the <a href="https://developerakademie.com/">Developer Akademie</a>.</p>
+
+    <p>Kanban, a Japanese term meaning "billboard", is a highly effective method to visualize work, limit
+        work-in-progress,
+        and maximize efficiency (or flow). Join leverages the principles of kanban to help users manage their tasks and
+        projects in an intuitive, visual interface.</p>
+
+    <p>It is important to note that Join is designed as an educational exercise and is not intended for extensive
+        business
+        usage. While we strive to ensure the best possible user experience, we cannot guarantee consistent availability,
+        reliability, accuracy, or other aspects of quality regarding Join.</p>
+
+    <h2>How to use it</h2>
+    <p>Here is a step-by-step guide on how to use Join:</p>
+    <ol>
+        <li><strong>Exploring the Board</strong><br>
+            When you log in to Join, you'll find a default board. This board represents your project and contains four
+            default lists: "To Do", "In Progress", “Await feedback” and "Done".</li>
+
+        <li><strong>Creating Contacts</strong><br>
+            In Join, you can add contacts to collaborate on your projects. Go to the "Contacts" section, click on "New
+            contact", and fill in the required information. Once added, these contacts can be assigned tasks and they
+            can
+            interact with the tasks on the board.</li>
+
+        <li><strong>Adding Cards</strong><br>
+            Now that you've added your contacts, you can start adding cards. Cards represent individual tasks. Click the
+            "+"
+            button under the appropriate list to create a new card. Fill in the task details in the card, like task
+            name,
+            description, due date, assignees, etc.</li>
+
+        <li><strong>Moving Cards</strong><br>
+            As the task moves from one stage to another, you can reflect that on the board by dragging and dropping the
+            card
+            from one list to another.</li>
+
+        <li><strong>Deleting Cards</strong><br>
+            Once a task is completed, you can either move it to the "Done" list or delete it. Deleting a card will
+            permanently remove it from the board. Please exercise caution when deleting cards, as this action is
+            irreversible.</li>
+    </ol>
+
+    <p>Remember that using Join effectively requires consistent updates from you and your team to ensure the board
+        reflects
+        the current state of your project.</p>
+
+    <p>Have more questions about Join? Feel free to contact us at [Your Contact Email]. We're here to help you!</p>
+
+    <p>Enjoy using Join!</p>
+</div>
+    `;
 }
