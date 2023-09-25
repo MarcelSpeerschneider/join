@@ -85,8 +85,11 @@ header {
     display: none;
 }
 
-.user-profile-popup div{
+.user-profile-popup a{
     cursor: pointer;
+    color: white;
+    font-weight: 100;
+    text-decoration: none;
 }
 
 .appear {

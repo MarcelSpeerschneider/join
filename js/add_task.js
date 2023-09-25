@@ -14,9 +14,9 @@ function renderPopUpAddTask(status) {
         openAddTaskForm();
         globalStatus = status;
     }
-    // let popUp = document.getElementById('overlayContent');
     let popUp = document.getElementById('overlay');
     popUp.innerHTML = HTMLrenderPopUpAddTask();
+    updateBoard();
 }
 
 function HTMLrenderPopUpAddTask() {
