@@ -566,8 +566,8 @@ function renderAddTaskInnerHtml() {
                     <span>Category<span class="footnote-star">*</span></span>
                     <select name="category" id="select-category" class="taskInput">
                         <option value="" disabled>Select a category</option>
-                        <option value="technical-task">Technical Task</option>
-                        <option value="user-story">User Story</option>
+                        <option value="Technical Task">Technical Task</option>
+                        <option value="User Story">User Story</option>
                     </select>
                 </div>
                 <div class="addtask-assigned-to-container">

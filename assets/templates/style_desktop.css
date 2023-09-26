@@ -782,6 +782,14 @@ select {
     margin: 4%;
 }
 
+.fdc {
+    flex-direction: column;
+}
+
+.w100 {
+    width: 100%;
+}
+
 @media(max-width: 1400px) {
     h3 {
         font-size: 32px;

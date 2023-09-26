@@ -9,7 +9,7 @@ function renderPopUpChangeTask(id) {
 
 function HTMLrenderChangeTask(id) {
     return /*html*/ `
-<div id="${id}" class="existingTaskOverviewPopUp">
+<div id="renderChangeTask${id}" class="existingTaskOverviewPopUp">
     <div class="taskFormHeader">
         <div class="taskFormFirstHeader">
             <span class="bgc-technicaltask taskHeadline-bg">${todos[id]['taskCategory']}</span>
