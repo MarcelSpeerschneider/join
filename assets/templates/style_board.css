@@ -539,13 +539,13 @@
   cursor: pointer;
 }
 
-.subtasks{
+.subTaskList-and-assignedToList{
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.subtask{
+.subTask-and-assignedTo{
   display: flex;
   gap: 10px;
 }
