@@ -43,7 +43,7 @@ function HTMLrenderChangeTask(id) {
             <img src="./../img/delete.svg">
             <span>Delete</span>
         </div>
-        <div class="deleteEditFunctions">
+        <div class="deleteEditFunctions" onclick="renderEditTaskPopUp(${id})">
             <img src="./../img/edit.svg">
             <span>Edit</span>
         </div>
