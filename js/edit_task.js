@@ -138,7 +138,6 @@ function editTaskSelectCategory(id) {
     const select = document.getElementById("select-category");
     const option = select.querySelector(`[value='${todos[id]['taskInputCategory']}']`);
     option.selected = true;
-
 }
 
 function editTaskAddNewSubtask(id) {
