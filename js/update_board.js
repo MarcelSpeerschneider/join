@@ -73,8 +73,14 @@ function renderBoard() {
     `
 }
 
-async function updateBoard() {
-    await getTaskByStatusAndPrio();
+async function updateBoard(searchResult) {
+    if (searchResult === undefined) {
+        await getTaskByStatusAndPrio();   
+    }
+    else{
+        console.log(searchResult);
+        getFilteredTasksByStatusAndPrio(searchResult);
+    }
 
     // todo = todos.filter(t => t['taskStatus'] == 'todo');
     document.getElementById('todo').innerHTML = '';
@@ -113,6 +119,14 @@ async function getTaskByStatusAndPrio() {
     done = todos.filter(d => d['taskStatus'] == 'done');
     urgentPriority = todos.filter(prioH => prioH['taskPriority'] == 'prio-urgent');
     checkSmallestDate();
+}
+
+function getFilteredTasksByStatusAndPrio(searchResult){
+    todo = searchResult.filter(t => t['taskStatus'] == 'todo');
+    inprogress = searchResult.filter(i => i['taskStatus'] == 'inprogress');
+    awaitfeedback = searchResult.filter(a => a['taskStatus'] == 'awaitfeedback');
+    done = searchResult.filter(d => d['taskStatus'] == 'done');
+    searchResultArray = [];
 }
 
 function checkSmallestDate() {
@@ -164,13 +178,13 @@ function generateToDoHTML(element) {
     //     <div>${element['taskInputDescription']}</div>
     // </div>`;
 
-    if(element['taskPriority'] === 'prio-urgent'){
+    if (element['taskPriority'] === 'prio-urgent') {
         prioPictureSource = "./../img/prio-urgent.svg";
     }
-    else if(element['taskPriority'] === 'prio-medium'){
+    else if (element['taskPriority'] === 'prio-medium') {
         prioPictureSource = "./../img/prio-medium.svg";
     }
-    else if(element['taskPriority'] === 'prio-low'){
+    else if (element['taskPriority'] === 'prio-low') {
         prioPictureSource = "./../img/prio-low.svg";
     }
 
