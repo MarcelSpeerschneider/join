@@ -295,7 +295,7 @@ function returnRenderHTML() {
   <div class="showContactRight">
       <div class="contacts-header">
           <h1>Contacts</h1>
-          <div>
+          <div class="vertical-line">
           <svg width="4" height="63" viewBox="0 0 4 63" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path id="Vector 5" d="M2 2V61" stroke="#29ABE2" stroke-width="3" stroke-linecap="round"/>
           </svg>
@@ -304,6 +304,7 @@ function returnRenderHTML() {
           </div>
 
           <div id="contactsShow" class="contact-onlick-content"></div>
+          
       </div>
   <div style="display:none;" id="contactPopUp" class="contact-pop-up">
           <div class="pup-up-content" action="">
