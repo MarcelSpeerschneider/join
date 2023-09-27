@@ -22,17 +22,17 @@ function HTMLrenderChangeTask(id) {
     </div>
     <div class="taskFormBody">
         <div class="priorityAndDateInfo">
-            <p>Due date: </p>
-            <p>Priority:</p>
-        </div>
-        <div class="priorityAndDateInfo">
-            <p>${todos[id]['taskInputDate']}</p>
-            <div id="taskPriority">
-
+            <div class="changeTastPriorityContainer">
+            <span>Priority:</span>
+            <div id="taskPriority"></div>
             </div>
         </div>
+        <div class="priorityAndDateInfo">
+            <span>Due date: </span>
+            <span>${todos[id]['taskInputDate']}</span>
+        </div>
     </div>
-    <div>
+    <div class="subTaskList-and-assignedToList-container">
         <p>Asigned to:</p>
         <div id="assignedToList" class="subTaskList-and-assignedToList">
 
@@ -74,23 +74,32 @@ function inputAssignedToHTML(id) {
     let assignedTo = todos[id]['tasksAssignedTo'];
     for (let index = 0; index < assignedTo.length; index++) {
         document.getElementById('assignedToList').innerHTML += /*html*/ `
-            <div class="subTask-and-assignedTo">
+            <!-- <div class="subTask-and-assignedTo">
                 <label>Acronym</label>
                 <label>${assignedTo[index]}</label>
-            </div>
+            </div> -->
+            <div class="select-contacts-to-assign-dropdown-contact">
+                                    <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
+                                        <svg width="28" height="28">
+                                            <circle cx="14" cy="14" r="14" fill=${getRandomColor()} />
+                                        </svg>
+                                        <div class="select-contacts-to-assign-dropdown-contact-credentials">${generateCredentials(assignedTo[index])}</div>
+                                    </div>
+                                    <div class="select-contacts-to-assign-dropdown-contactname">${assignedTo[index]}</div>
+                                    </div>
             `;
     }
 }
 
-function subTaskChecked(id){
+function subTaskChecked(id) {
     document.getElementById(`${id}`).checked = true;
 }
 
-function setPrio(id){
+function setPrio(id) {
     let adjustedPrioName = todos[id]['taskPriority'].slice(5)
     adjustedPrioName = adjustedPrioName.charAt(0).toUpperCase() + adjustedPrioName.slice(1);
     document.getElementById('taskPriority').innerHTML += /*html*/ `
         <div>${adjustedPrioName}</div>
-        <img src="./assets/img/pri-low.svg">
+        <img src="./../img/prio-low.svg">
     `;
 }

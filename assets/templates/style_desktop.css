@@ -1,3 +1,22 @@
+html {
+
+}
+/* Setzen der Breite der Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Stil für den Hintergrund des Scrollbar-Tracks */
+::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+}
+
+/* Stil für den Scrollbar-Thumb */
+::-webkit-scrollbar-thumb {
+    background-color: #b4b4b4;
+    border-radius: 5px;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -387,6 +406,7 @@ h3 {
     flex-direction: column;
     padding-top: 5%;
     box-sizing: border-box;
+    overflow-y: auto;
 }
 
 .addtask-popUp{
@@ -404,6 +424,7 @@ h3 {
 .addtask-content {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .addtask-side {
@@ -726,6 +747,31 @@ select {
     justify-content: flex-end;
     gap: 25px;
     width: 80%;
+}
+
+.add-task-edit-task-button-ok {
+    display: flex;
+    padding:  16px 12px 12px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 10px;
+    background: #2A3647;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    cursor: pointer;
+    position: absolute;
+    bottom: 30px;
+    right: 60px;
+    z-index: 10;
+}
+
+.mb15 {
+    margin-bottom: 10%;
 }
 
 .button-clear {

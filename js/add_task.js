@@ -206,7 +206,6 @@ function addTaskToArray(valueOfInput, taskPriority) {
     let id = todos.length;
     let myObject = {
         'id': id,
-        'taskCategory': valueOfInput[3],
         'taskStatus': globalStatus,
         'taskInputTitle': valueOfInput[0],
         'taskInputDescription': valueOfInput[1],

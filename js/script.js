@@ -368,10 +368,10 @@ function checkCurrentTimeForGreeting() {
     let hour = today.getHours();
     let temp = 'Good morning';
     if (hour >= 12 && hour < 17) {
-        temp = 'Good Afternoon'
+        temp = 'Good afternoon'
     }
     else if (hour > 17 && hour < 20) {
-        temp = 'Good Evening'
+        temp = 'Good evening'
     }
     return temp;
 }

@@ -188,7 +188,7 @@ function generateToDoHTML(element) {
         prioPictureSource = "./../img/prio-low.svg";
     }
 
-    let temp = element['taskCategory'].replace(/\s/g, '').toLowerCase();
+    let temp = element['taskCategory'];
     return /*html*/ `
     <div id="${element['id']}" onclick="renderPopUpChangeTask(this.id)" draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
         <div class="taskCardInBoard">

@@ -288,8 +288,8 @@
   width: 25px;
   height: 25px;
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 15px;
+  right: 15px;
 }
 
 #addTaskOverlay input {
@@ -475,7 +475,6 @@
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
   box-sizing: border-box;
-  overflow-y: auto;
   align-items: center;
 }
 .taskFormHeader{
@@ -515,13 +514,23 @@
 
 .taskFormBody{
   display: flex;
-  gap: 20px;
   width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.priorityAndDateInfo{
+.priorityAndDateInfo {
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
+  gap: 25px;
+  align-self: stretch;
+}
+
+.changeTastPriorityContainer {
+  display: flex;
+  gap: 39px;
 }
 
 .deleteEditContainer{
@@ -540,13 +549,30 @@
   cursor: pointer;
 }
 
-.subTaskList-and-assignedToList{
+.subTaskList-and-assignedToList-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
+.subTaskList-and-assignedToList {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 .subTask-and-assignedTo{
+  display: flex;
+  gap: 10px;
+}
+
+#subtasksOverview {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#taskPriority {
   display: flex;
   gap: 10px;
 }
