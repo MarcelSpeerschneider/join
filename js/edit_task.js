@@ -135,8 +135,9 @@ function editTaskSelectCategory(id) {
 
 function editTaskAddNewSubtask(id) {
     let container = document.querySelector('.add-new-subtask-list');
-    for (let i = 0; i < todos[id]['taskSubtasks'].length; i++) {
-        const subtask = todos[id]['taskSubtasks'][i];
+    for (let i = 0; i < todos[id]['taskSubtasks'][0].length; i++) {
+        const subtask = todos[id]['taskSubtasks'][0][i]['description'];
+        console.log(todos[id]['taskSubtasks'][i][0]['description']);
         container.innerHTML += /*html*/`<li><input id="add-new-subtask-listinput${i}" value="${subtask}" disabled>
         <div class="add-new-subtask-icon-container-list" id="add-new-subtask-icon-container-list${i}">
             <img src="./../img/edit-icon.svg" onclick="editNewSubtaskInput(${i})">|

@@ -12,7 +12,7 @@ function HTMLrenderChangeTask(id) {
 <div id="renderChangeTask${id}" class="existingTaskOverviewPopUp">
     <div class="taskFormHeader">
         <div class="taskFormFirstHeader">
-            <span class="bgc-technicaltask taskHeadline-bg">${todos[id]['taskCategory']}</span>
+            <span class="bgc-technicaltask taskHeadline-bg">${todos[id]['taskInputCategory']}</span>
             <img class="cross-close-editForm" onclick="closeAddTaskForm()" src="./../img/cross.png">
         </div>
         <div class="taskFormSecondHeader">
@@ -59,12 +59,12 @@ function HTMLrenderChangeTask(id) {
 }
 
 function inputSubTasksHTML(id) {
-    let subTasks = todos[id]['taskSubtasks'];
+    let subTasks = todos[id]['taskSubtasks'][0];
     for (let index = 0; index < subTasks.length; index++) {
         document.getElementById('subTaskList').innerHTML += /*html*/ `
             <div class="subTask-and-assignedTo">
-                <input type="checkbox" id="[${id}][${index}]" onclick="subTaskChecked(this.id)">
-                <label>${subTasks[index]}</label>
+                <input type="checkbox" id="subtask[${index}]" onclick="subTaskChecked(this.id)">
+                <label>${subTasks[index]['description']}</label>
             </div>
             `;
     }
@@ -74,10 +74,6 @@ function inputAssignedToHTML(id) {
     let assignedTo = todos[id]['tasksAssignedTo'];
     for (let index = 0; index < assignedTo.length; index++) {
         document.getElementById('assignedToList').innerHTML += /*html*/ `
-            <!-- <div class="subTask-and-assignedTo">
-                <label>Acronym</label>
-                <label>${assignedTo[index]}</label>
-            </div> -->
             <div class="select-contacts-to-assign-dropdown-contact">
                                     <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
                                         <svg width="28" height="28">
@@ -92,7 +88,8 @@ function inputAssignedToHTML(id) {
 }
 
 function subTaskChecked(id) {
-    document.getElementById(`${id}`).checked = true;
+    let checkbox = document.getElementById(id);
+    checkbox.checked = !checkbox.checked;
 }
 
 function setPrio(id) {

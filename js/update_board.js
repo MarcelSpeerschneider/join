@@ -188,11 +188,11 @@ function generateToDoHTML(element) {
         prioPictureSource = "./../img/prio-low.svg";
     }
 
-    let temp = element['taskCategory'];
+    let temp = element['taskInputCategory'];
     return /*html*/ `
     <div id="${element['id']}" onclick="renderPopUpChangeTask(this.id)" draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
         <div class="taskCardInBoard">
-            <div class="bgc-${temp} taskHeadline-bg">${element['taskCategory']}</div>
+            <div class="bgc-${combineAndLowercase(temp)} taskHeadline-bg">${element['taskInputCategory']}</div>
             <div class="input-title">${element['taskInputTitle']}</div>
             <div>${element['taskInputDescription']}</div>
             <div class="TaskInBoardFooter">
@@ -202,6 +202,12 @@ function generateToDoHTML(element) {
         </div>
     </div>
     `;
+}
+
+function combineAndLowercase(temp) {
+    var cleanedInput = temp.trim().toLowerCase();
+    var combinedWords = cleanedInput.replace(/\s+/g, '');
+    return combinedWords;
 }
 
 
