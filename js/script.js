@@ -249,12 +249,11 @@ function addNewSubtask() {
 
     // Füge der subTasks-Liste nur ein neues Element hinzu, wenn im Eingabefeld etwas steht.
     if (input.value) {
-        let subtask = [
+        let subtask = 
             {
                 'description': input.value,
                 'status': 'todo'  
-            }
-        ];
+            };
         subTasks.push(subtask);
         input.value = '';
     }
@@ -264,7 +263,7 @@ function addNewSubtask() {
 
     // Neurendern der Liste
     for (let i = 0; i < subTasks.length; i++) {
-        const subtaskDescription = subTasks[i][0]['description'];
+        const subtaskDescription = subTasks[i]['description'];
         list.innerHTML += /*html*/`<li><input id="add-new-subtask-listinput${i}" value="${subtaskDescription}" disabled>
         <div class="add-new-subtask-icon-container-list" id="add-new-subtask-icon-container-list${i}">
             <img src="./../img/edit-icon.svg" onclick="editNewSubtaskInput(${i})">|

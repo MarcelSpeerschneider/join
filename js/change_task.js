@@ -59,7 +59,6 @@ function HTMLrenderChangeTask(id) {
 }
 
 function inputSubTasksHTML(id) {
-    // let subTasks = todos[id]['taskSubtasks'][0];
     let subTasks = todos[id]['taskSubtasks'];
     for (let index = 0; index < subTasks.length; index++) {
         document.getElementById('subTaskList').innerHTML += /*html*/ `
@@ -89,8 +88,7 @@ function inputAssignedToHTML(id) {
 }
 
 function subTaskChecked(id) {
-    let checkbox = document.getElementById(id);
-    checkbox.checked = !checkbox.checked;
+    
 }
 
 function setPrio(id) {

@@ -10,7 +10,7 @@ function renderEditTaskPopUp(id) {
 
 function HTMLrenderEditTask(id) {
     return /*html*/ `
-    <button class="add-task-edit-task-button-ok">OK<img src="./../img/check.svg" onclick="editTaskGetInputs(${id})"></button>
+    <button class="add-task-edit-task-button-ok" onclick="editTaskGetInputs(${id})">OK<img src="./../img/check.svg"></button>
     <div class="addtask-main-content w100">
     <img class="cross-close" onclick="closeAddTaskForm()" src="./../img/cross.png">
     <form onsubmit="submitClassList('button-create-task')">
@@ -135,9 +135,9 @@ function editTaskSelectCategory(id) {
 
 function editTaskAddNewSubtask(id) {
     let container = document.querySelector('.add-new-subtask-list');
-    for (let i = 0; i < todos[id]['taskSubtasks'][0].length; i++) {
-        const subtask = todos[id]['taskSubtasks'][0][i]['description'];
-        console.log(todos[id]['taskSubtasks'][i][0]['description']);
+    for (let i = 0; i < todos[id]['taskSubtasks'].length; i++) {
+        const subtask = todos[id]['taskSubtasks'][i]['description'];
+        console.log(todos[id]['taskSubtasks'][i]['description']);
         container.innerHTML += /*html*/`<li><input id="add-new-subtask-listinput${i}" value="${subtask}" disabled>
         <div class="add-new-subtask-icon-container-list" id="add-new-subtask-icon-container-list${i}">
             <img src="./../img/edit-icon.svg" onclick="editNewSubtaskInput(${i})">|
@@ -193,16 +193,16 @@ function editTaskCheckPriority(id) {
          'id': id,
          'taskStatus': globalStatus,
         'taskInputTitle': valueOfInputs[0],
-         'taskInputDescription': valueOfInputs[1],
-         'taskInputDate': valueOfInputs[2],
-         'taskPriority': taskPriority,
-         'taskInputCategory': valueOfInputs[3],
-         'taskSubtasks': subTasks,
+        'taskInputDescription': valueOfInputs[1],
+        'taskInputDate': valueOfInputs[2],
+        'taskPriority': taskPriority,
+        'taskInputCategory': valueOfInputs[3],
+        'taskSubtasks': subTasks,
         'tasksAssignedTo': selectedContacts
      };
 
      selectedContacts = [];
-     subTasks = [];
+     // subTasks = [];
      setItem("tasksjoin", todos);
      renderBoardSite();
  };
