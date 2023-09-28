@@ -246,6 +246,7 @@ function selectNewSubtask() {
 function addNewSubtask() {
     let list = document.querySelector('.add-new-subtask-list');
     let input = document.getElementById('add-new-subtask-input');
+    let getPlusBack = document.getElementById('add-new-subtask-icon-container');
 
     // Füge der subTasks-Liste nur ein neues Element hinzu, wenn im Eingabefeld etwas steht.
     if (input.value) {
@@ -270,6 +271,11 @@ function addNewSubtask() {
             <img src="./../img/delete-icon.svg" onclick="clearNewSubtaskInput(${i})">
         </div></li>`;
     }
+
+    getPlusBack.innerHTML = /*html*/`
+        <img src="./../img/add-subtask.svg" class="add-new-subtask-plus" onclick="selectNewSubtask()">
+    `;
+
 }
 
 function clearNewSubtask() {
