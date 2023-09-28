@@ -169,6 +169,7 @@ function editTaskCheckPriority(id) {
      let addTaskElements = document.getElementsByClassName('taskInput');
      let taskPriority = '';
      let valueOfInputs = [];
+     subTasks = [];
 
      for (let index = 0; index < addTaskElements.length; index++) {
          elementByID = addTaskElements[index]['id'];
@@ -202,7 +203,6 @@ function editTaskCheckPriority(id) {
      };
 
      selectedContacts = [];
-     // subTasks = [];
      setItem("tasksjoin", todos);
      renderBoardSite();
  };
