@@ -2,6 +2,7 @@
 let todos = [];
 let todo = [];
 let dateCollection = [];
+let collection = [];
 let inprogress, awaitfeedback, done, urgentPriority, prioPictureSource;
 
 let currentDraggedElement;
@@ -364,4 +365,13 @@ function returnEditPopUpHTML() {
 function closeEditTaskForm() {
     let edittask = document.getElementById('openEditTaskPopUpContainer');
     edittask.style.display = "none";
+}
+
+function checkDragAreaIfEmpty(){
+    collection = document.getElementsByClassName('drag-area');
+    for (let index = 0; index < collection.length; index++) {
+        if(collection[index].children.length === 0){
+            alert(collection[index],'has no children');
+        }
+    }
 }

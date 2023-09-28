@@ -83,10 +83,11 @@ function renderAddTask() {
 }
 
 
-function renderBoardSite() {
+async function renderBoardSite() {
     let dashboardDesktop = document.getElementById('dashboard-content');
     dashboardDesktop.innerHTML = renderBoard();
-    updateBoard();
+    await updateBoard();
+    checkDragAreaIfEmpty();
     renderPopUpAddTask();
 }
 
