@@ -75,6 +75,11 @@ function displayContactInfo(index, color) {
     }
     const currentContact = document.getElementById(`contact-${index}`);
     currentContact.classList.add('clicked');
+
+    if(window.innerWidth < 900){
+        document.getElementById('contactRightFlex').style.display='flex';
+        document.getElementById('contactRightFlex').classList.add('contact-right-responsiv');
+    }
 }
 
 function generateContactInfoHTML(contact, index, color) {
@@ -194,7 +199,7 @@ function generateEditContactPopupHTML() {
     <!-- <form class="input-pop-up" onsubmit="addEditContact(event);return false;"> -->
     <form id="openedPopUpForm" class="input-pop-up" onsubmit="addEditContact(this.id);return false;">
         <div class="input-img">
-        <input required  placeholder="Name" id="nameValueTwo" type="text>
+        <input required  placeholder="Name" id="nameValueTwo" type="text">
         <svg class="svgStyleInput" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="person">
         <mask id="mask0_84485_2192" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -412,7 +417,7 @@ function returnRenderHTML() {
       </div>
   </div>
   
-  <div class="show-contact-right">
+  <div id="contactRightFlex" class="show-contact-right">
   <div class="showContactRight">
       <div class="contacts-header">
           <h1>Contacts</h1>
@@ -540,7 +545,6 @@ function openEditContact(index) {
     document.getElementById('editPopUp').style.display = 'flex';
 }
 
-
 function closeEditWindow() {
     document.getElementById('editPopUp').style.display = 'none';
 }
@@ -552,20 +556,8 @@ function openContactForm() {
 function closeWindow() {
     document.getElementById("contactPopUp").style.display = "none";
 }
+  
+  
 
-function toggleShowContactRight() {
-    const showContactRight = document.querySelector('.show-contact-right');
-    showContactRight.style.display = 'block';
-}
-
-function closeShowContactRight() {
-    const showContactRight = document.querySelector('.show-contact-right');
-    showContactRight.style.display = 'none';
-}
-
-function closeShowContactRight() {
-    const showContactRight = document.querySelector('.show-contact-right');
-    showContactRight.style.display = 'none';
-}
 
 

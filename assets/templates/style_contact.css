@@ -249,6 +249,7 @@ input:focus {
   cursor: pointer;
   width: 22px;
   height: 22px;
+  color: #2a3647;
 }
 
 .cancelBtn:hover {
@@ -426,7 +427,6 @@ input:focus {
 .input-pop-up {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .responsiv-line {
@@ -439,12 +439,20 @@ input:focus {
   margin-top: 30px;
 }
 
-@media(max-width:1230px){
-  .pop-up-left{
+.contact-right-responsiv {
+  background-color: white;
+  width: 100vw;
+  position: absolute;
+  left: 0px;
+  justify-content: center;
+}
+
+@media (max-width: 1230px) {
+  .pop-up-left {
     display: none;
   }
 
-  .pup-up-content{
+  .pup-up-content {
     width: auto;
   }
 }
@@ -493,7 +501,6 @@ input:focus {
 
   .show-contact-right {
     margin-left: 0;
-    left: 370px;
   }
 
   #addContactBtn {
@@ -510,19 +517,19 @@ input:focus {
     height: 90%;
   }
 
-  .icon{
+  .icon {
     margin-right: 0;
     margin-bottom: 15px;
     width: auto;
     height: auto;
   }
 
-  .closeBtn{
+  .closeBtn {
     display: none;
   }
 
-  .pop-up-right{
-    width:auto;
+  .pop-up-right {
+    width: auto;
     height: max-content;
     flex-direction: column;
   }
@@ -539,24 +546,24 @@ input:focus {
   }
 }
 
-@media(max-width:600px){
+@media (max-width: 600px) {
   .contactinput input {
     width: auto;
   }
-  .contactBtn{
+  .contactBtn {
     flex-direction: column;
     gap: 5px;
     align-items: center;
     margin-top: -20px;
   }
 
-  .icon{
+  .icon {
     width: auto;
   }
 }
 
-@media(max-width:400px){
-  .pop-up-right{
+@media (max-width: 400px) {
+  .pop-up-right {
     width: 100vw;
   }
 }
