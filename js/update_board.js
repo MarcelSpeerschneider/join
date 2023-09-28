@@ -76,9 +76,9 @@ function renderBoard() {
 
 async function updateBoard(searchResult) {
     if (searchResult === undefined) {
-        await getTaskByStatusAndPrio();   
+        await getTaskByStatusAndPrio();
     }
-    else{
+    else {
         console.log(searchResult);
         getFilteredTasksByStatusAndPrio(searchResult);
     }
@@ -88,6 +88,8 @@ async function updateBoard(searchResult) {
 
     todo.forEach(element => {
         document.getElementById('todo').innerHTML += generateToDoHTML(element);
+        renderProgressBar(element['id']);
+        renderBoardTaskCredntialsSummary(element['id']);
     });
 
     // inprogress = todos.filter(i => i['taskStatus'] == 'inprogress');
@@ -95,6 +97,8 @@ async function updateBoard(searchResult) {
 
     inprogress.forEach(element => {
         document.getElementById('inprogress').innerHTML += generateToDoHTML(element);
+        renderProgressBar(element['id']);
+        renderBoardTaskCredntialsSummary(element['id']);
     });
 
     // awaitfeedback = todos.filter(a => a['taskStatus'] == 'awaitfeedback');
@@ -102,6 +106,8 @@ async function updateBoard(searchResult) {
 
     awaitfeedback.forEach(element => {
         document.getElementById('awaitfeedback').innerHTML += generateToDoHTML(element);
+        renderProgressBar(element['id']);
+        renderBoardTaskCredntialsSummary(element['id']);
     });
 
     // done = todos.filter(d => d['taskStatus'] == 'done');
@@ -109,6 +115,8 @@ async function updateBoard(searchResult) {
 
     done.forEach(element => {
         document.getElementById('done').innerHTML += generateToDoHTML(element);
+        renderProgressBar(element['id']);
+        renderBoardTaskCredntialsSummary(element['id']);
     });
     checkDragAreaIfEmpty();
 }
@@ -123,7 +131,7 @@ async function getTaskByStatusAndPrio() {
     checkSmallestDate();
 }
 
-function getFilteredTasksByStatusAndPrio(searchResult){
+function getFilteredTasksByStatusAndPrio(searchResult) {
     todo = searchResult.filter(t => t['taskStatus'] == 'todo');
     inprogress = searchResult.filter(i => i['taskStatus'] == 'inprogress');
     awaitfeedback = searchResult.filter(a => a['taskStatus'] == 'awaitfeedback');
@@ -177,8 +185,16 @@ function generateToDoHTML(element) {
             <div class="bgc-${combineAndLowercase(temp)} taskHeadline-bg">${element['taskInputCategory']}</div>
             <div class="input-title">${element['taskInputTitle']}</div>
             <div>${element['taskInputDescription']}</div>
+            <div class="progressbarMain">
+                <div class="progressbarContainer">
+                    <div class="progressbar" id="progressbar${element['id']}">
+                    </div>
+                </div>
+                <div class="progressbar-info" id="progressinfo${element['id']}">hallo</div>
+            </div>
+
             <div class="TaskInBoardFooter">
-                <div></div>
+                <div class="boardTaskCredentialsSummary" id="boardTaskCredentialsSummary${element['id']}"></div>
                 <div><img src=${prioPictureSource}></div>
             </div>
         </div>
@@ -348,37 +364,64 @@ function closeEditTaskForm() {
     edittask.style.display = "none";
 }
 
-function checkDragAreaIfEmpty(){
+function checkDragAreaIfEmpty() {
     collection = document.getElementsByClassName('drag-area');
     for (let index = 0; index < collection.length; index++) {
-        if(collection[index].children.length === 0){
+        if (collection[index].children.length === 0) {
             const emptyArea = collection[index]['id'];
             document.getElementById(emptyArea).innerHTML += determineAHint(emptyArea);
         }
     }
 }
 
-function determineAHint(emptyArea){
+function determineAHint(emptyArea) {
     let hint = '';
-    if(emptyArea === 'todo'){
+    if (emptyArea === 'todo') {
         hint = 'No tasks To do';
     }
-    else if(emptyArea === 'inprogress'){
+    else if (emptyArea === 'inprogress') {
         hint = 'Nothing in progress';
     }
-    else if(emptyArea === 'awaitfeedback'){
+    else if (emptyArea === 'awaitfeedback') {
         hint = 'No tasks await feedback';
     }
-    else if(emptyArea === 'done'){
+    else if (emptyArea === 'done') {
         hint = 'Nothing is done';
     }
     return HTMLrenderAreaWithEmptyHint(hint)
 }
 
-function HTMLrenderAreaWithEmptyHint(hint){
+function HTMLrenderAreaWithEmptyHint(hint) {
     return /*html*/`
     <div class="hint">
         <span>${hint}</span>
     </div>
     `;
+}
+
+function renderProgressBar(id) {
+let progressbar = document.getElementById(`progressbar${id}`);
+let progressinfo = document.getElementById(`progressinfo${id}`);
+
+let totalTasks = todos[id]['taskSubtasks'].length;
+let doneTasks = todos[id]['taskSubtasks'].filter(task => task['status'] === 'done').length;
+let percentageDone = (doneTasks / totalTasks) * 100;
+progressbar.style.width = percentageDone + `%`;
+progressinfo.innerHTML = /*html*/`<span>${doneTasks}/${totalTasks}Subasks</span>`;
+}
+
+function renderBoardTaskCredntialsSummary(id) {
+    let container = document.getElementById(`boardTaskCredentialsSummary${id}`);
+    for (let i = 0; i < todos[id]['tasksAssignedTo'].length; i++) {
+        const contact = todos[id]['tasksAssignedTo'][i];
+        container.innerHTML += /*html*/ `
+        <div class="select-contacts-to-assign-dropdown-contact-credentials-container ml-5px">
+        <svg width="28" height="28">
+            <circle cx="14" cy="14" r="14" fill="${getRandomColor()}"/>
+        </svg>
+        <div class="select-contacts-to-assign-dropdown-contact-credentials">${generateCredentials(contact)}</div>
+        </div>
+        `;
+        
+    }
 }

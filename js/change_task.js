@@ -60,13 +60,27 @@ function HTMLrenderChangeTask(id) {
 
 function inputSubTasksHTML(id) {
     let subTasks = todos[id]['taskSubtasks'];
-    for (let index = 0; index < subTasks.length; index++) {
-        document.getElementById('subTaskList').innerHTML += /*html*/ `
+    let subTaskList =  document.getElementById('subTaskList');
+    for (let i = 0; i < subTasks.length; i++) {
+        let subTask = subTasks[i];
+        if (subTask['status'] == 'todo')
+        {
+            subTaskList.innerHTML += /*html*/ `
             <div class="subTask-and-assignedTo">
-                <input type="checkbox" id="subtask[${index}]" onclick="subTaskChecked(this.id)">
-                <label>${subTasks[index]['description']}</label>
+                <input type="checkbox" id="subtask[${i}]" onclick="subTaskChecked(${i}, ${id})">
+                <span class="checkmark"></span>
+                <label>${subTask['description']}</label>
             </div>
             `;
+        } else {
+            subTaskList.innerHTML += /*html*/ `
+            <div class="subTask-and-assignedTo">
+                <input type="checkbox" id="subtask[${i}]" onclick="subTaskChecked(${i}, ${id})" checked>
+                <label>${subTask['description']}</label>
+            </div>
+            `;
+        }
+
     }
 }
 
@@ -87,8 +101,13 @@ function inputAssignedToHTML(id) {
     }
 }
 
-function subTaskChecked(id) {
-    
+function subTaskChecked(id, ToDoId) {
+    let subtask = document.getElementById(`subtask[${id}]`);
+    if (subtask.checked) {
+        todos[ToDoId]['taskSubtasks'][id]['status'] = 'done';  // Annahme, dass es ein 'status'-Feld gibt
+    } else {
+        todos[ToDoId]['taskSubtasks'][id]['status'] = 'todo';
+    }
 }
 
 function setPrio(id) {

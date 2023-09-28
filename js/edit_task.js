@@ -104,29 +104,6 @@ function HTMLrenderEditTask(id) {
 </div>`;
 }
 
-
-// return /*html*/ `
-// <div id="${id}" class="existingTaskOverviewPopUp">
-// <label>Title</label>
-// <input type="text" value="${todos[id]['taskInputTitle']}">
-// <label>Description</label>
-// <input type="text" value="${todos[id]['taskInputDescription']}">
-// <label>Due Date</label>
-// <input type="date" value="${todos[id]['taskInputDate']}">
-// <label>Prio</label>
-// <div class="Auswahl-an-Prios">
-//     <div>Prio High</div>
-//     <div>Prio Medium</div>
-//     <div>Prio Low</div>
-// </div>
-// <label>Assigned to</label>
-// <label>Hier kommt das Pull Down Menü</label>
-// <label>Hier kommen alle aktuellen Kontakte</label>
-// <label>Hier kommt Add new Subatsk</label>
-// <div>Auflistung alle Subtasks</div>
-// <button onclick="closeAddTaskForm()">OK</button>
-// </div>
-
 function editTaskSelectCategory(id) {
     const select = document.getElementById("select-category");
     const option = select.querySelector(`[value='${todos[id]['taskInputCategory']}']`);
@@ -135,6 +112,7 @@ function editTaskSelectCategory(id) {
 
 function editTaskAddNewSubtask(id) {
     let container = document.querySelector('.add-new-subtask-list');
+    subTasks = todos[id]['taskSubtasks'];
     for (let i = 0; i < todos[id]['taskSubtasks'].length; i++) {
         const subtask = todos[id]['taskSubtasks'][i]['description'];
         console.log(todos[id]['taskSubtasks'][i]['description']);
@@ -169,7 +147,6 @@ function editTaskCheckPriority(id) {
      let addTaskElements = document.getElementsByClassName('taskInput');
      let taskPriority = '';
      let valueOfInputs = [];
-     subTasks = [];
 
      for (let index = 0; index < addTaskElements.length; index++) {
          elementByID = addTaskElements[index]['id'];
@@ -190,9 +167,10 @@ function editTaskCheckPriority(id) {
  }
 
  function editTaskSaveTask(id, valueOfInputs, taskPriority) {
+    let status = todos[id]['taskStatus'];
      todos[id] = {
-         'id': id,
-         'taskStatus': globalStatus,
+        'id': id,
+        'taskStatus': status,
         'taskInputTitle': valueOfInputs[0],
         'taskInputDescription': valueOfInputs[1],
         'taskInputDate': valueOfInputs[2],
@@ -203,6 +181,13 @@ function editTaskCheckPriority(id) {
      };
 
      selectedContacts = [];
+     subTasks = [];
      setItem("tasksjoin", todos);
      renderBoardSite();
  };
+
+ function clearNewSubtaskInput(i) {
+    document.getElementById(`add-new-subtask-listinput${i}`).value = '';
+    subTasks.splice(i, 1);
+    addNewSubtask();
+}
