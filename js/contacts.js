@@ -94,7 +94,7 @@ function generateContactInfoHTML(contact, index, color) {
         <div class="info-name">
           <div id="bgcContacts" style="background-color: ${color};" class="profil-icon-right">${firstLetterOfFirstName}${firstLetterOfLastName}</div>
           <div class="edit-delete-name">
-            <span style="font-size:40px;margin-left:30px;margin-top:30px;">${contact.name}</span>
+            <span class="name-contact">${contact.name}</span>
             <div class="edit-delete">
             <div onclick="openEditContact(${index})" id="edit-contact"  class="edit-delete-Hover">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -300,7 +300,15 @@ function returnRenderHTML() {
           <path id="Vector 5" d="M2 2V61" stroke="#29ABE2" stroke-width="3" stroke-linecap="round"/>
           </svg>
           </div>
+          <div class="responsiv-line">
+          <svg width="94" height="4" viewBox="0 0 94 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path id="Vector 5" d="M92 2L2 2" stroke="#29ABE2" stroke-width="3" stroke-linecap="round"/>
+</svg>
+
+          </div>
           <span>Better with a Team</span>
+
+          
           </div>
 
           <div id="contactsShow" class="contact-onlick-content"></div>
