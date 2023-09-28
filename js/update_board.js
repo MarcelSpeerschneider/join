@@ -353,12 +353,12 @@ function checkDragAreaIfEmpty(){
     for (let index = 0; index < collection.length; index++) {
         if(collection[index].children.length === 0){
             const emptyArea = collection[index]['id'];
-            document.getElementById(emptyArea).innerHTML += HTMLrenderAreaWithEmptyHint(emptyArea);
+            document.getElementById(emptyArea).innerHTML += determineAHint(emptyArea);
         }
     }
 }
 
-function HTMLrenderAreaWithEmptyHint(emptyArea){
+function determineAHint(emptyArea){
     let hint = '';
     if(emptyArea === 'todo'){
         hint = 'No tasks To do';
@@ -372,6 +372,10 @@ function HTMLrenderAreaWithEmptyHint(emptyArea){
     else if(emptyArea === 'done'){
         hint = 'Nothing is done';
     }
+    return HTMLrenderAreaWithEmptyHint(hint)
+}
+
+function HTMLrenderAreaWithEmptyHint(hint){
     return /*html*/`
     <div class="hint">
         <span>${hint}</span>
