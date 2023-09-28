@@ -169,6 +169,18 @@
   margin-top: 10px;
 }
 
+.hint{
+  background-color: #E7E7E7;
+  width: 252px;
+  height: 48px;
+  border-radius: 10px;
+  border: dashed 1px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Background-Colors of the different departments */
 .bgc-technicaltask {
   background-color: #1fd7c1;
