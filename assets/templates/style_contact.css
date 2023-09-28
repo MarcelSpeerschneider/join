@@ -13,7 +13,7 @@
 .show-contact-right {
   margin-left: 30px;
   position: relative;
-  left: 410px;
+  left: 405px;
 }
 
 .contacts-header {
@@ -31,8 +31,8 @@
   flex-direction: column;
   align-items: center;
   overflow-y: scroll;
-  position: absolute;
   height: 100%;
+  position: absolute;
 }
 
 .button-container {
@@ -444,6 +444,16 @@ input:focus {
   margin-top: 30px;
 }
 
+@media(max-width:1230px){
+  .pop-up-left{
+    display: none;
+  }
+
+  .pup-up-content{
+    width: auto;
+  }
+}
+
 @media (max-width: 1150px) {
   .responsiv-line {
     display: flex;
@@ -481,7 +491,7 @@ input:focus {
   }
 }
 
-@media (max-width: 890px) {
+@media (max-width: 900px) {
   .contact-list {
     width: 100%;
   }
