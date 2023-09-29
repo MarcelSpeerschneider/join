@@ -412,6 +412,10 @@ h3 {
     line-height: 120%;
 }
 
+.summary-deadline-pTags{
+    margin: 0;
+}
+
 .addtask-main-content {
     display: flex;
     flex-direction: column;
