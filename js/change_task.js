@@ -106,9 +106,11 @@ function inputAssignedToHTML(id) {
 }
 
 function subTaskChecked(id, ToDoId) {
+    debugger;
     let subtask = document.getElementById(`subtask[${id}]`);
     if (subtask.checked) {
         todos[ToDoId]['taskSubtasks'][id]['status'] = 'done';  // Annahme, dass es ein 'status'-Feld gibt
+        setItem("tasksjoin", todos);
     } else {
         todos[ToDoId]['taskSubtasks'][id]['status'] = 'todo';
     }

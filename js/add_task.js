@@ -9,6 +9,7 @@ function closeAddTaskForm() {
     document.getElementById('overlay').style.display = 'none';
     subTasks = [];
     selectedContacts = [];
+    renderBoardSite();
 }
 
 function renderPopUpAddTask(status) {
