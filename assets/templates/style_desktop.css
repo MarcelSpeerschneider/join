@@ -1,6 +1,5 @@
-html {
+html {}
 
-}
 /* Setzen der Breite der Scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
@@ -322,7 +321,7 @@ h3 {
     width: 100%;
     padding: 28px 48px;
     box-sizing: border-box;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     gap: 61px;
     border-radius: 30px;
@@ -409,7 +408,7 @@ h3 {
     overflow-y: auto;
 }
 
-.addtask-popUp{
+.addtask-popUp {
     background-color: white;
     border-radius: 31px;
     width: 915px;
@@ -754,7 +753,7 @@ select {
 
 .add-task-edit-task-button-ok {
     display: flex;
-    padding:  16px 12px 12px 16px;
+    padding: 16px 12px 12px 16px;
     justify-content: center;
     align-items: center;
     gap: 4px;
@@ -843,6 +842,7 @@ select {
     h3 {
         font-size: 32px;
     }
+
     .summary-username {
         font-size: 32px;
     }
@@ -863,6 +863,10 @@ select {
 @media(max-width: 975px) {
     #add-new-subtask-input {
         width: 155px;
+    }
+
+    .join360-style {
+        margin-block-start: unset;
     }
 }
 
@@ -914,13 +918,13 @@ select {
     .add-task-bottom-button-left-side {
         justify-content: center;
         text-align: right;
-        }
+    }
 
     .footnote-info-container {
         width: 70%;
     }
 
-    .add-task-bottom-button-container{
+    .add-task-bottom-button-container {
         width: 70%;
     }
 
@@ -937,19 +941,19 @@ select {
         display: block;
     }
 
-    h2 { 
+    h2 {
         font-size: 24px;
     }
 
-   
+
 }
 
-@media(max-width: 660px) {
+@media(max-width: 830px) {
 
     .summary-task-container {
         width: 396px;
         gap: 24px;
-    } 
+    }
 
     h1 {
         font-size: 48px;
@@ -965,15 +969,15 @@ select {
         width: auto;
         height: auto;
         justify-content: center;
-    } 
- 
+    }
+
     .summary-task-number-box {
         width: 116px;
-        height: 116px;
+        height: 150px;
         border-radius: 12px;
         gap: 13px;
         font-size: 48px;
-
+        justify-content: unset;
     }
 
     .summary-task-info {
@@ -985,6 +989,22 @@ select {
         padding: 8px 8px;
         gap: 8px;
         width: 100%;
+    }
+
+    .summary-urgent-tasks {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .summary-urgent-tasks-number {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .h1-urgent-tasks-style {
+        margin-top: auto;
     }
 
     .summary-deadline-container {
@@ -1003,6 +1023,7 @@ select {
         height: 116px;
         padding: 38px 25px;
     }
+
     .button-clear {
         display: none;
     }
@@ -1012,9 +1033,11 @@ select {
     .add-task-bottom-button-right-side {
         width: 50%;
     }
+
     .button-create-task {
         font-size: 16px;
     }
+
     .add-task-bottom-button-right-side {
         width: 50%;
     }
@@ -1028,12 +1051,15 @@ select {
     .summary-task-container {
         scale: 0.9;
     }
+
     .add-task-bottom-button-left-side {
         display: none;
     }
+
     .add-task-bottom-button-right-side {
         width: 100%;
     }
+
     .addtask-main-content {
         padding-bottom: 30%;
     }
@@ -1043,6 +1069,7 @@ select {
     #add-new-subtask-input {
         width: 155px;
     }
+
     .summary-task-container {
         scale: 0.8;
     }

@@ -414,7 +414,7 @@ function renderSummaryinnerHtml() {
     return /*html*/`
         <div class="summary-headline-container">
             <div class="summary-headline">
-                <h1>Join 360</h1>
+                <h1 class="join360-style">Join 360</h1>
                 <svg xmlns="http://www.w3.org/2000/svg" width="4" height="63" viewBox="0 0 4 63" fill="none" id="summary-headline-seperator">
                     <path d="M2 2V61" stroke="#29ABE2" stroke-width="3" stroke-linecap="round" />
                 </svg>
@@ -447,9 +447,12 @@ function renderSummaryinnerHtml() {
                     </div>
                 </div>
                 <div class="summary-urgent-container" onclick="renderBoardSite()">
-                    <img src="./../img/urgent-icon.svg">
-                    <div class="summary-urgent-number">
-                        <h1>${urgentPriority.length}</h1>Urgent
+                    <div class="summary-urgent-tasks">
+                        <img src="./../img/urgent-icon.svg">
+                        <div class="summary-urgent-tasks-number">
+                            <h1 class="h1-urgent-tasks-style">${urgentPriority.length}</h1>
+                            <span>Urgent</span>
+                        </div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="2" height="105" viewBox="0 0 2 105" fill="none">
                         <path d="M1 1.48828V103.511" stroke="#D1D1D1" stroke-width="2" stroke-linecap="round" />
