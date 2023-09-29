@@ -9,7 +9,6 @@ let currentDraggedElement;
 
 function renderBoard() {
     return /*html*/`
-    <div class="test"></div>
         <div class="board-header">
         <div class="board-header-left">Board</div>
             <!-- <p>Board</p> -->

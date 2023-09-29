@@ -85,23 +85,6 @@ function fillLocalArray() {
   });
 }
 
-// function addUser() {
-//   let email = document.getElementById("email");
-//   let password = document.getElementById("password");
-//   let checkbox = document.getElementById("checkbox");
-//   let checkboxAlert = document.getElementById("checkboxAlert");
-
-//   if (!checkbox.checked) {
-//     checkboxAlert.style.display = "block";
-//     return;
-//   }
-
-//   checkboxAlert.style.display = "none";
-
-//   usersjoin.push({ email: email.value, password: password.value });
-//   window.location.href = "login.html";
-// }
-
 function showPassword() {
   let passwordInput = document.getElementById("password");
   let lockIcon = document.getElementById("lock-icon");
