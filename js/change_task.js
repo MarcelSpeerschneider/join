@@ -113,6 +113,7 @@ function subTaskChecked(id, ToDoId) {
         setItem("tasksjoin", todos);
     } else {
         todos[ToDoId]['taskSubtasks'][id]['status'] = 'todo';
+        setItem("tasksjoin", todos);
     }
 }
 
