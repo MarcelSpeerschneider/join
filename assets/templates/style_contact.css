@@ -446,6 +446,28 @@ input:focus {
   background-color: white;
 }
 
+.d-none{
+  display: none;
+}
+
+.arrowCloseResponsiv{
+  position: absolute;
+  right: 22px;
+  top: 35px;
+  cursor: pointer;
+}
+
+@media(min-width:900px){
+  .contact-list{
+    z-index: 1;
+    width: auto;
+  }
+
+  #contactRightFlex{
+    display: flex;
+  }
+}
+
 @media (max-width: 1230px) {
   .pop-up-left {
     display: none;
@@ -498,6 +520,12 @@ input:focus {
 @media (max-width: 900px) {
   .contact-list {
     width: 100%;
+  }
+
+  .closeBtnResponsiv{
+    display: flex;
+    position: absolute;
+    z-index: 2;
   }
 
   .show-contact-right {

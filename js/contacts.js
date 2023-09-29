@@ -77,11 +77,15 @@ function displayContactInfo(index, color) {
     currentContact.classList.add('clicked');
 
     if(window.innerWidth < 900){
+        document.getElementById('closeBtnResponsiv').style.display="flex";
+        document.getElementById('closeBtnResponsiv').classList.add('arrowCloseResponsiv');
         document.getElementById('contactRightFlex').style.display='flex';
         document.getElementById('contactRightFlex').classList.add('contact-right-responsiv');
-    } else{
-        document.getElementById('contactRightFlex').classList.remove('contact-right-responsiv');
+    }else{
+        document.getElementById('closeBtnResponsiv').classList.add('arrowCloseResponsiv');
+
     }
+
     // if(window.innerWidth > 900){
     //     document.getElementById('contactRightFlex').classList.remove('contact-right-responsiv');
     // }
@@ -421,8 +425,17 @@ function returnRenderHTML() {
           </div>
       </div>
   </div>
+
   
-  <div id="contactRightFlex" class="show-contact-right">
+  <div  id="contactRightFlex" class="show-contact-right">
+  <div class="d-none" id="closeBtnResponsiv" onclick="closeInfoResponsiv()">
+  <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="arrow-left-line">
+<path id="Vector" d="M13.0097 17.8855H30.1871C31.0362 17.8855 31.7246 18.5739 31.7246 19.4231C31.7246 20.2722 31.0362 20.9606 30.1871 20.9606H13.0097L20.17 28.1209C20.7704 28.7213 20.7704 29.6946 20.17 30.295C19.5697 30.8954 18.5963 30.8954 17.996 30.295L8.53824 20.8373C7.75719 20.0562 7.75719 18.7899 8.53824 18.0089L17.996 8.55115C18.5963 7.9508 19.5697 7.9508 20.17 8.55115C20.7704 9.1515 20.7704 10.1249 20.17 10.7252L13.0097 17.8855Z" fill="#29ABE2"/>
+</g>
+</svg>
+
+  </div>
   <div class="showContactRight">
       <div class="contacts-header">
           <h1>Contacts</h1>
@@ -442,6 +455,8 @@ function returnRenderHTML() {
           
       </div>
       </div>
+
+      
   `;
 
 
@@ -562,6 +577,9 @@ function closeWindow() {
     document.getElementById("contactPopUp").style.display = "none";
 }
   
+function closeInfoResponsiv(){
+    document.getElementById('contactRightFlex').style.display='none';
+}
   
 
 
