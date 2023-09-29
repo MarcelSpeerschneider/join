@@ -23,6 +23,10 @@
     display: none;
 }
 
+.mobile-logo:hover {
+    cursor: pointer;
+}
+
 .header-icons-mobile {
     display: flex;
     justify-content: center;

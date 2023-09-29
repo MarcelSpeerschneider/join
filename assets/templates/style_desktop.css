@@ -37,6 +37,10 @@ body {
     height: 121.97px;
 }
 
+#dashboard-logo:hover {
+    cursor: pointer;
+}
+
 header {
     position: absolute;
     top: 0;
