@@ -12,14 +12,14 @@ function closeAddTaskForm() {
     renderBoardSite();
 }
 
-function renderPopUpAddTask(status) {
+async function renderPopUpAddTask(status) {
     if (status === 'todo' | status === 'inprogress' | status === 'awaitfeedback' | status === 'done') {
         openAddTaskForm();
         globalStatus = status;
     }
     let popUp = document.getElementById('overlay');
     popUp.innerHTML = HTMLrenderPopUpAddTask();
-    updateBoard();
+    await updateBoard();
 }
 
 function HTMLrenderPopUpAddTask() {
