@@ -202,7 +202,6 @@ function generateToDoHTML(element) {
 }
 
 function combineAndLowercase(temp) {
-    debugger;
     console.log(temp);
     if (temp !== undefined) {
         let cleanedInput = temp.trim().toLowerCase();
@@ -407,7 +406,7 @@ function renderProgressBar(id) {
     let totalTasks = todos[id]['taskSubtasks'].length;
     let progressbar = document.getElementById(`progressbar${id}`);
     let progressinfo = document.getElementById(`progressinfo${id}`);
-    
+
     if(totalTasks >0){
         let doneTasks = todos[id]['taskSubtasks'].filter(task => task['status'] === 'done').length;
         let percentageDone = (doneTasks / totalTasks) * 100;

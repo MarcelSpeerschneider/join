@@ -61,26 +61,30 @@ function HTMLrenderChangeTask(id) {
 function inputSubTasksHTML(id) {
     let subTasks = todos[id]['taskSubtasks'];
     let subTaskList =  document.getElementById('subTaskList');
-    for (let i = 0; i < subTasks.length; i++) {
-        let subTask = subTasks[i];
-        if (subTask['status'] == 'todo')
-        {
-            subTaskList.innerHTML += /*html*/ `
-            <div class="subTask-and-assignedTo">
-                <input type="checkbox" id="subtask[${i}]" onclick="subTaskChecked(${i}, ${id})">
-                <span class="checkmark"></span>
-                <label>${subTask['description']}</label>
-            </div>
-            `;
-        } else {
-            subTaskList.innerHTML += /*html*/ `
-            <div class="subTask-and-assignedTo">
-                <input type="checkbox" id="subtask[${i}]" onclick="subTaskChecked(${i}, ${id})" checked>
-                <label>${subTask['description']}</label>
-            </div>
-            `;
-        }
+    let subTasksOverview = document.getElementById('subtasksOverview');
 
+    if(subTasks.length >0){
+        subTasksOverview.style.display = 'flex';
+        for (let i = 0; i < subTasks.length; i++) {
+            let subTask = subTasks[i];
+            if (subTask['status'] == 'todo')
+            {
+                subTaskList.innerHTML += /*html*/ `
+                <div class="subTask-and-assignedTo">
+                    <input type="checkbox" id="subtask[${i}]" onclick="subTaskChecked(${i}, ${id})">
+                    <span class="checkmark"></span>
+                    <label>${subTask['description']}</label>
+                </div>
+                `;
+            } else {
+                subTaskList.innerHTML += /*html*/ `
+                <div class="subTask-and-assignedTo">
+                    <input type="checkbox" id="subtask[${i}]" onclick="subTaskChecked(${i}, ${id})" checked>
+                    <label>${subTask['description']}</label>
+                </div>
+                `;
+            }
+        }
     }
 }
 
