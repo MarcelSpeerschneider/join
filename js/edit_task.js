@@ -19,7 +19,6 @@ function editTaskAddNewSubtask(id) {
     subTasks = todos[id]['taskSubtasks'];
     for (let i = 0; i < todos[id]['taskSubtasks'].length; i++) {
         const subtask = todos[id]['taskSubtasks'][i]['description'];
-        console.log(todos[id]['taskSubtasks'][i]['description']);
         container.innerHTML += /*html*/`<li><input id="add-new-subtask-listinput${i}" value="${subtask}" disabled>
         <div class="add-new-subtask-icon-container-list" id="add-new-subtask-icon-container-list${i}">
             <img src="./../img/edit-icon.svg" onclick="editNewSubtaskInput(${i})">|
@@ -64,9 +63,6 @@ function editTaskCheckPriority(id) {
              break
          }
      }
-     console.log(valueOfInputs);
-     console.log(taskPriority);
-     console.log(id);
      editTaskSaveTask(id, valueOfInputs, taskPriority);
  }
 
