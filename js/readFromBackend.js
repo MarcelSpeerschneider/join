@@ -16,21 +16,11 @@ async function loadUsers() {
     let arrayContent = usersjoin;
     let globalArrayName = 'usersjoin'
     usersjoin = await getInfo(backendContainer, arrayContent, globalArrayName);
-    // try {
-    //     usersjoin = JSON.parse(await getItem('usersjoin'));
-    // } catch (e) {
-    //     console.error('Loading error:', e);
-    // }
 }
 
 async function loadContactsFromBackend() {
     const backendContainer = 'contactsjoin';
     contacts = await getInfo(backendContainer);
-    // try {
-    //     contacts = JSON.parse(await getItem('contactsjoin'));
-    // } catch (e) {
-    //     console.error('Loading error:', e);
-    // }
 }
 
 async function loadTasks() {
@@ -38,11 +28,6 @@ async function loadTasks() {
     let arrayContent = todos;
     let globalArrayName = 'todos'
     todos = await getInfo(backendContainer, arrayContent, globalArrayName);
-    // try {
-    //     todos = JSON.parse(await getItem('tasksjoin'));
-    // } catch (e) {
-    //     console.error('Loading error:', e);
-    // }
 }
 
 async function getInfo(backendContainer, arrayContent, globalArrayName){

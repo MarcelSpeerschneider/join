@@ -385,7 +385,7 @@ function checkCurrentTimeForGreeting() {
     if (hour >= 12 && hour < 17) {
         temp = 'Good afternoon'
     }
-    else if (hour > 17 && hour < 20) {
+    else if (hour > 17 && hour <= 24) {
         temp = 'Good evening'
     }
     return temp;
