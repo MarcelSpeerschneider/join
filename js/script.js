@@ -33,6 +33,8 @@ function changeBackgroundColorBackMobile() {
 }
 
 
+// Desktop-Version-Menu
+
 document.addEventListener('click', function (event) {
     var popup = document.getElementById('user-profile-popup');
     var trigger = document.getElementById('user-profile-icon');
@@ -51,24 +53,26 @@ document.addEventListener('click', function (event) {
     }
 });
 
+// Mobile-Version-Menu
 
-// document.addEventListener('click', function(event) {
-//     var popup = document.getElementById('user-profile-popup');
-//     var trigger = document.getElementById('user-profile-icon-mobile');
-//     if (trigger.contains(event.target) && (popup.style.display === 'none' || popup.style.display === '')) {
-//         popup.style.display = 'flex';
-//         return; 
-//     }
+document.addEventListener('click', function (event) {
+    var popup = document.getElementById('user-profile-popup-mobile');
+    var trigger = document.getElementById('user-profile-icon-mobile');
+    if (trigger.contains(event.target) && (popup.style.display === 'none' || popup.style.display === '')) {
+        popup.style.display = 'flex';
+        return;
+    }
 
-//     if (trigger.contains(event.target) && popup.style.display === 'flex') {
-//         popup.style.display = 'none';
-//         return; 
-//     }
+    if (trigger.contains(event.target) && popup.style.display === 'flex') {
+        popup.style.display = 'none';
+        return;
+    }
 
-//     if (popup.style.display === 'flex' && !popup.contains(event.target) && !trigger.contains(event.target)) {
-//         popup.style.display = 'none';
-//     }
-// });
+    if (popup.style.display === 'flex' && !popup.contains(event.target) && !trigger.contains(event.target)) {
+        popup.style.display = 'none';
+    }
+});
+
 
 async function renderSummary() {
     await getTaskByStatusAndPrio();

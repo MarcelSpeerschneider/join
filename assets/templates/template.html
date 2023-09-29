@@ -76,7 +76,7 @@
                 <div class="user-profile-icon-mobile" id="user-profile-icon-mobile"
                     onmouseover="changeBackgroundColorMobile()" onmouseleave="changeBackgroundColorBackMobile()">
 
-                    <div class="user-profile-icon" id="user-profile-icon" onmouseover="changeBackgroundColor()"
+                    <div class="user-profile-icon" id="user-profile-icon-mobile" onmouseover="changeBackgroundColor()"
                         onmouseleave="changeBackgroundColorBack()">
                         <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="48" height="48" rx="24" transform="matrix(1 0 0 -1 4 52)" fill="white" />
@@ -89,6 +89,11 @@
                     </div>
                 </div>
             </div>
+            <div class="user-profile-popup" id="user-profile-popup-mobile">
+                <a id="user-profile-popup-legal-notice" onclick="renderLegalNotice()">Legal Notice</a>
+                <a onclick="renderPrivacyPolicy()">Privacy Policy</a>
+                <a href='../../login.html' id="user-profile-popup-logout">Logout</a>
+            </div> 
         </div>
         <!-- Mobile Header End -->
 
