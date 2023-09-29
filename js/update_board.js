@@ -187,10 +187,9 @@ function generateToDoHTML(element) {
             <div>${element['taskInputDescription']}</div>
             <div class="progressbarMain">
                 <div class="progressbarContainer">
-                    <div class="progressbar" id="progressbar${element['id']}">
-                    </div>
+                    <div class="progressbar" id="progressbar${element['id']}"></div>
                 </div>
-                <div class="progressbar-info" id="progressinfo${element['id']}">hallo</div>
+                <div class="progressbar-info" id="progressinfo${element['id']}"></div>
             </div>
 
             <div class="TaskInBoardFooter">
@@ -203,14 +202,19 @@ function generateToDoHTML(element) {
 }
 
 function combineAndLowercase(temp) {
-    var cleanedInput = temp.trim().toLowerCase();
-    var combinedWords = cleanedInput.replace(/\s+/g, '');
-    return combinedWords;
+    debugger;
+    console.log(temp);
+    if (temp !== undefined) {
+        let cleanedInput = temp.trim().toLowerCase();
+        let combinedWords = cleanedInput.replace(/\s+/g, '');
+        return combinedWords;
+    }
 }
 
 
 function startDragging(id) {
     currentDraggedElement = id;
+    document.getElementById(id).classList.add('rotateTaskCardDuringMove');
 }
 
 function allowDrop(ev) {
@@ -400,14 +404,20 @@ function HTMLrenderAreaWithEmptyHint(hint) {
 }
 
 function renderProgressBar(id) {
-let progressbar = document.getElementById(`progressbar${id}`);
-let progressinfo = document.getElementById(`progressinfo${id}`);
-
-let totalTasks = todos[id]['taskSubtasks'].length;
-let doneTasks = todos[id]['taskSubtasks'].filter(task => task['status'] === 'done').length;
-let percentageDone = (doneTasks / totalTasks) * 100;
-progressbar.style.width = percentageDone + `%`;
-progressinfo.innerHTML = /*html*/`<span>${doneTasks}/${totalTasks}Subasks</span>`;
+    let totalTasks = todos[id]['taskSubtasks'].length;
+    let progressbar = document.getElementById(`progressbar${id}`);
+    let progressinfo = document.getElementById(`progressinfo${id}`);
+    
+    if(totalTasks >0){
+        let doneTasks = todos[id]['taskSubtasks'].filter(task => task['status'] === 'done').length;
+        let percentageDone = (doneTasks / totalTasks) * 100;
+        progressbar.style.width = percentageDone + `%`;
+        progressinfo.innerHTML = /*html*/`<span>${doneTasks}/${totalTasks} Subtasks</span>`;
+    }
+    else{
+        progressbar.style.display = 'none';
+        progressinfo.style.display = 'none';
+    }
 }
 
 function renderBoardTaskCredntialsSummary(id) {
@@ -422,6 +432,6 @@ function renderBoardTaskCredntialsSummary(id) {
         <div class="select-contacts-to-assign-dropdown-contact-credentials">${generateCredentials(contact)}</div>
         </div>
         `;
-        
+
     }
 }

@@ -640,3 +640,8 @@
   outline: #E7E7E7 1px solid;
   border-radius: 50%;
 }
+
+/* Style during move */
+.rotateTaskCardDuringMove {
+  transform: rotate(10deg);
+}
