@@ -78,7 +78,6 @@ async function updateBoard(searchResult) {
         await getTaskByStatusAndPrio();
     }
     else {
-        console.log(searchResult);
         getFilteredTasksByStatusAndPrio(searchResult);
     }
 
@@ -201,7 +200,6 @@ function generateToDoHTML(element) {
 }
 
 function combineAndLowercase(temp) {
-    console.log(temp);
     if (temp !== undefined) {
         let cleanedInput = temp.trim().toLowerCase();
         let combinedWords = cleanedInput.replace(/\s+/g, '');

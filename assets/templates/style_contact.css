@@ -33,6 +33,7 @@
   overflow-y: scroll;
   height: 100%;
   position: absolute;
+  padding: 30px;
 }
 
 .button-container {
@@ -290,6 +291,7 @@ input:focus {
   cursor: pointer;
   z-index: 200;
   gap: 5px;
+  box-sizing: border-box;
 }
 
 .createBtn {
