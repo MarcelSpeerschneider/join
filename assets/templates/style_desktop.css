@@ -1,4 +1,4 @@
-html {}
+/* html {} */
 
 /* Setzen der Breite der Scrollbar */
 ::-webkit-scrollbar {
@@ -327,7 +327,6 @@ h3 {
     border-radius: 30px;
     background: var(--white, #FFF);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
-
 }
 
 .summary-urgent-container:hover {
@@ -341,6 +340,19 @@ h3 {
 .summary-urgent-container:hover .summary-deadline {
     color: white;
     transition: 125ms ease-in-out;
+}
+
+.summary-urgent-container-tasks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.summary-urgent-tasks-number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
@@ -989,18 +1001,6 @@ select {
         padding: 8px 8px;
         gap: 8px;
         width: 100%;
-    }
-
-    .summary-urgent-tasks {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .summary-urgent-tasks-number {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
 
     .h1-urgent-tasks-style {

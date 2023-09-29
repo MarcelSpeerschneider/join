@@ -447,7 +447,7 @@ function renderSummaryinnerHtml() {
                     </div>
                 </div>
                 <div class="summary-urgent-container" onclick="renderBoardSite()">
-                    <div class="summary-urgent-tasks">
+                    <div class="summary-urgent-container-tasks">
                         <img src="./../img/urgent-icon.svg">
                         <div class="summary-urgent-tasks-number">
                             <h1 class="h1-urgent-tasks-style">${urgentPriority.length}</h1>
