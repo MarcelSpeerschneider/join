@@ -556,7 +556,7 @@
 }
 
 .subTaskList-and-assignedToList-container {
-  display: flex;
+  display: none;
   justify-content: flex-start;
   flex-direction: column;
   width: 100%;

@@ -32,8 +32,8 @@ function HTMLrenderChangeTask(id) {
             <span>${todos[id]['taskInputDate']}</span>
         </div>
     </div>
-    <div class="subTaskList-and-assignedToList-container">
-        <p>Asigned to:</p>
+    <div id= "subTaskListAndAssignedToListContainer" class="subTaskList-and-assignedToList-container">
+        <p>Assigned to:</p>
         <div id="assignedToList" class="subTaskList-and-assignedToList">
 
         </div>
@@ -90,23 +90,26 @@ function inputSubTasksHTML(id) {
 
 function inputAssignedToHTML(id) {
     let assignedTo = todos[id]['tasksAssignedTo'];
-    for (let index = 0; index < assignedTo.length; index++) {
-        document.getElementById('assignedToList').innerHTML += /*html*/ `
-            <div class="select-contacts-to-assign-dropdown-contact">
-                                    <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
-                                        <svg width="28" height="28">
-                                            <circle cx="14" cy="14" r="14" fill=${getRandomColor()} />
-                                        </svg>
-                                        <div class="select-contacts-to-assign-dropdown-contact-credentials">${generateCredentials(assignedTo[index])}</div>
-                                    </div>
-                                    <div class="select-contacts-to-assign-dropdown-contactname">${assignedTo[index]}</div>
-                                    </div>
-            `;
+
+    if(assignedTo.length>0){
+        document.getElementById('subTaskListAndAssignedToListContainer').style.display = 'flex';
+        for (let index = 0; index < assignedTo.length; index++) {
+            document.getElementById('assignedToList').innerHTML += /*html*/ `
+                <div class="select-contacts-to-assign-dropdown-contact">
+                    <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
+                        <svg width="28" height="28">
+                        <circle cx="14" cy="14" r="14" fill=${getRandomColor()} />
+                        </svg>
+                    <div class="select-contacts-to-assign-dropdown-contact-credentials">${generateCredentials(assignedTo[index])}</div>
+                    </div>
+                    <div class="select-contacts-to-assign-dropdown-contactname">${assignedTo[index]}</div>
+                </div>
+                `;
+        }
     }
 }
 
 function subTaskChecked(id, ToDoId) {
-    debugger;
     let subtask = document.getElementById(`subtask[${id}]`);
     if (subtask.checked) {
         todos[ToDoId]['taskSubtasks'][id]['status'] = 'done';  // Annahme, dass es ein 'status'-Feld gibt
