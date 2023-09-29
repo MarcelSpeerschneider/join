@@ -458,8 +458,8 @@ function renderSummaryinnerHtml() {
                         <path d="M1 1.48828V103.511" stroke="#D1D1D1" stroke-width="2" stroke-linecap="round" />
                     </svg>
                     <div class="summary-deadline-container">
-                        <span class="summary-deadline">${dateCollection[0]}</span>
-                        <span>Upcoming Deadline</span>
+                        <p class="summary-deadline summary-deadline-pTags">${dateCollection[0]}</p>
+                        <p class="summary-deadline-pTags">Upcoming Deadline</p>
                     </div>
                 </div>
                 <div class="summary-todo-container" onclick="renderBoardSite()">

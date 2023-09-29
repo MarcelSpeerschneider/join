@@ -430,6 +430,12 @@
   }
 }
 
+@media (max-width:830px) {
+  .drag-area {
+    margin-bottom: 90px;
+  }
+}
+
 @media (max-width:700px) {
   .board-header-right {
     width: 100%;

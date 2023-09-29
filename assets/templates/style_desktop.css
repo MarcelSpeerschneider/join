@@ -1,4 +1,4 @@
-/* html {} */
+html {}
 
 /* Setzen der Breite der Scrollbar */
 ::-webkit-scrollbar {
@@ -410,6 +410,10 @@ h3 {
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
+}
+
+.summary-deadline-pTags{
+    margin: 0;
 }
 
 .addtask-main-content {
