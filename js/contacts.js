@@ -79,7 +79,12 @@ function displayContactInfo(index, color) {
     if(window.innerWidth < 900){
         document.getElementById('contactRightFlex').style.display='flex';
         document.getElementById('contactRightFlex').classList.add('contact-right-responsiv');
+    } else{
+        document.getElementById('contactRightFlex').classList.remove('contact-right-responsiv');
     }
+    // if(window.innerWidth > 900){
+    //     document.getElementById('contactRightFlex').classList.remove('contact-right-responsiv');
+    // }
 }
 
 function generateContactInfoHTML(contact, index, color) {
@@ -389,7 +394,7 @@ function returnRenderHTML() {
   </div>
   </div>
       <div class="contact-content">
-      <div id class="contact-list">
+      <div id="contactListResponsiv" class="contact-list">
       <div class="button-container">
       <button
        id="addContactBtn" onclick="openContactForm()">Add new contact

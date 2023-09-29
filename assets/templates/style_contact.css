@@ -440,11 +440,10 @@ input:focus {
 }
 
 .contact-right-responsiv {
-  background-color: white;
   width: 100vw;
-  position: absolute;
   left: 0px;
   justify-content: center;
+  background-color: white;
 }
 
 @media (max-width: 1230px) {
@@ -469,6 +468,8 @@ input:focus {
   .contacts-header {
     flex-direction: column;
     gap: 5px;
+    height: auto;
+    margin-bottom: 30px;
   }
 
   .name-contact {
@@ -501,6 +502,11 @@ input:focus {
 
   .show-contact-right {
     margin-left: 0;
+  }
+
+  .showContactRight{
+    text-align: center;
+    height: fit-content;
   }
 
   #addContactBtn {
