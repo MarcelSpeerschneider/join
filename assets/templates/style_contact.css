@@ -459,6 +459,14 @@ input:focus {
   right: 22px;
   top: 35px;
   cursor: pointer;
+  display: flex;
+}
+
+.closeBtnEdit{
+  position: relative;
+  top: -262px;
+  left: 650px;
+  cursor: pointer;
 }
 
 @media(min-width:900px){
@@ -467,7 +475,11 @@ input:focus {
     width: auto;
   }
 
-  #contactRightFlex{
+  .arrowCloseResponsiv{
+    display: none;
+  }
+
+  .show-contact-right{
     display: flex;
   }
 }
@@ -477,13 +489,22 @@ input:focus {
     flex-direction: column;
   }
 
+  .closeBtnEdit{
+    top: -405px;
+    left: 527px;
+  }
+
   .closeBtn{
     position: relative;
-    left: 210px;
+    left: 55px;
   }
 
   #close_2{
     fill: white;
+  }
+
+  .pop-up-left h1{
+    font-size: 35px;
   }
 
   .cancelBtn{
@@ -496,15 +517,19 @@ input:focus {
 
   .icon{
     position:absolute;
-    top: 373px;
+    top: 365px;
+    width: 100px;
+    height: 100px;
   }
 
   .contactinput input{
     margin-bottom: 10px;
+    height: 40px;
   }
 
   .pop-up-right{
     height: 50%;
+    width: auto;
   }
 
   .pop-up-left{
@@ -514,7 +539,7 @@ input:focus {
   }
 
   .pup-up-content {
-    width: auto;
+    width: 650px;
   }
 }
 
@@ -544,11 +569,7 @@ input:focus {
 @media (max-width: 975px) {
 
   .contactinput{
-    margin-top: -20px;
-  }
-
-  .input-img input{
-    height: 35px;
+    margin-top: -7px;
   }
 
   .info-name {
@@ -562,12 +583,10 @@ input:focus {
   }
 
   .icon{
-    width: 70px;
-    height: 70px;
-    top: 433px;
+    top: 365px;
   }
 
-  h1 {
+ .contacts-header h1 {
     font-size: 40px;
     margin-block-start: revert;
   }
@@ -576,10 +595,10 @@ input:focus {
 @media (max-width: 900px) {
   .contact-list {
     width: 100%;
+    padding: 0;
   }
 
   .closeBtnResponsiv{
-    display: flex;
     position: absolute;
     z-index: 2;
   }
@@ -603,21 +622,26 @@ input:focus {
 
 @media (max-width: 830px) {
   .contact-list {
-    height: 82%;
+    height: 90%;
     margin-bottom: 20%;
-  }
-
-  .closeBtn{
-    left:-35px ;
   }
 
   .icon {
     margin-right: 0;
     margin-bottom: 15px;
-    width: auto;
-    height: auto;
+    width: 100px;
+    height: 100px;
+    top: 360px;
   }
 
+  .closeBtnEdit{
+    top: -313px;
+    left: 290px;
+  }
+
+  .contactinput input{
+    height: 44px;
+  }
   .pop-up-right {
     width: auto;
     height: max-content;
@@ -636,9 +660,27 @@ input:focus {
   }
 }
 
+@media(max-width:760px){
+  .pup-up-content{
+    width: auto;
+  }
+
+  .closeBtnEdit{
+    left: -250px;
+  }
+
+  .closeBtn{
+    left: -36px;
+  }
+}
+
 @media (max-width: 600px) {
   .contactinput input {
     width: auto;
+  }
+
+  .closeBtnEdit{
+    left: 170px;
   }
 
 .closeBtn{
@@ -655,14 +697,63 @@ input:focus {
     align-items: center;
     margin-top: -20px;
   }
+}
 
-  .icon {
-    width: auto;
+@media(max-width:460px){
+  .icon{
+    top: 385px;
+  } 
+
+  .closeBtn{
+    top: 10px;
+  }
+
+  .contactinput input{
+    height: 35px;
+    margin-bottom: 2px;
+  }
+
+  .pop-up-left{
+    height: auto;
+  }
+
+  .pup-up-content{
+    height: auto;
   }
 }
 
-@media (max-width: 400px) {
-  .pop-up-right {
-    width: 80vw;
+@media (max-width: 410px) {
+  .pup-up-content{
+    width: 295px;
   }
+
+  .closeBtnEdit{
+    top: -265px;
+    left: 125px;
+  }
+
+  .pop-up-left{
+    width: auto;
+    display: block;
+  }
+
+  .pop-up-left h1 {
+    font-size: 20px;
+  }
+
+  .pop-up-left h1 {
+    font-size: 15px;
+  }
+
+  .icon{
+    height: 75px;
+    width: 75px;
+    top: 378px;
+  }
+
+  .closeBtn{
+    left: -290px;
+    top: 35px;
+  }
+
 }
