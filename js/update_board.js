@@ -27,7 +27,7 @@ function renderBoard() {
         <div class="board-card">
             <div class="board-card-header">
                 <p>To do</p>
-                <img src="./../img/Capa.png" onclick="renderPopUpAddTask('todo')">
+                <img src="./../img/capa.png" onclick="renderPopUpAddTask('todo')">
             </div>
             <div class="drag-area" id="todo" ondrop="moveTo('todo')" ondragleave="removeHighlight('todo')" ondragover="allowDrop(event); highlight('todo')">
 
@@ -36,7 +36,7 @@ function renderBoard() {
         <div class="board-card">
             <div class="board-card-header">
                 <p>In progress</p>
-                <img src="./../img/Capa.png" onclick="renderPopUpAddTask('inprogress')">
+                <img src="./../img/capa.png" onclick="renderPopUpAddTask('inprogress')">
             </div>
             <div  class="drag-area" id="inprogress" ondrop="moveTo('inprogress')" ondragleave="removeHighlight('inprogress')" ondragover="allowDrop(event); highlight('inprogress')">
 
@@ -45,7 +45,7 @@ function renderBoard() {
         <div class="board-card">
             <div class="board-card-header">
                 <p>Await feedback</p>
-                <img src="./../img/Capa.png" id="" onclick="renderPopUpAddTask('awaitfeedback')">
+                <img src="./../img/capa.png" id="" onclick="renderPopUpAddTask('awaitfeedback')">
             </div>
             <div class="drag-area" id="awaitfeedback" ondrop="moveTo('awaitfeedback')" ondragleave="removeHighlight('awaitfeedback')" ondragover="allowDrop(event); highlight('awaitfeedback')">
 
@@ -54,7 +54,7 @@ function renderBoard() {
         <div class="board-card">
             <div class="board-card-header">
                 <p>Done</p>
-                <img src="./../img/Capa.png" onclick="renderPopUpAddTask('done')">
+                <img src="./../img/capa.png" onclick="renderPopUpAddTask('done')">
             </div>
             <div class="drag-area" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
 
