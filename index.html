@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../fonts/fonts.css">
-    <link rel="icon" href="../img/favicon.png" type="image/png" />
-    <link rel="stylesheet" href="style_desktop.css">
-    <link rel="stylesheet" href="style_board.css">
-    <link rel="stylesheet" href="style_mobile.css">
-    <link rel="stylesheet" href="style_contact.css">
+    <link rel="stylesheet" href="./assets/fonts/fonts.css">
+    <link rel="icon" href="./assets/img/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="./assets/templates/style_desktop.css">
+    <link rel="stylesheet" href="./assets/templates/style_board.css">
+    <link rel="stylesheet" href="./assets/templates/style_mobile.css">
+    <link rel="stylesheet" href="./assets/templates/style_contact.css">
 
     <title>Join</title>
 </head>
@@ -19,7 +19,7 @@
         <header>
             Kanban Project Management Tool
             <div class="header-icons">
-                <img class="help-icon" src="../img/help.svg" onclick="renderHelp()">
+                <img class="help-icon" src="./assets/img/help.svg" onclick="renderHelp()">
                 <div class="user-profile-icon" id="user-profile-icon" onmouseover="changeBackgroundColor()"
                     onmouseleave="changeBackgroundColorBack()">
                     <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,27 +34,27 @@
         <div class="user-profile-popup" id="user-profile-popup">
             <a id="user-profile-popup-legal-notice" onclick="renderLegalNotice()">Legal Notice</a>
             <a onclick="renderPrivacyPolicy()">Privacy Policy</a>
-            <a href='../../login.html' id="user-profile-popup-logout">Logout</a>
+            <a href='.login.html' id="user-profile-popup-logout">Logout</a>
         </div>
         <nav>
-            <img id="dashboard-logo" src="../img/dashboard-logo.svg" onclick="renderSummary()">
+            <img id="dashboard-logo" src="./assets/img/dashboard-logo.svg" onclick="renderSummary()">
             <div class="menu-main-container">
                 <menu>
                     <div class="links">
-                        <div class="link" onclick="renderSummary()">
-                            <img src="../img/summary.svg" class="nav-icon">
+                        <div class="link" onclick="renderSummary()" id="summaryButtonDesktop">
+                            <img src="./assets/img/summary.svg" class="nav-icon">
                             Summary
                         </div>
-                        <div class="link" onclick="renderAddTask()">
-                            <img src="../img/add-task.svg" class="nav-icon">
+                        <div class="link" onclick="renderAddTask()" id="addTaskButtonDesktop">
+                            <img src="./assets/img/add-task.svg" class="nav-icon">
                             Add Task
                         </div>
-                        <div class="link" onclick="renderBoardSite()">
-                            <img src="../img/board.svg" class="nav-icon">
+                        <div class="link" onclick="renderBoardSite()" id="boardButtonDesktop">
+                            <img src="./assets/img/board.svg" class="nav-icon">
                             Board
                         </div>
-                        <div class="link" onclick="renderContactsSite()">
-                            <img src="../img/contacts.svg" class="nav-icon">
+                        <div class="link" onclick="renderContactsSite()" id="contactsButtonDesktop">
+                            <img src="./assets/img/contacts.svg" class="nav-icon">
                             Contacts
                         </div>
                     </div>
@@ -70,9 +70,9 @@
 
         <!-- Mobile Header Start -->
         <div class="mobile-header">
-            <div class="mobile-logo" onclick="renderSummary()"><img src="../img/mobile-logo.svg"></div>
+            <div class="mobile-logo" onclick="renderSummary()"><img src="./assets/img/mobile-logo.svg"></div>
             <div class="header-icons-mobile">
-                <img class="help-icon" src="../img/help.svg" onclick="renderHelp()">
+                <img class="help-icon" src="./assets/img/help.svg" onclick="renderHelp()">
                 <div class="user-profile-icon-mobile" id="user-profile-icon-mobile"
                     onmouseover="changeBackgroundColorMobile()" onmouseleave="changeBackgroundColorBackMobile()">
 
@@ -92,7 +92,7 @@
             <div class="user-profile-popup" id="user-profile-popup-mobile">
                 <a id="user-profile-popup-legal-notice" onclick="renderLegalNotice()">Legal Notice</a>
                 <a onclick="renderPrivacyPolicy()">Privacy Policy</a>
-                <a href='../../login.html' id="user-profile-popup-logout">Logout</a>
+                <a href='./login.html' id="user-profile-popup-logout">Logout</a>
             </div>
         </div>
         <!-- Mobile Header End -->
@@ -105,35 +105,33 @@
 
         <!-- Mobile Nav Start -->
         <div class="mobile-nav">
-            <div class="mobile-link" onclick="renderSummary()">
-                <img src="../img/mobile-summary.svg">
+            <div class="mobile-link" onclick="renderSummary()" id="summaryButtonMobile">
+                <img src="./assets/img/mobile-summary.svg">
             </div>
             <div class="mobile-link">
-                <img src="../img/mobile-board.svg" onclick="renderBoardSite()">
+                <img src="./assets/img/mobile-board.svg" onclick="renderBoardSite()" id="boardButtonMobile">
             </div>
             <div class="mobile-link">
-                <img src="../img/mobile-add-task.svg" onclick="renderAddTask()">
+                <img src="./assets/img/mobile-add-task.svg" onclick="renderAddTask()" id="addTaskButtonMobile">
             </div>
             <div class="mobile-link">
-                <img src="../img/mobile-contact.svg" onclick="renderContactsSite()">
+                <img src="./assets/img/mobile-contact.svg" onclick="renderContactsSite()" id="contactsButtonMobile">
             </div>
         </div>
         <!-- Mobile Nav End -->
 
     </div>
-    <script src="./../../js/script.js"></script>
-    <script src="./../../js/login.js"></script>
-    <script src="./../../js/update_board.js"></script>
-    <script src="./../../js/contacts.js"></script>
-    <script src="./../../js/add_task.js"></script>
-    <script src="./../../js/change_task.js"></script>
-    <script src="./../../js/readFromBackend.js"></script>
-    <script src="./../../js/writeToBackend.js"></script>
-    <script src="./../../js/change_task.js"></script>
-    <script src="./../../js/delete_task.js"></script>
-    <script src="./../../js/edit_task.js"></script>
-    <script src="./../../js/search_tasks.js"></script>
-    <script src="./../../js/renderInfoSites.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/login.js"></script>
+    <script src="./js/update_board.js"></script>
+    <script src="./js/contacts.js"></script>
+    <script src="./js/add_task.js"></script>
+    <script src="./js/change_task.js"></script>
+    <script src="./js/readFromBackend.js"></script>
+    <script src="./js/writeToBackend.js"></script>
+    <script src="./js/change_task.js"></script>
+    <script src="./js/edit_task.js"></script>
+    <script src="./js/render.js"></script>
 </body>
 
 </html>

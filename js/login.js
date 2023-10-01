@@ -10,7 +10,7 @@ async function login() {
       boolEmail = element['usermail'].includes(username.value);
       boolPassword = element['userpassword'].includes(password.value);
       if (boolEmail && boolPassword) {
-        window.location.href = "assets/templates/template.html";
+        window.location.href = "./index.html";
         localStorage.setItem('username', element['username']);
         localStorage.setItem('acronym', element['useracronym']);
         return;
