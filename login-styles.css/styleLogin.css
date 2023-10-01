@@ -253,7 +253,7 @@ footer a {
 @media (max-width: 1000px) {
   .login-input {
     width: fit-content;
-    padding: 0px 0px;
+    padding: 0px 10px;
   }
 
   #email {
