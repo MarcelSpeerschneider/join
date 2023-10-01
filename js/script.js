@@ -2,6 +2,10 @@ let selectedContacts = [];
 let subTasks = [];
 let greeting = checkCurrentTimeForGreeting();
 
+/**
+ * Changes the background color of the user profile SVG element on mobile devices back to its original color.
+ */
+
 function changeBackgroundColor() {
     let svgElement = document.querySelector('.user-profile-icon');
     let rectElement = svgElement.querySelector('rect');
@@ -26,8 +30,9 @@ function changeBackgroundColorBackMobile() {
     rectElement.setAttribute("fill", "white");
 }
 
-
-// Desktop-Version-Menu
+/**
+ * Listens for clicks and toggles the display of a user profile popup based on click events. Desktop Menu.
+ */
 
 document.addEventListener('click', function (event) {
     let popup = document.getElementById('user-profile-popup');
@@ -51,7 +56,9 @@ document.addEventListener('click', function (event) {
     }
 });
 
-// Mobile-Version-Menu
+/**
+ * Listens for clicks and toggles the display of a user profile popup based on click events. Mobile Menu.
+ */
 
 document.addEventListener('click', function (event) {
     let popup = document.getElementById('user-profile-popup-mobile');
@@ -73,6 +80,10 @@ document.addEventListener('click', function (event) {
     }
 });
 
+/**
+ * Renders the summary site, including tasks by status and priority.
+ * @returns {Promise<void>}
+ */
 
 async function renderSummary() {
     await getTaskByStatusAndPrio();
@@ -83,6 +94,10 @@ async function renderSummary() {
     highlightMenuButtonMobile();
 }
 
+/**
+ * Renders the add task site.
+ */
+
 function renderAddTask() {
     let dashboardDesktop = document.getElementById('dashboard-content');
     dashboardDesktop.innerHTML = renderAddTaskInnerHtml();
@@ -91,6 +106,9 @@ function renderAddTask() {
     getMinDate();
 }
 
+/**
+ * Renders the board site and updates its content.
+ */
 
 async function renderBoardSite() {
     let dashboardDesktop = document.getElementById('dashboard-content');
@@ -101,6 +119,9 @@ async function renderBoardSite() {
     highlightMenuButtonMobile();
 }
 
+/**
+ * Renders the contacts site.
+ */
 
 function renderContactsSite() {
     let dashboardDesktop = document.getElementById('dashboard-content');
@@ -109,6 +130,9 @@ function renderContactsSite() {
     highlightMenuButtonMobile();
 }
 
+/**
+ * Toggles the visibility of the "select contacts to assign" dropdown and updates its arrow icon.
+ */
 
 function selectContactsToAssign() {
     let dropdown = document.getElementById('select-contacts-to-assign-dropdown');
@@ -130,9 +154,20 @@ function selectContactsToAssign() {
     contactSummary();
 }
 
+/**
+ * Stops the propagation of the given event.
+ * @param {Event} event - The event object to stop propagation for.
+ */
+
 function childFunction(event) {
     event.stopPropagation();
 }
+
+/**
+ * Toggles the selection of a contact for a task and updates its appearance.
+ * @param {number} i - The index of the contact.
+ * @param {string} contact - The name of the contact.
+ */
 
 function assignContactToTask(i, contact) {
     let contactContainer = document.getElementById(`select-contacts-to-assign-dropdown-contact-container${i}`);
@@ -162,6 +197,11 @@ function assignContactToTask(i, contact) {
     }
 }
 
+/**
+ * Toggles the selection of a priority container and updates its appearance.
+ * @param {number} i - The index of the priority container.
+ */
+
 function prioContainer(i) {
     let containerClicked = document.getElementById(`prio-${i}`);
     let containers = [
@@ -170,14 +210,12 @@ function prioContainer(i) {
         document.getElementById('prio-low')
     ];
 
-    // Setze alle Container zurück
     containers.forEach((container) => {
         container.style.backgroundColor = "#FFFFFF";
         container.style.color = "black";
         container.setAttribute('data-selected', 'false');
     });
 
-    // Spezielle Änderungen für den angeklickten Container
     if (containerClicked.getAttribute('data-selected') === 'true') {
         containerClicked.style.backgroundColor = "#FFFFFF";
         containerClicked.style.color = "black";
@@ -189,6 +227,9 @@ function prioContainer(i) {
     }
 }
 
+/**
+ * Toggles the display of the contact summary based on the state of the "select contacts to assign" dropdown.
+ */
 
 function contactSummary() {
     let dropdown = document.getElementById('select-contacts-to-assign-dropdown');
@@ -203,15 +244,27 @@ function contactSummary() {
     }
 }
 
+/**
+ * Changes the color of the "Create Task" button icon to indicate an action.
+ */
+
 function buttonCreateTaskChangeColor() {
     let icon = document.querySelector('#add-task-icon-cancel path');
     icon.setAttribute("stroke", "#00bee8");
 }
 
+/**
+ * Reverts the color of the "Create Task" button icon back to its original color.
+ */
+
 function buttonCreateTaskChangeColorBack() {
     let icon = document.querySelector('#add-task-icon-cancel path');
     icon.setAttribute("stroke", "#2A3647");
 }
+
+/**
+ * Changes the content of a container to display options for adding a new subtask.
+ */
 
 function selectNewSubtask() {
     let container = document.getElementById('add-new-subtask-icon-container');
@@ -220,6 +273,10 @@ function selectNewSubtask() {
     <img src="./assets/img/icon-cancel.svg" onclick="clearNewSubtask()">
     `;
 }
+
+/**
+ * Adds a new subtask to the list and updates the display.
+ */
 
 function addNewSubtask() {
     let list = document.querySelector('.add-new-subtask-list');
@@ -253,6 +310,10 @@ function addNewSubtask() {
 
 }
 
+/**
+ * Clears the input field for adding a new subtask and updates the display.
+ */
+
 function clearNewSubtask() {
     document.getElementById('add-new-subtask-input').value = '';
     let container = document.getElementById('add-new-subtask-icon-container');
@@ -261,11 +322,21 @@ function clearNewSubtask() {
     `;
 }
 
+/**
+ * Clears the input field and removes a new subtask from the list by its index.
+ * @param {number} i - The index of the subtask to clear and remove.
+ */
+
 function clearNewSubtaskInput(i) {
     document.getElementById(`add-new-subtask-listinput${i}`).value = '';
     subTasks.splice(i, 1);
     addNewSubtask();
 }
+
+/**
+ * Enables editing of a new subtask input field and updates the display.
+ * @param {number} i - The index of the subtask input field to edit.
+ */
 
 function editNewSubtaskInput(i) {
     let input = document.getElementById(`add-new-subtask-listinput${i}`);
@@ -276,6 +347,11 @@ function editNewSubtaskInput(i) {
     <img src="./assets/img/check-black.svg" onclick="saveNewSubtask(${i})">|<img src="./assets/img/delete-icon.svg">
     `;
 }
+
+/**
+ * Saves the edited new subtask and updates its appearance.
+ * @param {number} i - The index of the subtask to save.
+ */
 
 function saveNewSubtask(i) {
     let input = document.getElementById(`add-new-subtask-listinput${i}`);
@@ -288,54 +364,11 @@ function saveNewSubtask(i) {
     subTasks[i] = input.value;
 }
 
-function selectContactsToAssignDropdownRender() {
-    let container = document.getElementById('select-contacts-to-assign-dropdown');
-    container.innerHTML = '';
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        const isSelected = selectedContacts.includes(contact.name);
-        container.innerHTML += /*html*/`
-         <div class="select-contacts-to-assign-dropdown-contact-container ${isSelected ? 'selected' : ''}"
-                                id="select-contacts-to-assign-dropdown-contact-container${i}"
-                                onclick = "assignContactToTask(${i},'${contact.name}')"
-                                data-selected="${isSelected ? 'true' : 'false'}">
-                                <div class="select-contacts-to-assign-dropdown-contact">
-                                    <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
-                                        <svg width="28" height="28">
-                                            <circle cx="14" cy="14" r="14" fill=${getRandomColor()} />
-                                        </svg>
-                                        <div class="select-contacts-to-assign-dropdown-contact-credentials">${generateCredentials(contact.name)}</div>
-                                    </div>
-                                    <div class="select-contacts-to-assign-dropdown-contactname">${contact.name}</div>
-                                </div>
-                                <div class="select-contacts-to-assign-dropdown-checkbox"><img
-                                        src="./assets/img/${isSelected ? 'checkbox-filled' : 'checkbox-blank'}.svg"
-                                        id="select-contacts-to-assign-dropdown-checkbox${i}">
-                                </div>
-                            </div>
-        `;
-    }
-    renderCredentials();
-}
-
-function renderCredentials() {
-
-    let container = document.getElementById('contact-summary');
-    container.innerHTML = '';
-
-    for (let i = 0; i < selectedContacts.length; i++) {
-        const contact = selectedContacts[i];
-        container.innerHTML += /*html*/ `
-        <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
-        <svg width="28" height="28">
-            <circle cx="14" cy="14" r="14" fill="${getRandomColor()}"/>
-        </svg>
-        <div class="select-contacts-to-assign-dropdown-contact-credentials">${generateCredentials(contact)}</div>
-        </div>
-        `;
-    }
-
-}
+/**
+ * Generates user credentials based on the given full name.
+ * @param {string} fullName - The full name of the user.
+ * @returns {string} - The generated user credentials.
+ */
 
 function generateCredentials(fullName) {
     let names = fullName.split(" ");  // Teilt den String in ein Array
@@ -348,6 +381,11 @@ function generateCredentials(fullName) {
 
     return `${firstInitial}${lastInitial}`;
 }
+
+/**
+ * Checks the current time and returns a greeting message based on the time of day.
+ * @returns {string} - The greeting message (e.g., "Good morning").
+ */
 
 function checkCurrentTimeForGreeting() {
     let today = new Date();
@@ -362,6 +400,10 @@ function checkCurrentTimeForGreeting() {
     return temp;
 }
 
+/**
+ * Generates a random color from a predefined list of colors.
+ * @returns {string} - The randomly selected color in hexadecimal format.
+ */
 
 function getRandomColor() {
     let colors = ["#00bee8", "#ff7a00", "#bb78ff", "#00bee8", "#ffbb2b", "#9327ff", "#ff4646", "#fc71ff", "#cd5c5c", "#ff00ff", "#add8e6", "#98fb98"];
@@ -369,20 +411,36 @@ function getRandomColor() {
     return colors[randomIndex];
 }
 
+/**
+ * Renders the privacy policy content in the specified container.
+ */
+
 function renderPrivacyPolicy() {
     let container = document.getElementById('dashboard-content');
     container.innerHTML = renderPrivacyPolicyInnerHtml();
 }
+
+/**
+ * Renders the legal notice content in the specified container.
+ */
 
 function renderLegalNotice() {
     let container = document.getElementById('dashboard-content');
     container.innerHTML = renderLegalNoticeInnerHtml();
 }
 
+/**
+ * Renders the help content in the specified container.
+ */
+
 function renderHelp() {
     let container = document.getElementById('dashboard-content');
     container.innerHTML = renderHelpInnerHtml();
 }
+
+/**
+ * Highlights the selected menu button on a desktop-sized screen. Desktop-Version.
+ */
 
 function highlightMenuButtonDesktop() {
     const mapping = {
@@ -404,6 +462,10 @@ function highlightMenuButtonDesktop() {
         }
     }
 }
+
+/**
+ * Highlights the selected menu button on a desktop-sized screen. Mobile-Version.
+ */
 
 function highlightMenuButtonMobile() {
     const mapping = {
