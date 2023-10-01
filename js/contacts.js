@@ -78,9 +78,9 @@ function displayContactInfo(index, color) {
 
     if(window.innerWidth < 900){
         document.getElementById('closeBtnResponsiv').classList.add('arrowCloseResponsiv');
-        document.getElementById('contactRightFlex').style.display='flex';
-        document.getElementById('contactRightFlex').classList.add('contact-right-responsiv');
-    }else if (window.innerWidth > 900){
+    }else if (window.innerWidth > 830){
+        
+
     }
 
     // if(window.innerWidth > 900){
@@ -499,7 +499,7 @@ function returnRenderHTML() {
     </div>
 
 
-    <div id="contactRightFlex" class="show-contact-right">
+    <div  class="show-contact-right">
         <div class="d-none" id="closeBtnResponsiv" onclick="closeInfoResponsiv()">
             <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="arrow-left-line">
@@ -510,7 +510,7 @@ function returnRenderHTML() {
             </svg>
 
         </div>
-        <div class="showContactRight">
+        <div id="contactRightFlex" class="showContactRight">
             <div class="contacts-header">
                 <h1>Contacts</h1>
                 <div class="vertical-line">

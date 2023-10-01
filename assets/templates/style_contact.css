@@ -443,20 +443,13 @@ input:focus {
   margin-top: 30px;
 }
 
-.contact-right-responsiv {
-  width: 100vw;
-  left: 0px;
-  justify-content: center;
-  background-color: white;
-}
-
 .d-none{
   display: none;
 }
 
 .arrowCloseResponsiv{
   position: absolute;
-  right: 22px;
+  right: -24px;
   top: 35px;
   cursor: pointer;
   display: flex;
@@ -475,12 +468,16 @@ input:focus {
     width: auto;
   }
 
-  .arrowCloseResponsiv{
-    display: none;
-  }
+  
 
   .show-contact-right{
     display: flex;
+  }
+}
+
+@media(min-width:830px){
+  .arrowCloseResponsiv{
+    display: none;
   }
 }
 
@@ -593,18 +590,20 @@ input:focus {
 }
 
 @media (max-width: 900px) {
-  .contact-list {
-    width: 100%;
-    padding: 0;
-  }
+  
 
   .closeBtnResponsiv{
     position: absolute;
     z-index: 2;
   }
 
+  .name{
+    font-size: 18px;
+  }
+
   .show-contact-right {
     margin-left: 0;
+    left: 360px;
   }
 
   .showContactRight{
@@ -615,15 +614,23 @@ input:focus {
     width: auto;
   }
 
-  .show-contact-right {
-    display: none;
+  .contact-list{
+    width: 300px;
+    overflow-x: hidden;
   }
+
 }
 
 @media (max-width: 830px) {
   .contact-list {
     height: 90%;
     margin-bottom: 20%;
+    width: 100%;
+    padding: 0;
+  }
+
+  .show-contact-right{
+    display: none;
   }
 
   .icon {
