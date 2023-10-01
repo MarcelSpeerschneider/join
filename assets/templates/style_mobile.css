@@ -73,6 +73,7 @@
     .mobile-nav {
         display: flex;
         position: absolute;
+        z-index: 2;
     }
 
 }

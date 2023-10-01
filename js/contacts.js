@@ -75,17 +75,14 @@ function displayContactInfo(index, color) {
     }
     const currentContact = document.getElementById(`contact-${index}`);
     currentContact.classList.add('clicked');
-
-    if(window.innerWidth < 900){
-        document.getElementById('closeBtnResponsiv').classList.add('arrowCloseResponsiv');
-    }else if (window.innerWidth > 830){
-        
-
+    
+    if (window.innerWidth < 830) {
+        document.getElementById('contactRightFlex').classList.remove('show-contact-right');
+        document.getElementById('contactRightFlex').classList.add('addRightResponsiv');
+    } else {
+        document.getElementById('contactRightFlex').classList.remove('addRightResponsiv');
+        document.getElementById('contactRightFlex').classList.add('show-contact-right');
     }
-
-    // if(window.innerWidth > 900){
-    //     document.getElementById('contactRightFlex').classList.remove('contact-right-responsiv');
-    // }
 }
 
 function generateContactInfoHTML(contact, index, color) {
@@ -499,7 +496,7 @@ function returnRenderHTML() {
     </div>
 
 
-    <div  class="show-contact-right">
+    <div id="contactRightFlex"   class="show-contact-right">
         <div class="d-none" id="closeBtnResponsiv" onclick="closeInfoResponsiv()">
             <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="arrow-left-line">
@@ -510,7 +507,7 @@ function returnRenderHTML() {
             </svg>
 
         </div>
-        <div id="contactRightFlex" class="showContactRight">
+        <div  class="showContactRight">
             <div class="contacts-header">
                 <h1>Contacts</h1>
                 <div class="vertical-line">
@@ -518,7 +515,7 @@ function returnRenderHTML() {
                         <path id="Vector 5" d="M2 2V61" stroke="#29ABE2" stroke-width="3" stroke-linecap="round" />
                     </svg>
                 </div>
-                <div class="responsiv-line">
+                <div  class="responsiv-line">
                     <svg width="94" height="4" viewBox="0 0 94 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path id="Vector 5" d="M92 2L2 2" stroke="#29ABE2" stroke-width="3" stroke-linecap="round" />
                     </svg>

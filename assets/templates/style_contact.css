@@ -447,13 +447,13 @@ input:focus {
   display: none;
 }
 
-.arrowCloseResponsiv{
+/* .arrowCloseResponsiv{
   position: absolute;
   right: -24px;
   top: 35px;
   cursor: pointer;
   display: flex;
-}
+} */
 
 .closeBtnEdit{
   position: relative;
@@ -462,23 +462,25 @@ input:focus {
   cursor: pointer;
 }
 
+.addRightResponsiv{
+  position: static;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+  background-color: white;
+}
+
 @media(min-width:900px){
   .contact-list{
     z-index: 1;
     width: auto;
   }
-
-  
-
-  .show-contact-right{
-    display: flex;
-  }
 }
 
 @media(min-width:830px){
-  .arrowCloseResponsiv{
-    display: none;
-  }
+  
+
 }
 
 @media (max-width: 1230px) {
@@ -514,7 +516,7 @@ input:focus {
 
   .icon{
     position:absolute;
-    top: 365px;
+    top: 376px;
     width: 100px;
     height: 100px;
   }
@@ -580,7 +582,7 @@ input:focus {
   }
 
   .icon{
-    top: 365px;
+    top: 380px;
   }
 
  .contacts-header h1 {
@@ -638,7 +640,7 @@ input:focus {
     margin-bottom: 15px;
     width: 100px;
     height: 100px;
-    top: 360px;
+    top: 374px;
   }
 
   .closeBtnEdit{
@@ -755,7 +757,7 @@ input:focus {
   .icon{
     height: 75px;
     width: 75px;
-    top: 378px;
+    top: 387px;
   }
 
   .closeBtn{
