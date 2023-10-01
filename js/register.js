@@ -62,7 +62,6 @@ async function checkUserRegistration() {
 }
 
 function createAcronym(){
-  debugger;
   let firstLetterOfFirstName = '';
   let firstLetterOfLastName = '';
   let indexOfEmptySpace = registerName.value.search(' ');
