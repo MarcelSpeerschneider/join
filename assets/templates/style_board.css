@@ -437,6 +437,13 @@
 }
 
 @media (max-width:700px) {
+  .board-header-left {
+    font-size: 51px;
+    margin-top: 15px;
+  }
+  .taskFormSecondHeader-title {
+    font-size: 41px !important;
+  }
   .board-header-right {
     width: 100%;
     flex-direction: column;

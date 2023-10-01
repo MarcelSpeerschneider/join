@@ -180,6 +180,11 @@ menu {
     transition: 125ms background-color ease-in-out;
 }
 
+.link-selected {
+    background-color: #3b4e69;
+    cursor: pointer;
+}
+
 .nav-icon {
     margin-right: 10px;
 }

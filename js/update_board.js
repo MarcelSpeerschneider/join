@@ -1,77 +1,18 @@
-// Global Elements
+/**
+ * global variables for board
+ */
+
 let todos = [];
 let todo = [];
 let dateCollection = [];
 let collection = [];
 let inprogress, awaitfeedback, done, urgentPriority, prioPictureSource;
-
 let currentDraggedElement;
 
-function renderBoard() {
-    return /*html*/`
-        <div class="board-header">
-        <div class="board-header-left">Board</div>
-            <!-- <p>Board</p> -->
-        <div class="board-header-right">
-            <div class="boardSearchContainer">
-                <input oninput="filterTasks()" id="searchInput" class="boardSearchInputField" type="text" placeholder="Find task">
-                <div class="boardSearchBtn">
-                    <img src="./../img/search.png" alt="">
-                </div>
-            </div>
-            <!-- <button class="addTaskButton" onclick="openAddTaskForm()">Add task<img src="./../img/add.png"></button> -->
-            <button class="addTaskButton" onclick="renderPopUpAddTask('todo')">Add task<img src="./../img/add.png"></button>
-        </div>
-    </div>
-    <div class="board-content-container">
-        <div class="board-card">
-            <div class="board-card-header">
-                <p>To do</p>
-                <img src="./../img/capa.png" onclick="renderPopUpAddTask('todo')">
-            </div>
-            <div class="drag-area" id="todo" ondrop="moveTo('todo')" ondragleave="removeHighlight('todo')" ondragover="allowDrop(event); highlight('todo')">
-
-            </div>
-        </div>
-        <div class="board-card">
-            <div class="board-card-header">
-                <p>In progress</p>
-                <img src="./../img/capa.png" onclick="renderPopUpAddTask('inprogress')">
-            </div>
-            <div  class="drag-area" id="inprogress" ondrop="moveTo('inprogress')" ondragleave="removeHighlight('inprogress')" ondragover="allowDrop(event); highlight('inprogress')">
-
-            </div>
-        </div>
-        <div class="board-card">
-            <div class="board-card-header">
-                <p>Await feedback</p>
-                <img src="./../img/capa.png" id="" onclick="renderPopUpAddTask('awaitfeedback')">
-            </div>
-            <div class="drag-area" id="awaitfeedback" ondrop="moveTo('awaitfeedback')" ondragleave="removeHighlight('awaitfeedback')" ondragover="allowDrop(event); highlight('awaitfeedback')">
-
-            </div>
-        </div>
-        <div class="board-card">
-            <div class="board-card-header">
-                <p>Done</p>
-                <img src="./../img/capa.png" onclick="renderPopUpAddTask('done')">
-            </div>
-            <div class="drag-area" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
-
-            </div>
-        </div>
-    </div>
-    <div id="overlay" class="overlayStyle">
-        <!-- <div id="overlayContent" class="overlay-content"></div> -->
-    </div>
-
-    <div id="openEditTaskPopUpContainer">
-        <div class="edit-popup-content">
-
-        </div>
-    </div>
-    `
-}
+/**
+ * Updates the board with tasks based on the provided search result or retrieves tasks by status and priority.
+ * @param {string} [searchResult] - The optional search result to filter tasks.
+ */
 
 async function updateBoard(searchResult) {
     if (searchResult === undefined) {
@@ -80,26 +21,18 @@ async function updateBoard(searchResult) {
     else {
         getFilteredTasksByStatusAndPrio(searchResult);
     }
-
-    // todo = todos.filter(t => t['taskStatus'] == 'todo');
     document.getElementById('todo').innerHTML = '';
-
     todo.forEach(element => {
         document.getElementById('todo').innerHTML += generateToDoHTML(element);
         renderProgressBar(element['id']);
         renderBoardTaskCredntialsSummary(element['id']);
     });
-
-    // inprogress = todos.filter(i => i['taskStatus'] == 'inprogress');
     document.getElementById('inprogress').innerHTML = '';
-
     inprogress.forEach(element => {
         document.getElementById('inprogress').innerHTML += generateToDoHTML(element);
         renderProgressBar(element['id']);
         renderBoardTaskCredntialsSummary(element['id']);
     });
-
-    // awaitfeedback = todos.filter(a => a['taskStatus'] == 'awaitfeedback');
     document.getElementById('awaitfeedback').innerHTML = '';
 
     awaitfeedback.forEach(element => {
@@ -107,8 +40,6 @@ async function updateBoard(searchResult) {
         renderProgressBar(element['id']);
         renderBoardTaskCredntialsSummary(element['id']);
     });
-
-    // done = todos.filter(d => d['taskStatus'] == 'done');
     document.getElementById('done').innerHTML = '';
 
     done.forEach(element => {
@@ -118,6 +49,10 @@ async function updateBoard(searchResult) {
     });
     checkDragAreaIfEmpty();
 }
+
+/**
+ * Retrieves and filters tasks by status and priority, populating various task arrays, and checks for the smallest date.
+ */
 
 async function getTaskByStatusAndPrio() {
     await loadTasks();
@@ -129,6 +64,11 @@ async function getTaskByStatusAndPrio() {
     checkSmallestDate();
 }
 
+/**
+ * Filters and updates task arrays based on a search result and clears the search result array.
+ * @param {Array} searchResult - The array of tasks to be filtered.
+ */
+
 function getFilteredTasksByStatusAndPrio(searchResult) {
     todo = searchResult.filter(t => t['taskStatus'] == 'todo');
     inprogress = searchResult.filter(i => i['taskStatus'] == 'inprogress');
@@ -136,6 +76,10 @@ function getFilteredTasksByStatusAndPrio(searchResult) {
     done = searchResult.filter(d => d['taskStatus'] == 'done');
     searchResultArray = [];
 }
+
+/**
+ * Collects task input dates from the 'todos' array, sorts them, and stores them in 'dateCollection'.
+ */
 
 function checkSmallestDate() {
     dateCollection = [];
@@ -149,13 +93,10 @@ function checkSmallestDate() {
     });
 }
 
-function deleteTask(taskId) {
-    const taskIndex = todos.findIndex(task => task.id === taskId);
-    if (taskIndex !== -1) {
-        todos.splice(taskIndex, 1);
-        updateBoard();
-    }
-}
+/**
+ * Deletes a task with the specified ID from the 'todos' array and updates the board.
+ * @param {number} taskId - The ID of the task to be deleted.
+ */
 
 function deleteTask(taskId) {
     const taskIndex = todos.findIndex(task => task.id === taskId);
@@ -164,16 +105,35 @@ function deleteTask(taskId) {
         updateBoard();
     }
 }
+
+/**
+ * Deletes a task with the specified ID from the 'todos' array and updates the board.
+ * @param {number} taskId - The ID of the task to be deleted.
+ */
+
+function deleteTask(taskId) {
+    const taskIndex = todos.findIndex(task => task.id === taskId);
+    if (taskIndex !== -1) {
+        todos.splice(taskIndex, 1);
+        updateBoard();
+    }
+}
+
+/**
+ * Generates HTML markup for a task card based on the provided task element.
+ * @param {Object} element - The task element containing task details.
+ * @returns {string} - The generated HTML markup for the task card.
+ */
 
 function generateToDoHTML(element) {
     if (element['taskPriority'] === 'prio-urgent') {
-        prioPictureSource = "./../img/prio-urgent.svg";
+        prioPictureSource = "./assets/img/prio-urgent.svg";
     }
     else if (element['taskPriority'] === 'prio-medium') {
-        prioPictureSource = "./../img/prio-medium.svg";
+        prioPictureSource = "./assets/img/prio-medium.svg";
     }
     else if (element['taskPriority'] === 'prio-low') {
-        prioPictureSource = "./../img/prio-low.svg";
+        prioPictureSource = "./assets/img/prio-low.svg";
     }
 
     let temp = element['taskInputCategory'];
@@ -199,6 +159,12 @@ function generateToDoHTML(element) {
     `;
 }
 
+/**
+ * Combines and converts a string to lowercase after removing whitespace.
+ * @param {string} temp - The input string to be processed.
+ * @returns {string|undefined} - The combined and lowercase string or undefined if the input is undefined.
+ */
+
 function combineAndLowercase(temp) {
     if (temp !== undefined) {
         let cleanedInput = temp.trim().toLowerCase();
@@ -207,15 +173,29 @@ function combineAndLowercase(temp) {
     }
 }
 
+/**
+ * Initiates the dragging of a task card element and adds a CSS class for rotation during movement.
+ * @param {string} id - The ID of the task card element to be dragged.
+ */
 
 function startDragging(id) {
     currentDraggedElement = id;
     document.getElementById(id).classList.add('rotateTaskCardDuringMove');
 }
 
+/**
+ * Prevents the default behavior of a drag-and-drop event to allow the element to be dropped.
+ * @param {Event} ev - The drag-and-drop event object.
+ */
+
 function allowDrop(ev) {
     ev.preventDefault();
 }
+
+/**
+ * Moves a task to the specified task status, updates the task list, and triggers a board update.
+ * @param {string} taskStatus - The task status to which the task should be moved.
+ */
 
 async function moveTo(taskStatus) {
     todos[currentDraggedElement]['taskStatus'] = taskStatus;
@@ -223,17 +203,35 @@ async function moveTo(taskStatus) {
     updateBoard();
 }
 
+/**
+ * Adds a CSS class to highlight a specified element.
+ * @param {string} id - The ID of the element to be highlighted.
+ */
+
 function highlight(id) {
     document.getElementById(id).classList.add('drag-area-highlight');
 }
+
+/**
+ * Removes a CSS class to remove the highlight from a specified element.
+ * @param {string} id - The ID of the element to remove the highlight from.
+ */
 
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
+/**
+ * Adds a CSS class to display a task overlay.
+ */
+
 function showTask() {
     document.getElementById('overlay').classList.add('overlayStyle');
 }
+
+/**
+ * Displays an edit task form by setting the CSS style and content of a specified container.
+ */
 
 function openEditTaskForm() {
     let content = document.getElementById('openEditTaskPopUpContainer');
@@ -241,128 +239,18 @@ function openEditTaskForm() {
     content.innerHTML = returnEditPopUpHTML();
 }
 
-function returnEditPopUpHTML() {
-
-    return /*html*/ `<div class="edittask-main-content">
-    <img class="close-edit-popup" onclick="closeEditTaskForm()" src="./../img/cross.png">
-    <h1 style="padding-left: 5%; margin-bottom: 4%">Add Task</h1>
-    <form onsubmit="editTask()">
-        <div class="addtask-content">
-            <div class="addtask-side">
-                <div class="addtask-title-container">
-                    Title
-                    <input class="taskInput" placeholder="Enter a title" type="text" id="title" required>
-                </div>
-                <div class="addtask-description-container">
-                    Description
-                    <textarea class="taskInput" name="description" id="description" cols="30" rows="10"
-                        placeholder="Enter a description" required></textarea>
-                </div>
-                <div class="addtask-assigned-to-container">
-                    Assigned to
-                    <div class="select-contacts-to-assign" id="select-contacts-to-assign"
-                        onclick="selectContactsToAssign()">
-                        <span>Select Contacts to assign</span>
-                        <div id="arrow-drop-down">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <mask id="mask0_83802_4068" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
-                                    y="0" width="24" height="24">
-                                    <rect width="24" height="24" fill="#D9D9D9" />
-                                </mask>
-                                <g mask="url(#mask0_83802_4068)">
-                                    <path
-                                        d="M11.3 14.3L8.69998 11.7C8.38331 11.3833 8.31248 11.0208 8.48748 10.6125C8.66248 10.2042 8.97498 10 9.42498 10H14.575C15.025 10 15.3375 10.2042 15.5125 10.6125C15.6875 11.0208 15.6166 11.3833 15.3 11.7L12.7 14.3C12.6 14.4 12.4916 14.475 12.375 14.525C12.2583 14.575 12.1333 14.6 12 14.6C11.8666 14.6 11.7416 14.575 11.625 14.525C11.5083 14.475 11.4 14.4 11.3 14.3Z"
-                                        fill="#2A3647" />
-                                </g>
-                            </svg>
-                        </div>
-
-                        <div class="select-contacts-to-assign-dropdown" id="select-contacts-to-assign-dropdown"
-                            onclick="childFunction(event)">
-                            <!-- Here the contacts will be rendered in -->
-                            <button class="add-new-contact-button">Add new Contact</button>
-                        </div>
-                    </div>
-
-                    <div class="select-contacts-to-assign-dropdown-contact-bottom-container">
-                        <div class="select-contacts-to-assign-dropdown-contact" id="contact-summary">
-                            <!-- Hier the credentials will be rendered in -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="2" height="426" viewBox="0 0 2 426" fill="none"
-                id="addtask-separator">
-                <path d="M1.24805 1L1.24854 425" stroke="#D1D1D1" stroke-linecap="round" />
-            </svg>
-            <div class="addtask-side">
-                <div class="addtask-title-container">
-                    Due date
-                    <input class="taskInput" type="date" id="due-date" name="due-date" min="1900-01-01" max="2099-12-31"
-                        class="addtask-dates-select" required>
-                </div>
-                <div class="addtask-prio-main-container">
-                    <div class="addtask-prio-container priority" id="prio-urgent" onclick="prioContainer('urgent')">
-                        Urgent <img src="./../img/prio-urgent.svg">
-                    </div>
-                    <div class="addtask-prio-container priority pre-selected" id="prio-medium" onclick="prioContainer('medium')" data-selected="true">
-                        Medium <img src="./../img/prio-medium.svg">
-                    </div>
-                    <div class="addtask-prio-container priority" id="prio-low" onclick="prioContainer('low')">
-                        Low <img src="./../img/prio-low.svg">
-                    </div>
-                </div>
-                <div class="addtask-category-container">
-                    Category
-                    <select name="category" id="select-category" class="taskInput">
-                        <option value="" disabled>Select a category</option>
-                        <option value="Technical Task">Technical Task</option>
-                        <option value="User Story">User Story</option>
-                    </select>
-                </div>
-                <div class="addtask-assigned-to-container">
-                    Subtasks
-                    <div class="add-new-subtask">
-                        <input placeholder="Add new subtask" id="add-new-subtask-input">
-                        <div class="add-new-subtask-icon-container" id="add-new-subtask-icon-container"><img
-                                src="./../img/add-subtask.svg" class="add-new-subtask-plus"
-                                onclick="selectNewSubtask()">
-                        </div>
-                    </div>
-                    <div>
-                        <ul class="add-new-subtask-list"></ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="add-task-bottom-button">
-            <div class="add-task-bottom-button-left-side"></div>
-            <div class="add-task-bottom-button-right-side">
-                <div class="add-task-bottom-button-container">
-                    <button type="reset" class="button-clear" id="button-clear" onclick=submitClassList(this.id) onmouseover="buttonCreateTaskChangeColor()"
-                        onmouseout="buttonCreateTaskChangeColorBack()">Delete Task<svg width="25" height="24"
-                            viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            id="add-task-icon-cancel">
-                            <path
-                                d="M12.2495 12.0001L17.4925 17.2431M7.00653 17.2431L12.2495 12.0001L7.00653 17.2431ZM17.4925 6.75708L12.2485 12.0001L17.4925 6.75708ZM12.2485 12.0001L7.00653 6.75708L12.2485 12.0001Z"
-                                stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </button>
-                    <button class="button-create-task">Save Edit<img src="./../img/check.svg"
-                            id="button-create-task"></button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>`;
-}
+/**
+ * Closes the edit task form by setting the CSS style of a specified container to "none."
+ */
 
 function closeEditTaskForm() {
     let edittask = document.getElementById('openEditTaskPopUpContainer');
     edittask.style.display = "none";
 }
+
+/**
+ * Checks if the drag area is empty and adds a hint if it has no children elements.
+ */
 
 function checkDragAreaIfEmpty() {
     collection = document.getElementsByClassName('drag-area');
@@ -373,6 +261,12 @@ function checkDragAreaIfEmpty() {
         }
     }
 }
+
+/**
+ * Determines a hint message based on the empty area and returns it as HTML.
+ * @param {string} emptyArea - The ID of the empty drag area.
+ * @returns {string} - The HTML hint message.
+ */
 
 function determineAHint(emptyArea) {
     let hint = '';
@@ -391,6 +285,12 @@ function determineAHint(emptyArea) {
     return HTMLrenderAreaWithEmptyHint(hint)
 }
 
+/**
+ * Generates HTML code to display a hint message in a drag area.
+ * @param {string} hint - The hint message to display.
+ * @returns {string} - The HTML code for the hint message.
+ */
+
 function HTMLrenderAreaWithEmptyHint(hint) {
     return /*html*/`
     <div class="hint">
@@ -398,6 +298,11 @@ function HTMLrenderAreaWithEmptyHint(hint) {
     </div>
     `;
 }
+
+/**
+ * Renders a progress bar for a task by calculating the percentage of completed subtasks.
+ * @param {number} id - The ID of the task to render the progress bar for.
+ */
 
 function renderProgressBar(id) {
     let totalTasks = todos[id]['taskSubtasks'].length;
@@ -416,6 +321,11 @@ function renderProgressBar(id) {
     }
 }
 
+/**
+ * Renders the credentials summary of contacts assigned to a task.
+ * @param {number} id - The ID of the task for which to render the credentials summary.
+ */
+
 function renderBoardTaskCredntialsSummary(id) {
     let container = document.getElementById(`boardTaskCredentialsSummary${id}`);
     for (let i = 0; i < todos[id]['tasksAssignedTo'].length; i++) {
@@ -430,4 +340,37 @@ function renderBoardTaskCredntialsSummary(id) {
         `;
 
     }
+}
+
+/**
+ * Deletes a task with the given ID from the `todos` array, updates the IDs of remaining tasks, and refreshes the board.
+ * @param {number} id - The ID of the task to delete.
+ */
+
+async function deleteTask(id) {
+    todos.splice(id, 1);
+    for (let index = 0; index < todos.length; index++) {
+        todos[index]['id'] = index;
+    }
+    await setItem('tasksjoin', JSON.stringify(todos));
+    updateBoard();
+    closeAddTaskForm();
+}
+
+let searchResultArray = [];
+
+/**
+ * Filters tasks based on a search query and updates the board with the matching results.
+ */
+
+function filterTasks() {
+    let search = document.getElementById('searchInput').value;
+    search = search.toLowerCase();
+
+    for (let index = 0; index < todos.length; index++) {
+        if (todos[index]['taskInputTitle'].toLowerCase().includes(search)) {
+            searchResultArray.push(todos[index]);
+        }
+    }
+    updateBoard(searchResultArray);
 }
