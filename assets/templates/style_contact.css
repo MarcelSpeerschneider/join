@@ -556,6 +556,10 @@ input:focus {
   .pup-up-content {
     width: 650px;
   }
+
+  .input-pop-up{
+    align-items: center;
+  }
 }
 
 @media (max-width: 1150px) {
@@ -704,6 +708,10 @@ input:focus {
     width: auto;
   }
 
+  .svgStyleInput{
+    display: none;
+  }
+
   .closeBtnEdit{
     left: 170px;
   }
@@ -714,6 +722,10 @@ input:focus {
 
   .createBtn{
     margin-top: 20px;
+    margin-left: 30px;
+    height: auto;
+    white-space: nowrap;
+    flex-wrap: inherit;
   }
 
   .contactBtn {
@@ -730,13 +742,14 @@ input:focus {
   } 
 
   .closeBtn{
-    top: 10px;
+    top: 25px;
   }
 
   .contactinput input{
     height: 35px;
     margin-bottom: 2px;
     width: 200px;
+    font-size: 15px;
   }
 
   .input-pop-up{
@@ -762,7 +775,7 @@ input:focus {
   }
 
   .closeBtnEdit{
-    top: -265px;
+    top: -250px;
     left: 125px;
   }
 
@@ -790,6 +803,6 @@ input:focus {
 
   .closeBtn{
     left: -290px;
-    top: 35px;
+    top: 52px;
   }
 }
