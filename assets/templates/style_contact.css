@@ -478,12 +478,23 @@ input:focus {
   }
 }
 
-@media(min-width:830px){
+@media (max-width: 1260px) {
+  .info-name{
+    flex-direction: column;
+  }
+
+  .show-contact-right{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .showContactRight{
+    height: calc(100vh - 0);
+
+  }
   
-
-}
-
-@media (max-width: 1230px) {
   .pup-up-content{
     flex-direction: column;
   }
@@ -710,7 +721,7 @@ input:focus {
 
 @media(max-width:460px){
   .icon{
-    top: 385px;
+    top: 395px;
   } 
 
   .closeBtn{
@@ -720,6 +731,15 @@ input:focus {
   .contactinput input{
     height: 35px;
     margin-bottom: 2px;
+    width: 200px;
+  }
+
+  .input-pop-up{
+    align-items: center;
+  }
+
+  .input-img{
+    justify-content: center;
   }
 
   .pop-up-left{
@@ -746,18 +766,21 @@ input:focus {
     display: block;
   }
 
-  .pop-up-left h1 {
-    font-size: 20px;
+  .pop-up-left span{
+    text-align: center;
+    font-size: 14px;
   }
 
   .pop-up-left h1 {
-    font-size: 15px;
+    font-size: 23px;
+    text-align: center;
   }
+
 
   .icon{
     height: 75px;
     width: 75px;
-    top: 387px;
+    top: 377px;
   }
 
   .closeBtn{
