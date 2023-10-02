@@ -1,31 +1,7 @@
-function openLoginHTML() {
-  window.location.href = "login.html?";
-}
-
-function showPassword() {
-  let passwordInput = document.getElementById("password");
-  let lockIcon = document.getElementById("lock-icon");
-  if (passwordInput.type === "password") {
-    passwordInput.type = "text";
-    lockIcon.src = "assets/img/visible.png";
-  } else {
-    passwordInput.type = "password";
-    lockIcon.src = "assets/img/hide.png";
-  }
-}
-
-function showConfirmPassword() {
-  let passwordInput = document.getElementById("confirmPassword");
-  let lockIcon = document.getElementById("confirm-lock");
-
-  if (passwordInput.type === "password") {
-    passwordInput.type = "text";
-    lockIcon.src = "assets/img/visible.png";
-  } else {
-    passwordInput.type = "password";
-    lockIcon.src = "assets/img/hide.png";
-  }
-}
+/**
+ * Toggles the confirmation of a password during user registration.
+ * If the entered password matches the confirmation, the signup or confirm button is enabled; otherwise, it's disabled.
+ */
 
 function toggleConfirmPassword() {
   let password = document.getElementById("password").value;
@@ -40,6 +16,11 @@ function toggleConfirmPassword() {
   }
 }
 
+/**
+ * This function checks whether an useraccount exists and set a new Password
+ * 
+ * @returns - the return stops the foor loop.
+ */
 async function checkPasswordsAndRedirect() {
   let password = document.getElementById("password").value;
   let confirmPassword = document.getElementById("confirmPassword").value;

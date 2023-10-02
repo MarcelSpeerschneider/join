@@ -74,6 +74,7 @@ function HTMLrenderNewSubtask(newSubTaskValue) {
  */
 
 function submitClassList(id) {
+    debugger;
     let addTaskElements = document.getElementsByClassName('taskInput');
     let elementByID = '';
     let valueOfInput = [];

@@ -8,12 +8,12 @@ let acronym = '';
 
 /**
  * Toggles the confirmation of a password during user registration.
- * If the entered password matches the confirmation, the signup button is enabled; otherwise, it's disabled.
+ * If the entered password matches the confirmation, the signup or confirm button is enabled; otherwise, it's disabled.
  */
 
 function toggleConfirmPassword() {
-  let signUpBtn = document.getElementById('signUpButton');
-  signUpBtn.disabled = true;
+  let signUpConfirmBtn = document.getElementById('signUpConfirmButton');
+  signUpConfirmBtn.disabled = true;
 
   let password = document.getElementById("password").value;
   let confirmPassword = document.getElementById("confirmPassword");
@@ -21,7 +21,7 @@ function toggleConfirmPassword() {
   if (password === confirmPassword.value) {
     confirmPassword.style.border = "1px solid #ccc";
     document.getElementById("passwordMatchMessage").style.display = "none";
-    signUpBtn.disabled = false;
+    signUpConfirmBtn.disabled = false;
   } else {
     confirmPassword.style.border = "1px solid red";
     document.getElementById("passwordMatchMessage").style.display = "block";
@@ -114,24 +114,6 @@ function fillLocalArray() {
     usermail: registerEmail.value,
     userpassword: registerPassword.value
   });
-}
-
-/**
- * Toggles the visibility of the password input field. Changes the input type
- * between 'password' (hidden) and 'text' (visible) and updates the lock icon.
- */
-
-function showPassword() {
-  let passwordInput = document.getElementById("password");
-  let lockIcon = document.getElementById("lock-icon");
-
-  if (passwordInput.type === "password") {
-    passwordInput.type = "text";
-    lockIcon.src = "assets/img/visible.png";
-  } else {
-    passwordInput.type = "password";
-    lockIcon.src = "assets/img/hide.png";
-  }
 }
 
 /**

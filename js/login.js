@@ -28,7 +28,8 @@ async function login() {
 }
 
 /**
- * Toggles the visibility of the password input field and updates the visibility icon.
+ * Toggles the visibility of the password input field. Changes the input type
+ * between 'password' (hidden) and 'text' (visible) and updates the lock icon.
  */
 
 function showPassword() {
@@ -66,4 +67,25 @@ function setAcronym(size) {
 function guestLocalStorageInfo() {
   localStorage.setItem('username', 'Guest');
   localStorage.setItem('acronym', 'GU');
+}
+
+/**
+ * This function checks whether login information are correct by checking the global array
+ * 
+ * @returns just stop the for loop.
+ */
+function loginCheck() {
+  let loginTryUsername = document.getElementById('loginMail').value;
+  let loginTryPassword = document.getElementById('loginPasswort').value;
+
+  for (let index = 0; index < usersjoin.length; index++) {
+      if (usersjoin[index]['email'].includes(loginTryUsername) & usersjoin[index]['password'].includes(loginTryPassword)) {
+          alert('Der User ist vorhanden!');
+          return;
+      }
+      else {
+          alert('Der User ist nicht vorhanden!');
+          return;
+      }
+  }
 }
