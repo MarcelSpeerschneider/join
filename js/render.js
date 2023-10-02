@@ -459,23 +459,17 @@ function HTMLselectContactsToAssignDropdownRender(contact, isSelected, i){
         `;
 }
 
-function renderCredentials() {
-    debugger;
-    let container = document.getElementById('contact-summary');
-    container.innerHTML = '';
-
-    for (let i = 0; i < selectedContacts.length; i++) {
-        const contact = selectedContacts[i];
-        container.innerHTML += /*html*/ `
+function HTMLrenderCredentials(contact){
+    return /*html*/ `
         <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
-        <svg width="28" height="28">
-            <circle cx="14" cy="14" r="14" fill="${getRandomColor()}"/>
-        </svg>
-        <div class="select-contacts-to-assign-dropdown-contact-credentials">${generateCredentials(contact)}</div>
+            <svg width="28" height="28">
+                <circle cx="14" cy="14" r="14" fill="${getRandomColor()}" />
+            </svg>
+            <div class="select-contacts-to-assign-dropdown-contact-credentials">
+                ${generateCredentials(contact)}
+            </div>
         </div>
-        `;
-    }
-
+    `;
 }
 
 function renderBoard() {

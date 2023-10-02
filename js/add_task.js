@@ -74,7 +74,6 @@ function HTMLrenderNewSubtask(newSubTaskValue) {
  */
 
 function submitClassList(id) {
-    debugger;
     let addTaskElements = document.getElementsByClassName('taskInput');
     let elementByID = '';
     let valueOfInput = [];
@@ -174,4 +173,17 @@ function selectContactsToAssignDropdownRender() {
         container.innerHTML += HTMLselectContactsToAssignDropdownRender(contact, isSelected, i);
     }
     renderCredentials();
+}
+
+/**
+ * When the drop down menu of the task assignement will be closed, the selected contacts will be rendered into the form.
+ */
+function renderCredentials() {
+    let container = document.getElementById('contact-summary');
+    container.innerHTML = '';
+
+    for (let i = 0; i < selectedContacts.length; i++) {
+        const contact = selectedContacts[i];
+        container.innerHTML += HTMLrenderCredentials(contact);
+    }
 }
