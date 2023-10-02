@@ -13,7 +13,11 @@ function renderPopUpChangeTask(id) {
     setPrio(id);
     openAddTaskForm();
 }
-
+/**
+ * Takes the id of the current selected task to get the Task status and create the array for the HTML selector Element
+ * 
+ * @param {string} id - of the selected ToDo from todos[]
+ */
 function renderTaskChangeSelector(id){
     let status = ['todo','inprogress','awaitfeedback','done'];
     let currentStatus = todos[id]['taskStatus'];
@@ -27,11 +31,22 @@ function renderTaskChangeSelector(id){
     pullDownMenuInput.innerHTML = HTMLrenderTaskChangeSelector(id, status,currentStatus);
 }
 
+/**
+ * Takes the id of the current selected task and write the new status from the selector menu to the todos array and to the backend.
+ * 
+ * @param {string} id - of the selected ToDo from todos[]
+ */
 async function changeStatusOfTask(id){
+    debugger;
     const selectedStatus = document.getElementById('statusOfTheTask');
-    todos[id]['taskStatus'] = selectedStatus.value;
-    await setItem('tasksjoin', JSON.stringify(todos));
-    updateBoard();
+    let currentStatus = todos[id]['taskStatus'];
+    let newStatus = selectedStatus.value;
+    let isDifferent = currentStatus.localeCompare(newStatus);
+    
+    if(isDifferent !== 0){
+        todos[id]['taskStatus'] = selectedStatus.value;
+        await setItem('tasksjoin', JSON.stringify(todos));
+    }
 }
 
 /**
