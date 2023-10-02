@@ -70,14 +70,14 @@ function displayContactInfo(index, color) {
     if (window.innerWidth < 830) {
         document.getElementById('contactRightFlex').classList.remove('show-contact-right');
         document.getElementById('contactRightFlex').classList.add('addRightResponsiv');
-        document.getElementById('closeBtnResponsiv').classList.remove('d-none');
+        document.getElementById('closeBtnResponsiv').classList.add('arrowCloseResponsiv');
     }
 
     window.addEventListener('resize', function(event){
         if(this.window.innerWidth > 830) {
            document.getElementById('contactRightFlex').classList.remove('addRightResponsiv');
            document.getElementById('contactRightFlex').classList.add('show-contact-right');
-           document.getElementById('closeBtnResponsiv').classList.add('d-none');
+           document.getElementById('closeBtnResponsiv').classList.remove('arrowCloseResponsiv');
 
        }
    });
@@ -230,7 +230,8 @@ function closeWindow() {
 }
   
 function closeInfoResponsiv(){
-    document.getElementById('contactRightFlex').style.display='none';
+    document.getElementById('contactRightFlex').classList.remove('addRightResponsiv');
+    document.getElementById('closeBtnResponsiv').classList.remove('arrowCloseResponsiv');
 }
   
 

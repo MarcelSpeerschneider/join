@@ -449,7 +449,7 @@ input:focus {
 
 .arrowCloseResponsiv{
   position: absolute;
-  right: -24px;
+  right: 0px;
   top: 35px;
   cursor: pointer;
   display: flex;
@@ -469,6 +469,11 @@ input:focus {
   justify-content: center;
   z-index: 1;
   background-color: white;
+}
+
+.showContactListResponsiv{
+  display: flex;
+  z-index: 2;
 }
 
 @media(min-width:900px){
