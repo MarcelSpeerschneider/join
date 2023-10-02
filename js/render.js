@@ -401,8 +401,7 @@ function HTMLrenderChangeTask(id) {
     `;
 }
 
-function HTMLrenderTaskChangeSelector(id, status,currentStatus){
-    let taskID = id;
+function HTMLrenderTaskChangeSelector(taskID, status,currentStatus){
     return /*html*/ `
     <div class="tooltip">
         <select name="statusOfTheTask" id="statusOfTheTask" onchange="changeStatusOfTask(${taskID})">
@@ -415,55 +414,26 @@ function HTMLrenderTaskChangeSelector(id, status,currentStatus){
     </div>`;
 }
 
-function inputSubTasksHTML(id) {
-    let subTasks = todos[id]['taskSubtasks'];
-    let subTaskList =  document.getElementById('subTaskList');
-    let subTasksOverview = document.getElementById('subtasksOverview');
-
-    if(subTasks.length >0){
-        subTasksOverview.style.display = 'flex';
-        for (let i = 0; i < subTasks.length; i++) {
-            let subTask = subTasks[i];
-            if (subTask['status'] == 'todo')
-            {
-                subTaskList.innerHTML += /*html*/ `
-                <div class="subTask-and-assignedTo">
-                    <input type="checkbox" id="subtask[${i}]" onclick="subTaskChecked(${i}, ${id})">
-                    <span class="checkmark"></span>
-                    <label>${subTask['description']}</label>
-                </div>
-                `;
-            } else {
-                subTaskList.innerHTML += /*html*/ `
-                <div class="subTask-and-assignedTo">
-                    <input type="checkbox" id="subtask[${i}]" onclick="subTaskChecked(${i}, ${id})" checked>
-                    <label>${subTask['description']}</label>
-                </div>
-                `;
-            }
-        }
-    }
+function HTMLrenderSubTasks(subTask, indexOfFunctionBasedArray, idOfTask, checkedOrNot){
+    return /*html*/ `
+    <div class="subTask-and-assignedTo">
+        <input type="checkbox" id="subtask[${indexOfFunctionBasedArray}]" onclick="subTaskChecked(${indexOfFunctionBasedArray}, ${idOfTask})" ${checkedOrNot}>
+        <label>${subTask['description']}</label>
+    </div>`;
 }
 
-function inputAssignedToHTML(id) {
-    let assignedTo = todos[id]['tasksAssignedTo'];
-
-    if(assignedTo.length>0){
-        document.getElementById('subTaskListAndAssignedToListContainer').style.display = 'flex';
-        for (let index = 0; index < assignedTo.length; index++) {
-            document.getElementById('assignedToList').innerHTML += /*html*/ `
-                <div class="select-contacts-to-assign-dropdown-contact">
-                    <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
-                        <svg width="28" height="28">
-                        <circle cx="14" cy="14" r="14" fill=${getRandomColor()} />
-                        </svg>
-                    <div class="select-contacts-to-assign-dropdown-contact-credentials">${generateCredentials(assignedTo[index])}</div>
-                    </div>
-                    <div class="select-contacts-to-assign-dropdown-contactname">${assignedTo[index]}</div>
-                </div>
-                `;
-        }
-    }
+function HTMLrenderAssignedToArea(assignedToIndex){
+    return /*html*/ `
+    <div class="select-contacts-to-assign-dropdown-contact">
+        <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
+            <svg width="28" height="28">
+            <circle cx="14" cy="14" r="14" fill=${getRandomColor()} />
+            </svg>
+        <div class="select-contacts-to-assign-dropdown-contact-credentials">${generateCredentials(assignedToIndex)}</div>
+        </div>
+        <div class="select-contacts-to-assign-dropdown-contactname">${assignedToIndex}</div>
+    </div>
+    `;
 }
 
 function selectContactsToAssignDropdownRender() {

@@ -8,18 +8,63 @@ function renderPopUpChangeTask(id) {
     let popUp = document.getElementById('overlay');
     popUp.innerHTML = HTMLrenderChangeTask(id);
     renderTaskChangeSelector(id);
-    inputSubTasksHTML(id);
-    inputAssignedToHTML(id);
+    renderSubTasks(id);
+    renderAssignedToArea(id);
     setPrio(id);
     openAddTaskForm();
 }
+
+/**
+ * Check wheter a task was assigned to person(s). If yes, person acronym buttons will be rendered.
+ * 
+ * @param {string} id - This is the Task ID. Tasks are part of the todos Array.
+ */
+function renderAssignedToArea(id) {
+    let assignedTo = todos[id]['tasksAssignedTo'];
+
+    if(assignedTo.length>0){
+        document.getElementById('subTaskListAndAssignedToListContainer').style.display = 'flex';
+        for (let index = 0; index < assignedTo.length; index++) {
+            let assignedToIndex = assignedTo[index];
+            document.getElementById('assignedToList').innerHTML += HTMLrenderAssignedToArea(assignedToIndex);
+        }
+    }
+}
+
+/**
+ * Check wheter a task has subtask(s). If yes, they will be rendered.
+ * 
+ * @param {string} id - This is the Task ID. Tasks are part of the todos Array.
+ */
+function renderSubTasks(id) {
+    let subTasks = todos[id]['taskSubtasks'];
+    let subTaskList = document.getElementById('subTaskList');
+    let subTasksOverview = document.getElementById('subtasksOverview');
+    let checkedValue = '';
+
+    if (subTasks.length > 0) {
+        subTasksOverview.style.display = 'flex';
+        for (let i = 0; i < subTasks.length; i++) {
+            let subTask = subTasks[i];
+            if (subTask['status'] == 'todo') {
+                subTaskList.innerHTML += HTMLrenderSubTasks(subTask, i, id, checkedValue);
+            }
+            else {
+                let checkedValue = 'checked';
+                subTaskList.innerHTML += HTMLrenderSubTasks(subTask, i, id, checkedValue);
+                checkedValue = '';
+            }
+        }
+    }
+}
+
 /**
  * Takes the id of the current selected task to get the Task status and create the array for the HTML selector Element
  * 
  * @param {string} id - of the selected ToDo from todos[]
  */
-function renderTaskChangeSelector(id){
-    let status = ['todo','inprogress','awaitfeedback','done'];
+function renderTaskChangeSelector(id) {
+    let status = ['todo', 'inprogress', 'awaitfeedback', 'done'];
     let currentStatus = todos[id]['taskStatus'];
 
     const index = status.indexOf(currentStatus);
@@ -28,7 +73,7 @@ function renderTaskChangeSelector(id){
     }
 
     let pullDownMenuInput = document.getElementById('pullDownMenuForTaskChange');
-    pullDownMenuInput.innerHTML = HTMLrenderTaskChangeSelector(id, status,currentStatus);
+    pullDownMenuInput.innerHTML = HTMLrenderTaskChangeSelector(id, status, currentStatus);
 }
 
 /**
@@ -36,13 +81,13 @@ function renderTaskChangeSelector(id){
  * 
  * @param {string} id - of the selected ToDo from todos[]
  */
-async function changeStatusOfTask(id){
+async function changeStatusOfTask(id) {
     const selectedStatus = document.getElementById('statusOfTheTask');
     let currentStatus = todos[id]['taskStatus'];
     let newStatus = selectedStatus.value;
     let isDifferent = currentStatus.localeCompare(newStatus);
 
-    if(isDifferent !== 0){
+    if (isDifferent !== 0) {
         todos[id]['taskStatus'] = selectedStatus.value;
         await setItem('tasksjoin', JSON.stringify(todos));
     }
