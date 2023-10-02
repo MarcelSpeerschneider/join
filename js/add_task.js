@@ -160,3 +160,18 @@ function getMinDate() {
     const inputDate = document.getElementById('due-date');
     inputDate.setAttribute('min', getTodayDate());
 };
+
+/**
+ * This function fill the drop down ist of contacts, which will be used during a task creation for assignment.
+ * 
+ */
+function selectContactsToAssignDropdownRender() {
+    let container = document.getElementById('select-contacts-to-assign-dropdown');
+    container.innerHTML = '';
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        const isSelected = selectedContacts.includes(contact.name);
+        container.innerHTML += HTMLselectContactsToAssignDropdownRender(contact, isSelected, i);
+    }
+    renderCredentials();
+}

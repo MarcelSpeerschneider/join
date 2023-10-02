@@ -436,38 +436,31 @@ function HTMLrenderAssignedToArea(assignedToIndex){
     `;
 }
 
-function selectContactsToAssignDropdownRender() {
-    let container = document.getElementById('select-contacts-to-assign-dropdown');
-    container.innerHTML = '';
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        const isSelected = selectedContacts.includes(contact.name);
-        container.innerHTML += /*html*/`
-         <div class="select-contacts-to-assign-dropdown-contact-container ${isSelected ? 'selected' : ''}"
-                                id="select-contacts-to-assign-dropdown-contact-container${i}"
-                                onclick = "assignContactToTask(${i},'${contact.name}')"
-                                data-selected="${isSelected ? 'true' : 'false'}">
-                                <div class="select-contacts-to-assign-dropdown-contact">
-                                    <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
-                                        <svg width="28" height="28">
-                                            <circle cx="14" cy="14" r="14" fill=${getRandomColor()} />
-                                        </svg>
-                                        <div class="select-contacts-to-assign-dropdown-contact-credentials">${generateCredentials(contact.name)}</div>
-                                    </div>
-                                    <div class="select-contacts-to-assign-dropdown-contactname">${contact.name}</div>
-                                </div>
-                                <div class="select-contacts-to-assign-dropdown-checkbox"><img
-                                        src="./assets/img/${isSelected ? 'checkbox-filled' : 'checkbox-blank'}.svg"
-                                        id="select-contacts-to-assign-dropdown-checkbox${i}">
-                                </div>
-                            </div>
+function HTMLselectContactsToAssignDropdownRender(contact, isSelected, i){
+    return /*html*/`
+        <div class="select-contacts-to-assign-dropdown-contact-container ${isSelected ? 'selected' : ''}"
+            id="select-contacts-to-assign-dropdown-contact-container${i}" onclick="assignContactToTask(${i},'${contact.name}')"
+            data-selected="${isSelected ? 'true' : 'false'}">
+            <div class="select-contacts-to-assign-dropdown-contact">
+                <div class="select-contacts-to-assign-dropdown-contact-credentials-container">
+                    <svg width="28" height="28">
+                        <circle cx="14" cy="14" r="14" fill=${getRandomColor()} />
+                    </svg>
+                    <div class="select-contacts-to-assign-dropdown-contact-credentials">${generateCredentials(contact.name)}
+                    </div>
+                </div>
+                <div class="select-contacts-to-assign-dropdown-contactname">${contact.name}</div>
+            </div>
+            <div class="select-contacts-to-assign-dropdown-checkbox">
+                <img src="./assets/img/${isSelected ? 'checkbox-filled' : 'checkbox-blank'}.svg"
+                    id="select-contacts-to-assign-dropdown-checkbox${i}">
+            </div>
+        </div>
         `;
-    }
-    renderCredentials();
 }
 
 function renderCredentials() {
-
+    debugger;
     let container = document.getElementById('contact-summary');
     container.innerHTML = '';
 
