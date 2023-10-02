@@ -774,7 +774,7 @@ input:focus {
 
 @media(max-width:460px){
   .icon{
-    top: 410px;
+    top: 400px;
   } 
 
   .iconedit{
@@ -844,7 +844,7 @@ input:focus {
   .icon{
     height: 60px;
     width: 60px;
-    top: 390px;
+    top: 379px;
   }
 
   .closeBtn{
