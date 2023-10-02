@@ -140,7 +140,9 @@ function generateToDoHTML(element) {
     return /*html*/ `
     <div id="${element['id']}" onclick="renderPopUpChangeTask(this.id)" draggable="true" ondragstart="startDragging(${element['id']})" class="tasksInBoardOverview">
         <div class="taskCardInBoard">
-            <div class="bgc-${combineAndLowercase(temp)} taskHeadline-bg">${element['taskInputCategory']}</div>
+            <div class="task-Headline">
+                <div class="bgc-${combineAndLowercase(temp)} taskHeadline-bg">${element['taskInputCategory']}</div>
+            </div>
             <div class="input-title">${element['taskInputTitle']}</div>
             <div>${element['taskInputDescription']}</div>
             <div class="progressbarMain">

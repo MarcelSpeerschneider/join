@@ -169,7 +169,7 @@
   margin-top: 10px;
 }
 
-.hint{
+.hint {
   background-color: #E7E7E7;
   width: 252px;
   height: 48px;
@@ -188,6 +188,24 @@
 
 .bgc-userstory {
   background-color: #0038ff;
+}
+
+#statusOfTheTask{
+  width: 200px;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.task-Headline {
+  display: flex;
+  width: inherit;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.task-Headline img{
+  width: 25px;
 }
 
 .taskHeadline-bg {
@@ -441,9 +459,11 @@
     font-size: 51px;
     margin-top: 15px;
   }
+
   .taskFormSecondHeader-title {
     font-size: 41px !important;
   }
+
   .board-header-right {
     width: 100%;
     flex-direction: column;
@@ -502,11 +522,12 @@
   box-sizing: border-box;
   align-items: center;
 }
-.taskFormHeader{
+
+.taskFormHeader {
   width: 100%;
 }
 
-.taskFormFirstHeader{
+.taskFormFirstHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -537,7 +558,7 @@
   height: 25px;
 }
 
-.taskFormBody{
+.taskFormBody {
   display: flex;
   width: 100%;
   align-items: center;
@@ -558,7 +579,7 @@
   gap: 39px;
 }
 
-.deleteEditContainer{
+.deleteEditContainer {
   width: 100%;
   height: 100%;
   display: flex;
@@ -567,7 +588,7 @@
   gap: 20px;
 }
 
-.deleteEditFunctions{
+.deleteEditFunctions {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -599,7 +620,7 @@
 
 .subTask-and-assignedTo input:hover {
   cursor: pointer;
-} 
+}
 
 .subTask-and-assignedTo:hover {
   background-color: #cccccc6b;

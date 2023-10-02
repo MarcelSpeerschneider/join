@@ -7,10 +7,42 @@
 function renderPopUpChangeTask(id) {
     let popUp = document.getElementById('overlay');
     popUp.innerHTML = HTMLrenderChangeTask(id);
+    renderTaskChangeSelector(id);
     inputSubTasksHTML(id);
     inputAssignedToHTML(id);
     setPrio(id);
     openAddTaskForm();
+}
+
+function renderTaskChangeSelector(id){
+    let status = ['todo','inprogress','awaitfeedback','done'];
+    let currentStatus = todos[id]['taskStatus'];
+
+    const index = status.indexOf(currentStatus);
+    if (index > -1) { // only splice array when item is found
+        status.splice(index, 1); // 2nd parameter means remove one item only
+    }
+
+    let pullDownMenuInput = document.getElementById('pullDownMenuForTaskChange');
+    pullDownMenuInput.innerHTML = HTMLrenderTaskChangeSelector(id, status,currentStatus);
+}
+
+function HTMLrenderTaskChangeSelector(id, status,currentStatus){
+    let taskID = id;
+    return /*html*/ `
+    <select name="statusOfTheTask" id="statusOfTheTask" onchange="changeStatusOfTask(${taskID})">
+        <option selected value=${currentStatus}>${currentStatus}</option>
+        <option value=${status[0]}>${status[0]}</option>
+        <option value=${status[1]}>${status[1]}</option>
+        <option value=${status[2]}>${status[2]}</option>
+    </select>`;
+}
+
+async function changeStatusOfTask(id){
+    const selectedStatus = document.getElementById('statusOfTheTask');
+    todos[id]['taskStatus'] = selectedStatus.value;
+    await setItem('tasksjoin', JSON.stringify(todos));
+    updateBoard();
 }
 
 /**
