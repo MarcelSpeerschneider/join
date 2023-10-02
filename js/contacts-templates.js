@@ -46,7 +46,7 @@ function returnRenderHTML() {
             </div>
             <div class="pop-up-right">
                 
-                <div class="icon">
+                <div class="icon ">
 
                     <svg width="70" height="70" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="person">
@@ -332,7 +332,7 @@ function generateEditContactPopupHTML() {
                     </g>
                 </svg>
             </div>
-            <div class="icon">
+            <div class=" iconedit">
                 <svg width="70" height="70" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g id="person">
                         <mask id="mask0_84485_2192" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"

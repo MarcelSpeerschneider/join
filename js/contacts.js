@@ -219,6 +219,7 @@ function openEditContact(index) {
 
 function closeEditWindow() {
     document.getElementById('editPopUp').style.display = 'none';
+    document.getElementById('contactListResponsiv').style.display='flex';
 }
 
 function openContactForm() {
