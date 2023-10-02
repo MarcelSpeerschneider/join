@@ -27,17 +27,6 @@ function renderTaskChangeSelector(id){
     pullDownMenuInput.innerHTML = HTMLrenderTaskChangeSelector(id, status,currentStatus);
 }
 
-function HTMLrenderTaskChangeSelector(id, status,currentStatus){
-    let taskID = id;
-    return /*html*/ `
-    <select name="statusOfTheTask" id="statusOfTheTask" onchange="changeStatusOfTask(${taskID})">
-        <option selected value=${currentStatus}>${currentStatus}</option>
-        <option value=${status[0]}>${status[0]}</option>
-        <option value=${status[1]}>${status[1]}</option>
-        <option value=${status[2]}>${status[2]}</option>
-    </select>`;
-}
-
 async function changeStatusOfTask(id){
     const selectedStatus = document.getElementById('statusOfTheTask');
     todos[id]['taskStatus'] = selectedStatus.value;
