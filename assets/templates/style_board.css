@@ -204,6 +204,8 @@
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
+  top: 85px;
+  left: 172px;
 
   /* Position the tooltip */
   position: absolute;
@@ -705,4 +707,11 @@
 /* Style during move */
 .rotateTaskCardDuringMove {
   transform: rotate(10deg);
+}
+
+@media(max-width: 580px) {
+  .tooltip .tooltiptext {
+      top: 135px;
+      left: 40px;
+  }
 }
