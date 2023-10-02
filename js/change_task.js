@@ -37,12 +37,11 @@ function renderTaskChangeSelector(id){
  * @param {string} id - of the selected ToDo from todos[]
  */
 async function changeStatusOfTask(id){
-    debugger;
     const selectedStatus = document.getElementById('statusOfTheTask');
     let currentStatus = todos[id]['taskStatus'];
     let newStatus = selectedStatus.value;
     let isDifferent = currentStatus.localeCompare(newStatus);
-    
+
     if(isDifferent !== 0){
         todos[id]['taskStatus'] = selectedStatus.value;
         await setItem('tasksjoin', JSON.stringify(todos));
