@@ -447,13 +447,13 @@ input:focus {
   display: none;
 }
 
-/* .arrowCloseResponsiv{
+.arrowCloseResponsiv{
   position: absolute;
   right: -24px;
   top: 35px;
   cursor: pointer;
   display: flex;
-} */
+}
 
 .closeBtnEdit{
   position: relative;

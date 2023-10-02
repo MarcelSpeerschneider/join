@@ -66,14 +66,22 @@ function displayContactInfo(index, color) {
     }
     const currentContact = document.getElementById(`contact-${index}`);
     currentContact.classList.add('clicked');
-    
+
     if (window.innerWidth < 830) {
         document.getElementById('contactRightFlex').classList.remove('show-contact-right');
         document.getElementById('contactRightFlex').classList.add('addRightResponsiv');
-    } else {
-        document.getElementById('contactRightFlex').classList.remove('addRightResponsiv');
-        document.getElementById('contactRightFlex').classList.add('show-contact-right');
+        document.getElementById('closeBtnResponsiv').classList.remove('d-none');
     }
+
+    window.addEventListener('resize', function(event){
+        if(this.window.innerWidth > 830) {
+           document.getElementById('contactRightFlex').classList.remove('addRightResponsiv');
+           document.getElementById('contactRightFlex').classList.add('show-contact-right');
+           document.getElementById('closeBtnResponsiv').classList.add('d-none');
+
+       }
+   });
+
 }
 
 /**
