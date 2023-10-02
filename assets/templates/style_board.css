@@ -548,7 +548,10 @@
 .taskFormFirstHeader {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+}
+
+.taskFormFirstHeaderLeft{
+  display: flex;
 }
 
 .taskFormSecondHeader-title {

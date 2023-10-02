@@ -1056,7 +1056,14 @@ select {
     .footnote-info-container {
         font-size: 12px;
     }
+    .taskFormFirstHeaderLeft{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
 }
+
+
 
 @media(max-width: 430px) {
     .summary-task-container {

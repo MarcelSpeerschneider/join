@@ -352,11 +352,13 @@ function HTMLrenderChangeTask(id) {
 <div id="renderChangeTask${id}" class="existingTaskOverviewPopUp">
     <div class="taskFormHeader">
         <div class="taskFormFirstHeader">
-            <span class="bgc-technicaltask taskHeadline-bg">${todos[id]['taskInputCategory']}</span>
-            <div id="pullDownMenuForTaskChange">
-
+            <div class="taskFormFirstHeaderLeft">
+                <span class="bgc-technicaltask taskHeadline-bg">${todos[id]['taskInputCategory']}</span>
+                <div id="pullDownMenuForTaskChange"></div>
             </div>
-            <img class="cross-close-editForm" onclick="closeAddTaskForm()" src="./assets/img/cross.png">
+            <div>
+                <img class="cross-close-editForm" onclick="closeAddTaskForm()" src="./assets/img/cross.png">
+            </div>
         </div>
         <div class="taskFormSecondHeader">
             <p class="taskFormSecondHeader-title">${todos[id]['taskInputTitle']}</p>
