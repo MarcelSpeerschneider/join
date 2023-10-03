@@ -362,6 +362,12 @@ footer a {
     margin-top: 1300px;
   }
 
+  .rightContent a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .Join_Logo{
     margin-top: -50px;
   }

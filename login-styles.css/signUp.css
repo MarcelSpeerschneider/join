@@ -157,7 +157,7 @@ footer a {
   }
 }
 
-@media(max-width:460px){
+@media(max-width:465px){
   .input1,.input2,.input3,.input4{
     width: fit-content;
   }
@@ -178,4 +178,14 @@ footer a {
 
 #confirmPassword {
   display: block; 
+}
+
+@media(max-width:330px){
+  .arrow-container{
+    margin-left: 280px;
+  }
+
+  .input1, .input2, .input3, .input4{
+    width: 200px;
+  }
 }
