@@ -642,7 +642,6 @@ input {
     font-weight: 400;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
-    background: #FFF;
     padding: 12px 16px;
     box-sizing: border-box;
     gap: 8px;
@@ -650,7 +649,8 @@ input {
 }
 
 .addtask-prio-container:hover {
-    box-shadow: -5px 5px 10px #9b9b9b;
+    box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
+    border-color: rgb(40, 171, 226);
     cursor: pointer;
 }
 
@@ -830,7 +830,7 @@ select {
     align-items: center;
     gap: 4px;
     border-radius: 10px;
-    background: #2A3647;
+    background-color: rgba(59, 78, 105);
     color: #FFF;
     font-family: Inter;
     font-size: 21px;
@@ -842,7 +842,7 @@ select {
 }
 
 .button-create-task:hover {
-    background-color: rgb(40, 171, 226);
+    background-color: rgb(40, 171, 226) !important;
     box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
     border-color: rgb(40, 171, 226);
 }
