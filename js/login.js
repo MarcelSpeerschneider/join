@@ -49,12 +49,10 @@ function showPassword() {
     lockIcon.src = "assets/img/hide.png";
   }
 }
-
 /**
  * Sets the user's acronym in HTML elements.
  * @param {number} size - The size of the acronym.
  */
-
 function setAcronym(size) {
   document.getElementById('useracronym').innerHTML = localStorage.getItem('acronym');
   document.getElementById('useracronym-mobile').innerHTML = localStorage.getItem('acronym');
@@ -68,7 +66,6 @@ function guestLocalStorageInfo() {
   localStorage.setItem('username', 'Guest');
   localStorage.setItem('acronym', 'GU');
 }
-
 /**
  * This function checks whether login information are correct by checking the global array
  * 

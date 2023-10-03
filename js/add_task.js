@@ -1,33 +1,26 @@
 /**
  * global variable globalStatus
  */ 
-
 let globalStatus = 'todo';
-
 /**
  * Opens the add task form by displaying an overlay.
  */
-
 function openAddTaskForm() {
     document.getElementById('overlay').style.display = 'flex';
 }
-
 /**
  * Closes the add task form by hiding an overlay, resetting subtask and contact selections, and rendering the board site.
  */
-
 function closeAddTaskForm() {
     document.getElementById('overlay').style.display = 'none';
     subTasks = [];
     selectedContacts = [];
     renderBoardSite();
 }
-
 /**
  * Renders a pop-up add task form based on the given status and updates the board accordingly.
  * @param {string} status - The status of the task ('todo', 'inprogress', 'awaitfeedback', 'done').
  */
-
 async function renderPopUpAddTask(status) {
     if (status === 'todo' | status === 'inprogress' | status === 'awaitfeedback' | status === 'done') {
         openAddTaskForm();
@@ -38,11 +31,9 @@ async function renderPopUpAddTask(status) {
     getMinDate();
     await updateBoard();
 }
-
 /**
  * Renders a new subtask based on the input value and appends it to the subtask list.
  */
-
 function renderNewSubtask() {
     let newSubTaskValue = document.getElementById('addNewSubtask').value;
     if (newSubTaskValue === '') {
@@ -53,13 +44,11 @@ function renderNewSubtask() {
         document.getElementById('addNewSubtask').value = '';
     }
 }
-
 /**
  * Generates HTML markup for a new subtask based on the provided value.
  * @param {string} newSubTaskValue - The value for the new subtask.
  * @returns {string} - The generated HTML markup for the subtask.
  */
-
 function HTMLrenderNewSubtask(newSubTaskValue) {
     return /*html*/`
         <div class="subTask">
@@ -67,12 +56,10 @@ function HTMLrenderNewSubtask(newSubTaskValue) {
         </div>
     `;
 }
-
 /**
  * Submits the values of elements with the 'taskInput' class and handles tasks based on the provided button ID.
  * @param {string} id - The ID of the button ('button-clear' or 'button-create-task').
  */
-
 function submitClassList(id) {
     let addTaskElements = document.getElementsByClassName('taskInput');
     let elementByID = '';
@@ -98,12 +85,10 @@ function submitClassList(id) {
         addTaskToArray(valueOfInput, taskPriority);
     }
 }
-
 /**
  * Resets the placeholder value and input value of an element and clears selected contacts and subtasks.
  * @param {string} elementByID - The ID of the element to reset.
  */
-
 function resetPlaceHolder(elementByID) {
     let placeholderValue = document.getElementById(`${elementByID}`).placeholder;
     let emptyValue = document.getElementById(`${elementByID}`);
@@ -113,13 +98,11 @@ function resetPlaceHolder(elementByID) {
     selectedContacts = [];
     subTasks = [];
 }
-
 /**
  * Adds a new task object to the 'todos' array based on the provided values and priorities.
  * @param {string[]} valueOfInput - An array of input values for the task.
  * @param {string} taskPriority - The priority of the task.
  */
-
 function addTaskToArray(valueOfInput, taskPriority) {
     let id = todos.length;
     let myObject = {
@@ -141,11 +124,9 @@ function addTaskToArray(valueOfInput, taskPriority) {
     setItem("tasksjoin", todos);
     renderBoardSite();
 }
-
 /**
  * Sets the minimum date attribute for an input field to today's date.
  */
-
 function getMinDate() {
     function getTodayDate() {
         const today = new Date();
@@ -159,7 +140,6 @@ function getMinDate() {
     const inputDate = document.getElementById('due-date');
     inputDate.setAttribute('min', getTodayDate());
 };
-
 /**
  * This function fill the drop down ist of contacts, which will be used during a task creation for assignment.
  * 
@@ -174,7 +154,6 @@ function selectContactsToAssignDropdownRender() {
     }
     renderCredentials();
 }
-
 /**
  * When the drop down menu of the task assignement will be closed, the selected contacts will be rendered into the form.
  */

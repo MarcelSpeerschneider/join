@@ -2,7 +2,6 @@
  * Renders the edit task pop-up for the task with the specified ID, pre-filling the form with task details.
  * @param {number} id - The ID of the task to edit.
  */
-
 function renderEditTaskPopUp(id) {
     let popUp = document.getElementById(`renderChangeTask${id}`);
     popUp.innerHTML = HTMLrenderEditTask(id);
@@ -12,7 +11,6 @@ function renderEditTaskPopUp(id) {
     editTaskAddNewSubtask(id);
     editTaskGetPriority(id);
 }
-
 /**
  * Pre-selects the category option in the edit task form based on the task's category.
  * @param {number} id - The ID of the task to edit.
@@ -23,7 +21,6 @@ function editTaskSelectCategory(id) {
     const option = select.querySelector(`[value='${todos[id]['taskInputCategory']}']`);
     option.selected = true;
 }
-
 /**
  * Renders the existing subtasks for editing in the edit task form.
  * @param {number} id - The ID of the task to edit.
@@ -41,18 +38,15 @@ function editTaskAddNewSubtask(id) {
         </div></li>`;
     }
 }
-
 /**
  * Sets the priority selection in the edit task form based on the task's existing priority.
  * @param {number} id - The ID of the task to edit.
  */
-
 function editTaskGetPriority(id) {
     let container = document.getElementById(`${todos[id]['taskPriority']}`);
     container.setAttribute("data-selected", "true");
     editTaskCheckPriority(id);
 }
-
 /**
  * Checks and updates the visual representation of the priority selection in the edit task form.
  * @param {number} id - The ID of the task being edited.
@@ -74,7 +68,6 @@ function editTaskCheckPriority(id) {
  * Retrieves input values and selected priority for editing a task and invokes the editTaskSaveTask function.
  * @param {number} id - The ID of the task being edited.
  */
-
  function editTaskGetInputs(id) {
      let addTaskElements = document.getElementsByClassName('taskInput');
      let taskPriority = '';
@@ -94,14 +87,12 @@ function editTaskCheckPriority(id) {
      }
      editTaskSaveTask(id, valueOfInputs, taskPriority);
  }
-
  /**
  * Saves edited task information and updates the task in the todos array.
  * @param {number} id - The ID of the task being edited.
  * @param {string[]} valueOfInputs - An array containing input values.
  * @param {string} taskPriority - The priority of the edited task.
  */
-
  function editTaskSaveTask(id, valueOfInputs, taskPriority) {
     let status = todos[id]['taskStatus'];
      todos[id] = {
@@ -121,12 +112,10 @@ function editTaskCheckPriority(id) {
      setItem("tasksjoin", todos);
      renderBoardSite();
  }
-
  /**
  * Clears the input field of a new subtask and removes it from the subTasks array.
  * @param {number} i - The index of the subtask to clear and remove.
  */
-
  function clearNewSubtaskInput(i) {
     document.getElementById(`add-new-subtask-listinput${i}`).value = '';
     subTasks.splice(i, 1);

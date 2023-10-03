@@ -129,6 +129,10 @@
   cursor: pointer;
 }
 
+.board-card-header img:hover {
+  scale: 1.1;
+}
+
 .board-card {
   display: flex;
   flex-direction: column;

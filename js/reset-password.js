@@ -2,7 +2,6 @@
  * Toggles the confirmation of a password during user registration.
  * If the entered password matches the confirmation, the signup or confirm button is enabled; otherwise, it's disabled.
  */
-
 function toggleConfirmPassword() {
   let password = document.getElementById("password").value;
   let confirmPassword = document.getElementById("confirmPassword");
@@ -15,7 +14,6 @@ function toggleConfirmPassword() {
     document.getElementById("passwordMatchMessage").style.display = "block";
   }
 }
-
 /**
  * This function checks whether an useraccount exists and set a new Password
  * 

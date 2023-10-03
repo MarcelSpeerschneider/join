@@ -3,7 +3,6 @@
  *
  * @param {string} id - The ID of the task to be edited.
  */
-
 function renderPopUpChangeTask(id) {
     let popUp = document.getElementById('overlay');
     popUp.innerHTML = HTMLrenderChangeTask(id);
@@ -30,7 +29,6 @@ function renderAssignedToArea(id) {
         }
     }
 }
-
 /**
  * Check wheter a task has subtask(s). If yes, they will be rendered.
  * 
@@ -57,7 +55,6 @@ function renderSubTasks(id) {
         }
     }
 }
-
 /**
  * Takes the id of the current selected task to get the Task status and create the array for the HTML selector Element
  * 
@@ -75,7 +72,6 @@ function renderTaskChangeSelector(id) {
     let pullDownMenuInput = document.getElementById('pullDownMenuForTaskChange');
     pullDownMenuInput.innerHTML = HTMLrenderTaskChangeSelector(id, status, currentStatus);
 }
-
 /**
  * Takes the id of the current selected task and write the new status from the selector menu to the todos array and to the backend.
  * 
@@ -92,14 +88,12 @@ async function changeStatusOfTask(id) {
         await setItem('tasksjoin', JSON.stringify(todos));
     }
 }
-
 /**
  * Updates the status of a subtask when its checkbox is checked or unchecked.
  *
  * @param {number} id - The ID of the subtask being checked or unchecked.
  * @param {number} ToDoId - The ID of the parent task to which the subtask belongs.
  */
-
 function subTaskChecked(id, ToDoId) {
     let subtask = document.getElementById(`subtask[${id}]`);
     if (subtask.checked) {
@@ -110,13 +104,11 @@ function subTaskChecked(id, ToDoId) {
         setItem("tasksjoin", todos);
     }
 }
-
 /**
  * Sets the priority of a task and displays it in the task's popup.
  *
  * @param {number} id - The ID of the task for which the priority is being set.
  */
-
 function setPrio(id) {
     let adjustedPrioName = todos[id]['taskPriority'].slice(5);
     adjustedPrioName = adjustedPrioName.charAt(0).toLowerCase() + adjustedPrioName.slice(1);

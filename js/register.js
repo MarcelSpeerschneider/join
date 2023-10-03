@@ -5,12 +5,10 @@ let registerEmail = document.getElementById('email');
 let registerPassword = document.getElementById('password');
 let checkboxAlert = document.getElementById("checkboxAlert");
 let acronym = '';
-
 /**
  * Toggles the confirmation of a password during user registration.
  * If the entered password matches the confirmation, the signup or confirm button is enabled; otherwise, it's disabled.
  */
-
 function toggleConfirmPassword() {
   let signUpConfirmBtn = document.getElementById('signUpConfirmButton');
   signUpConfirmBtn.disabled = true;
@@ -27,13 +25,11 @@ function toggleConfirmPassword() {
     document.getElementById("passwordMatchMessage").style.display = "block";
   }
 }
-
 /**
  * Registers a user if the registration checkbox is checked and checks for user registration.
  * Displays an alert if the checkbox is not checked.
  * @returns {Promise<void>}
  */
-
 async function registerUser() {
   if (!checkbox.checked) {
     checkboxAlert.style.display = "block";
@@ -43,14 +39,12 @@ async function registerUser() {
   checkboxAlert.style.display = "none";
   checkUserRegistration();
 }
-
 /**
  * Checks if a user is already registered by comparing their email with existing user emails.
  * If the user is not registered, adds the user to the local array and updates the storage.
  * Redirects to the login page after registration.
  * @returns {Promise<void>}
  */
-
 async function checkUserRegistration() {
   let userIsAlreadyRegistered = false; 
   let element = '';
@@ -78,14 +72,12 @@ async function checkUserRegistration() {
     }
   }
 }
-
 /**
  * Creates an acronym from a full name by using the first letter of the first name
  * and the first letter of the last name (if available).
  *
  * @returns {string} The generated acronym.
  */
-
 function createAcronym(){
   let firstLetterOfFirstName = '';
   let firstLetterOfLastName = '';
@@ -100,13 +92,11 @@ function createAcronym(){
       return firstLetterOfFirstName;
   }
 }
-
 /**
  * Fills the 'usersjoin' local array with user information based on the provided
  * registration data, including username, email, and password. It also generates
  * a user acronym based on the username.
  */
-
 function fillLocalArray() {
   usersjoin.push({
     useracronym: createAcronym(),
@@ -115,12 +105,10 @@ function fillLocalArray() {
     userpassword: registerPassword.value
   });
 }
-
 /**
  * Toggles the visibility of the confirm password input field. Changes the input type
  * between 'password' (hidden) and 'text' (visible) and updates the lock icon.
  */
-
 function showConfirmPassword() {
   let passwordInput = document.getElementById("confirmPassword");
   let lockIcon = document.getElementById("confirm-lock");

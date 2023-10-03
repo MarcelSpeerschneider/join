@@ -48,7 +48,6 @@ async function loadTasks() {
     let globalArrayName = 'todos'
     todos = await getInfo(backendContainer, arrayContent, globalArrayName);
 }
-
 /**
  * This function can be used to get info from backend. Therefore another function, inside this function, with the name getItem will be called.
  * Info can be tasks, contacts, users.
@@ -68,7 +67,6 @@ async function getInfo(backendContainer, arrayContent, globalArrayName){
         return arrayContent;
     }
 }
-
 /**
  * This function calls the backend and asks for info inside the different areas.
  * 

@@ -28,7 +28,6 @@ function renderContactsAlphabetically() {
         contactListElement.innerHTML += contactHTML;
     }
 }
-
 /**
  * Generates the HTML for displaying contact information.
  * @param {Object} contact - The contact object.
@@ -49,7 +48,6 @@ function generateContactHTML(contact, i, color) {
     }
     return generateContactHTMLString(contact, i, color, firstLetterOfFirstName, firstLetterOfLastName);
 }
-
 /**
  * Displays contact information in the UI.
  * @param {number} index - The index of the contact.
@@ -83,7 +81,6 @@ function displayContactInfo(index, color) {
    });
 
 }
-
 /**
  * Generates the HTML for displaying detailed contact information.
  * @param {Object} contact - The contact object.
@@ -113,7 +110,6 @@ function getFirstLetterOfFirstName(contact) {
 function generateColors() {
     return ["#FF5733", "#33FF57", "#5733FF", "#FF33F9", "#33F9FF"];
 }
-
 /**
  * Checks if the first letter of the first name is different from the current letter.
  * @param {string} firstLetterOfFirstName - The first letter of the first name.
@@ -139,7 +135,6 @@ function initializeCurrentLetter() {
 function sortContactsAlphabetically() {
     contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
-
 /**
  * Adds a new contact to the list of contacts.
  * @param {Event} event - The event that triggered adding a new contact.
