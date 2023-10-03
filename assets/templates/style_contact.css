@@ -505,11 +505,12 @@ input:focus {
   }
 
   .iconedit{
-    position: absolute;
+    /* position: absolute;
     top: 365px;
     width: 100px;
     height: 100px;
-    margin-right: 0;
+    margin-right: 0; */
+    display: none;
   }
 
   .show-contact-right{
@@ -555,10 +556,11 @@ input:focus {
   }
 
   .icon{
-    position:absolute;
+    /* position:absolute;
     top: 368px;
     width: 95px;
-    height: 95px;
+    height: 95px; */
+    display: none;
   }
 
   .contactinput input{
