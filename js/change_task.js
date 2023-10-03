@@ -118,10 +118,7 @@ function subTaskChecked(id, ToDoId) {
  */
 
 function setPrio(id) {
-    let adjustedPrioName = todos[id]['taskPriority'].slice(5)
-    adjustedPrioName = adjustedPrioName.charAt(0).toUpperCase() + adjustedPrioName.slice(1);
-    document.getElementById('taskPriority').innerHTML += /*html*/ `
-        <div>${adjustedPrioName}</div>
-        <img src="./assets/img/prio-low.svg">
-    `;
+    let adjustedPrioName = todos[id]['taskPriority'].slice(5);
+    adjustedPrioName = adjustedPrioName.charAt(0).toLowerCase() + adjustedPrioName.slice(1);
+    document.getElementById('taskPriority').innerHTML += HTMLsetPrio(adjustedPrioName);
 }

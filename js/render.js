@@ -1,4 +1,8 @@
-
+function HTMLsetPrio(adjustedPrioName){
+    return /*html*/ `
+        <div>${adjustedPrioName}</div>
+        <img src="./assets/img/prio-${adjustedPrioName}.svg">`;
+}
 
 function renderSummaryinnerHtml() {
     return /*html*/`
