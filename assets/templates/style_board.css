@@ -519,6 +519,7 @@
 
   .drag-area {
     margin-bottom: 0;
+    min-height: 48px;
   }
 
   .board-card {
@@ -550,6 +551,7 @@
   border-radius: 30px;
   box-sizing: border-box;
   align-items: center;
+  overflow: auto;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

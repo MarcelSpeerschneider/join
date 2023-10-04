@@ -227,9 +227,6 @@ function checkDragAreaIfEmpty() {
         if (collection[index].children.length === 0) {
             document.getElementById(emptyArea).innerHTML += determineAHint(emptyArea);
         }
-        else{
-            document.getElementById(emptyArea).style.minHeight = "600px";
-        }
     }
 }
 /**
@@ -251,7 +248,6 @@ function determineAHint(emptyArea) {
     else if (emptyArea === 'done') {
         hint = 'Nothing is done';
     }
-    document.getElementById(emptyArea).style.minHeight = "48px";
     return HTMLrenderAreaWithEmptyHint(hint);
 }
 /**

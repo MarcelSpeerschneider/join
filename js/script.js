@@ -164,8 +164,6 @@ function assignContactToTask(i, contact) {
         if (index > -1) {
             selectedContacts.splice(index, 1);
         }
-
-
     } else {
         contactContainer.style.backgroundColor = "#3b4e69";
         contactContainer.style.color = "#FFFFFF";
@@ -173,7 +171,6 @@ function assignContactToTask(i, contact) {
         checkbox.style.filter = "invert()";
         contactContainer.setAttribute('data-selected', 'true');
         selectedContacts.push(contact);
-
     }
 }
 /**
