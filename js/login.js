@@ -2,7 +2,6 @@
  * Authenticates a user by checking if the provided email and password match any entries in the usersjoin array.
  * Redirects to the index page and sets local storage values if authentication is successful; otherwise, displays an error alert.
  */
-
 async function login() {
   let username = document.getElementById('email');
   let password = document.getElementById('password');
@@ -26,7 +25,6 @@ async function login() {
     alert('Username or Password incorrect!');
   }
 }
-
 /**
  * Toggles the visibility of the password input field. Changes the input type
  * between 'password' (hidden) and 'text' (visible) and updates the lock icon.

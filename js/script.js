@@ -4,29 +4,18 @@ let greeting = checkCurrentTimeForGreeting();
 /**
  * Changes the background color of the user profile SVG element on mobile devices back to its original color.
  */
-function changeBackgroundColor() {
-    let svgElement = document.querySelector('.user-profile-icon');
-    let rectElement = svgElement.querySelector('rect');
+function changeBackgroundColor(svg, rect) {
+    let svgElement = document.querySelector(svg);
+    let rectElement = svgElement.querySelector(rect);
     rectElement.setAttribute("fill", "#E1E5EC");
 }
 
-function changeBackgroundColorBack() {
-    let svgElement = document.querySelector('.user-profile-icon');
-    let rectElement = svgElement.querySelector('rect');
+function changeBackgroundColorBack(svg, rect) {
+    let svgElement = document.querySelector(svg);
+    let rectElement = svgElement.querySelector(rect);
     rectElement.setAttribute("fill", "white");
 }
 
-function changeBackgroundColorMobile() {
-    let svgElement = document.querySelector('.user-profile-icon-mobile');
-    rectElement = svgElement.querySelector('circle');
-    rectElement.setAttribute("fill", "#E1E5EC");
-}
-
-function changeBackgroundColorBackMobile() {
-    let svgElement = document.querySelector('.user-profile-icon-mobile');
-    rectElement = svgElement.querySelector('circle');
-    rectElement.setAttribute("fill", "white");
-}
 /**
  * Listens for clicks and toggles the display of a user profile popup based on click events. Desktop Menu.
  */

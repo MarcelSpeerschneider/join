@@ -20,8 +20,8 @@
             Kanban Project Management Tool
             <div class="header-icons">
                 <img class="help-icon" src="./assets/img/help.svg" onclick="renderHelp()">
-                <div class="user-profile-icon" id="user-profile-icon" onmouseover="changeBackgroundColor()"
-                    onmouseleave="changeBackgroundColorBack()">
+                <div class="user-profile-icon" id="user-profile-icon" onmouseover="changeBackgroundColor('.user-profile-icon', 'rect')"
+                    onmouseleave="changeBackgroundColorBack('.user-profile-icon', 'rect')">
                     <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="48" height="48" rx="24" transform="matrix(1 0 0 -1 4 52)" fill="white" />
                         <circle cx="28" cy="28" r="26.5" stroke="#2A3647" stroke-width="3" />
@@ -74,10 +74,10 @@
             <div class="header-icons-mobile">
                 <img class="help-icon" src="./assets/img/help.svg" onclick="renderHelp()">
                 <div class="user-profile-icon-mobile" id="user-profile-icon-mobile"
-                    onmouseover="changeBackgroundColorMobile()" onmouseleave="changeBackgroundColorBackMobile()">
+                    onmouseover="changeBackgroundColor('.user-profile-icon-mobile', 'circle')" onmouseleave="changeBackgroundColorBack('.user-profile-icon-mobile', 'circle')">
 
-                    <div class="user-profile-icon" id="user-profile-icon-mobile" onmouseover="changeBackgroundColor()"
-                        onmouseleave="changeBackgroundColorBack()">
+                    <div class="user-profile-icon" id="user-profile-icon-mobile" onmouseover="changeBackgroundColor('.user-profile-icon-mobile', 'circle')"
+                        onmouseleave="changeBackgroundColorBack('.user-profile-icon-mobile', 'circle')">
                         <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="48" height="48" rx="24" transform="matrix(1 0 0 -1 4 52)" fill="white" />
                             <circle cx="28" cy="28" r="26.5" stroke="#2A3647" stroke-width="3" />
