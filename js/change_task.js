@@ -87,6 +87,12 @@ async function changeStatusOfTask(id) {
         await setItem('tasksjoin', JSON.stringify(todos));
     }
 }
+/**
+ * Formats a task status string to a more human-readable form.
+ *
+ * @param {string} status - The task status string ('todo', 'inprogress', 'awaitfeedback', or else).
+ * @returns {string} - The formatted status string ('To do', 'In Progress', 'Await feedback', or 'Done').
+ */
 function currentStatusFormat(status) {
     if (status ==='todo') {
         return 'To do'
