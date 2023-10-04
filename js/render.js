@@ -411,10 +411,11 @@ function HTMLrenderTaskChangeSelector(taskID, status,currentStatus){
     return /*html*/ `
     <div class="tooltip">
         <select name="statusOfTheTask" id="statusOfTheTask" onchange="changeStatusOfTask(${taskID})">
-            <option selected value=${currentStatus}>${currentStatus}</option>
-            <option value=${status[0]}>${status[0]}</option>
-            <option value=${status[1]}>${status[1]}</option>
-            <option value=${status[2]}>${status[2]}</option>
+            <option selected value=${currentStatus} disabled>Current: ${currentStatusFormat(currentStatus)}</option>
+            <option value=${status[0]}>To do</option>
+            <option value=${status[1]}>In progress</option>
+            <option value=${status[2]}>Await feedback</option>
+            <option value=${status[3]}>Done</option>
         </select>
         <span class="tooltiptext">Change the Status, if you like, and press the cross in the upper right corner!</span>
     </div>`;

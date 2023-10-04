@@ -61,16 +61,15 @@ function renderSubTasks(id) {
  * @param {string} id - of the selected ToDo from todos[]
  */
 function renderTaskChangeSelector(id) {
-    let status = ['todo', 'inprogress', 'awaitfeedback', 'done'];
+    let statusChange = ['todo', 'inprogress', 'awaitfeedback', 'done'];
     let currentStatus = todos[id]['taskStatus'];
-
-    const index = status.indexOf(currentStatus);
-    if (index > -1) { // only splice array when item is found
-        status.splice(index, 1); // 2nd parameter means remove one item only
-    }
+    // const index = statusChange.indexOf(currentStatus);
+    // if (index > -1) { // only splice array when item is found
+    //     statusChange.splice(index, 1); // 2nd parameter means remove one item only
+    // }
 
     let pullDownMenuInput = document.getElementById('pullDownMenuForTaskChange');
-    pullDownMenuInput.innerHTML = HTMLrenderTaskChangeSelector(id, status, currentStatus);
+    pullDownMenuInput.innerHTML = HTMLrenderTaskChangeSelector(id, statusChange, currentStatus);
 }
 /**
  * Takes the id of the current selected task and write the new status from the selector menu to the todos array and to the backend.
@@ -87,6 +86,17 @@ async function changeStatusOfTask(id) {
         todos[id]['taskStatus'] = selectedStatus.value;
         await setItem('tasksjoin', JSON.stringify(todos));
     }
+}
+function currentStatusFormat(status) {
+    if (status ==='todo') {
+        return 'To do'
+    } else if (status === 'inprogress') {
+        return ('in Progress')
+    } else if (status === 'awaitfeedback') {
+        return 'Await feedback'
+    } else {
+        return 'Done'
+    }        
 }
 /**
  * Updates the status of a subtask when its checkbox is checked or unchecked.
