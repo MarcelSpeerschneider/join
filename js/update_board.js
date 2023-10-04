@@ -221,10 +221,14 @@ function closeEditTaskForm() {
  */
 function checkDragAreaIfEmpty() {
     collection = document.getElementsByClassName('drag-area');
+    let emptyArea = '';
     for (let index = 0; index < collection.length; index++) {
+        emptyArea = collection[index]['id'];
         if (collection[index].children.length === 0) {
-            const emptyArea = collection[index]['id'];
             document.getElementById(emptyArea).innerHTML += determineAHint(emptyArea);
+        }
+        else{
+            document.getElementById(emptyArea).style.minHeight = "600px";
         }
     }
 }
@@ -247,7 +251,8 @@ function determineAHint(emptyArea) {
     else if (emptyArea === 'done') {
         hint = 'Nothing is done';
     }
-    return HTMLrenderAreaWithEmptyHint(hint)
+    document.getElementById(emptyArea).style.minHeight = "48px";
+    return HTMLrenderAreaWithEmptyHint(hint);
 }
 /**
  * Generates HTML code to display a hint message in a drag area.
@@ -323,7 +328,9 @@ function filterTasks() {
     search = search.toLowerCase();
 
     for (let index = 0; index < todos.length; index++) {
-        if (todos[index]['taskInputTitle'].toLowerCase().includes(search)) {
+        const searchTitle = todos[index]['taskInputTitle'].toLowerCase().includes(search);
+        const searchDescription = todos[index]['taskInputDescription'].toLowerCase().includes(search);
+        if (searchTitle | searchDescription) {
             searchResultArray.push(todos[index]);
         }
     }
