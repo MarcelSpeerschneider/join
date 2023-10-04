@@ -736,4 +736,14 @@
       top: 135px;
       left: 40px;
   }
+
+  .boardSearchContainer {
+    margin-left: 10px;
+    margin-right: 10px;
+    justify-content: space-between;
+  }
+  
+  .boardSearchBtn {
+
+  }
 }
