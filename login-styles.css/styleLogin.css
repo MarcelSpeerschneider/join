@@ -352,7 +352,7 @@ footer a {
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 380px) {
   .rightContent {
     display: flex;
     flex-direction: column;
@@ -377,10 +377,10 @@ footer a {
   }
 
   #email{
-    width: 145px;
+    width: 200px;
   }
 
   #password{
-    width: 145px;
+    width: 200px;
   }
 }
