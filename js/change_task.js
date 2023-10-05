@@ -63,10 +63,6 @@ function renderSubTasks(id) {
 function renderTaskChangeSelector(id) {
     let statusChange = ['todo', 'inprogress', 'awaitfeedback', 'done'];
     let currentStatus = todos[id]['taskStatus'];
-    // const index = statusChange.indexOf(currentStatus);
-    // if (index > -1) { // only splice array when item is found
-    //     statusChange.splice(index, 1); // 2nd parameter means remove one item only
-    // }
 
     let pullDownMenuInput = document.getElementById('pullDownMenuForTaskChange');
     pullDownMenuInput.innerHTML = HTMLrenderTaskChangeSelector(id, statusChange, currentStatus);
