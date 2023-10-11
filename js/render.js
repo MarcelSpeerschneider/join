@@ -23,7 +23,8 @@ function renderSummaryinnerHtml() {
                 <div class="summary-task-number-container" onclick="renderBoardSite()">
                     <div class="summary-task-number-box">
                         <span class="summary-task-number">
-                            <h1>${todos.length}</h1>
+                            <!-- hier is der fehler  -->
+                             <h1>${todos.length}</h1> 
                         </span>
                         <span class="summary-task-info">Tasks in Board</span>
                     </div>
@@ -100,7 +101,6 @@ function renderSummaryinnerHtml() {
 
 function renderAddTaskInnerHtml() {
     return /*html*/`
-    
 <div class="addtask-main-content">
     <h1 style="padding-left: 5%; margin-bottom: 4%">Add Task</h1>
     <form onsubmit="submitClassList('button-create-task'); return false;">
@@ -113,7 +113,7 @@ function renderAddTaskInnerHtml() {
                 <div class="addtask-description-container">
                     Description
                     <textarea class="taskInput" name="description" id="description" cols="30" rows="10"
-                        placeholder="Enter a description" required></textarea>
+                        placeholder="Enter a description" ></textarea>
                 </div>
                 <div class="addtask-assigned-to-container">
                     Assigned to
@@ -240,7 +240,7 @@ function HTMLrenderPopUpAddTask() {
                 <div class="addtask-description-container">
                     Description
                     <textarea class="taskInput" name="description" id="description" cols="30" rows="10"
-                        placeholder="Enter a description" required></textarea>
+                        placeholder="Enter a description" ></textarea>
                 </div>
                 <div class="addtask-assigned-to-container">
                     Assigned to
@@ -560,7 +560,7 @@ function returnEditPopUpHTML() {
                 <div class="addtask-description-container">
                     Description
                     <textarea class="taskInput" name="description" id="description" cols="30" rows="10"
-                        placeholder="Enter a description" required></textarea>
+                        placeholder="Enter a description" ></textarea>
                 </div>
                 <div class="addtask-assigned-to-container">
                     Assigned to
@@ -679,7 +679,7 @@ function HTMLrenderEditTask(id) {
                 <div class="addtask-description-container">
                     Description
                     <textarea class="taskInput" name="description" id="description" cols="30" rows="10"
-                        placeholder="Enter a description" required>${todos[id]['taskInputDescription']}</textarea>
+                        placeholder="Enter a description" >${todos[id]['taskInputDescription']}</textarea>
                 </div>
                 <div class="addtask-assigned-to-container">
                     Assigned to

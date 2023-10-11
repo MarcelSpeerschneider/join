@@ -1002,7 +1002,7 @@ select {
         border-radius: 12px;
         gap: 13px;
         font-size: 48px;
-        justify-content: unset;
+        justify-content: center;
     }
 
     .summary-task-info {

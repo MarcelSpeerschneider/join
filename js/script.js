@@ -295,6 +295,7 @@ function editNewSubtaskInput(i) {
     <img src="./assets/img/check-black.svg" onclick="saveNewSubtask(${i})">|<img src="./assets/img/delete-icon.svg">
     `;
 }
+
 /**
  * Saves the edited new subtask and updates its appearance.
  * @param {number} i - The index of the subtask to save.
@@ -305,10 +306,16 @@ function saveNewSubtask(i) {
     input.disabled = true;
     input.style.backgroundColor = 'transparent';
     iconContainer.innerHTML = /*html*/ `
-      <div class="add-new-subtask-icon-container-list" id="add-new-subtask-icon-container-list1"><img src="./assets/img/edit-icon.svg" onclick="editNewSubtaskInput(${i})">|<img src="./assets/img/delete-icon.svg" onclick="clearNewSubtaskInput(${i})"></li></div>
+        <img src="./assets/img/edit-icon.svg" onclick="editNewSubtaskInput(${i})">|
+        <img src="./assets/img/delete-icon.svg" onclick="clearNewSubtaskInput(${i})">
     `;
-    subTasks[i] = input.value;
+    subTasks[i] = {
+        'description': input.value,
+        'status': 'todo'
+    };
 }
+
+
 /**
  * Generates user credentials based on the given full name.
  * @param {string} fullName - The full name of the user.
@@ -351,7 +358,7 @@ function getRandomColor() {
     return colors[randomIndex];
 }
 /**
- * Renders the privacy policy content in the specified container.
+ * Renders the privacy policy content in the specified container.   
  */
 function renderPrivacyPolicy() {
     let container = document.getElementById('dashboard-content');
