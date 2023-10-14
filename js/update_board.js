@@ -8,8 +8,6 @@ let collection = [];
 let inprogress, awaitfeedback, done, urgentPriority, prioPictureSource;
 let currentDraggedElement;
 
-console.log(`Number of tasks in todos: ${todos.length}`);
-
 /**
  * Updates the board with tasks based on the provided search result or retrieves tasks by status and priority.
  * @param {string} [searchResult] - The optional search result to filter tasks.
