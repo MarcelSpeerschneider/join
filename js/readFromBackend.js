@@ -43,10 +43,10 @@ async function loadContactsFromBackend() {
  * To get the info (todos) from the backend, to fill a global Array the getInfo function will be called inside this function.
  */
 async function loadTasks() {
-    const backendContainer = 'tasksjoin';
-    let arrayContent = todos;
-    let globalArrayName = 'todos'
-    todos = await getInfo(backendContainer, arrayContent, globalArrayName);
+    // const backendContainer = 'tasksjoin';
+    // let arrayContent = todos;
+    // let globalArrayName = 'todos'
+    // todos = await getInfo(backendContainer, arrayContent, globalArrayName);
 }
 /**
  * This function can be used to get info from backend. Therefore another function, inside this function, with the name getItem will be called.
